@@ -1,0 +1,19 @@
+{"file":"en3k.json","range":"1651-1800","fixes":[
+{"num":1655,"word":"iron","old_meaning":"sắt; bọc sắt","new_meaning":"sắt; bọc sắt; ủi (quần áo)","reason":"thiếu nghĩa phổ biến của động từ iron: ủi/là quần áo"},
+{"num":1661,"word":"issue","old_meaning":"sự phát ra, sự phát sinh; phát hành, đưa ra","new_meaning":"vấn đề; sự phát ra, sự phát sinh; phát hành, đưa ra","reason":"thiếu nghĩa phổ biến nhất của issue: vấn đề"},
+{"num":1666,"word":"jacket","old_meaning":"áo vét","new_meaning":"áo vét; áo khoác","reason":"thiếu nghĩa phổ biến: áo khoác"},
+{"num":1670,"word":"jealous","old_meaning":"ghen,, ghen tị","new_meaning":"ghen, ghen tị","reason":"sai dấu câu: ghen,, -> ghen,"},
+{"num":1682,"word":"judgement (also judgment especially in NAmE)","old_meaning":"sự xét xử","new_meaning":"sự xét xử; sự phán đoán, sự đánh giá","reason":"thiếu nghĩa phổ biến: sự phán đoán, đánh giá"},
+{"num":1693,"word":"keen on say","old_meaning":"mê, ưa thích","new_word":"keen on","new_meaning":"say mê, mê, ưa thích","reason":"chữ say dính lẫn vào word (thuộc nghĩa say mê); word đúng là keen on"},
+{"num":1699,"word":"kid","old_meaning":"con dê non","new_meaning":"con dê non; đứa trẻ, trẻ con","reason":"thiếu nghĩa phổ biến: đứa trẻ, trẻ con"},
+{"num":1726,"word":"lacking","old_meaning":"ngu đần, ngây ngô","new_meaning":"thiếu, thiếu hụt; kém cỏi","reason":"nghĩa sai; lacking = thiếu, thiếu hụt, kém cỏi"},
+{"num":1729,"word":"land","old_meaning":"đất, đất canh tác, đất đai","new_meaning":"đất, đất canh tác, đất đai; hạ cánh","reason":"type n., v nhưng thiếu nghĩa phổ biến hạ cánh"},
+{"num":1734,"word":"largely","old_meaning":"phong phú, ở mức độ lớn","new_meaning":"phần lớn, chủ yếu; ở mức độ lớn","reason":"phong phú sai nghĩa; thiếu nghĩa phổ biến phần lớn, chủ yếu"},
+{"num":1735,"word":"last","old_meaning":"lầm cuối, sau cùng; người cuối cùng; cuối cùng, rốt hết;","new_meaning":"lần cuối, sau cùng; người cuối cùng; cuối cùng, rốt hết; kéo dài","reason":"sai chính tả: lầm -> lần; thêm nghĩa động từ phổ biến kéo dài"},
+{"num":1737,"word":"later","old_meaning":"chậm hơn","new_meaning":"chậm hơn, muộn hơn; sau này, sau đó","reason":"thiếu nghĩa phổ biến: sau này, sau đó"},
+{"num":1739,"word":"latter","old_meaning":"sau cùng, gần đây, mới đây","new_meaning":"cái sau, cái thứ hai (trong hai); nửa sau","reason":"gần đây, mới đây là nghĩa của lately; latter = cái sau, cái thứ hai (trong hai)"},
+{"num":1741,"word":"launch","old_meaning":"hạ thủy (tàu); khai trương; sự hạ thủy, buổi giới thiệu sản phầm","new_meaning":"hạ thủy (tàu); khai trương; sự hạ thủy, buổi giới thiệu sản phẩm","reason":"sai chính tả: sản phầm -> sản phẩm"},
+{"num":1751,"word":"league","old_meaning":"liên minh, liên hoàn","new_meaning":"liên minh, liên đoàn","reason":"liên hoàn sai nghĩa (chuỗi/loạt); league = liên đoàn, liên minh"},
+{"num":1776,"word":"lie","old_meaning":"nói dối; lời nói dối, sự dối trá","new_meaning":"nói dối; lời nói dối, sự dối trá; nằm, nằm nghỉ","reason":"thiếu nghĩa phổ biến: nằm"},
+{"num":1796,"word":"live","old_meaning":"sống, hoạt động","new_meaning":"sống, hoạt động; trực tiếp (phát sóng, biểu diễn)","reason":"thiếu nghĩa phổ biến: trực tiếp"}
+]}

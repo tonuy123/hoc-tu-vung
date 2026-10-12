@@ -1,0 +1,18 @@
+{
+  "file": "en1k.json",
+  "range": "301-450",
+  "fixes": [
+    {"num":325,"word":"forget","old_meaning":"lãng quên","new_meaning":"quên, lãng quên","reason":"Thiếu nghĩa phổ biến 'quên'"},
+    {"num":331,"word":"free","old_meaning":"tự do","new_meaning":"tự do, miễn phí","reason":"Thiếu nghĩa phổ biến 'miễn phí'"},
+    {"num":340,"word":"full","old_meaning":"chật ních, đủ","new_meaning":"đầy, đầy đủ","reason":"Thiếu nghĩa cơ bản 'đầy'; 'chật ních' chỉ là nghĩa hẹp"},
+    {"num":343,"word":"furniture","old_meaning":"đồ đạc, đồ gia dụng","new_meaning":"đồ đạc, đồ nội thất","reason":"'đồ gia dụng' là thiết bị gia dụng, không đúng nghĩa furniture"},
+    {"num":344,"word":"further","old_meaning":"xa hơn, cụ thể hơn","new_meaning":"xa hơn, thêm nữa","reason":"'cụ thể hơn' sai nghĩa; further = xa hơn, thêm/hơn nữa"},
+    {"num":367,"word":"green","old_meaning":"(màu sắc) xanh lam, xanh lá cây","new_meaning":"(màu sắc) xanh lá cây, xanh lục","reason":"'xanh lam' là màu xanh dương, sai nghĩa green"},
+    {"num":380,"word":"hard","old_meaning":"cứng, chắc, rắn","new_meaning":"cứng, chắc, rắn, khó","reason":"Thiếu nghĩa phổ biến 'khó' (difficult)"},
+    {"num":387,"word":"hear","old_meaning":"lắng nghe","new_meaning":"nghe, nghe thấy","reason":"'lắng nghe' là nghĩa của listen; hear = nghe, nghe thấy"},
+    {"num":398,"word":"hide","old_meaning":"trốn tránh","new_meaning":"giấu, che giấu, trốn","reason":"Thiếu nghĩa phổ biến 'giấu, che giấu'"},
+    {"num":424,"word":"idea","old_meaning":"gợi ý, ý tưởng","new_meaning":"ý tưởng, ý kiến","reason":"'gợi ý' (suggestion) không đúng nghĩa idea"},
+    {"num":445,"word":"keep","old_meaning":"lưu giữ, kẹp","new_meaning":"giữ, giữ lại, lưu giữ","reason":"'kẹp' sai nghĩa; thiếu nghĩa cơ bản 'giữ'"},
+    {"num":448,"word":"kind","old_meaning":"tốt bụng, thánh thiện","new_meaning":"tốt bụng, tử tế","reason":"'thánh thiện' (saintly) không đúng nghĩa kind"}
+  ]
+}

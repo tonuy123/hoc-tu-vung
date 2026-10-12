@@ -1,0 +1,26 @@
+{
+  "file": "en1k.json",
+  "range": "1-150",
+  "reviewer": "manual",
+  "fixes": [
+    {"num": 2, "word": "about", "old_meaning": "khoảng", "new_meaning": "khoảng, về", "reason": "thiếu nghĩa phổ biến 'về' (talk about)"},
+    {"num": 5, "word": "act", "old_meaning": "đóng vai (kịch, chèo, tuồng, phim), giả vờ", "new_meaning": "hành động, cư xử; đóng vai, giả vờ", "reason": "thiếu nghĩa phổ biến 'hành động'"},
+    {"num": 6, "word": "active", "old_meaning": "tích cực, nhanh nhẹn, linh lợi", "new_meaning": "tích cực, năng động, hoạt bát", "reason": "'linh lợi' dùng sai ngữ cảnh"},
+    {"num": 27, "word": "answer", "old_meaning": "câu trả lời", "new_meaning": "câu trả lời; trả lời", "reason": "thiếu nghĩa động từ phổ biến 'trả lời'"},
+    {"num": 34, "word": "are", "old_meaning": "là (dùng cho ngôi thứ ba số nhiều)", "new_meaning": "(you/we/they) là, thì", "reason": "are dùng cho you/we/they, không chỉ ngôi thứ ba số nhiều"},
+    {"num": 41, "word": "as", "old_meaning": "cũng, ngang bằng, tương tự", "new_meaning": "như, với tư cách là; khi; vì", "reason": "thiếu các nghĩa phổ biến như/với tư cách/khi/vì"},
+    {"num": 49, "word": "back", "old_meaning": "(bộ phận cơ thể) lưng", "new_meaning": "(bộ phận cơ thể) lưng; trở lại, quay lại", "reason": "thiếu nghĩa phổ biến 'trở lại'"},
+    {"num": 63, "word": "beer", "old_meaning": "rượu bia", "new_meaning": "bia", "reason": "beer = bia, không phải rượu"},
+    {"num": 84, "word": "blow", "old_meaning": "thổi, hà hơi", "new_meaning": "thổi", "reason": "'hà hơi' không phải nghĩa chính của blow"},
+    {"num": 93, "word": "born", "old_meaning": "(quá khử) sinh đẻ", "new_meaning": "(quá khứ) sinh ra", "reason": "chính tả 'quá khử' → 'quá khứ'; nghĩa chuẩn là 'sinh ra'"},
+    {"num": 112, "word": "brush", "old_meaning": "cái lược, bàn chải", "new_meaning": "bàn chải", "reason": "lược là comb, không phải brush"},
+    {"num": 120, "word": "by", "old_meaning": "gần, cạnh, kế bên", "new_meaning": "bởi, bằng; qua; gần, cạnh, kế bên", "reason": "thiếu nghĩa phổ biến 'bởi, bằng'"},
+    {"num": 121, "word": "cake", "old_meaning": "bánh kem", "new_meaning": "bánh ngọt, bánh kem", "reason": "cake = bánh ngọt nói chung"},
+    {"num": 122, "word": "call", "old_meaning": "cuộc gọi; kêu gọi", "new_meaning": "cuộc gọi; gọi, kêu gọi", "reason": "thiếu nghĩa 'gọi (điện thoại)'"},
+    {"num": 128, "word": "care", "old_meaning": "sự quan tâm, bảo vệ", "new_meaning": "sự chăm sóc, quan tâm", "reason": "care = chăm sóc/quan tâm, 'bảo vệ' là protect"},
+    {"num": 130, "word": "careless", "old_meaning": "lỡ đễnh, cẩu thả, bất cẩn", "new_meaning": "lơ đễnh, cẩu thả, bất cẩn", "reason": "chính tả 'lỡ đễnh' → 'lơ đễnh'"},
+    {"num": 137, "word": "certain", "old_meaning": "chắc chắn, chắc nịch", "new_meaning": "chắc chắn, nhất định", "reason": "'chắc nịch' là khẩu ngữ lệch nghĩa"},
+    {"num": 141, "word": "chase", "old_meaning": "theo đuổi", "new_meaning": "đuổi theo, săn đuổi; theo đuổi", "reason": "nghĩa chính là đuổi theo"},
+    {"num": 143, "word": "cheese", "old_meaning": "phó mát", "new_meaning": "phô mai", "reason": "từ thông dụng là 'phô mai'"}
+  ]
+}

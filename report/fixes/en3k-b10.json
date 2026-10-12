@@ -1,0 +1,20 @@
+{
+  "file": "en3k.json",
+  "range": "1351-1500",
+  "fixes": [
+    {"num": 1354, "word": "give sth away cho,", "new_word": "give sth away", "old_meaning": "phát", "new_meaning": "cho, phát", "reason": "word bị dính chữ 'cho,' của nghĩa; tách word và khôi phục nghĩa"},
+    {"num": 1355, "word": "give sth out chia,", "new_word": "give sth out", "old_meaning": "phân phối", "new_meaning": "chia, phân phối", "reason": "word bị dính chữ 'chia,' của nghĩa; tách word và khôi phục nghĩa"},
+    {"num": 1363, "word": "gram", "old_meaning": "đậu xanh", "new_meaning": "gam (đơn vị khối lượng)", "reason": "'đậu xanh' sai nghĩa; gram = gam"},
+    {"num": 1372, "word": "good at", "old_meaning": "tiến bộ ở", "new_meaning": "giỏi về", "reason": "'tiến bộ ở' sai nghĩa; good at = giỏi về"},
+    {"num": 1378, "word": "governor", "old_meaning": "thủ lĩnh, chủ; kẻ thống trị", "new_meaning": "thống đốc; thủ lĩnh, chủ; kẻ thống trị", "reason": "thiếu nghĩa phổ biến 'thống đốc'"},
+    {"num": 1384, "word": "gram (BrE also gramme)", "old_meaning": "(abbr. g, gm) ngữ pháp", "new_meaning": "gam (đơn vị khối lượng)", "reason": "'ngữ pháp' là nghĩa của grammar, sai nghĩa; gram = gam"},
+    {"num": 1407, "word": "grow", "old_meaning": "mọc, mọc lên", "new_meaning": "mọc, mọc lên; lớn lên, phát triển; trồng", "reason": "thiếu nghĩa phổ biến 'lớn lên, phát triển, trồng'"},
+    {"num": 1433, "word": "hard", "old_meaning": "cứng, rắn, hà khắc; hết sức cố gắng, tích cực", "new_meaning": "cứng, rắn, hà khắc; khó, khó khăn; hết sức cố gắng, tích cực", "reason": "thiếu nghĩa phổ biến 'khó'"},
+    {"num": 1434, "word": "hardly", "old_meaning": "khắc nghiệt, nghiêm khắc, tàn tệ, khó khăn", "new_meaning": "hầu như không, khó mà", "reason": "sai nghĩa (đó là nghĩa của hard/harsh); hardly = hầu như không"},
+    {"num": 1440, "word": "hatred", "old_meaning": "lòng căm thì, sự căm ghét", "new_meaning": "lòng căm thù, sự căm ghét", "reason": "lỗi chính tả 'căm thì' -> 'căm thù'"},
+    {"num": 1441, "word": "have v., auxiliary", "new_word": "have", "old_meaning": "có", "new_meaning": "có", "reason": "word bị dính 'v., auxiliary' vào từ; tách lại, type đã có 'v'"},
+    {"num": 1444, "word": "head", "old_meaning": "cái đầu (người, thú); chỉ huy, lãnh đại, dẫn đầu", "new_meaning": "cái đầu (người, thú); chỉ huy, lãnh đạo, dẫn đầu", "reason": "lỗi chính tả 'lãnh đại' -> 'lãnh đạo'"},
+    {"num": 1491, "word": "home n., adv..", "new_word": "home", "new_type": "n., adv", "old_meaning": "nhà; ở tại nhà, nước mình", "new_meaning": "nhà; ở tại nhà, nước mình", "reason": "word bị dính type 'n., adv..'; tách word/type"},
+    {"num": 1499, "word": "horizontal", "old_meaning": "(thuộc) chân trời, ở chân trời; ngang, nằm ngang (trục", "new_meaning": "(thuộc) chân trời; ngang, nằm ngang", "reason": "nghĩa bị đứt, ngoặc không đóng ('(trục')"}
+  ]
+}

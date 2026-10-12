@@ -1,0 +1,29 @@
+{
+  "file": "en3k.json",
+  "range": "2701-2850",
+  "fixes": [
+    {"num": 2701, "word": "selection", "old_meaning": "sự lựa chọn, sự chọc lọc", "new_meaning": "sự lựa chọn, sự chọn lọc", "reason": "chính tả: 'chọc lọc' → 'chọn lọc'"},
+    {"num": 2705, "word": "senate", "old_meaning": "thượng nghi viện, ban giám hiệu", "new_meaning": "thượng nghị viện, ban giám hiệu", "reason": "chính tả: 'thượng nghi viện' → 'thượng nghị viện'"},
+    {"num": 2708, "word": "senior", "old_meaning": "nhiều tuổi hơn, dành cho trẻ em trên 11t; người lớn tuổi hơn", "new_meaning": "nhiều tuổi hơn, cấp cao, thâm niên; dành cho trẻ em trên 11t; người lớn tuổi hơn", "reason": "thiếu nghĩa phổ biến 'cấp cao, thâm niên' (senior manager)"},
+    {"num": 2709, "word": "sinh", "new_word": "senior", "new_type": "n", "old_meaning": "viên năm cuối trường trung học, cao đẳng", "new_meaning": "sinh viên năm cuối trường trung học, cao đẳng", "reason": "word 'sinh' là mảnh đứt từ 'senior' và nghĩa thiếu chữ 'sinh'; khôi phục lại"},
+    {"num": 2712, "word": "sensitive", "old_meaning": "dễ bị thương, dễ bị hỏng; dễ bị xúc phạm", "new_meaning": "nhạy cảm; dễ bị thương, dễ bị hỏng; dễ bị xúc phạm", "reason": "thiếu nghĩa phổ biến 'nhạy cảm'"},
+    {"num": 2720, "word": "serious", "old_meaning": "đứng đắn, nghiêm trang", "new_meaning": "đứng đắn, nghiêm trang; nghiêm trọng", "reason": "thiếu nghĩa phổ biến 'nghiêm trọng' (serious problem/injury)"},
+    {"num": 2721, "word": "seriously", "old_meaning": "đứng đắn, nghiêm trang", "new_meaning": "đứng đắn, nghiêm trang; nghiêm trọng", "reason": "thiếu nghĩa phổ biến 'nghiêm trọng' (seriously injured)"},
+    {"num": 2729, "word": "severe", "old_meaning": "khắt khe, gay gắt (thái độ, cư xử); giản dị, mộc mạc (kiểu cách", "new_meaning": "khắt khe, gay gắt (thái độ, cư xử); nghiêm trọng, dữ dội", "reason": "nghĩa bị đứt chữ '(kiểu cách'; bổ sung nghĩa phổ biến 'nghiêm trọng, dữ dội'"},
+    {"num": 2730, "word": "trang", "new_word": "severe", "new_type": "adj", "old_meaning": "phục, dung nhan)", "new_meaning": "giản dị, mộc mạc (kiểu cách trang phục, dung nhan)", "reason": "word 'trang' là mảnh đứt từ nghĩa của 'severe'; khôi phục word và nghĩa đầy đủ"},
+    {"num": 2731, "word": "severely", "old_meaning": "khắt khe, gay gắt (thái độ, cư xử); giản dị, mộc mạc (kiểu", "new_meaning": "khắt khe, gay gắt (thái độ, cư xử); giản dị, mộc mạc", "reason": "nghĩa bị đứt chữ '(kiểu'"},
+    {"num": 2745, "word": "share", "old_meaning": "đóng góp, tham gia, chia sẻ; phần đóng góp, phần tham gia, phần", "new_meaning": "đóng góp, tham gia, chia sẻ; phần đóng góp, phần tham gia, phần chia sẻ", "reason": "nghĩa bị đứt chữ 'phần' (thiếu 'chia sẻ')"},
+    {"num": 2746, "word": "chia", "new_word": "share", "new_type": "v", "old_meaning": "sẻ", "new_meaning": "chia sẻ", "reason": "word 'chia' là mảnh đứt từ nghĩa của 'share' (phần chia sẻ); khôi phục thành 'share'"},
+    {"num": 2761, "word": "shock", "old_meaning": "sự đụng chạm, va chạm, sự kích động, sự choáng; chạm mạnh, va", "new_meaning": "sự đụng chạm, va chạm, sự kích động, sự choáng; chạm mạnh, va đập", "reason": "nghĩa bị đứt chữ 'va'"},
+    {"num": 2767, "word": "shop", "old_meaning": "cửa hàng; đi mua hầng, đi chợ", "new_meaning": "cửa hàng; đi mua hàng, đi chợ", "reason": "chính tả: 'hầng' → 'hàng'"},
+    {"num": 2771, "word": "shot", "old_meaning": "đạn, viên đạn", "new_meaning": "phát bắn, cú sút, cú đánh; đạn, viên đạn", "reason": "thiếu nghĩa phổ biến 'phát bắn, cú sút, cú đánh' (take a shot)"},
+    {"num": 2800, "word": "sincere", "old_meaning": "thật thà, thẳng thắng, chân thành", "new_meaning": "thật thà, thẳng thắn, chân thành", "reason": "chính tả: 'thẳng thắng' → 'thẳng thắn'"},
+    {"num": 2818, "word": "skill", "old_meaning": "kỹ năng, kỹ sảo", "new_meaning": "kỹ năng, kỹ xảo", "reason": "chính tả: 'kỹ sảo' → 'kỹ xảo'"},
+    {"num": 2819, "word": "skilled", "old_meaning": "có kỹ năng, có kỹ sảo, khẻo tay; có kinh nghiệm,, lành nghề", "new_meaning": "có kỹ năng, có kỹ xảo, khéo tay; có kinh nghiệm, lành nghề", "reason": "chính tả: 'kỹ sảo' → 'kỹ xảo', 'khẻo tay' → 'khéo tay', bỏ dấu phẩy đôi"},
+    {"num": 2826, "word": "slide", "old_meaning": "trượtc, chuyển động nhẹ, lướt qua", "new_meaning": "trượt, chuyển động nhẹ, lướt qua", "reason": "chính tả: 'trượtc' → 'trượt'"},
+    {"num": 2827, "word": "slight", "old_meaning": "mỏng manh, thon, gầy", "new_meaning": "nhỏ, không đáng kể; mỏng manh, thon, gầy", "reason": "thiếu nghĩa phổ biến 'nhỏ, không đáng kể' (a slight problem)"},
+    {"num": 2828, "word": "slightly", "old_meaning": "mảnh khảnh, mỏng manh, yếu ớt", "new_meaning": "hơi, một chút", "reason": "nghĩa cũ là của tính từ slight; slightly = hơi, một chút (slightly different)"},
+    {"num": 2834, "word": "smart", "old_meaning": "mạnh, ác liệt", "new_meaning": "thông minh, nhanh trí; mạnh, ác liệt", "reason": "thiếu nghĩa phổ biến nhất 'thông minh, nhanh trí'"},
+    {"num": 2850, "word": "sock", "old_meaning": "tất ngăns, miếng lót giày", "new_meaning": "tất ngắn, miếng lót giày", "reason": "chính tả: 'ngăns' → 'ngắn'"}
+  ]
+}

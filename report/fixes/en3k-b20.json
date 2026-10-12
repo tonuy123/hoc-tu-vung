@@ -1,0 +1,33 @@
+{
+  "file": "en3k.json",
+  "range": "2851-3000",
+  "fixes": [
+    {"num": 2852, "word": "softly", "old_meaning": "một cách mềm dẻo", "new_meaning": "một cách nhẹ nhàng, dịu dàng", "reason": "Nghĩa sai: softly = nhẹ nhàng, dịu dàng, khẽ; 'mềm dẻo' không phải nghĩa của trạng từ này"},
+    {"num": 2856, "word": "solid", "old_meaning": "rắn; thể rắn, chất rắnh", "new_meaning": "rắn; thể rắn, chất rắn", "reason": "Sai chính tả: chất rắnh -> chất rắn"},
+    {"num": 2858, "word": "solve", "old_meaning": "giải, giải thích, giải quyết", "new_meaning": "giải, giải quyết", "reason": "'giải thích' là nghĩa của explain, không phải solve"},
+    {"num": 2859, "word": "some", "old_meaning": "một it, một vài", "new_meaning": "một ít, một vài", "reason": "Sai chính tả: một it -> một ít"},
+    {"num": 2877, "word": "south", "old_meaning": "phương Nam, hướng Nam; ở phía Nam; hướng về phía", "new_meaning": "phương Nam, hướng Nam; ở phía Nam; hướng về phía Nam", "reason": "Đứt chữ: 'hướng về phía' thiếu 'Nam'"},
+    {"num": 2879, "word": "space", "old_meaning": "khoảng trống, khoảng cách", "new_meaning": "không gian, khoảng trống, khoảng cách", "reason": "Thiếu nghĩa phổ biến: không gian (không gian vũ trụ)"},
+    {"num": 2887, "word": "specific", "old_meaning": "đặc trưng, riêng biệt", "new_meaning": "cụ thể, đặc trưng, riêng biệt", "reason": "Thiếu nghĩa phổ biến nhất: cụ thể"},
+    {"num": 2888, "word": "specifically", "old_meaning": "đặc trưng, riêng biệt", "new_meaning": "một cách cụ thể, riêng biệt", "reason": "Thiếu nghĩa phổ biến: một cách cụ thể (specifically = cụ thể là)"},
+    {"num": 2895, "word": "spicy", "old_meaning": "có gia vị", "new_meaning": "cay, có gia vị", "reason": "Thiếu nghĩa phổ biến: cay"},
+    {"num": 2902, "word": "spoil", "old_meaning": "cướp, cướp đọat", "new_meaning": "làm hỏng, phá hỏng; nuông chiều (trẻ); (đồ ăn) ôi, thiu", "reason": "Nghĩa sai: 'cướp' không phải nghĩa của spoil"},
+    {"num": 2911, "word": "stable", "old_meaning": "ổn định, bình tĩnh, vững vàng; chuồng ngưa", "new_meaning": "ổn định, bình tĩnh, vững vàng; chuồng ngựa", "reason": "Sai chính tả: ngưa -> ngựa"},
+    {"num": 2912, "word": "staff", "old_meaning": "gậy", "new_meaning": "nhân viên, đội ngũ; cây gậy", "reason": "Thiếu nghĩa phổ biến nhất: nhân viên, đội ngũ"},
+    {"num": 2913, "word": "stage", "old_meaning": "tầng, bệ", "new_meaning": "sân khấu; giai đoạn; tầng, bệ", "reason": "Thiếu nghĩa phổ biến: sân khấu, giai đoạn"},
+    {"num": 2917, "word": "stand up", "old_meaning": "đứng đậy", "new_meaning": "đứng dậy, đứng lên", "reason": "Sai chính tả: đứng đậy -> đứng dậy"},
+    {"num": 2918, "word": "standard", "old_meaning": "tiêu chuẩn, chuẩn, mãu; làm tiêu chuẩn, phù hợp với tiêu", "new_meaning": "tiêu chuẩn, chuẩn, mẫu; làm tiêu chuẩn, phù hợp với tiêu chuẩn", "reason": "Sai chính tả 'mãu' -> 'mẫu'; đứt chữ 'phù hợp với tiêu' -> 'tiêu chuẩn'"},
+    {"num": 2920, "word": "stare", "old_meaning": "nhìm chằm chằm; sự nhìn chằm chằm", "new_meaning": "nhìn chằm chằm; sự nhìn chằm chằm", "reason": "Sai chính tả: nhìm -> nhìn"},
+    {"num": 2922, "word": "state", "old_meaning": "nhà nước, quốc gia, chính quyền; (thuộc) nhà nước, có liên", "new_meaning": "nhà nước, quốc gia, chính quyền; (thuộc) nhà nước, có liên quan đến nhà nước; phát biểu, tuyên bố", "reason": "Đứt chữ 'có liên'; phần nghĩa còn lại ('đến nhà nước; phát biểu, tuyên bố') bị tách nhầm thành entry 2923 word 'quan' - entry rác cần xóa"},
+    {"num": 2938, "word": "stick", "old_meaning": "đâm, thọc, chọc, cắm, dính; cái gậy, qua củi, cán", "new_meaning": "đâm, thọc, chọc, cắm, dính; cái gậy, que củi, cán", "reason": "Sai chính tả: qua củi -> que củi"},
+    {"num": 2946, "word": "stock", "old_meaning": "kho sự trữ, hàng dự trữ, vốn", "new_meaning": "kho dự trữ, hàng dự trữ, vốn", "reason": "Sai chính tả: kho sự trữ -> kho dự trữ"},
+    {"num": 2961, "word": "street", "old_meaning": "phố, đườmg phố", "new_meaning": "phố, đường phố", "reason": "Sai chính tả: đườmg -> đường"},
+    {"num": 2966, "word": "strict", "old_meaning": "nghiêm khắc, chặt chẽ,, khắt khe", "new_meaning": "nghiêm khắc, chặt chẽ, khắt khe", "reason": "Lỗi định dạng: dấu phẩy đôi"},
+    {"num": 2979, "word": "student", "old_meaning": "sinh viên", "new_meaning": "học sinh, sinh viên", "reason": "Thiếu nghĩa phổ biến: học sinh (student dùng cho mọi cấp học)"},
+    {"num": 2982, "word": "stuff", "old_meaning": "chất liệu, chất", "new_meaning": "chất liệu, chất; thứ, đồ đạc", "reason": "Thiếu nghĩa phổ biến: thứ, đồ đạc (nghĩa thông dụng)"},
+    {"num": 2985, "word": "subject", "old_meaning": "chủ đề, đề tài; chủ ngữ", "new_meaning": "chủ đề, đề tài; môn học; chủ ngữ", "reason": "Thiếu nghĩa phổ biến: môn học"},
+    {"num": 2990, "word": "succeed", "old_meaning": "nối tiếp, kế tiếp; kế nghiệp, kế vị", "new_meaning": "thành công; nối tiếp, kế tiếp; kế nghiệp, kế vị", "reason": "Thiếu nghĩa phổ biến nhất: thành công"},
+    {"num": 2991, "word": "success", "old_meaning": "sự thành công,, sự thành đạt", "new_meaning": "sự thành công, sự thành đạt", "reason": "Lỗi định dạng: dấu phẩy đôi"},
+    {"num": 2995, "word": "such as", "old_meaning": "đến nỗi, đến mức", "new_meaning": "như là, ví dụ như, chẳng hạn như", "reason": "Nghĩa sai: such as = ví dụ như; 'đến nỗi, đến mức' là nghĩa của such...that"}
+  ]
+}

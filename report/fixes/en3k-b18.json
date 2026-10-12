@@ -1,0 +1,25 @@
+{
+  "file": "en3k.json",
+  "range": "2551-2700",
+  "fixes": [
+    {"num": 2558, "word": "reservation", "old_meaning": "sự hạn chế, điều kiện hạn chế", "new_meaning": "sự đặt trước, chỗ đặt trước; sự hạn chế, điều kiện hạn chế", "reason": "Thiếu nghĩa phổ biến: đặt chỗ, đặt trước"},
+    {"num": 2564, "word": "resort", "old_meaning": "kế sách, phương kế", "new_meaning": "khu nghỉ mát, khu nghỉ dưỡng; kế sách, phương kế", "reason": "Thiếu nghĩa phổ biến: khu nghỉ mát/nghỉ dưỡng"},
+    {"num": 2601, "word": "ring", "old_meaning": "chiếc nhẫn, đeo nhẫn cho ai", "new_meaning": "chiếc nhẫn, vòng tròn; rung chuông, reo, gọi điện thoại; đeo nhẫn cho ai", "reason": "Thiếu nghĩa phổ biến: rung/reo (chuông), gọi điện"},
+    {"num": 2617, "word": "roughly", "old_meaning": "gồ ghề, lởm chởm", "new_meaning": "đại khái, khoảng chừng; thô bạo", "reason": "Nghĩa cũ là của tính từ rough; roughly = đại khái, khoảng chừng"},
+    {"num": 2622, "word": "row NAmE", "new_word": "row", "old_meaning": "hàng, dãy", "new_meaning": "hàng, dãy", "reason": "Nhãn NAmE dính vào word"},
+    {"num": 2634, "word": "run", "old_meaning": "chạy; sự chạy", "new_meaning": "chạy, điều hành, vận hành; sự chạy", "reason": "Thiếu nghĩa phổ biến: điều hành, vận hành"},
+    {"num": 2639, "word": "sack", "old_meaning": "bào tải; đóng bao, bỏ vào bao", "new_meaning": "bao tải; đóng bao, bỏ vào bao; sa thải", "reason": "Sai chính tả bào tải -> bao tải; bổ sung nghĩa sa thải"},
+    {"num": 2645, "word": "safety", "old_meaning": "sự an toàn, sự chắc chăn", "new_meaning": "sự an toàn, sự chắc chắn", "reason": "Sai chính tả: chắc chăn -> chắc chắn"},
+    {"num": 2649, "word": "salad", "old_meaning": "sa lát (xà lách trộng dầu dấm); rau sống", "new_meaning": "sa lát (xà lách trộn dầu giấm); rau sống", "reason": "Sai chính tả: trộng -> trộn, dấm -> giấm"},
+    {"num": 2651, "word": "sale", "old_meaning": "việc bán hàng", "new_meaning": "việc bán hàng, sự bán; sự giảm giá", "reason": "Thiếu nghĩa phổ biến: giảm giá"},
+    {"num": 2653, "word": "salty", "old_meaning": "chứ vị muối, có muối, mặn", "new_meaning": "có vị muối, có muối, mặn", "reason": "Lỗi chữ: chứ vị muối -> có vị muối"},
+    {"num": 2654, "word": "same", "old_meaning": "đều đều, đơn điệu; cũng như thế, vẫn cái đó", "new_meaning": "giống nhau, như nhau; cũng như thế, vẫn cái đó", "reason": "Nghĩa đều đều, đơn điệu không đúng; thiếu nghĩa phổ biến giống nhau, như nhau"},
+    {"num": 2663, "word": "save", "old_meaning": "cứu, lưu", "new_meaning": "cứu, lưu; tiết kiệm", "reason": "Thiếu nghĩa phổ biến: tiết kiệm"},
+    {"num": 2666, "word": "scale", "old_meaning": "vảy (cá..)", "new_meaning": "vảy (cá..); quy mô, thang đo, tỷ lệ", "reason": "Thiếu nghĩa phổ biến: quy mô, thang đo"},
+    {"num": 2670, "word": "schedule", "old_meaning": "kế hoạch làm việc, bản liệt kê; lên thời khóa biểu, lên kế", "new_meaning": "kế hoạch làm việc, bản liệt kê; lên thời khóa biểu, lên kế hoạch", "reason": "Đứt chữ: lên kế -> lên kế hoạch"},
+    {"num": 2672, "word": "school", "old_meaning": "đàn cá, bầy cá", "new_meaning": "trường học; đàn cá, bầy cá", "reason": "Thiếu nghĩa phổ biến nhất: trường học"},
+    {"num": 2683, "word": "seal", "old_meaning": "hải cẩu; săn hải cẩu", "new_meaning": "hải cẩu; săn hải cẩu; niêm phong, con dấu", "reason": "Thiếu nghĩa phổ biến: niêm phong, con dấu"},
+    {"num": 2687, "word": "second det., ordinal", "new_word": "second", "old_meaning": "thứ hai, ở vị trí thứ 2, thứ nhì; người", "new_meaning": "thứ hai, ở vị trí thứ 2, thứ nhì; người", "reason": "Nhãn det., ordinal dính vào word"},
+    {"num": 2699, "word": "seem linking", "new_word": "seem", "old_meaning": "có vẻ như, dường như", "new_meaning": "có vẻ như, dường như", "reason": "Nhãn linking dính vào word"}
+  ]
+}

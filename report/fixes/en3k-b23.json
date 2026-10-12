@@ -1,0 +1,27 @@
+{
+  "file": "en3k.json",
+  "range": "3301-3450",
+  "fixes": [
+    {"num":3304,"word":"valid","old_meaning":"chắc chắn, hiệu quả, hợp lý","new_meaning":"hợp lệ, chắc chắn, hợp lý","reason":"thiếu nghĩa phổ biến 'hợp lệ'; 'hiệu quả' dễ gây nhầm nghĩa với valid"},
+    {"num":3317,"word":"venture","old_meaning":"sự án kinh doanh, công việc kinh doanh; liều, mạo hiểm, cả","new_meaning":"dự án kinh doanh, công việc kinh doanh; liều, mạo hiểm","reason":"'sự án' sai chính tả (đúng: dự án); từ 'cả' thừa ở cuối"},
+    {"num":3318,"word":"version","old_meaning":"bản dịch sang một ngôn ngữ khác","new_meaning":"phiên bản, bản dịch sang một ngôn ngữ khác","reason":"thiếu nghĩa phổ biến nhất 'phiên bản'"},
+    {"num":3325,"word":"view","old_meaning":"sự nhìn, tầm nhìn; nhìn thấy, xem, quan sát","new_meaning":"sự nhìn, tầm nhìn; quan điểm; nhìn thấy, xem, quan sát","reason":"thiếu nghĩa phổ biến 'quan điểm'"},
+    {"num":3333,"word":"vision","old_meaning":"sự nhìn, thị lực","new_meaning":"sự nhìn, thị lực; tầm nhìn","reason":"thiếu nghĩa phổ biến 'tầm nhìn'"},
+    {"num":3336,"word":"vital","old_meaning":"(thuộc) sự sống, cần cho sự sống","new_meaning":"(thuộc) sự sống, cần cho sự sống; sống còn, thiết yếu, quan trọng","reason":"thiếu nghĩa phổ biến 'thiết yếu, quan trọng'"},
+    {"num":3339,"word":"volume","old_meaning":"thế tích, quyển, tập","new_meaning":"thể tích, quyển, tập; âm lượng","reason":"sửa 'thế tích' thành 'thể tích'; thêm nghĩa phổ biến 'âm lượng'"},
+    {"num":3359,"word":"waste","old_meaning":"lãng phí, uổng phí; vùng hoang vu, sa mạc; bỏ hoang","new_meaning":"lãng phí, uổng phí; rác thải, chất thải; vùng hoang vu, sa mạc; bỏ hoang","reason":"thiếu nghĩa phổ biến 'rác thải, chất thải'"},
+    {"num":3360,"word":"watch","old_meaning":"nhìn, theo dõi, quan sát; sự canh gác, sự canh phòng","new_meaning":"nhìn, theo dõi, quan sát; đồng hồ đeo tay; sự canh gác, sự canh phòng","reason":"thiếu nghĩa danh từ phổ biến 'đồng hồ đeo tay'"},
+    {"num":3362,"word":"wave","old_meaning":"sóng, gợn nước; gợn sóng, uốn thành sóng","new_meaning":"sóng, gợn nước; gợn sóng, uốn thành sóng; vẫy tay, vẫy chào","reason":"thiếu nghĩa phổ biến 'vẫy tay, vẫy chào' (wave goodbye)"},
+    {"num":3363,"word":"way","old_meaning":"đường, đường đi","new_meaning":"đường, đường đi; cách, phương pháp","reason":"thiếu nghĩa phổ biến 'cách, phương pháp'"},
+    {"num":3366,"word":"weakness","old_meaning":"tình trạng yếu đuối, yếu ớt","new_meaning":"tình trạng yếu đuối, yếu ớt; điểm yếu, nhược điểm","reason":"thiếu nghĩa phổ biến 'điểm yếu, nhược điểm'"},
+    {"num":3373,"word":"website","old_meaning":"không gian liên tới với Internet","new_meaning":"trang web","reason":"nghĩa tối nghĩa/sai, website = trang web"},
+    {"num":3413,"word":"wildly","old_meaning":"dại, hoang","new_meaning":"dữ dội, mãnh liệt, điên cuồng","reason":"nghĩa sai (dại, hoang là của tính từ wild); phó từ = dữ dội, điên cuồng"},
+    {"num":3420,"word":"win","old_meaning":"chiếm, đọat, thu được","new_meaning":"thắng, chiếm, đoạt, thu được","reason":"thiếu nghĩa chính 'thắng'; sửa 'đọat' thành 'đoạt'"},
+    {"num":3421,"word":"winning","old_meaning":"đang dành thắng lợi, thắng cuộc","new_meaning":"đang giành thắng lợi, thắng cuộc","reason":"'dành' sai chính tả (đúng: giành thắng lợi)"},
+    {"num":3422,"word":"wind","old_meaning":"quấn lại, cuộn lại","new_meaning":"gió; quấn lại, cuộn lại","new_type":"n., v","reason":"thiếu nghĩa danh từ cơ bản 'gió' (cả file chỉ có 1 entry wind)"},
+    {"num":3434,"word":"within","old_meaning":"trong vong thời gian, trong khoảng thời gian","new_meaning":"trong vòng thời gian, trong khoảng thời gian","reason":"'vong' sai chính tả (đúng: vòng)"},
+    {"num":3436,"word":"witness","old_meaning":"sự làm chứng, bằng chứng; chứng kiến, làm chứng","new_meaning":"nhân chứng, bằng chứng; chứng kiến, làm chứng","reason":"thiếu nghĩa danh từ chính 'nhân chứng'"},
+    {"num":3438,"word":"wonder","old_meaning":"ngạc nhiên, lấy làm lạ, kinh ngạc","new_meaning":"tự hỏi, thắc mắc; ngạc nhiên, lấy làm lạ, kinh ngạc","reason":"thiếu nghĩa phổ biến 'tự hỏi, thắc mắc' (I wonder...)"},
+    {"num":3449,"word":"worrying","old_meaning":"gấy lo lắng, gây lo nghĩ","new_meaning":"gây lo lắng, gây lo nghĩ","reason":"'gấy' sai chính tả (đúng: gây)"}
+  ]
+}

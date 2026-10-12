@@ -1,0 +1,23 @@
+{"file":"en3k.json","range":"1051-1200","fixes":[
+{"num":1051,"word":"entertaining","old_meaning":"giải trí","new_meaning":"thú vị, mang tính giải trí","reason":"Thiếu nghĩa phổ biến 'thú vị' của tính từ entertaining"},
+{"num":1052,"word":"entertainer","old_meaning":"người quản trò, người tiếp đãi, chiêu đãi","new_meaning":"nghệ sĩ biểu diễn, người quản trò, người tiếp đãi, chiêu đãi","reason":"Thiếu nghĩa phổ biến nhất 'nghệ sĩ biểu diễn'"},
+{"num":1059,"word":"entrance","old_meaning":"sự đi vào, sự nhậm chức","new_meaning":"lối vào, cổng vào; sự đi vào, sự nhậm chức","reason":"Thiếu nghĩa phổ biến nhất 'lối vào, cổng vào'"},
+{"num":1066,"word":"equipment","old_meaning":"trang, thiết bị","new_meaning":"trang bị, thiết bị","reason":"'trang' bị đứt chữ, đúng là 'trang bị'"},
+{"num":1069,"word":"escape","old_meaning":"trốn thoát, thoát khỏi; sự trốn thoát, lỗi thoát","new_meaning":"trốn thoát, thoát khỏi; sự trốn thoát, lối thoát","reason":"Lỗi chính tả 'lỗi thoát' -> 'lối thoát'"},
+{"num":1088,"word":"evidence","old_meaning":"điều hiển nhiên, điều rõ ràng","new_meaning":"bằng chứng, chứng cứ","reason":"Sai nghĩa: evidence = bằng chứng, chứng cứ (điều hiển nhiên là evident)"},
+{"num":1094,"word":"exaggerated","old_meaning":"cường điệu, phòng đại","new_meaning":"cường điệu, phóng đại","reason":"Lỗi chính tả 'phòng đại' -> 'phóng đại'"},
+{"num":1103,"word":"in exchange (for) trong","new_word":"in exchange (for)","old_meaning":"việc trao đổi về","new_meaning":"việc trao đổi về","reason":"Từ 'trong' thừa lẫn vào trường word"},
+{"num":1106,"word":"excited","old_meaning":"bị kích thích, bị kích động","new_meaning":"háo hức, phấn khích; bị kích thích, bị kích động","reason":"Thiếu nghĩa phổ biến 'háo hức, phấn khích'"},
+{"num":1107,"word":"excitement","old_meaning":"sự kích thích, sự kích động","new_meaning":"sự phấn khích, sự háo hức; sự kích thích, sự kích động","reason":"Thiếu nghĩa phổ biến 'sự phấn khích, sự háo hức'"},
+{"num":1108,"word":"exclude","old_meaning":"ngăn chạn, loại trừ","new_meaning":"ngăn chặn, loại trừ","reason":"Lỗi chính tả 'ngăn chạn' -> 'ngăn chặn'"},
+{"num":1111,"word":"executive","old_meaning":"sự thi hành, chấp hành; (thuộc) sự thi hành, chấp hành","new_meaning":"người điều hành, giám đốc; (thuộc) điều hành, hành pháp","reason":"'sự thi hành' là nghĩa của execution; thiếu nghĩa phổ biến 'người điều hành, giám đốc'"},
+{"num":1117,"word":"exit","old_meaning":"lỗi ra, sự đi ra, thoát ra","new_meaning":"lối ra, sự đi ra, thoát ra","reason":"Lỗi chính tả 'lỗi ra' -> 'lối ra'"},
+{"num":1140,"word":"extension","old_meaning":"sự giơ, duỗi; sự kéo dài, sự dành cho, gửi lời","new_meaning":"sự giơ, duỗi; sự kéo dài, sự mở rộng","reason":"'sự dành cho, gửi lời' là nghĩa của extend, sai với extension; thiếu nghĩa 'sự mở rộng'"},
+{"num":1149,"word":"facility","old_meaning":"điều kiện dễ dàng, sự dễ dàng, thuận lợi","new_meaning":"cơ sở vật chất, tiện nghi; điều kiện dễ dàng, thuận lợi","reason":"Thiếu nghĩa phổ biến 'cơ sở vật chất, tiện nghi'"},
+{"num":1155,"word":"faint","old_meaning":"nhút nhát, yếu ớt","new_meaning":"mờ nhạt, yếu ớt","reason":"'nhút nhát' không phải nghĩa của faint"},
+{"num":1156,"word":"faintly","old_meaning":"nhút nhát, yếu ớt","new_meaning":"mờ nhạt, yếu ớt","reason":"'nhút nhát' không phải nghĩa của faintly"},
+{"num":1158,"word":"fairly","old_meaning":"hợp lý, công bằng","new_meaning":"khá; công bằng, hợp lý","reason":"Thiếu nghĩa phổ biến 'khá' (fairly good)"},
+{"num":1169,"word":"familiar","old_meaning":"thân thiết, quen thộc","new_meaning":"thân thiết, quen thuộc","reason":"Lỗi chính tả 'quen thộc' -> 'quen thuộc'"},
+{"num":1186,"word":"fault","old_meaning":"sự thiết sót, sai sót","new_meaning":"sự thiếu sót, sai sót","reason":"Lỗi chính tả 'thiết sót' -> 'thiếu sót'"},
+{"num":1192,"word":"feature","old_meaning":"nét đặt biệt, điểm đặc trưng; mô tả nét đặc biệt, đặc trưng của","new_meaning":"nét đặc biệt, điểm đặc trưng; mô tả nét đặc biệt, đặc trưng của","reason":"Lỗi chính tả 'nét đặt biệt' -> 'nét đặc biệt'"}
+]}

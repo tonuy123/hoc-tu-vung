@@ -1,0 +1,32 @@
+{
+  "file": "en3k.json",
+  "range": "1201-1350",
+  "fixes": [
+    {"num": 1205, "word": "few", "old_meaning": "ít,vài; một ít, một vài", "new_meaning": "ít, vài; một ít, một vài", "reason": "Thiếu dấu cách sau dấu phẩy ('ít,vài')"},
+    {"num": 1207, "word": "field", "old_meaning": "cánh đồng, bãi chiến trường", "new_meaning": "cánh đồng, lĩnh vực; bãi chiến trường", "reason": "Thiếu nghĩa phổ biến 'lĩnh vực' (field of study)"},
+    {"num": 1210, "word": "figure", "old_meaning": "hình dáng, nhân vật; hình dung, miêu tả", "new_meaning": "hình dáng, nhân vật, con số; hình dung, miêu tả", "reason": "Thiếu nghĩa phổ biến 'con số' (figures = số liệu)"},
+    {"num": 1212, "word": "fill", "old_meaning": "làm đấy, lấp kín", "new_meaning": "làm đầy, lấp kín", "reason": "Lỗi chính tả 'làm đấy' -> 'làm đầy'"},
+    {"num": 1213, "word": "film", "old_meaning": "phim, được dựng thành phim", "new_meaning": "phim; quay phim, dựng thành phim", "reason": "Nghĩa động từ bị ngược (bị động 'được dựng thành phim')"},
+    {"num": 1225, "word": "fire", "old_meaning": "lửa; đốt cháy", "new_meaning": "lửa; đốt cháy, bắn (súng); sa thải", "reason": "Thiếu nghĩa phổ biến 'bắn (súng)' và 'sa thải' (to fire sb)"},
+    {"num": 1227, "word": "firm", "old_meaning": "hãng, công ty; chắc, kiên quyết, vũng vàng, mạnh mẽ", "new_meaning": "hãng, công ty; chắc, kiên quyết, vững vàng, mạnh mẽ", "reason": "Lỗi chính tả 'vũng vàng' -> 'vững vàng'"},
+    {"num": 1229, "word": "first det., ordinal", "new_word": "first", "old_meaning": "thứ nhất, đầu tiên, trước hết; người, vật đầu", "new_meaning": "thứ nhất, đầu tiên, trước hết; người, vật đầu", "reason": "word bị dính loại từ 'det., ordinal'; tách lại thành 'first'"},
+    {"num": 1230, "word": "at first", "old_meaning": "trực tiếp", "new_meaning": "lúc đầu, ban đầu", "reason": "Sai nghĩa: at first = lúc đầu, ban đầu (không phải 'trực tiếp')"},
+    {"num": 1236, "word": "flag", "old_meaning": "quốc kỳ", "new_meaning": "cờ, quốc kỳ", "reason": "flag = cờ nói chung, không chỉ quốc kỳ"},
+    {"num": 1244, "word": "flood", "old_meaning": "lụt, lũ lụtl; tràn đầy, tràn ngập", "new_meaning": "lụt, lũ lụt; tràn đầy, tràn ngập", "reason": "Lỗi chính tả 'lũ lụtl' -> 'lũ lụt'"},
+    {"num": 1250, "word": "fly", "old_meaning": "bay; sự bay, quãng đường bay", "new_meaning": "bay; con ruồi; sự bay, quãng đường bay", "reason": "Thiếu nghĩa danh từ phổ biến 'con ruồi'"},
+    {"num": 1257, "word": "food", "old_meaning": "đồ ăn, thức, món ăn", "new_meaning": "đồ ăn, thức ăn, món ăn", "reason": "'thức' bị đứt chữ, đúng là 'thức ăn'"},
+    {"num": 1270, "word": "formal", "old_meaning": "hình thức", "new_meaning": "trang trọng, chính thức; (thuộc) hình thức", "reason": "Thiếu nghĩa phổ biến 'trang trọng, chính thức'"},
+    {"num": 1275, "word": "fortune", "old_meaning": "sự giàu có, sự thịnh vượng", "new_meaning": "sự giàu có, sự thịnh vượng; vận may", "reason": "Thiếu nghĩa phổ biến 'vận may' (good fortune)"},
+    {"num": 1278, "word": "found", "old_meaning": "(q.k of find) tìm, tìm thấy", "new_meaning": "(q.k of find) tìm, tìm thấy; thành lập, sáng lập", "reason": "Thiếu nghĩa phổ biến 'thành lập, sáng lập' (found a company)"},
+    {"num": 1279, "word": "foundation", "old_meaning": "sự thành lập, sự sáng lập; tổ chức", "new_meaning": "sự thành lập, sự sáng lập; tổ chức; nền móng, nền tảng", "reason": "Thiếu nghĩa phổ biến 'nền móng, nền tảng'"},
+    {"num": 1280, "word": "frame", "old_meaning": "cấu trúc, hệ thống; dàn xếp, bố trí", "new_meaning": "khung, cấu trúc, hệ thống; dàn xếp, bố trí", "reason": "Thiếu nghĩa phổ biến 'khung' (picture frame)"},
+    {"num": 1284, "word": "frozen", "old_meaning": "lạnh giá", "new_meaning": "đông lạnh, đóng băng; lạnh giá", "reason": "Thiếu nghĩa phổ biến 'đông lạnh, đóng băng' (frozen food)"},
+    {"num": 1288, "word": "freshly", "old_meaning": "tươi mát, khỏe khoắn", "new_meaning": "mới, vừa mới; tươi mát, khỏe khoắn", "reason": "Thiếu nghĩa phổ biến 'mới, vừa mới' (freshly baked)"},
+    {"num": 1299, "word": "from", "old_meaning": "frəm/ từ", "new_meaning": "từ", "reason": "Nghĩa bị lẫn ký hiệu phiên âm 'frəm/'"},
+    {"num": 1310, "word": "function", "old_meaning": "chức năng; họat động, chạy (máy)", "new_meaning": "chức năng; hoạt động, chạy (máy)", "reason": "Lỗi chính tả 'họat động' -> 'hoạt động'"},
+    {"num": 1326, "word": "garbage", "old_meaning": "(especially NAmE) lòng, ruột (thú)", "new_meaning": "(especially NAmE) rác, rác thải; lòng, ruột (thú)", "reason": "Thiếu nghĩa phổ biến nhất 'rác, rác thải'"},
+    {"num": 1329, "word": "gasoline", "old_meaning": "(NAmE) dầu lửa, dầu hỏa, xăng", "new_meaning": "(NAmE) xăng", "reason": "gasoline = xăng; 'dầu lửa, dầu hỏa' là kerosene, sai nghĩa"},
+    {"num": 1347, "word": "get on leo,", "new_word": "get on", "old_meaning": "trèo lên", "new_meaning": "trèo lên", "reason": "word bị dính chữ 'leo,' của nghĩa; tách lại thành 'get on'"},
+    {"num": 1348, "word": "get off ra", "new_word": "get off", "old_meaning": "khỏi, thoát khỏi", "new_meaning": "khỏi, thoát khỏi", "reason": "word bị dính chữ 'ra' của nghĩa; tách lại thành 'get off'"}
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "file": "en3k.json",
+  "range": "3151-3300",
+  "fixes": [
+    {"num": 3156, "word": "tip", "old_meaning": "đầu, mút, đỉnh, chóp; bịt đầu, lắp đầu vào", "new_meaning": "đầu, mút, đỉnh, chóp; lời khuyên, tiền boa; bịt đầu, lắp đầu vào", "reason": "thiếu nghĩa phổ biến: lời khuyên, tiền boa"},
+    {"num": 3158, "word": "tiring", "old_meaning": "sự mệt mỏi, sự mệt nhọc", "new_meaning": "làm mệt mỏi, gây mệt nhọc", "reason": "tiring là tính từ, nghĩa cũ ghi dạng danh từ (sự...)"},
+    {"num": 3161, "word": "to prep., infinitive marker theo", "old_meaning": "hướng, tới", "new_meaning": "hướng, tới", "new_word": "to", "new_type": "prep., infinitive marker", "reason": "word bị dính chữ 'theo' (tiếng Việt) và lẫn POS; tách type riêng"},
+    {"num": 3173, "word": "too", "old_meaning": "cũng", "new_meaning": "cũng; quá", "reason": "thiếu nghĩa phổ biến 'quá' (too big...)"},
+    {"num": 3181, "word": "tough", "old_meaning": "chắc, bền, dai", "new_meaning": "chắc, bền, dai; khó khăn, gay go", "reason": "thiếu nghĩa phổ biến 'khó khăn'"},
+    {"num": 3182, "word": "tour", "old_meaning": "cuộc đo du lịch, cuộc đi dạo, chuyến du lịch; đi du lịch", "new_meaning": "cuộc đi du lịch, cuộc đi dạo, chuyến du lịch; đi du lịch", "reason": "lỗi chính tả 'đo' -> 'đi'"},
+    {"num": 3202, "word": "translation", "old_meaning": "sự dịch", "new_meaning": "sự dịch, bản dịch", "reason": "thiếu nghĩa phổ biến 'bản dịch'"},
+    {"num": 3204, "word": "transport", "old_meaning": "(BrE) (NAmE transportation) sự vận chuyển, sự vận tải;", "new_meaning": "(BrE) (NAmE transportation) sự vận chuyển, sự vận tải; phương tiện giao thông", "reason": "nghĩa bị cụt (dấu ; cuối) và thiếu nghĩa 'phương tiện giao thông'"},
+    {"num": 3208, "word": "treat", "old_meaning": "đối xử, đối đãi, cư xử", "new_meaning": "đối xử, đối đãi, cư xử; điều trị, chữa trị; thết đãi, chiêu đãi", "reason": "thiếu nghĩa phổ biến: điều trị; thết đãi"},
+    {"num": 3209, "word": "treatment", "old_meaning": "sự đối xử, sự cư xử", "new_meaning": "sự đối xử, sự cư xử; sự điều trị, sự chữa trị", "reason": "thiếu nghĩa phổ biến 'điều trị'"},
+    {"num": 3212, "word": "trial", "old_meaning": "sự thử nghiệm, cuộc thử nghiệm", "new_meaning": "sự thử nghiệm, cuộc thử nghiệm; phiên tòa, sự xét xử", "reason": "thiếu nghĩa phổ biến 'phiên tòa'"},
+    {"num": 3214, "word": "trick", "old_meaning": "mưu mẹo, thủ đoạn, trò lừa gatj; lừa, lừa gạt", "new_meaning": "mưu mẹo, thủ đoạn, trò lừa gạt; lừa, lừa gạt", "reason": "lỗi chính tả 'gatj' -> 'gạt'"},
+    {"num": 3217, "word": "trouble", "old_meaning": "điều lo lắng, điều muộn phiền", "new_meaning": "điều lo lắng, điều muộn phiền; rắc rối, khó khăn", "reason": "thiếu nghĩa phổ biến 'rắc rối, khó khăn'"},
+    {"num": 3219, "word": "truck", "old_meaning": "(especially NAmE) rau quả tươi", "new_meaning": "(especially NAmE) xe tải", "reason": "nghĩa sai: truck (NAmE) = xe tải, không phải rau quả tươi"},
+    {"num": 3244, "word": "unable", "old_meaning": "không thể, không có khẳ năng (# có thể)", "new_meaning": "không thể, không có khả năng (# có thể)", "reason": "lỗi chính tả 'khẳ' -> 'khả'"},
+    {"num": 3246, "word": "uncertain", "old_meaning": "không chắc chắn, khôn biết rõ ràng", "new_meaning": "không chắc chắn, không biết rõ ràng", "reason": "lỗi chính tả 'khôn' -> 'không'"},
+    {"num": 3261, "word": "union", "old_meaning": "liên hiệp, sự đoàn kết, sự hiệp nhất", "new_meaning": "liên hiệp, sự đoàn kết, sự hiệp nhất; công đoàn", "reason": "thiếu nghĩa phổ biến 'công đoàn'"},
+    {"num": 3282, "word": "upset", "old_meaning": "làm đổ, đánh đổ", "new_meaning": "làm đổ, đánh đổ; làm buồn, làm lo lắng; buồn bã, bối rối", "reason": "thiếu nghĩa phổ biến 'làm buồn, buồn bã' (v., adj)"},
+    {"num": 3283, "word": "upsetting", "old_meaning": "tính đánh đổ, làm đổ", "new_meaning": "làm buồn, gây khó chịu, làm bực mình", "reason": "nghĩa cũ sai; upsetting = gây buồn bực, khó chịu"},
+    {"num": 3285, "word": "upstairs", "old_meaning": "ở tên gác, cư ngụ ở tầng gác; tầng trên, gác", "new_meaning": "ở trên gác, cư ngụ ở tầng gác; tầng trên, gác", "reason": "lỗi chính tả 'tên gác' -> 'trên gác'"},
+    {"num": 3288, "word": "urban", "old_meaning": "(thuộc) thành phố, khu vực", "new_meaning": "(thuộc) thành phố, thành thị", "reason": "'khu vực' lạc nghĩa; urban = thuộc thành phố/thành thị"},
+    {"num": 3294, "word": "used to sth/to doing sth", "old_meaning": "sử dụng cái gì, sử dụng để làm cái gì", "new_meaning": "quen với cái gì, quen với việc gì", "reason": "sai nghĩa: used to sth/to doing sth = quen với, không phải 'sử dụng'"},
+    {"num": 3295, "word": "used to", "old_meaning": "đã quen dùng", "new_meaning": "đã từng, trước đây thường", "reason": "sai nghĩa modal 'used to' = đã từng/thường (trong quá khứ)"}
+  ]
+}

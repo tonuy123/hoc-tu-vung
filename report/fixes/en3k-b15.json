@@ -1,0 +1,24 @@
+{
+  "file": "en3k.json",
+  "range": "2101-2250",
+  "fixes": [
+    {"num":2102,"word":"each other nhau,","old_meaning":"lẫn nhau","new_meaning":"lẫn nhau","new_word":"each other","reason":"word dính chữ tiếng Việt 'nhau,' lẫn vào headword"},
+    {"num":2110,"word":"operation","old_meaning":"sự hoạt động, quá trình hoạt động","new_meaning":"sự hoạt động, quá trình hoạt động; ca phẫu thuật, ca mổ","reason":"thiếu nghĩa phổ biến: ca phẫu thuật, ca mổ"},
+    {"num":2117,"word":"opposite","old_meaning":"đối nhau, ngược nhau; trước mặt, đối diện; điều","new_meaning":"đối nhau, ngược nhau; trước mặt, đối diện; điều trái ngược","reason":"nghĩa bị đứt chữ, 'điều' đứng trơ không nghĩa"},
+    {"num":2118,"word":"opposition","old_meaning":"sự đối lập, sự đối nhau; sự chống lại, sự phản đối; phe đối","new_meaning":"sự đối lập, sự đối nhau; sự chống lại, sự phản đối; phe đối lập","reason":"nghĩa bị đứt chữ, 'phe đối' thiếu 'lập'"},
+    {"num":2123,"word":"in order to","old_meaning":"hợp lệ","new_meaning":"để, nhằm mục đích","reason":"nghĩa sai: 'hợp lệ' là nghĩa của 'in order', không phải 'in order to'"},
+    {"num":2124,"word":"organ","old_meaning":"đàn óoc gan","new_meaning":"cơ quan (trong cơ thể); đàn óoc gan","reason":"thiếu nghĩa phổ biến: cơ quan, nội tạng"},
+    {"num":2140,"word":"outer","old_meaning":"outer ở phía ngoài, ở xa hơn","new_meaning":"ở phía ngoài, ở xa hơn","reason":"meaning dính chữ 'outer' lẫn từ headword"},
+    {"num":2141,"word":"outline","old_meaning":"vẽ, phác tảo; đường nét, hình dáng, nét ngoài","new_meaning":"vẽ, phác thảo; đường nét, hình dáng, nét ngoài","reason":"lỗi chính tả: 'phác tảo' -> 'phác thảo'"},
+    {"num":2160,"word":"paint","old_meaning":"sơn, vôi màu; sơn, quét sơn","new_meaning":"sơn, vôi màu; sơn, quét sơn; vẽ (tranh)","reason":"thiếu nghĩa phổ biến: vẽ"},
+    {"num":2165,"word":"pale","old_meaning":"taí, nhợt","new_meaning":"tái, nhợt","reason":"lỗi chính tả: 'taí' -> 'tái'"},
+    {"num":2168,"word":"pants","old_meaning":"quần lót, đùi","new_meaning":"quần lót (BrE); quần dài (NAmE)","reason":"'đùi' sai nghĩa; bổ sung nghĩa thông dụng của pants"},
+    {"num":2173,"word":"parliament","old_meaning":"nghi viện, quốc hội","new_meaning":"nghị viện, quốc hội","reason":"lỗi chính tả: 'nghi viện' -> 'nghị viện'"},
+    {"num":2175,"word":"take part (in) tham gia","old_meaning":"(vào)","new_meaning":"tham gia (vào)","new_word":"take part (in)","reason":"word dính chữ 'tham gia' và meaning bị đứt"},
+    {"num":2184,"word":"passage","old_meaning":"sự đi qua, sự trôi qua; hành lang","new_meaning":"sự đi qua, sự trôi qua; hành lang; đoạn văn","reason":"thiếu nghĩa phổ biến: đoạn văn, đoạn trích"},
+    {"num":2201,"word":"penny","old_meaning":"(abbr. p) số tiền","new_meaning":"(abbr. p) đồng xu","reason":"nghĩa sai/mơ hồ: penny là đồng xu"},
+    {"num":2220,"word":"personally","old_meaning":"đích thân, bản thân, về phần rôi, đối với tôi","new_meaning":"đích thân, bản thân, về phần tôi, đối với tôi","reason":"lỗi chính tả: 'rôi' -> 'tôi'"},
+    {"num":2236,"word":"pick","old_meaning":"cuốc (đất); đào, khoét (lỗ)","new_meaning":"chọn, nhặt; cuốc (đất); đào, khoét (lỗ)","reason":"thiếu nghĩa phổ biến nhất: chọn, nhặt"},
+    {"num":2237,"word":"pick sth up","old_meaning":"cuốc, vỡ, xé","new_meaning":"nhặt lên, nhấc lên; đón (ai đó)","reason":"nghĩa sai hoàn toàn so với cụm 'pick sth up'"}
+  ]
+}

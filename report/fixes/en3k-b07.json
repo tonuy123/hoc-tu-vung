@@ -1,0 +1,20 @@
+{"file":"en3k.json","range":"901-1050","fixes":[
+{"num":919,"word":"divorce","old_meaning":"sự ly dị","new_meaning":"sự ly dị; ly dị","reason":"Thiếu nghĩa động từ 'ly dị' (type n., v)"},
+{"num":921,"word":"do v., auxiliary","new_word":"do","old_meaning":"làm","new_meaning":"làm","reason":"word bị dính loại từ ('v., auxiliary'), tách lại thành 'do'"},
+{"num":934,"word":"downstairs","old_meaning":"ở dưới nhà, ở tầng dưới; xống gác; tầng dưới","new_meaning":"ở dưới nhà, ở tầng dưới; xuống gác; tầng dưới","reason":"Lỗi chính tả 'xống gác' -> 'xuống gác'"},
+{"num":941,"word":"dramatic","old_meaning":"như kịch, như đóng kịch, thích hợp với sân khấu","new_meaning":"như kịch, như đóng kịch, thích hợp với sân khấu; đầy kịch tính, gây ấn tượng mạnh","reason":"Thiếu nghĩa phổ biến 'đầy kịch tính, gây ấn tượng mạnh'"},
+{"num":942,"word":"dramatically","old_meaning":"đột ngột","new_meaning":"đột ngột; đáng kể, rõ rệt","reason":"Thiếu nghĩa phổ biến 'đáng kể, rõ rệt'"},
+{"num":945,"word":"drawer","old_meaning":"người vẽ, người kéo","new_meaning":"ngăn kéo; người vẽ, người kéo","reason":"Thiếu nghĩa phổ biến nhất 'ngăn kéo'"},
+{"num":950,"word":"drive","old_meaning":"lái , đua xe; cuộc đua xe (điều khiển)","new_meaning":"lái, đua xe; cuộc đua xe (điều khiển)","reason":"Thừa dấu cách trước dấu phẩy ('lái ,')"},
+{"num":961,"word":"dull","old_meaning":"chậm hiểu, ngu đần","new_meaning":"chậm hiểu, ngu đần; buồn tẻ, tẻ nhạt","reason":"Thiếu nghĩa phổ biến 'buồn tẻ, tẻ nhạt'"},
+{"num":965,"word":"duty","old_meaning":"sự tôn kính, kính trọng; bồn phận, trách nhiệm","new_meaning":"sự tôn kính, kính trọng; bồn phận, trách nhiệm; thuế","reason":"Thiếu nghĩa phổ biến 'thuế' (customs duty, duty-free)"},
+{"num":980,"word":"economy","old_meaning":"sự tiết kiệm, sự quản lý kinh tế","new_meaning":"nền kinh tế; sự tiết kiệm","reason":"Thiếu nghĩa phổ biến nhất 'nền kinh tế'"},
+{"num":981,"word":"edge","old_meaning":"lưỡi, cạnh sắc","new_meaning":"lưỡi, cạnh sắc; mép, rìa","reason":"Thiếu nghĩa phổ biến 'mép, rìa'"},
+{"num":982,"word":"edition","old_meaning":"nhà xuất bản, sự xuất bản","new_meaning":"lần xuất bản, ấn bản","reason":"Sai nghĩa: 'nhà xuất bản' là publisher; edition = ấn bản, lần xuất bản"},
+{"num":983,"word":"editor","old_meaning":"người thu thập và xuất bản, chủ bút","new_meaning":"biên tập viên, chủ bút","reason":"Thiếu nghĩa phổ biến 'biên tập viên'; 'người thu thập và xuất bản' không đúng"},
+{"num":1005,"word":"element","old_meaning":"yếu tôd, nguyên tố","new_meaning":"yếu tố, nguyên tố","reason":"Lỗi chính tả 'yếu tôd' -> 'yếu tố'"},
+{"num":1016,"word":"emotion","old_meaning":"xự xúc động, sự cảm động, mối xác cảm","new_meaning":"sự xúc động, sự cảm động, xúc cảm","reason":"Lỗi chính tả 'xự' -> 'sự', 'mối xác cảm' -> 'xúc cảm'"},
+{"num":1026,"word":"employment","old_meaning":"sự thuê mướn","new_meaning":"việc làm; sự thuê mướn","reason":"Thiếu nghĩa phổ biến 'việc làm'"},
+{"num":1029,"word":"encounter","old_meaning":"chạm chán, bắt gặp; sự chạm trán, sự bắt gặp","new_meaning":"chạm trán, bắt gặp; sự chạm trán, sự bắt gặp","reason":"Lỗi chính tả 'chạm chán' -> 'chạm trán'"},
+{"num":1031,"word":"encouragement","old_meaning":"niềm cổ vũ, động viên, khuyến khích, sự làm can","new_meaning":"niềm cổ vũ, động viên, khuyến khích","reason":"Cụm 'sự làm can' bị đứt chữ, vô nghĩa"}
+]}

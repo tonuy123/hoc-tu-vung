@@ -1,0 +1,29 @@
+{
+  "file": "en3k.json",
+  "range": "3001-3150",
+  "fixes": [
+    {"num": 3005, "word": "suggestion", "old_meaning": "sự đề nghị, sự đề xuất, sự khêu gợi", "new_meaning": "sự đề nghị, sự đề xuất, sự gợi ý", "reason": "'khêu gợi' lệch nghĩa; suggestion = sự gợi ý"},
+    {"num": 3028, "word": "surprisingly", "old_meaning": "làm ngạc nhiên, làm bất ngờ", "new_meaning": "một cách đáng ngạc nhiên, đáng ngạc nhiên là", "reason": "surprisingly là trạng từ; nghĩa cũ ghi theo tính từ surprising"},
+    {"num": 3031, "word": "surrounding", "old_meaning": "sự vây quanh, sự bao quanh", "new_meaning": "xung quanh, bao quanh", "reason": "surrounding là tính từ; nghĩa cũ ghi dạng danh từ (sự...)"},
+    {"num": 3042, "word": "sweater", "old_meaning": "người ra mồ hôi,, kẻ bóc lột lao động", "new_meaning": "áo len, áo nỉ", "reason": "nghĩa sai: sweater = áo len, áo nỉ; lỗi dấu phẩy đôi"},
+    {"num": 3050, "word": "swimming pool", "old_meaning": "bể nước", "new_meaning": "bể bơi, hồ bơi", "reason": "nghĩa sai: swimming pool = bể bơi, hồ bơi"},
+    {"num": 3052, "word": "switch", "old_meaning": "công tắc, roi; tắt, bật, đánh bằng gậy, roi", "new_meaning": "công tắc, roi; chuyển, đổi, tắt, bật, đánh bằng gậy, roi", "reason": "thiếu nghĩa phổ biến 'chuyển, đổi'"},
+    {"num": 3055, "word": "swollen swell", "old_meaning": "phồng lên, sưng lên", "new_meaning": "phồng lên, sưng lên", "new_word": "swell", "reason": "word bị dính 2 từ 'swollen swell'"},
+    {"num": 3058, "word": "sympathy", "old_meaning": "sự đồng cảm, sự đồng ý", "new_meaning": "sự thông cảm, sự đồng cảm, sự đồng tình", "reason": "thiếu nghĩa phổ biến 'sự thông cảm'; 'sự đồng ý' lệch nghĩa"},
+    {"num": 3061, "word": "tablet", "old_meaning": "tấm, bản, thẻ phiến", "new_meaning": "viên thuốc, máy tính bảng; tấm, bảng", "reason": "thiếu nghĩa phổ biến: viên thuốc, máy tính bảng"},
+    {"num": 3064, "word": "take", "old_meaning": "sự cầm nắm, sự lấy", "new_meaning": "lấy, cầm, nắm; mang, đưa, dẫn", "reason": "nghĩa cũ dạng danh từ; thiếu nghĩa động từ phổ biến 'lấy, cầm, nắm'"},
+    {"num": 3069, "word": "tank", "old_meaning": "thùng, két, bể", "new_meaning": "thùng, két, bể; xe tăng", "reason": "thiếu nghĩa phổ biến 'xe tăng'"},
+    {"num": 3070, "word": "tap v., n..", "old_meaning": "mở vòi, đóng vồi; vòi, khóa", "new_meaning": "mở vòi, đóng vòi; vòi, khóa", "new_word": "tap", "new_type": "v., n", "reason": "word dính type 'v., n..'; lỗi chính tả 'đóng vồi' -> 'đóng vòi'"},
+    {"num": 3082, "word": "tear ( NAmE )v", "old_meaning": "xé, làm rắch; chỗ rách, miếng xe; nước mắt", "new_meaning": "xé, làm rách; chỗ rách, vết rách; nước mắt", "new_word": "tear", "reason": "word dính ghi chú '( NAmE )v'; lỗi chính tả 'rắch'; 'miếng xe' vô nghĩa"},
+    {"num": 3084, "word": "technique", "old_meaning": "kỹ sảo, kỹ thuật, phương pháp kỹ thuật", "new_meaning": "kỹ xảo, kỹ thuật, phương pháp kỹ thuật", "reason": "lỗi chính tả 'kỹ sảo' -> 'kỹ xảo'"},
+    {"num": 3085, "word": "technology", "old_meaning": "kỹ thuật học, công nghệ học", "new_meaning": "công nghệ", "reason": "thiếu nghĩa phổ biến 'công nghệ'; 'kỹ thuật học' là lối dịch cũ"},
+    {"num": 3092, "word": "tend", "old_meaning": "trông nom, chăm sóc, giữ gìn, hầu hạ", "new_meaning": "trông nom, chăm sóc, giữ gìn, hầu hạ; có xu hướng, thường", "reason": "thiếu nghĩa phổ biến 'có xu hướng' (tend to do sth)"},
+    {"num": 3096, "word": "term", "old_meaning": "giới hạn, kỳ hạn, khóa, kỳ học", "new_meaning": "kỳ hạn, khóa, kỳ học; thuật ngữ; điều khoản", "reason": "thiếu nghĩa phổ biến: thuật ngữ, điều khoản"},
+    {"num": 3100, "word": "text", "old_meaning": "nguyên văn, bản văn, chủ đề, đề tì", "new_meaning": "nguyên văn, bản văn; chủ đề, đề tài", "reason": "lỗi chính tả 'đề tì' -> 'đề tài'"},
+    {"num": 3106, "word": "the definite", "old_meaning": "cái, con, người, ấy này", "new_meaning": "cái, con, người, ấy này", "new_word": "the", "reason": "word dính nhãn ngữ pháp 'definite'"},
+    {"num": 3135, "word": "threatening", "old_meaning": "sự đe dọa, sự hăm dọa", "new_meaning": "đe dọa, mang tính đe dọa", "reason": "threatening là tính từ; nghĩa cũ ghi dạng danh từ (sự...)"},
+    {"num": 3147, "word": "tie", "old_meaning": "buộc, cột, trói; dây buộc, daay trói, dây giày", "new_meaning": "buộc, cột, trói; dây buộc, dây trói, dây giày", "reason": "lỗi chính tả 'daay' -> 'dây'"},
+    {"num": 3148, "word": "tie sth up", "old_meaning": "có quan hệ mật thiết, gắn chặt", "new_meaning": "buộc chặt, trói lại; gắn chặt, có quan hệ mật thiết", "reason": "thiếu nghĩa phổ biến 'buộc chặt, trói lại'"},
+    {"num": 3150, "word": "tightly", "old_meaning": "chặc chẽ, sít sao", "new_meaning": "chặt chẽ, sít sao", "reason": "lỗi chính tả 'chặc chẽ' -> 'chặt chẽ'"}
+  ]
+}

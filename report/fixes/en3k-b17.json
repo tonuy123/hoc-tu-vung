@@ -1,0 +1,19 @@
+{"file":"en3k.json","range":"2401-2550","fixes":[
+{"num":2408,"word":"pub","old_meaning":"= publicyhouse quán rượu, tiệm rượu","new_meaning":"quán rượu, tiệm rượu","reason":"Lỗi chính tả 'publicyhouse' (đúng: public house); gọn hóa nghĩa"},
+{"num":2432,"word":"qualification","old_meaning":"phẩm chất, năng lực; khả năng chuyên môn","new_meaning":"bằng cấp, trình độ chuyên môn; phẩm chất, năng lực","reason":"Thiếu nghĩa phổ biến 'bằng cấp, trình độ chuyên môn'"},
+{"num":2444,"word":"quit","old_meaning":"thoát, thoát ra","new_meaning":"nghỉ việc, thôi, bỏ, rời đi","reason":"Sai/thiếu nghĩa phổ biến: quit = nghỉ việc, thôi, bỏ"},
+{"num":2445,"word":"quite","old_meaning":"hoàn toàn, hầu hết","new_meaning":"khá, hoàn toàn","reason":"'hầu hết' sai nghĩa; thiếu nghĩa phổ biến 'khá'"},
+{"num":2455,"word":"rank","old_meaning":"hàng, dãy; sắp xếp thành hàng, dãy","new_meaning":"cấp bậc, địa vị; hàng, dãy; xếp hạng","reason":"Thiếu nghĩa phổ biến 'cấp bậc, xếp hạng'"},
+{"num":2476,"word":"realize","old_meaning":"thực hiện, thực hành","new_meaning":"nhận ra, nhận thức; thực hiện (ước mơ, kế hoạch)","reason":"Thiếu nghĩa phổ biến 'nhận ra'"},
+{"num":2477,"word":"rear","old_meaning":"phía sau; ở đằng sau, ở đằng sau","new_meaning":"phía sau; ở đằng sau","reason":"Lặp cụm 'ở đằng sau'"},
+{"num":2481,"word":"recall","old_meaning":"gọi về, triệu hồi; nhặc lại, gợi lại","new_meaning":"gọi về, triệu hồi; nhớ lại, gợi lại","reason":"Lỗi chính tả 'nhặc'; recall = nhớ lại"},
+{"num":2482,"word":"receipt","old_meaning":"công thức; đơn thuốc","new_meaning":"biên lai, hóa đơn; sự nhận","reason":"Nghĩa sai (đó là recipe/prescription); thiếu nghĩa phổ biến 'biên lai, hóa đơn'"},
+{"num":2487,"word":"reckon","old_meaning":"tính, đếm","new_meaning":"cho rằng, nghĩ rằng; tính toán, đếm","reason":"Thiếu nghĩa phổ biến 'cho rằng'"},
+{"num":2493,"word":"recover","old_meaning":"lấy lại, giành lại","new_meaning":"lấy lại, thu hồi; hồi phục, bình phục","reason":"Thiếu nghĩa phổ biến 'hồi phục, bình phục'"},
+{"num":2498,"word":"reference","old_meaning":"sự tham khảo, hỏi ýe kiến","new_meaning":"sự tham khảo, hỏi ý kiến","reason":"Lỗi chính tả 'ýe' -> 'ý'"},
+{"num":2504,"word":"regard","old_meaning":"nhìn, đánh giá; cái nhìn, sự quan tâm, sự chú ý (lời chúc tụng","new_meaning":"nhìn, đánh giá; cái nhìn, sự quan tâm, sự chú ý; lời chúc tụng","reason":"Lỗi định dạng: thiếu dấu đóng ngoặc"},
+{"num":2519,"word":"relatively","old_meaning":"có liên quan, có quan hệ","new_meaning":"tương đối, khá","reason":"Nghĩa sai: relatively = tương đối"},
+{"num":2525,"word":"relief","old_meaning":"sự giảm nhẹ, sự làm cho khuây khỏa; sự trợ cấo; sự đền bù","new_meaning":"sự giảm nhẹ, sự làm cho khuây khỏa; sự trợ cấp; sự đền bù","reason":"Lỗi chính tả 'trợ cấo' -> 'trợ cấp'"},
+{"num":2538,"word":"removal","old_meaning":"viêc di chuyển, việc dọn nhà, dời đi","new_meaning":"việc di chuyển, việc dọn nhà, dời đi","reason":"Lỗi chính tả 'viêc' -> 'việc'"},
+{"num":2550,"word":"representative","old_meaning":"điều tiêu biểu, tượng trưng, mẫu; miêu tả, biểu","new_meaning":"người đại diện, đại biểu; tiêu biểu, tượng trưng","reason":"Thiếu nghĩa phổ biến 'người đại diện, đại biểu'"}
+]}

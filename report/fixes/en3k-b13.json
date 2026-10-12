@@ -1,0 +1,18 @@
+{
+  "file": "en3k.json",
+  "range": "1801-1950",
+  "fixes": [
+    {"num": 1816, "word": "look forward to mong", "new_word": "look forward to", "old_meaning": "đợi cách hân hoan", "new_meaning": "mong đợi, trông mong, háo hức chờ đợi", "reason": "từ 'mong' bị dính vào word; nghĩa 'đợi cách hân hoan' sai ngữ pháp, không phải nghĩa chuẩn"},
+    {"num": 1853, "word": "mall", "old_meaning": "(especially NAmE) búa", "new_meaning": "(especially NAmE) trung tâm thương mại, khu mua sắm", "reason": "'búa' là nghĩa cổ (maul), sai với nghĩa phổ biến mall = trung tâm thương mại"},
+    {"num": 1867, "word": "marketing", "old_meaning": "ma-kết-tinh", "new_meaning": "sự tiếp thị", "reason": "'ma-kết-tinh' là phiên âm, không phải nghĩa tiếng Việt"},
+    {"num": 1874, "word": "match", "old_meaning": "trận thi đấu, đối thủ, địch thủ; đối chọi, sánh được", "new_meaning": "trận thi đấu, đối thủ, địch thủ, que diêm; đối chọi, sánh được", "reason": "thiếu nghĩa phổ biến 'que diêm'"},
+    {"num": 1875, "word": "matching", "old_meaning": "tính địch thù, thi đấu", "new_meaning": "tương xứng, phù hợp, ăn khớp", "reason": "sai nghĩa; matching (adj) = tương xứng, phù hợp, ăn khớp"},
+    {"num": 1879, "word": "matter", "old_meaning": "chất, vật chất; có ý nghĩa, có tính chất quan trọng", "new_meaning": "chất, vật chất, vấn đề, chuyện; có ý nghĩa, có tính chất quan trọng", "reason": "thiếu nghĩa phổ biến 'vấn đề, chuyện' (What's the matter?)"},
+    {"num": 1899, "word": "meeting", "old_meaning": "cuộc mít tinh, cuộc biểu tình", "new_meaning": "cuộc họp, cuộc gặp mặt, hội nghị", "reason": "thiếu nghĩa chính 'cuộc họp'; 'cuộc biểu tình' sai nghĩa"},
+    {"num": 1916, "word": "mid-", "old_meaning": "tiền tố: một nửa", "new_meaning": "tiền tố: giữa", "reason": "mid- nghĩa là giữa, không phải một nửa"},
+    {"num": 1928, "word": "mine", "old_meaning": "của tôi", "new_meaning": "của tôi; mỏ, mìn", "reason": "type có n nhưng thiếu nghĩa danh từ: mỏ (khoáng sản), mìn"},
+    {"num": 1929, "word": "mineral", "old_meaning": "công nhân, thợ mỏ; khoáng", "new_meaning": "khoáng vật, khoáng sản; (thuộc) khoáng", "reason": "lẫn nghĩa với 'miner'; mineral = khoáng vật, khoáng sản"},
+    {"num": 1937, "word": "miss", "old_meaning": "lỡ, trượt; sự trượt, sự thiếu vắng", "new_meaning": "lỡ, trượt, nhớ; sự trượt, sự thiếu vắng", "reason": "thiếu nghĩa phổ biến 'nhớ' (miss sb)"},
+    {"num": 1945, "word": "mobile phone (also mobile)", "old_meaning": "(BrE) điện thoại đi động", "new_meaning": "(BrE) điện thoại di động", "reason": "lỗi chính tả 'đi động' → 'di động'"}
+  ]
+}

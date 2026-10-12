@@ -1,0 +1,17 @@
+{
+  "file": "en1k.json",
+  "range": "151-300",
+  "fixes": [
+    {"num": 191, "word": "crash", "old_meaning": "đâm vào nhau", "new_meaning": "đâm, va chạm", "reason": "'đâm vào nhau' chỉ đúng khi có hai vật, crash nghĩa chung là đâm/va chạm"},
+    {"num": 197, "word": "dance", "old_meaning": "nhảy nhót", "new_meaning": "nhảy múa, khiêu vũ", "reason": "'nhảy nhót' là từ chỉ trẻ nhảy lung tung, lệch nghĩa với dance"},
+    {"num": 213, "word": "difficult", "old_meaning": "khó khăn, gây khó", "new_meaning": "khó khăn, khó", "reason": "'gây khó' không phải nghĩa của difficult"},
+    {"num": 218, "word": "dish", "old_meaning": "cái đĩa", "new_meaning": "cái đĩa, món ăn", "reason": "thiếu nghĩa phổ biến 'món ăn'"},
+    {"num": 252, "word": "enemy", "old_meaning": "kẻ thủ, kẻ địch", "new_meaning": "kẻ thù, kẻ địch", "reason": "chính tả 'kẻ thủ' → 'kẻ thù'"},
+    {"num": 257, "word": "entrance", "old_meaning": "sự đi vào, tiến vào", "new_meaning": "lối vào, cổng vào, sự đi vào", "reason": "thiếu nghĩa phổ biến 'lối vào, cổng vào'"},
+    {"num": 263, "word": "every", "old_meaning": "tất cả", "new_meaning": "mỗi, mọi", "reason": "every nghĩa chính là mỗi/mọi; 'tất cả' là all"},
+    {"num": 271, "word": "exercise", "old_meaning": "hoạt động rèn luyện thân thể", "new_meaning": "bài tập, luyện tập thân thể", "reason": "thiếu nghĩa phổ biến 'bài tập'"},
+    {"num": 275, "word": "extremely", "old_meaning": "vô cùng, cùng cực", "new_meaning": "vô cùng, cực kỳ", "reason": "'cùng cực' thường chỉ cảnh nghèo khổ tận cùng, lệch nghĩa với extremely"},
+    {"num": 288, "word": "fat", "old_meaning": "béo, thừa cân", "new_meaning": "béo, thừa cân", "new_type": "adj", "reason": "type sai: với nghĩa 'béo' đây là tính từ; danh từ fat = mỡ, chất béo"},
+    {"num": 292, "word": "feel", "old_meaning": "cảm giác, cảm nhận", "new_meaning": "cảm thấy, cảm nhận", "reason": "feel là động từ, thiếu nghĩa phổ biến nhất 'cảm thấy'"}
+  ]
+}

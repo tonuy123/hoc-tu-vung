@@ -1,0 +1,20 @@
+{"file":"en3k.json","range":"1501-1650","fixes":[
+{"num":1508,"word":"house","old_meaning":"nhà, căn nhà, toàn nhà","new_meaning":"nhà, căn nhà, tòa nhà","reason":"sai chính tả: toàn nhà -> tòa nhà"},
+{"num":1517,"word":"hungry","old_meaning":"đó","new_meaning":"đói","reason":"sai chính tả, thiếu dấu: đó -> đói"},
+{"num":1520,"word":"hurry","old_meaning":"sự vội vàng, sự gấp rút","new_meaning":"vội vàng, gấp rút; sự vội vàng, sự gấp rút","reason":"type v., n nhưng thiếu nghĩa động từ phổ biến"},
+{"num":1522,"word":"hurt","old_meaning":"làm bị thương, gây thiệt hại","new_meaning":"làm bị thương, làm đau, gây thiệt hại; đau","reason":"thiếu nghĩa phổ biến đau (My leg hurts)"},
+{"num":1546,"word":"impact","old_meaning":"sự và chạm, sự tác động, ảnh hưởng","new_meaning":"sự va chạm, sự tác động, ảnh hưởng","reason":"sai chính tả: và chạm -> va chạm"},
+{"num":1551,"word":"import","old_meaning":"import sự nhập, sự nhập khẩu; nhập, nhập khẩu","new_meaning":"sự nhập, sự nhập khẩu; nhập, nhập khẩu","reason":"chữ import dính lẫn vào đầu phần nghĩa"},
+{"num":1555,"word":"unimportant","old_meaning":"khônh quan trọng, không trọng đại","new_meaning":"không quan trọng, không trọng đại","reason":"sai chính tả: khônh -> không"},
+{"num":1556,"word":"impose","old_meaning":"đánh (thuế...), bắt gánh vác; đánh tráo, lợi dụng","new_meaning":"áp đặt, đánh (thuế...), bắt gánh vác; lợi dụng","reason":"thiếu nghĩa phổ biến áp đặt; đánh tráo sai nghĩa"},
+{"num":1559,"word":"impressed","old_meaning":"được ghi, khắc, in sâu vào","new_meaning":"có ấn tượng, cảm phục; được khắc sâu","reason":"thiếu nghĩa phổ biến có ấn tượng, cảm phục"},
+{"num":1561,"word":"impressive","old_meaning":"gấy ấn tượng mạnh; hùng vĩ, oai vệ","new_meaning":"gây ấn tượng mạnh; hùng vĩ, oai vệ","reason":"sai chính tả: gấy -> gây"},
+{"num":1562,"word":"improve","old_meaning":"cải thiện, cái tiến, mở mang","new_meaning":"cải thiện, cải tiến, mở mang","reason":"sai chính tả: cái tiến -> cải tiến"},
+{"num":1563,"word":"improvement","old_meaning":"sự cái thiện, sự cải tiến, sự mở mang","new_meaning":"sự cải thiện, sự cải tiến, sự mở mang","reason":"sai chính tả: sự cái thiện -> sự cải thiện"},
+{"num":1572,"word":"increasingly","old_meaning":"tăng thêm","new_meaning":"ngày càng, ngày càng tăng","reason":"nghĩa đúng của trạng từ là ngày càng, không phải tăng thêm"},
+{"num":1600,"word":"initiative","old_meaning":"bước đầu, sự khởi đầu","new_meaning":"sáng kiến; thế chủ động, sự khởi đầu","reason":"thiếu nghĩa phổ biến sáng kiến, thế chủ động"},
+{"num":1612,"word":"install","old_meaning":"đặt (hệ thống máy móc, thiết bị...)","new_meaning":"lắp đặt, cài đặt (thiết bị, phần mềm...)","reason":"thiếu nghĩa phổ biến lắp đặt, cài đặt"},
+{"num":1613,"word":"instance","old_meaning":"thí dị, ví dụ; trường hợp cá biệt","new_meaning":"thí dụ, ví dụ; trường hợp cá biệt","reason":"sai chính tả: thí dị -> thí dụ"},
+{"num":1619,"word":"instrument","old_meaning":"dụng cụ âm nhạc khí","new_meaning":"dụng cụ; nhạc khí, nhạc cụ","reason":"nghĩa gộp lộn xộn (dụng cụ + âm nhạc khí)"},
+{"num":1635,"word":"interpret","old_meaning":"giải thích","new_meaning":"giải thích, phiên dịch","reason":"thiếu nghĩa phổ biến phiên dịch"}
+]}

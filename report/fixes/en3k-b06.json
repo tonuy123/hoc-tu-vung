@@ -1,0 +1,22 @@
+{"file":"en3k.json","range":"751-900","fixes":[
+{"num":771,"word":"damage","old_meaning":"mối hạn, điều hại, sự thiệt hại; làm hư hại, làm hỏng, gây","new_meaning":"mối hại, điều hại, sự thiệt hại; làm hư hại, làm hỏng, gây tổn hại","reason":"Lỗi chính tả 'mối hạn' -> 'mối hại'; nghĩa bị đứt chữ ở cuối ('gây')"},
+{"num":793,"word":"decay","old_meaning":"tình trạng suy tàn, suy sụp, tình trạng đổ nát","new_meaning":"sự suy tàn, sự mục nát, sự thối rữa; mục nát, thối rữa, suy tàn","reason":"Thiếu nghĩa phổ biến 'mục nát, thối rữa'; chỉ có nghĩa danh từ dù type n., v"},
+{"num":799,"word":"decline","old_meaning":"sự suy tàn, sự suy sụp; suy sụp, suy tàn","new_meaning":"sự suy tàn, sự suy sụp; từ chối, khước từ; suy sụp, suy tàn","reason":"Thiếu nghĩa phổ biến 'từ chối, khước từ'"},
+{"num":805,"word":"defeat","old_meaning":"đánh thắng, đánh bại; sự thất bại (1 kế hoạch), sự tiêu tan (hy","new_meaning":"đánh thắng, đánh bại; sự thất bại (1 kế hoạch), sự tiêu tan (hy vọng)","reason":"Nghĩa bị đứt chữ ở cuối ('(hy')"},
+{"num":806,"word":"defence (BrE) (NAmE defense)","old_meaning":"cái để bảo vệ, vật để chống đỡ, sự che chở","new_meaning":"sự phòng thủ, sự bảo vệ, sự che chở; cái để bảo vệ, vật để chống đỡ","reason":"Thiếu nghĩa phổ biến 'sự phòng thủ, sự bảo vệ'"},
+{"num":810,"word":"definitely","old_meaning":"rạch ròi, dứt khoát","new_meaning":"chắc chắn, nhất định, dứt khoát","reason":"Thiếu nghĩa phổ biến 'chắc chắn, nhất định'"},
+{"num":815,"word":"deliberately","old_meaning":"thận trọng, có suy nghĩ cân nhắc","new_meaning":"cố ý, chủ tâm; thận trọng, có suy nghĩ cân nhắc","reason":"Thiếu nghĩa phổ biến 'cố ý, chủ tâm'"},
+{"num":819,"word":"deliver","old_meaning":"cứu khỏi, thoát khỏi, bày tỏ, giãi bày","new_meaning":"giao hàng, phân phối; bày tỏ, giãi bày; cứu khỏi, thoát khỏi","reason":"Thiếu nghĩa phổ biến nhất 'giao hàng, phân phối'"},
+{"num":820,"word":"delivery","old_meaning":"sự phân phát, sự phân phối, sự giao hàng; sự bày tỏ, phát biếu","new_meaning":"sự phân phát, sự phân phối, sự giao hàng; sự bày tỏ, phát biểu","reason":"Lỗi chính tả 'phát biếu' -> 'phát biểu'"},
+{"num":831,"word":"depressing","old_meaning":"làm chán nản làm thát vọng, làm trì trệ","new_meaning":"làm chán nản, làm thất vọng, làm trì trệ","reason":"Lỗi chính tả 'thát vọng' -> 'thất vọng', thiếu dấu phẩy phân cách"},
+{"num":833,"word":"depth","old_meaning":"chiều sâu, độ dày","new_meaning":"chiều sâu, độ sâu","reason":"'độ dày' là nghĩa của thickness, sai với depth"},
+{"num":840,"word":"design","old_meaning":"sự thiết kế, kế hoạch, đề cương. phác thảo; phác họa, thiết kế","new_meaning":"sự thiết kế, kế hoạch, đề cương, phác thảo; phác họa, thiết kế","reason":"Dấu chấm '.' ngăn cách sai, đổi thành dấu phẩy"},
+{"num":851,"word":"determination","old_meaning":"sự xác định, sự định rõ; sự quyết định","new_meaning":"sự quyết tâm, sự xác định, sự định rõ","reason":"Thiếu nghĩa phổ biến 'sự quyết tâm'"},
+{"num":853,"word":"determined","old_meaning":"đã được xác định, đã được xác định rõ","new_meaning":"kiên quyết, quyết tâm; đã được xác định, đã được xác định rõ","reason":"Thiếu nghĩa phổ biến 'kiên quyết, quyết tâm' của adj determined"},
+{"num":864,"word":"dying","old_meaning":"sự chết","new_meaning":"hấp hối, sắp chết; sự chết","reason":"Nghĩa không khớp loại từ adj, thiếu nghĩa phổ biến 'hấp hối, sắp chết'"},
+{"num":871,"word":"dinner","old_meaning":"bữa trưa, chiều","new_meaning":"bữa tối, bữa ăn chính trong ngày","reason":"Sai nghĩa: dinner là bữa tối (bữa ăn chính), không phải bữa trưa"},
+{"num":872,"word":"direct","old_meaning":"trực tiếp, thẳng, thẳng thắn; gửi, viết cho ai, điều","new_meaning":"trực tiếp, thẳng, thẳng thắn; gửi, viết cho ai, điều khiển","reason":"Nghĩa bị đứt chữ ở cuối ('điều')"},
+{"num":875,"word":"direction","old_meaning":"sự điều khiển, sự chỉ huy","new_meaning":"hướng, phương hướng, chỉ dẫn; sự điều khiển, sự chỉ huy","reason":"Thiếu nghĩa phổ biến nhất 'hướng, phương hướng'"},
+{"num":878,"word":"disabled","old_meaning":"bất lực, không có khă năng","new_meaning":"tàn tật, khuyết tật; bất lực, không có khả năng","reason":"Lỗi chính tả 'khă năng' -> 'khả năng'; thiếu nghĩa phổ biến 'tàn tật, khuyết tật'"},
+{"num":883,"word":"disappoint","old_meaning":"không làm thỏa ước nguyện, ý mong đợi; thất ước, làm thất","new_meaning":"không làm thỏa ước nguyện, ý mong đợi; thất ước, làm thất vọng","reason":"Nghĩa bị đứt chữ ở cuối ('làm thất')"}
+]}

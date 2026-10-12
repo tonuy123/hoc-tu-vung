@@ -1,0 +1,10 @@
+{
+  "file": "en3k.json",
+  "range": "3451-3481",
+  "fixes": [
+    {"num": 3465, "word": "go wrong", "old_meaning": "mắc lỗi, sai lầm", "new_meaning": "mắc lỗi, sai lầm; gặp trục trặc, hỏng", "reason": "Thiếu nghĩa phổ biến: gặp trục trặc, hỏng"},
+    {"num": 3467, "word": "yard", "old_meaning": "lat, thước Anh (bằng 0, 914 mét)", "new_meaning": "sân; thước Anh (bằng 0, 914 mét)", "reason": "Thiếu nghĩa phổ biến: sân; lat vô nghĩa, lỗi"},
+    {"num": 3474, "word": "yet", "old_meaning": "còn, hãy cỏn, còn nữa; như mà, xong, tuy thế, tuy nhiên", "new_meaning": "còn, hãy còn, còn nữa; nhưng mà, xong, tuy thế, tuy nhiên", "reason": "Lỗi chính tả: hãy cỏn -> hãy còn, như mà -> nhưng mà"},
+    {"num": 3477, "word": "your", "old_meaning": "của anh, của chị, của ngài, của mày; của các anh, của các chị, của các", "new_meaning": "của anh, của chị, của ngài, của mày; của các anh, của các chị, của các ông, của các bà", "reason": "Đứt chữ: của các bị cụt, thiếu của các ông, của các bà"}
+  ]
+}
