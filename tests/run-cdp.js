@@ -36,7 +36,14 @@ async function main() {
 
   await send('Runtime.enable');
   await send('Page.enable');
-  await new Promise((r) => setTimeout(r, 1200));
+
+  let appReady = false;
+  for (let i = 0; i < 80; i++) {
+    const st = await evaljs("(typeof clearData === 'function' && typeof DATASETS !== 'undefined' && document.querySelectorAll('.tab').length === 6) ? 'yes' : 'no'");
+    if (st === 'yes') { appReady = true; break; }
+    await new Promise((r) => setTimeout(r, 500));
+  }
+  console.log('APP_READY:', appReady);
 
   const testCode = fs.readFileSync(path.join(__dirname, 'page-tests.js'), 'utf8');
   const injected = await evaljs('(function(){ ' + testCode + ' return "INJECTED"; })()');
