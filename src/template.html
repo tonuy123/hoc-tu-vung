@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="Học từ vựng Anh - Đức (~7.500 từ): 4 dạng bài tập, tra cứu &amp; tìm kiếm, ôn từ sai. Offline, 1 file duy nhất.">
+<title>Học Từ Vựng Anh · Đức — 4 Bài Tập</title>
+<style>
+  :root{
+    --bg:#0b1220; --panel:#0f1a30; --panel2:#0c1526; --line:#1b2740; --line2:#2b3b5e;
+    --text:#e6edf7; --muted:#8fa3c0; --dim:#5b6f92;
+    --accent:#3b82f6; --accent-soft:rgba(59,130,246,.18);
+    --ok:#34d399; --ok-bg:#052e22; --ok-line:#10b981;
+    --bad:#f87171; --bad-bg:#2d0f14; --bad-line:#ef4444;
+    --warn:#fbbf24;
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+    background:radial-gradient(900px 420px at 50% -120px, rgba(59,130,246,.20), transparent 70%), var(--bg);
+    color:var(--text); min-height:100vh; line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+  }
+  button{font-family:inherit}
+  .wrap{max-width:880px;margin:0 auto;padding:18px 16px 60px}
+
+  /* ---------- hero ---------- */
+  .hero{text-align:center;padding:16px 0 4px}
+  .hero h1{font-size:clamp(1.35rem,4.2vw,1.8rem);font-weight:800;letter-spacing:-.02em}
+  .hero h1 .hl{background:linear-gradient(90deg,#60a5fa,#34d399);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .sub{color:var(--muted);font-size:.88rem;margin-top:6px}
+
+  /* ---------- controls ---------- */
+  .controls{margin:16px 0 14px;display:flex;flex-direction:column;gap:12px}
+  .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+  .seg{display:inline-flex;background:var(--panel);border:1px solid var(--line2);border-radius:11px;padding:3px}
+  .seg-btn{padding:8px 14px;border:0;border-radius:9px;background:transparent;color:var(--muted);font-weight:600;font-size:13.5px;cursor:pointer;transition:background .15s,color .15s}
+  .seg-btn.active{background:var(--accent);color:#fff}
+  .field{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:13.5px}
+  select{background:var(--panel);color:var(--text);border:1px solid var(--line2);border-radius:9px;padding:8px 10px;font-size:13.5px;outline:none}
+  select:focus-visible{border-color:var(--accent)}
+  .switch{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:13.5px;cursor:pointer;user-select:none}
+  .switch input{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
+  .lbl{color:var(--muted);font-size:13.5px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .chip{padding:8px 13px;border-radius:999px;border:1px solid var(--line2);background:var(--panel);color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;transition:border-color .15s,background .15s,color .15s}
+  .chip:hover{border-color:var(--accent)}
+  .chip.active{background:#0e7490;border-color:#0e7490;color:#fff}
+  .chip.warn{color:var(--warn);border-color:#78350f}
+  .chip.warn.active{background:#b45309;border-color:#b45309;color:#fff}
+  .count{color:var(--dim);font-size:12.5px}
+
+  /* ---------- sticky dock: tabs + stats ---------- */
+  .dock{position:sticky;top:0;z-index:40;margin:0 -16px 16px;padding:8px 16px 10px;
+    background:rgba(11,18,32,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line)}
+  .tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:6px}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;padding:9px 15px;border-radius:999px;border:1px solid var(--line2);background:var(--panel);color:var(--muted);font-size:13.5px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .15s,border-color .15s,color .15s}
+  .tab:hover{border-color:var(--accent)}
+  .tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+  .statline{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--muted);margin-top:2px}
+  .statline b{color:var(--text);font-variant-numeric:tabular-nums}
+  .statline .ok b{color:var(--ok)}
+  .statline .bad b{color:var(--bad)}
+  .pbar{flex:1;height:5px;border-radius:3px;background:#1c2a47;overflow:hidden;min-width:60px}
+  .pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--ok));transition:width .25s ease}
+
+  /* ---------- section ---------- */
+  .section{display:none}
+  .section.active{display:block;animation:fade .18s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .sec-title{font-size:1.05rem;font-weight:700;color:#cfe1ff}
+  .sec-sub{color:var(--dim);font-size:12.5px;margin-top:3px}
+  .empty{background:var(--panel);border:1px dashed var(--line2);border-radius:var(--radius);padding:28px 18px;text-align:center;color:var(--muted)}
+
+  /* ---------- question card ---------- */
+  .q{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:14px;box-shadow:0 10px 30px -20px rgba(0,0,0,.9)}
+  .qhead{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .qnum{color:var(--dim);font-size:12px;font-weight:600;letter-spacing:.02em}
+  .qnum .n{color:#42536f}
+  .tchip{font-size:11px;font-weight:700;color:#9db4d6;background:#182742;border:1px solid var(--line2);border-radius:999px;padding:2px 9px;text-transform:lowercase}
+  .spk{margin-left:auto;border:0;background:#22304f;color:#dbe7fb;border-radius:8px;cursor:pointer;padding:6px 11px;font-size:14px;line-height:1;transition:background .15s}
+  .spk:hover{background:#31446d}
+  .spk:active{background:#0e7490}
+  .qword{font-size:clamp(1.2rem,4vw,1.45rem);font-weight:800;color:#fbd063;letter-spacing:-.01em}
+  .qphon{font-family:Consolas,'Cascadia Mono',monospace;color:var(--muted);font-size:.85rem;margin:2px 0 10px}
+  .qprompt{color:var(--muted);font-size:13px;margin-bottom:9px}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;padding:12px 14px;border-radius:11px;border:1.5px solid var(--line2);background:var(--panel2);color:var(--text);cursor:pointer;font-size:15px;transition:border-color .15s,background .15s,transform .06s}
+  .opt:hover:not(:disabled){border-color:var(--accent);background:#14213c}
+  .opt:active:not(:disabled){transform:scale(.995)}
+  .opt .key{flex:0 0 22px;height:22px;border-radius:6px;background:#1c2a47;color:var(--muted);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-top:1px}
+  .opt.correct{border-color:var(--ok-line);background:var(--ok-bg);color:#a7f3d0}
+  .opt.correct .key{background:#065f46;color:#d1fae5}
+  .opt.wrong{border-color:var(--bad-line);background:var(--bad-bg);color:#fecaca}
+  .opt.wrong .key{background:#7f1d1d;color:#fee2e2}
+  .opt:disabled{cursor:default;opacity:1}
+
+  /* ---------- writing ---------- */
+  .winput{width:100%;padding:12px 14px;border-radius:11px;border:1.5px solid var(--line2);background:var(--panel2);color:var(--text);font-size:16px;outline:none;transition:border-color .15s,background .15s}
+  .winput::placeholder{color:#42536f}
+  .winput:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .winput.correct{border-color:var(--ok-line);background:var(--ok-bg)}
+  .winput.wrong{border-color:var(--bad-line);background:var(--bad-bg)}
+  .winput.shake{animation:shake .35s}
+  @keyframes shake{20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+  .btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:10px;border:1.5px solid transparent;font-size:14px;font-weight:600;cursor:pointer;transition:filter .15s,background .15s,border-color .15s,color .15s}
+  .btn.primary{background:var(--accent);color:#fff}
+  .btn.primary:hover{filter:brightness(1.12)}
+  .btn.ghost{background:transparent;border-color:var(--line2);color:var(--muted)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--text)}
+  .btn.warn{background:#7c2d12;color:#fed7aa}
+  .btn.warn:hover{filter:brightness(1.15)}
+  .fb{margin-top:8px;font-size:14px;min-height:0}
+  .fb .ok{color:var(--ok)}
+  .fb .bad{color:var(--bad)}
+  .fb b{color:inherit}
+  .spk-after{display:none}
+  .q.answered .spk-after{display:inline-flex}
+
+  /* ---------- done card ---------- */
+  .done{margin-top:6px}
+  .donecard{background:linear-gradient(180deg,#122442,#0f1a30);border:1px solid var(--line2);border-radius:var(--radius);padding:22px;text-align:center}
+  .done-top{font-size:1.1rem;font-weight:800}
+  .done-score{font-size:1.7rem;font-weight:800;color:var(--ok);margin:6px 0}
+  .done-note{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+  .done-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+  /* ---------- footer ---------- */
+  .foot{margin-top:36px;text-align:center;color:var(--dim);font-size:12.5px;display:flex;flex-direction:column;gap:10px;align-items:center}
+  .foot b{color:var(--muted)}
+  .foot .btn{padding:8px 14px;font-size:13px}
+
+  /* ---------- word list / search ---------- */
+  .searchbar{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+  .searchbar input{flex:1;min-width:0;padding:11px 14px;border-radius:11px;border:1.5px solid var(--line2);background:var(--panel2);color:var(--text);font-size:16px;outline:none;transition:border-color .15s,box-shadow .15s}
+  .searchbar input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .searchbar input::placeholder{color:#42536f}
+  .searchbar button{padding:10px 13px;border-radius:10px;border:1.5px solid var(--line2);background:transparent;color:var(--muted);font-size:14px;cursor:pointer;transition:border-color .15s,color .15s}
+  .searchbar button:hover{border-color:var(--accent);color:var(--text)}
+  .lstmeta{color:var(--dim);font-size:12.5px;margin-bottom:8px}
+  .lrow{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border:1px solid var(--line);border-radius:11px;background:var(--panel);margin-bottom:6px}
+  .lrow .lnum{flex:0 0 42px;color:var(--dim);font-size:12px;padding-top:3px;font-variant-numeric:tabular-nums}
+  .lrow .lmain{flex:1;min-width:0}
+  .lword{font-weight:700;color:#fbd063;display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:15px}
+  .lword .spk2{border:0;background:#22304f;color:#dbe7fb;border-radius:7px;cursor:pointer;padding:3px 8px;font-size:12px;line-height:1.3}
+  .lword .spk2:hover{background:#31446d}
+  .lmeta{color:var(--dim);font-size:11.5px;margin-top:2px}
+  .lmean{color:var(--text);font-size:13.5px;margin-top:3px;overflow-wrap:anywhere}
+  .lsaved{flex:0 0 auto;font-size:14px;padding-top:4px}
+  .lempty{background:var(--panel);border:1px dashed var(--line2);border-radius:var(--radius);padding:24px 16px;text-align:center;color:var(--muted)}
+  .banknote{margin-top:6px;font-size:12.5px;color:var(--warn)}
+  .errbar{position:fixed;left:8px;right:8px;top:8px;z-index:99;background:#7c2d12;color:#fed7aa;border:1px solid #b45309;border-radius:10px;padding:10px 14px;font-size:13px;display:none;box-shadow:0 10px 30px -10px #000}
+
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  @media (max-width:560px){
+    .wrap{padding:12px 12px 50px}
+    .dock{margin:0 -12px 14px;padding:8px 12px 9px}
+    .q{padding:14px}
+    .sec-head{margin-bottom:12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+<noscript>
+  <div style="margin:12px;padding:14px;border-radius:12px;background:#7c2d12;border:1px solid #b45309;color:#fed7aa;font-size:14px;line-height:1.55">
+    ⚠️ Trang này cần <b>JavaScript</b> để hiện câu hỏi và danh sách từ.<br>
+    Nếu bạn đang xem bằng <b>Files / Quick Look preview trên iPhone</b> — preview đó chặn JavaScript (Apple cố ý, từ iOS 13).<br>
+    Hãy mở bằng <b>Safari</b> qua URL: <b>https://tonuy123.github.io/hoc-tu-vung/</b> — hoặc cài app xem HTML có hỗ trợ JS.
+  </div>
+</noscript>
+<div class="errbar" id="errBar"></div>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>Học Từ Vựng <span class="hl" id="heroLang">Anh</span></h1>
+    <p class="sub" id="heroSub">Đang tải dữ liệu…</p>
+  </header>
+
+  <div class="controls">
+    <div class="row">
+      <div class="seg" role="group" aria-label="Chọn ngôn ngữ">
+        <button type="button" class="seg-btn" data-lang="en">🇬🇧 English</button>
+        <button type="button" class="seg-btn" data-lang="de">🇩🇪 Deutsch</button>
+      </div>
+      <label class="field">Số câu/phiên
+        <select id="sizeSel" aria-label="Số câu mỗi phiên">
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </label>
+      <label class="switch"><input type="checkbox" id="autoSpeakChk"> Tự động đọc từ</label>
+    </div>
+    <div class="row">
+      <span class="lbl">Bộ từ:</span>
+      <div class="chips" id="dsChips">
+        <button type="button" class="chip" data-ds="en1k">1.000 từ cơ bản</button>
+        <button type="button" class="chip" data-ds="en3k">3.000 từ thông dụng</button>
+        <button type="button" class="chip" data-ds="de3k">Deutsch</button>
+        <button type="button" class="chip warn" data-ds="wrong" id="dsWrong" hidden>⚠ Từ sai (<span id="wrongN">0</span>)</button>
+      </div>
+      <span class="count" id="dsCount"></span>
+    </div>
+  </div>
+
+  <div class="dock">
+    <nav class="tabs" aria-label="Các dạng bài tập">
+      <button type="button" class="tab" data-tab="mc-en">1 · Chọn nghĩa</button>
+      <button type="button" class="tab" data-tab="write-en">2 · Viết nghĩa</button>
+      <button type="button" class="tab" data-tab="write-vn">3 · Viết từ</button>
+      <button type="button" class="tab" data-tab="mc-vn">4 · Chọn từ</button>
+      <button type="button" class="tab" data-tab="list-1k" id="tabList1k">5 · 1.000 từ</button>
+      <button type="button" class="tab" data-tab="list-3k" id="tabList3k">6 · 3.000 từ</button>
+    </nav>
+    <div class="statline">
+      <span class="stat ok">✓ <b id="stCorrect">0</b></span>
+      <span class="stat bad">✗ <b id="stWrong">0</b></span>
+      <span>Câu <b id="stDone">0</b>/<b id="stTotal">0</b></span>
+      <div class="pbar" aria-hidden="true"><i id="stFill"></i></div>
+    </div>
+  </div>
+
+  <main>
+    <section class="section" id="sec-mc-en" role="tabpanel">
+      <div class="sec-head">
+        <div>
+          <div class="sec-title">Bài 1 · Trắc chọn nghĩa tiếng Việt</div>
+          <div class="sec-sub" id="sub-mc-en">Nhìn từ ngoại ngữ, chọn nghĩa đúng</div>
+        </div>
+        <button type="button" class="btn ghost" data-again="mc-en">↻ Xáo trộn bộ mới</button>
+      </div>
+      <div id="list-mc-en"></div>
+      <div class="done" id="done-mc-en" hidden></div>
+    </section>
+
+    <section class="section" id="sec-write-en" role="tabpanel">
+      <div class="sec-head">
+        <div>
+          <div class="sec-title">Bài 2 · Viết nghĩa tiếng Việt</div>
+          <div class="sec-sub" id="sub-write-en">Gõ nghĩa tiếng Việt — Enter để kiểm tra, ↑↓ để di chuyển</div>
+        </div>
+        <button type="button" class="btn ghost" data-again="write-en">↻ Xáo trộn bộ mới</button>
+      </div>
+      <div id="list-write-en"></div>
+      <div class="done" id="done-write-en" hidden></div>
+    </section>
+
+    <section class="section" id="sec-write-vn" role="tabpanel">
+      <div class="sec-head">
+        <div>
+          <div class="sec-title">Bài 3 · Viết từ ngoại ngữ</div>
+          <div class="sec-sub" id="sub-write-vn">Nhìn nghĩa tiếng Việt, viết từ tiếng Anh/Đức</div>
+        </div>
+        <button type="button" class="btn ghost" data-again="write-vn">↻ Xáo trộn bộ mới</button>
+      </div>
+      <div id="list-write-vn"></div>
+      <div class="done" id="done-write-vn" hidden></div>
+    </section>
+
+    <section class="section" id="sec-mc-vn" role="tabpanel">
+      <div class="sec-head">
+        <div>
+          <div class="sec-title">Bài 4 · Trắc chọn từ ngoại ngữ</div>
+          <div class="sec-sub" id="sub-mc-vn">Nhìn nghĩa tiếng Việt, chọn từ đúng</div>
+        </div>
+        <button type="button" class="btn ghost" data-again="mc-vn">↻ Xáo trộn bộ mới</button>
+      </div>
+      <div id="list-mc-vn"></div>
+      <div class="done" id="done-mc-vn" hidden></div>
+    </section>
+
+    <section class="section" id="sec-list-1k" role="tabpanel">
+      <div class="sec-head">
+        <div>
+          <div class="sec-title" id="title-list-1k">Danh sách 1.000 từ cơ bản</div>
+          <div class="sec-sub">Tra cứu &amp; tìm kiếm — gõ không dấu vẫn ra · ⚠️ = từ đang trong mục ôn tập</div>
+        </div>
+      </div>
+      <div class="searchbar">
+        <input type="search" id="lst-q-1k" placeholder="Tìm từ hoặc nghĩa…" autocomplete="off" autocapitalize="off" spellcheck="false">
+        <button type="button" data-lstclear="list-1k" title="Xóa tìm kiếm">✕</button>
+      </div>
+      <div class="lstmeta" id="lst-meta-1k"></div>
+      <div id="lst-body-1k"></div>
+    </section>
+
+    <section class="section" id="sec-list-3k" role="tabpanel">
+      <div class="sec-head">
+        <div>
+          <div class="sec-title" id="title-list-3k">Danh sách 3.000 từ thông dụng</div>
+          <div class="sec-sub">Tra cứu &amp; tìm kiếm — gõ không dấu vẫn ra · ⚠️ = từ đang trong mục ôn tập</div>
+        </div>
+      </div>
+      <div class="searchbar">
+        <input type="search" id="lst-q-3k" placeholder="Tìm từ hoặc nghĩa…" autocomplete="off" autocapitalize="off" spellcheck="false">
+        <button type="button" data-lstclear="list-3k" title="Xóa tìm kiếm">✕</button>
+      </div>
+      <div class="lstmeta" id="lst-meta-3k"></div>
+      <div id="lst-body-3k"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div id="footStats">Chưa có dữ liệu — bắt đầu làm bài nào!</div>
+    <button type="button" class="btn ghost" data-reset>Xóa toàn bộ tiến độ &amp; từ sai</button>
+    <div>1 file HTML duy nhất · chạy offline · tiến độ lưu ngay trên máy bạn</div>
+  </footer>
+
+</div>
+
+<script>
+const DATASETS = __DATA_JSON__;
+</script>
+<script>
+'use strict';
+window.addEventListener('error', function(ev){
+  try {
+    const bar = document.getElementById('errBar');
+    if (bar){ bar.style.display = 'block'; bar.textContent = '⚠️ Lỗi JavaScript: ' + (ev.message || 'unknown') + ' — chụp màn hình gửi lại để được hỗ trợ.'; }
+  } catch (e) {}
+});
+/* ================= utils ================= */
+const $ = function(id){ return document.getElementById(id); };
+const $$ = function(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+const esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
+const norm = function(s){ return String(s == null ? '' : s).toLowerCase().trim().replace(/\s+/g, ' '); };
+const fold = function(s){ return norm(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/ß/g, 'ss'); };
+const fmt = function(n){ return Number(n || 0).toLocaleString('vi-VN'); };
+const shuffle = function(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+};
+const TABS = ['mc-en', 'write-en', 'write-vn', 'mc-vn', 'list-1k', 'list-3k'];
+const SIZES = [20, 50, 100];
+
+/* ================= storage ================= */
+const LS = {
+  get: function(k, d){ try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set: function(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+  del: function(k){ try { localStorage.removeItem(k); } catch (e) {} }
+};
+
+/* ================= settings / global state ================= */
+const DEF_SETTINGS = { lang: 'en', ds: 'en1k', size: 50, autoSpeak: false, tab: 'mc-en' };
+let settings = Object.assign({}, DEF_SETTINGS, LS.get('v4t:set', {}));
+if (settings.lang !== 'de') settings.lang = 'en';
+if (settings.ds !== 'wrong' && !DATASETS[settings.ds]) settings.ds = settings.lang === 'de' ? 'de3k' : 'en1k';
+if (settings.ds !== 'wrong' && DATASETS[settings.ds].lang !== settings.lang) settings.ds = settings.lang === 'de' ? 'de3k' : 'en1k';
+if (SIZES.indexOf(+settings.size) === -1) settings.size = 50;
+if (TABS.indexOf(settings.tab) === -1) settings.tab = 'mc-en';
+let stats = Object.assign({ answered: 0, correct: 0 }, LS.get('v4t:stats', {}));
+let wrong = LS.get('v4t:wrong', { en: [], de: [] });
+wrong.en = Array.isArray(wrong.en) ? wrong.en : [];
+wrong.de = Array.isArray(wrong.de) ? wrong.de : [];
+if (settings.ds === 'wrong' && wrong[settings.lang].length === 0) settings.ds = settings.lang === 'de' ? 'de3k' : 'en1k';
+
+const S = {};                       /* S[ds][tab] = { items, answers } */
+let CUR_DS = settings.ds;
+const NUM_INDEX = {};
+Object.keys(DATASETS).forEach(function(k){
+  NUM_INDEX[k] = {};
+  DATASETS[k].words.forEach(function(w){ NUM_INDEX[k][w.num] = w; });
+});
+
+/* ================= lookups ================= */
+function dsLabel(k){
+  if (k === 'en1k') return fmt(DATASETS.en1k.words.length) + ' từ cơ bản';
+  if (k === 'en3k') return fmt(DATASETS.en3k.words.length) + ' từ thông dụng';
+  if (k === 'de3k') return 'Deutsch · ' + fmt(DATASETS.de3k.words.length) + ' từ';
+  return 'Từ sai';
+}
+function langName(){ return settings.lang === 'de' ? 'Đức' : 'Anh'; }
+function poolFor(ds){
+  if (ds === 'wrong') return wrong[settings.lang].slice();
+  return DATASETS[ds] ? DATASETS[ds].words : [];
+}
+function byNum(ds, num){ const m = NUM_INDEX[ds]; return m ? m[num] : undefined; }
+function sample(pool, n){ return shuffle(pool).slice(0, Math.min(n, pool.length)); }
+function curTabName(){
+  const act = document.querySelector('.section.active');
+  return act ? act.id.replace('sec-', '') : 'mc-en';
+}
+
+/* ================= sessions ================= */
+function getSession(ds, tab, force){
+  if (!S[ds]) S[ds] = {};
+  if (force) delete S[ds][tab];
+  if (!S[ds][tab]){
+    let s = null;
+    if (!force) s = loadSaved(ds, tab);
+    if (!s) s = { items: sample(poolFor(ds), settings.size), answers: {} };
+    S[ds][tab] = s;
+    saveSaved(ds, tab, s);
+  }
+  return S[ds][tab];
+}
+function loadSaved(ds, tab){
+  if (ds === 'wrong') return null;
+  const rec = LS.get('v4t:s:' + ds + ':' + tab, null);
+  if (!rec || !Array.isArray(rec.nums) || !rec.answers) return null;
+  const items = [];
+  for (let i = 0; i < rec.nums.length; i++){
+    const w = byNum(ds, rec.nums[i]);
+    if (!w) return null;
+    items.push(w);
+  }
+  if (!items.length) return null;
+  const answers = {};
+  Object.keys(rec.answers).forEach(function(k){
+    const i = +k;
+    if (Number.isInteger(i) && i >= 0 && i < items.length) answers[i] = rec.answers[k];
+  });
+  return { items: items, answers: answers };
+}
+function saveSaved(ds, tab, s){
+  if (ds === 'wrong' || !s || !s.items) return;
+  LS.set('v4t:s:' + ds + ':' + tab, {
+    v: 1,
+    nums: s.items.map(function(w){ return w.num; }),
+    answers: s.answers
+  });
+}
+function ansCount(s){ return Object.keys(s.answers).length; }
+function okCount(s){
+  let c = 0;
+  s.items.forEach(function(w, i){ if (s.answers[i] && s.answers[i].ok) c++; });
+  return c;
+}
+
+/* ================= wrong-answer bank ================= */
+function wkey(v){ return v.word + '|' + v.meaning; }
+function addWrong(v){
+  const bank = wrong[settings.lang];
+  const k = wkey(v);
+  let found = false;
+  for (let i = 0; i < bank.length; i++){ if (wkey(bank[i]) === k){ found = true; break; } }
+  if (!found){
+    bank.push({ num: v.num, word: v.word, type: v.type, phon: v.phon, meaning: v.meaning });
+    if (bank.length > 1000) bank.splice(0, bank.length - 1000);
+    LS.set('v4t:wrong', wrong);
+  }
+  updateWrongChip();
+}
+function removeWrong(v){
+  const bank = wrong[settings.lang];
+  const k = wkey(v);
+  const next = bank.filter(function(w){ return wkey(w) !== k; });
+  if (next.length !== bank.length){
+    wrong[settings.lang] = next;
+    LS.set('v4t:wrong', wrong);
+  }
+  updateWrongChip();
+}
+function updateWrongChip(){
+  const n = wrong[settings.lang].length;
+  const chip = $('dsWrong');
+  if (!chip) return;
+  $('wrongN').textContent = n;
+  const active = CUR_DS === 'wrong';
+  chip.hidden = (n === 0 && !active);
+  chip.classList.toggle('active', active);
+}
+
+/* ================= text / chips / stats ================= */
+function updateTexts(){
+  $('heroLang').textContent = langName();
+  document.title = 'Học Từ Vựng ' + langName() + ' · 4 Bài Tập';
+  let sub;
+  if (CUR_DS === 'wrong'){
+    sub = 'Ôn tập ' + fmt(wrong[settings.lang].length) + ' từ đã làm sai · ' + (settings.lang === 'de' ? 'Deutsch' : 'English');
+  } else {
+    sub = 'Bộ ' + dsLabel(CUR_DS) + ' · xáo trộn mỗi phiên · tiến độ tự lưu';
+  }
+  $('heroSub').textContent = sub;
+  $('dsCount').textContent = fmt(CUR_DS === 'wrong' ? wrong[settings.lang].length : DATASETS[CUR_DS].words.length) + ' từ';
+  $$('#dsChips .chip').forEach(function(chip){
+    const ds = chip.dataset.ds;
+    if (ds === 'wrong') return;
+    chip.textContent = dsLabel(ds);
+    chip.hidden = DATASETS[ds].lang !== settings.lang;
+    chip.classList.toggle('active', ds === CUR_DS);
+  });
+  const de = settings.lang === 'de';
+  $('sub-mc-en').textContent = 'Nhìn từ tiếng ' + langName() + ', chọn nghĩa đúng';
+  $('sub-mc-vn').textContent = 'Nhìn nghĩa tiếng Việt, chọn từ tiếng ' + langName();
+  $('sub-write-en').textContent = 'Gõ nghĩa tiếng Việt — Enter để kiểm tra, ↑↓ để di chuyển';
+  $('sub-write-vn').textContent = 'Nhìn nghĩa tiếng Việt, viết từ tiếng ' + langName() + (de ? ' (không cần gõ der/die/das)' : '');
+  const tl1 = $('tabList1k'), tl3 = $('tabList3k');
+  if (tl1) tl1.hidden = de;
+  if (tl3) tl3.textContent = de ? '5 · Deutsch · ' + fmt(DATASETS.de3k.words.length) + ' từ' : '6 · 3.000 từ thông dụng';
+  $('title-list-1k').textContent = 'Danh sách ' + dsLabel('en1k');
+  $('title-list-3k').textContent = de ? 'Danh sách Deutsch · ' + fmt(DATASETS.de3k.words.length) + ' từ' : 'Danh sách ' + dsLabel('en3k');
+}
+function updateStat(tab){
+  const s = S[CUR_DS] && S[CUR_DS][tab];
+  const total = s ? s.items.length : 0;
+  const done = s ? ansCount(s) : 0;
+  const ok = s ? okCount(s) : 0;
+  $('stCorrect').textContent = ok;
+  $('stWrong').textContent = done - ok;
+  $('stDone').textContent = done;
+  $('stTotal').textContent = total;
+  $('stFill').style.width = (total ? Math.round(done / total * 100) : 0) + '%';
+}
+function renderFoot(){
+  const total = stats.answered;
+  if (!total){
+    $('footStats').textContent = 'Chưa có dữ liệu — bắt đầu làm bài nào!';
+    return;
+  }
+  const pct = Math.round(stats.correct / total * 100);
+  $('footStats').innerHTML = 'Đã làm <b>' + fmt(total) + '</b> câu · đúng <b>' + pct + '%</b> · từ sai hiện tại: <b>' + fmt(wrong[settings.lang].length) + '</b>';
+}
+
+/* ================= speech ================= */
+let voices = [];
+function loadVoices(){
+  try { voices = window.speechSynthesis ? (speechSynthesis.getVoices() || []) : []; } catch (e) { voices = []; }
+}
+if ('speechSynthesis' in window){
+  loadVoices();
+  try { speechSynthesis.onvoiceschanged = loadVoices; } catch (e) {}
+}
+function speak(text, lang){
+  try {
+    if (!('speechSynthesis' in window) || !window.SpeechSynthesisUtterance) return;
+    const clean = String(text == null ? '' : text).replace(/\([^)]*\)/g, ' ').replace(/\s+/g, ' ').trim();
+    if (!clean) return;
+    const code = lang === 'de' ? 'de-DE' : 'en-US';
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(clean);
+    u.lang = code;
+    u.rate = 0.9;
+    const prefix = lang === 'de' ? 'de' : 'en';
+    const v = voices.find(function(x){ return x.lang && x.lang.replace('_', '-').toLowerCase().indexOf(prefix) === 0; });
+    if (v){ u.voice = v; u.lang = v.lang; }
+    speechSynthesis.speak(u);
+  } catch (e) {}
+}
+function speakItem(tab, i){
+  const s = S[CUR_DS] && S[CUR_DS][tab];
+  if (s && s.items[i]) speak(s.items[i].word, settings.lang);
+}
+let observer = null;
+function applyAutoSpeak(tab, s){
+  if (observer){ observer.disconnect(); observer = null; }
+  $$('.q').forEach(function(q){ delete q.dataset.spoken; });
+  if (!settings.autoSpeak || !s || !(tab === 'mc-en' || tab === 'write-en')) return;
+  if (!('IntersectionObserver' in window)) return;
+  observer = new IntersectionObserver(function(entries){
+    if (!settings.autoSpeak) return;
+    entries.forEach(function(en){
+      if (!en.isIntersecting || en.target.dataset.spoken) return;
+      en.target.dataset.spoken = '1';
+      const i = +en.target.dataset.i;
+      const ss = S[CUR_DS] && S[CUR_DS][tab];
+      if (ss && ss.items[i] && !ss.answers[i]) speak(ss.items[i].word, settings.lang);
+    });
+  }, { threshold: 0.55 });
+  $$('#list-' + tab + ' .q').forEach(function(q){ observer.observe(q); });
+}
+
+/* ================= distractors ================= */
+function primaryType(t){
+  const raw = String(t || '').trim();
+  if (!raw) return '';
+  return raw.split(/[,;.]/)[0].trim().toLowerCase();
+}
+function overlaps(a, b){
+  if (!a || !b) return false;
+  if (a === b) return true;
+  if (a.length >= 3 && b.indexOf(a) !== -1) return true;
+  if (b.length >= 3 && a.indexOf(b) !== -1) return true;
+  return false;
+}
+function distractors(correct, pool, field, count){
+  count = count || 3;
+  const seen = [fold(correct[field])];
+  const cType = primaryType(correct.type);
+  function usable(w){
+    if (w.num === correct.num) return false;
+    const k = fold(w[field]);
+    if (!k) return false;
+    for (let i = 0; i < seen.length; i++) if (overlaps(seen[i], k)) return false;
+    seen.push(k);
+    return true;
+  }
+  const same = [], other = [];
+  for (let i = 0; i < pool.length; i++){
+    const w = pool[i];
+    if (cType && primaryType(w.type) === cType) same.push(w);
+    else other.push(w);
+  }
+  const picked = [];
+  const A = shuffle(same), B = shuffle(other);
+  for (let i = 0; i < A.length && picked.length < count; i++) if (usable(A[i])) picked.push(A[i]);
+  for (let i = 0; i < B.length && picked.length < count; i++) if (usable(B[i])) picked.push(B[i]);
+  if (picked.length < count){
+    const fb = DATASETS[settings.lang === 'de' ? 'de3k' : 'en1k'].words;
+    const C = shuffle(fb);
+    for (let i = 0; i < C.length && picked.length < count; i++) if (usable(C[i])) picked.push(C[i]);
+  }
+  return picked;
+}
+
+/* ================= grading ================= */
+function meaningParts(meaning){
+  return String(meaning || '')
+    .replace(/\([^)]*\)/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .split(/[,;/\|]+/)
+    .map(function(s){ return s.trim(); })
+    .filter(Boolean);
+}
+function stripArticle(w){
+  return String(w || '').toLowerCase()
+    .replace(/^(der|die|das|ein|eine|einen|einem|einer)\s+/, '')
+    .replace(/\s*\(.*?\)/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+function grade(dir, v, raw){
+  const user = fold(raw);
+  if (!user) return false;
+  if (dir === 'en'){
+    const parts = meaningParts(v.meaning).map(fold).filter(Boolean);
+    return parts.some(function(p){
+      if (p === user) return true;
+      if (user.length >= 3 && p.indexOf(user) !== -1) return true;
+      if (user.length >= 4 && user.indexOf(p) !== -1) return true;
+      return false;
+    });
+  }
+  const cands = [v.word];
+  const noParen = String(v.word).replace(/\([^)]*\)/g, ' ').replace(/\s+/g, ' ').trim();
+  if (noParen) cands.push(noParen);
+  const noArt = stripArticle(noParen || v.word);
+  if (noArt) cands.push(noArt);
+  return cands.some(function(c){
+    const cf = fold(stripArticle(c));
+    if (!cf) return false;
+    if (user === cf) return true;
+    if (user === cf + 's' || user === cf + 'ed' || user === cf + 'ing') return true;
+    const uf = fold(stripArticle(user));
+    return uf && uf === cf;
+  });
+}
+
+/* ================= render: helpers ================= */
+function typeChip(v){
+  const t = String(v.type || '').trim();
+  if (!t) return '';
+  return '<span class="tchip">' + esc(t) + '</span>';
+}
+function phonLine(v){
+  return v.phon ? '<div class="qphon">' + esc(v.phon) + '</div>' : '';
+}
+function fbHtml(tab, v, a){
+  const ans = (tab === 'mc-en' || tab === 'write-en') ? v.meaning : v.word;
+  if (a.ok) return '<span class="ok">✓ Đúng! <b>' + esc(ans) + '</b></span>';
+  return '<span class="bad">✗ Sai. Đáp án: <b>' + esc(ans) + '</b></span>' +
+    (CUR_DS === 'wrong' ? '' : '<div class="banknote">⚠️ Đã lưu vào mục "Từ sai" — ôn lại ở chip ⚠ Từ sai</div>');
+}
+function optHtml(tab, i, j, w, isCorrect, answered, chosen){
+  const key = tab === 'mc-en' ? w.meaning : w.word;
+  let cls = 'opt';
+  if (answered){
+    if (isCorrect) cls += ' correct';
+    else if (chosen === key) cls += ' wrong';
+  }
+  return '<button type="button" class="' + cls + '" data-mc="' + tab + ':' + i + '" data-key="' + esc(key) + '"' +
+    (answered ? ' disabled' : '') + '>' +
+    '<span class="key">' + 'ABCD'[j] + '</span><span>' + esc(key) + '</span></button>';
+}
+function renderMc(tab, s){
+  const N = s.items.length;
+  return s.items.map(function(v, i){
+    const answered = s.answers[i] || null;
+    const dists = distractors(v, poolFor(CUR_DS), tab === 'mc-en' ? 'meaning' : 'word');
+    const opts = shuffle([v].concat(dists));
+    const correctKey = tab === 'mc-en' ? v.meaning : v.word;
+    let optsHtml = '';
+    for (let j = 0; j < opts.length; j++){
+      const w = opts[j];
+      const key = tab === 'mc-en' ? w.meaning : w.word;
+      optsHtml += optHtml(tab, i, j, w, key === correctKey, !!answered, answered ? answered.chosen : null);
+    }
+    const q = tab === 'mc-en' ? v.word : v.meaning;
+    return '<article class="q" id="' + tab + '-q' + i + '" data-i="' + i + '">' +
+      '<div class="qhead"><span class="qnum">Câu ' + (i + 1) + '<span class="n">/' + N + '</span></span>' + typeChip(v) +
+      (tab === 'mc-en' ? '<button type="button" class="spk" data-spk="' + tab + ':' + i + '" title="Đọc từ">🔊</button>' : '') +
+      '</div>' +
+      '<div class="qword">' + esc(q) + '</div>' +
+      (tab === 'mc-en' ? phonLine(v) : '') +
+      '<div class="qprompt">' + (tab === 'mc-en' ? 'Chọn nghĩa đúng' : 'Chọn từ ' + langName() + ' đúng') + '</div>' +
+      '<div class="opts">' + optsHtml + '</div>' +
+      '<div class="fb" id="fb-' + tab + '-' + i + '" aria-live="polite">' +
+        (answered ? fbHtml(tab, v, answered) : '') + '</div>' +
+      '</article>';
+  }).join('');
+}
+function renderWrite(tab, s){
+  const dir = tab === 'write-en' ? 'en' : 'vn';
+  const N = s.items.length;
+  return s.items.map(function(v, i){
+    const answered = s.answers[i] || null;
+    const inpId = (dir === 'en' ? 'we-in' : 'wv-in') + i;
+    const value = answered && answered.ans != null ? answered.ans : '';
+    let cls = 'winput';
+    if (answered) cls += answered.ok ? ' correct' : ' wrong';
+    const spoken = answered ? ' answered' : '';
+    return '<article class="q' + spoken + '" id="' + (dir === 'en' ? 'we' : 'wv') + '-q' + i + '" data-i="' + i + '">' +
+      '<div class="qhead"><span class="qnum">Câu ' + (i + 1) + '<span class="n">/' + N + '</span></span>' + typeChip(v) +
+      (dir === 'en' ? '<button type="button" class="spk" data-spk="' + tab + ':' + i + '" title="Đọc từ">🔊</button>' : '') +
+      '</div>' +
+      '<div class="qword">' + esc(v.word) + '</div>' +
+      phonLine(v) +
+      '<div class="qprompt">' + (dir === 'en' ? 'Viết nghĩa tiếng Việt' : 'Viết từ tiếng ' + langName()) + '</div>' +
+      '<input class="' + cls + '" id="' + inpId + '" data-winput="' + tab + ':' + i + '" value="' + esc(value) + '"' +
+      (answered ? ' readonly' : '') +
+      ' autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="' +
+      (dir === 'en' ? 'Gõ nghĩa tiếng Việt…' : 'Gõ từ…') + '">' +
+      '<div class="btnrow">' +
+      (answered ? '' :
+        '<button type="button" class="btn primary" data-check="' + tab + ':' + i + '">Kiểm tra</button>' +
+        '<button type="button" class="btn ghost" data-reveal="' + tab + ':' + i + '">Xem đáp án</button>') +
+      '<button type="button" class="btn ghost spk-after" data-spk="' + tab + ':' + i + '">🔊 Nghe</button>' +
+      '</div>' +
+      '<div class="fb" id="fb-' + tab + '-' + i + '" aria-live="polite">' +
+        (answered ? fbHtml(tab, v, answered) : '') + '</div>' +
+      '</article>';
+  }).join('');
+}
+function renderEmpty(tab){
+  return '<div class="empty">Bộ <b>Từ sai</b> đang trống cho tiếng ' + langName() + '.<br>' +
+    'Các từ bạn làm sai sẽ tự động được lưu vào đây để ôn lại.<br><br>' +
+    '<button type="button" class="btn primary" data-ds="' + (settings.lang === 'de' ? 'de3k' : 'en1k') + '">Quay lại bộ từ chính</button></div>';
+}
+function renderDone(tab){
+  const el = $('done-' + tab);
+  const s = S[CUR_DS] && S[CUR_DS][tab];
+  if (!s || !s.items.length){ el.hidden = true; return; }
+  const n = s.items.length;
+  const done = ansCount(s);
+  if (done < n){ el.hidden = true; return; }
+  const c = okCount(s);
+  const pct = Math.round(c / n * 100);
+  const face = pct >= 80 ? '🎉' : pct >= 50 ? '👍' : '💪';
+  const nw = wrong[settings.lang].length;
+  el.innerHTML = '<div class="donecard">' +
+    '<div class="done-top">' + face + ' Hoàn thành ' + n + ' câu!</div>' +
+    '<div class="done-score">' + c + '/' + n + ' · ' + pct + '%</div>' +
+    '<div class="done-note">' + (n - c > 0
+      ? (n - c) + ' câu sai đã được lưu vào <b>Từ sai</b> để ôn lại.'
+      : 'Không có câu sai. Tuyệt vời!') + '</div>' +
+    '<div class="done-actions">' +
+      '<button type="button" class="btn primary" data-again="' + tab + '">↻ Làm bộ mới</button>' +
+      (nw ? '<button type="button" class="btn warn" data-ds="wrong">Ôn ngay từ sai (' + nw + ')</button>' : '') +
+    '</div></div>';
+  el.hidden = false;
+}
+/* ================= word list (tra cứu) ================= */
+let LIST_VIEW = [];
+let LIST_TOKEN = 0;
+const LIST_IDX = {};
+function listDsFor(tab){ return tab === 'list-1k' ? 'en1k' : (settings.lang === 'de' ? 'de3k' : 'en3k'); }
+function listIndex(ds){
+  if (!LIST_IDX[ds]){
+    LIST_IDX[ds] = (DATASETS[ds] ? DATASETS[ds].words : []).map(function(w){
+      return { w: w, fw: fold(w.word), fm: fold(w.meaning) };
+    });
+  }
+  return LIST_IDX[ds];
+}
+function bankSet(lang){
+  const set = Object.create(null);
+  const bank = wrong[lang] || [];
+  for (let i = 0; i < bank.length; i++) set[bank[i].word + '|' + bank[i].meaning] = 1;
+  return set;
+}
+function renderList(tab){
+  const sfx = tab === 'list-1k' ? '1k' : '3k';
+  const ds = listDsFor(tab);
+  const qEl = $('lst-q-' + sfx);
+  const body = $('lst-body-' + sfx);
+  const meta = $('lst-meta-' + sfx);
+  const idx = listIndex(ds);
+  const raw = qEl ? qEl.value.trim() : '';
+  const tokens = raw ? fold(raw).split(/\s+/).filter(Boolean) : [];
+  let view = idx;
+  if (tokens.length){
+    view = idx.filter(function(e){
+      for (let i = 0; i < tokens.length; i++){
+        const t = tokens[i];
+        if (e.fw.indexOf(t) === -1 && e.fm.indexOf(t) === -1) return false;
+      }
+      return true;
+    });
+  }
+  LIST_VIEW = view;
+  const bank = bankSet(settings.lang);
+  meta.textContent = tokens.length
+    ? 'Tìm thấy ' + fmt(view.length) + ' / ' + fmt(idx.length) + ' từ'
+    : 'Tổng ' + fmt(idx.length) + ' từ';
+  LIST_TOKEN++;
+  const token = LIST_TOKEN;
+  body.innerHTML = '';
+  if (!view.length){
+    body.innerHTML = '<div class="lempty">Không tìm thấy từ nào khớp “<b>' + esc(raw) + '</b>”.</div>';
+    return;
+  }
+  const CHUNK = 500;
+  let start = 0;
+  (function chunk(){
+    if (token !== LIST_TOKEN) return;
+    const end = Math.min(start + CHUNK, view.length);
+    let html = '';
+    for (let i = start; i < end; i++){
+      const w = view[i].w;
+      const inBank = bank[w.word + '|' + w.meaning] ? 1 : 0;
+      const metaBits = [];
+      if (w.phon) metaBits.push(esc(w.phon));
+      if (w.type) metaBits.push('[' + esc(w.type) + ']');
+      html += '<div class="lrow"><span class="lnum">' + w.num + '</span>' +
+        '<div class="lmain"><div class="lword">' + esc(w.word) +
+        '<button type="button" class="spk2" data-lspk="' + i + '" title="Đọc từ">🔊</button></div>' +
+        (metaBits.length ? '<div class="lmeta">' + metaBits.join(' · ') + '</div>' : '') +
+        '<div class="lmean">' + esc(w.meaning) + '</div></div>' +
+        (inBank ? '<span class="lsaved" title="Đang trong danh sách từ sai">⚠️</span>' : '') +
+        '</div>';
+    }
+    body.insertAdjacentHTML('beforeend', html);
+    start = end;
+    if (start < view.length) requestAnimationFrame(chunk);
+  })();
+}
+
+function renderTab(tab){
+  if (tab === 'list-1k' || tab === 'list-3k'){ renderList(tab); return; }
+  const ds = CUR_DS;
+  const s = getSession(ds, tab, false);
+  const list = $('list-' + tab);
+  if (!s || !s.items.length){
+    list.innerHTML = renderEmpty(tab);
+  } else if (tab === 'mc-en' || tab === 'mc-vn'){
+    list.innerHTML = renderMc(tab, s);
+  } else {
+    list.innerHTML = renderWrite(tab, s);
+  }
+  applyAutoSpeak(tab, s);
+  updateStat(tab);
+  renderDone(tab);
+}
+
+/* ================= answering ================= */
+function recordAnswer(tab, v, ok){
+  stats.answered++;
+  if (ok) stats.correct++;
+  LS.set('v4t:stats', stats);
+  if (!ok) addWrong(v);
+  else if (CUR_DS === 'wrong') removeWrong(v);
+  renderFoot();
+}
+function clickOpt(tab, i, el){
+  const s = getSession(CUR_DS, tab, false);
+  if (!s || s.answers[i]) return;
+  const v = s.items[i];
+  const correctKey = tab === 'mc-en' ? v.meaning : v.word;
+  const chosenKey = el.dataset.key;
+  const ok = chosenKey === correctKey;
+  s.answers[i] = { chosen: chosenKey, ok: ok };
+  const q = $(tab + '-q' + i);
+  if (q){
+    $$('.opt', q).forEach(function(o){
+      o.disabled = true;
+      if (o.dataset.key === correctKey) o.classList.add('correct');
+    });
+    if (!ok) el.classList.add('wrong');
+    const fb = $('fb-' + tab + '-' + i);
+    if (fb) fb.innerHTML = fbHtml(tab, v, s.answers[i]);
+  }
+  saveSaved(CUR_DS, tab, s);
+  recordAnswer(tab, v, ok);
+  updateStat(tab);
+  renderDone(tab);
+}
+function doCheck(tab, i, reveal){
+  const s = getSession(CUR_DS, tab, false);
+  if (!s || s.answers[i]) return;
+  const v = s.items[i];
+  const dir = tab === 'write-en' ? 'en' : 'vn';
+  const input = $((dir === 'en' ? 'we-in' : 'wv-in') + i);
+  const raw = input ? input.value.trim() : '';
+  if (!reveal && !raw){
+    if (input){
+      input.focus();
+      input.classList.add('shake');
+      setTimeout(function(){ input.classList.remove('shake'); }, 420);
+    }
+    return;
+  }
+  const ok = reveal ? false : grade(dir, v, raw);
+  s.answers[i] = { ok: ok, ans: raw };
+  if (input){
+    input.readOnly = true;
+    input.classList.add(ok ? 'correct' : 'wrong');
+  }
+  const q = $((dir === 'en' ? 'we' : 'wv') + '-q' + i);
+  if (q){
+    q.classList.add('answered');
+    $$('.btn', q).forEach(function(b){ if (b.dataset.check || b.dataset.reveal) b.remove(); });
+  }
+  const fb = $('fb-' + tab + '-' + i);
+  if (fb) fb.innerHTML = fbHtml(tab, v, s.answers[i]);
+  saveSaved(CUR_DS, tab, s);
+  recordAnswer(tab, v, ok);
+  updateStat(tab);
+  renderDone(tab);
+  if (ok && settings.autoSpeak) speak(v.word, settings.lang);
+  if (ok) focusNextWrite(tab, i);
+}
+function focusNextWrite(tab, i){
+  const s = S[CUR_DS] && S[CUR_DS][tab];
+  if (!s) return;
+  for (let j = i + 1; j < s.items.length; j++){
+    if (!s.answers[j]){
+      const inp = $((tab === 'write-en' ? 'we-in' : 'wv-in') + j);
+      if (inp){
+        setTimeout(function(){
+          inp.focus({ preventScroll: true });
+          try { inp.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) { inp.scrollIntoView(); }
+        }, 120);
+      }
+      return;
+    }
+  }
+}
+function navFocus(tab, i, dir){
+  const s = S[CUR_DS] && S[CUR_DS][tab];
+  if (!s) return;
+  let j = i + dir;
+  if (j < 0 || j >= s.items.length) return;
+  const inp = $((tab === 'write-en' ? 'we-in' : 'wv-in') + j);
+  if (inp && !inp.readOnly){
+    inp.focus({ preventScroll: true });
+    try { inp.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) { inp.scrollIntoView(); }
+  } else {
+    const q = $((tab === 'write-en' ? 'we' : 'wv') + '-q' + j);
+    if (q) try { q.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+  }
+}
+
+/* ================= navigation / settings ================= */
+function showTab(tab, noFocus){
+  if (TABS.indexOf(tab) === -1) return;
+  $$('.tab').forEach(function(b){ b.classList.toggle('active', b.dataset.tab === tab); });
+  $$('.section').forEach(function(sec){ sec.classList.toggle('active', sec.id === 'sec-' + tab); });
+  settings.tab = tab;
+  LS.set('v4t:set', settings);
+  renderTab(tab);
+  if (!noFocus && (tab === 'write-en' || tab === 'write-vn')){
+    const s = S[CUR_DS] && S[CUR_DS][tab];
+    if (s){
+      for (let j = 0; j < s.items.length; j++){
+        if (!s.answers[j]){
+          const inp = $((tab === 'write-en' ? 'we-in' : 'wv-in') + j);
+          if (inp){ setTimeout(function(){ inp.focus({ preventScroll: true }); }, 80); }
+          break;
+        }
+      }
+    }
+  }
+  if (!noFocus && (tab === 'list-1k' || tab === 'list-3k')){
+    const sf = tab === 'list-1k' ? '1k' : '3k';
+    setTimeout(function(){
+      const q = $('lst-q-' + sf);
+      if (q) try { q.focus({ preventScroll: true }); } catch (e) { q.focus(); }
+    }, 80);
+  }
+}
+function activateDataset(ds){
+  if (ds === 'wrong'){
+    if (!wrong[settings.lang].length) return;
+  } else if (!DATASETS[ds] || DATASETS[ds].lang !== settings.lang){
+    return;
+  }
+  if (ds === CUR_DS){ updateTexts(); updateWrongChip(); return; }
+  settings.ds = ds;
+  CUR_DS = ds;
+  LS.set('v4t:set', settings);
+  updateTexts();
+  updateWrongChip();
+  renderTab(curTabName());
+}
+function setLang(lang){
+  if (lang !== 'en' && lang !== 'de' || lang === settings.lang) return;
+  settings.lang = lang;
+  LS.set('v4t:set', settings);
+  $$('.seg-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
+  if (settings.ds !== 'wrong' && DATASETS[settings.ds].lang !== lang){
+    settings.ds = lang === 'de' ? 'de3k' : 'en1k';
+    CUR_DS = settings.ds;
+  }
+  LS.set('v4t:set', settings);
+  updateTexts();
+  updateWrongChip();
+  renderFoot();
+  const cur = curTabName();
+  if (cur === 'list-1k' && lang === 'de'){ settings.tab = 'list-3k'; showTab('list-3k', true); }
+  else renderTab(cur);
+}
+function setSize(n){
+  if (SIZES.indexOf(n) === -1) return;
+  settings.size = n;
+  LS.set('v4t:set', settings);
+  Object.keys(S).forEach(function(ds){ delete S[ds]; });
+  try {
+    Object.keys(localStorage).forEach(function(k){
+      if (k.indexOf('v4t:s:') === 0) localStorage.removeItem(k);
+    });
+  } catch (e) {}
+  renderTab(curTabName());
+}
+function rebuild(tab){
+  if (S[CUR_DS]) delete S[CUR_DS][tab];
+  if (CUR_DS !== 'wrong') LS.del('v4t:s:' + CUR_DS + ':' + tab);
+  if (tab === curTabName()) renderTab(tab);
+}
+function clearData(){
+  try {
+    Object.keys(localStorage).forEach(function(k){
+      if (k.indexOf('v4t:') === 0) localStorage.removeItem(k);
+    });
+  } catch (e) {}
+  wrong = { en: [], de: [] };
+  stats = { answered: 0, correct: 0 };
+  settings = Object.assign({}, DEF_SETTINGS);
+  Object.keys(S).forEach(function(k){ delete S[k]; });
+  CUR_DS = settings.ds;
+}
+function resetAll(){
+  if (!window.confirm('Xóa toàn bộ tiến độ, từ sai và cài đặt?')) return;
+  clearData();
+  location.reload();
+}
+
+/* ================= events ================= */
+document.addEventListener('click', function(e){
+  const hit = function(sel){ return e.target.closest(sel); };
+  let el;
+  if ((el = hit('[data-tab]'))){ showTab(el.dataset.tab); return; }
+  if ((el = hit('[data-ds]'))){ activateDataset(el.dataset.ds); return; }
+  if ((el = hit('[data-lang]'))){ setLang(el.dataset.lang); return; }
+  if ((el = hit('[data-mc]'))){
+    const parts = el.dataset.mc.split(':');
+    clickOpt(parts[0], +parts[1], el);
+    return;
+  }
+  if ((el = hit('[data-check]'))){
+    const parts = el.dataset.check.split(':');
+    doCheck(parts[0], +parts[1], false);
+    return;
+  }
+  if ((el = hit('[data-reveal]'))){
+    const parts = el.dataset.reveal.split(':');
+    doCheck(parts[0], +parts[1], true);
+    return;
+  }
+  if ((el = hit('[data-spk]'))){
+    const parts = el.dataset.spk.split(':');
+    speakItem(parts[0], +parts[1]);
+    return;
+  }
+  if ((el = hit('[data-lspk]'))){
+    const e = LIST_VIEW[+el.dataset.lspk];
+    if (e) speak(e.w.word, settings.lang);
+    return;
+  }
+  if ((el = hit('[data-lstclear]'))){
+    const tab = el.dataset.lstclear;
+    const sf = tab === 'list-1k' ? '1k' : '3k';
+    const q = $('lst-q-' + sf);
+    if (q){ q.value = ''; renderList(tab); q.focus(); }
+    return;
+  }
+  if ((el = hit('[data-again]'))){ rebuild(el.dataset.again); return; }
+  if ((el = hit('[data-reset]'))){ resetAll(); return; }
+});
+document.addEventListener('keydown', function(e){
+  const el = e.target;
+  if (!el || !el.dataset || !el.dataset.winput) return;
+  const parts = el.dataset.winput.split(':');
+  if (e.key === 'Enter'){
+    e.preventDefault();
+    doCheck(parts[0], +parts[1], false);
+  } else if (e.key === 'ArrowDown'){
+    e.preventDefault();
+    navFocus(parts[0], +parts[1], 1);
+  } else if (e.key === 'ArrowUp'){
+    e.preventDefault();
+    navFocus(parts[0], +parts[1], -1);
+  }
+});
+
+/* ================= init ================= */
+(function init(){
+  $('sizeSel').value = String(settings.size);
+  $('autoSpeakChk').checked = !!settings.autoSpeak;
+  $$('.seg-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === settings.lang); });
+  $('sizeSel').addEventListener('change', function(e){ setSize(+e.target.value); });
+  $('autoSpeakChk').addEventListener('change', function(e){
+    settings.autoSpeak = e.target.checked;
+    LS.set('v4t:set', settings);
+    const tab = curTabName();
+    applyAutoSpeak(tab, S[CUR_DS] && S[CUR_DS][tab]);
+  });
+  updateTexts();
+  updateWrongChip();
+  renderFoot();
+  if (settings.tab === 'list-1k' && settings.lang === 'de') settings.tab = 'list-3k';
+  ['1k', '3k'].forEach(function(sf){
+    const q = $('lst-q-' + sf);
+    if (!q) return;
+    const tab = sf === '1k' ? 'list-1k' : 'list-3k';
+    let t = null;
+    q.addEventListener('input', function(){
+      if (t) clearTimeout(t);
+      t = setTimeout(function(){ renderList(tab); }, 120);
+    });
+    q.addEventListener('keydown', function(e){
+      if (e.key === 'Escape'){ q.value = ''; renderList(tab); }
+    });
+  });
+  showTab(settings.tab, true);
+})();
+</script>
+</body>
+</html>
