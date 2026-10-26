@@ -1,5 +1,5 @@
 // run-cdp.js - open page in Chrome (CDP), inject page tests, report results,
-// then run mobile viewport check + noscript check.
+// then run mobile viewport checks + screenshot + noscript check.
 // Usage: node tests/run-cdp.js <file-url>
 const fs = require('fs');
 const path = require('path');
@@ -13,6 +13,7 @@ async function newTarget(url) {
 }
 
 async function main() {
+  if (!URL) throw new Error('missing page URL');
   const target = await newTarget(URL);
   const ws = new WebSocket(target.webSocketDebuggerUrl);
   await new Promise((resolve, reject) => { ws.onopen = resolve; ws.onerror = reject; });
@@ -39,7 +40,7 @@ async function main() {
 
   let appReady = false;
   for (let i = 0; i < 80; i++) {
-    const st = await evaljs("(typeof clearData === 'function' && typeof DATASETS !== 'undefined' && document.querySelectorAll('.tab').length === 6) ? 'yes' : 'no'");
+    const st = await evaljs("(typeof DATASETS === 'undefined' || typeof showScreen !== 'function' || document.querySelectorAll('.screen').length !== 4 || document.querySelectorAll('.bnav button').length !== 5) ? 'no' : 'yes'");
     if (st === 'yes') { appReady = true; break; }
     await new Promise((r) => setTimeout(r, 500));
   }
@@ -50,26 +51,36 @@ async function main() {
   console.log('INJECT:', injected);
 
   let out = null;
-  for (let i = 0; i < 90; i++) {
+  for (let i = 0; i < 260; i++) {
     await new Promise((r) => setTimeout(r, 500));
     out = await evaljs("(function(){ var el = document.getElementById('TESTOUT'); return el ? el.textContent : ''; })()");
     if (out && String(out).indexOf('TESTRESULT') === 0) break;
   }
   console.log(out || 'TESTOUT NOT FOUND');
+  if (!out || String(out).indexOf('TESTRESULT') !== 0) {
+    const dbg = await evaljs("(function(){return JSON.stringify({step: window.__testStep, errs: window.__terrors, bar: (document.getElementById('errBar')||{}).textContent});})()");
+    console.log('DEBUG:', dbg);
+  }
 
-  // ---- mobile viewport check + screenshot (reload with metrics = realistic phone load) ----
+  // ---- mobile viewport: home + dictionary (reload with metrics = realistic phone load) ----
   await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 2, mobile: true });
   await send('Page.reload', {});
-  await new Promise((r) => setTimeout(r, 2200));
-  await evaljs("(function(){ showTab('list-3k', true); return 1; })()");
-  await new Promise((r) => setTimeout(r, 900));
-  const mob = JSON.parse(await evaljs(`JSON.stringify({sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth, rows: document.querySelectorAll('#lst-body-3k .lrow').length, tab: (document.querySelector('.tab.active')||{}).textContent})`));
-  console.log('MOBILE:', JSON.stringify(mob));
+  await new Promise((r) => setTimeout(r, 2500));
+  await evaljs("(function(){ showScreen('home'); return 1; })()");
+  await new Promise((r) => setTimeout(r, 500));
+  const home = JSON.parse(await evaljs(`JSON.stringify({sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth, nav: document.querySelectorAll('.bnav button').length, cards: document.querySelectorAll('#homeGrid [data-goto-ex]').length})`));
+  console.log('MOBILE_HOME:', JSON.stringify(home));
+  console.log('MOBILE_HOME_OK:', home.sw <= home.cw + 1);
+
+  await evaljs("(function(){ showScreen('dict'); return 1; })()");
+  await new Promise((r) => setTimeout(r, 700));
+  const mob = JSON.parse(await evaljs(`JSON.stringify({sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth, rows: document.querySelectorAll('#dictBody .drow').length, letter: (document.querySelector('#dictAZ .az.on')||{}).textContent, nav: document.querySelectorAll('.bnav button').length})`));
+  console.log('MOBILE_DICT:', JSON.stringify(mob));
   console.log('MOBILE_OVERFLOW_OK:', mob.sw <= mob.cw + 1);
   const shot = await send('Page.captureScreenshot', { format: 'png', fromSurface: true });
   if (shot.result && shot.result.data) {
-    fs.writeFileSync(path.join(SHOT_DIR, 'mobile-list.png'), Buffer.from(shot.result.data, 'base64'));
-    console.log('SHOT: report/mobile-list.png');
+    fs.writeFileSync(path.join(SHOT_DIR, 'mobile-dict.png'), Buffer.from(shot.result.data, 'base64'));
+    console.log('SHOT: report/mobile-dict.png');
   }
   await send('Emulation.clearDeviceMetricsOverride');
 
@@ -82,7 +93,7 @@ async function main() {
   await send('Emulation.setScriptExecutionDisabled', { value: false });
   await send('Page.reload', {});
   await new Promise((r) => setTimeout(r, 2500));
-  const back = await evaljs("(function(){ return typeof DATASETS !== 'undefined' && document.querySelectorAll('.tab').length === 6; })()");
+  const back = await evaljs("(function(){ return typeof DATASETS !== 'undefined' && document.querySelectorAll('.screen').length === 4 && document.querySelectorAll('.bnav button').length === 5; })()");
   console.log('JS_REENABLED_BOOT_OK:', back);
 
   ws.close();

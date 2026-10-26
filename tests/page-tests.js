@@ -5,8 +5,14 @@
   function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
   function waitFor(fn, cb, tries) {
     tries = (tries == null) ? 50 : tries;
-    if (fn()) { cb(true); return; }
-    if (tries <= 0) { cb(false); return; }
+    if (fn()) {
+      try { cb(true); } catch (e) { R.fail++; R.logs.push('FAIL | ASYNC EXCEPTION | ' + (e && e.message)); finish(); }
+      return;
+    }
+    if (tries <= 0) {
+      try { cb(false); } catch (e) { R.fail++; R.logs.push('FAIL | ASYNC EXCEPTION | ' + (e && e.message)); finish(); }
+      return;
+    }
     setTimeout(function () { waitFor(fn, cb, tries - 1); }, 100);
   }
   window.__terrors = [];
@@ -15,127 +21,226 @@
   var steps = [];
   function step(fn) { steps.push(fn); }
   function run(i) {
+    window.__testStep = i;
     if (i >= steps.length) { finish(); return; }
     try { steps[i](function () { run(i + 1); }); }
     catch (e) { R.fail++; R.logs.push('FAIL | EXCEPTION @step' + i + ' | ' + (e && e.message)); run(i + 1); }
   }
   function finish() {
+    window.__testStep = 'done';
     var pre = document.createElement('pre');
     pre.id = 'TESTOUT';
     pre.textContent = 'TESTRESULT ' + R.pass + ' pass, ' + R.fail + ' fail\n' + R.logs.join('\n');
     document.body.appendChild(pre);
   }
 
-  /* ---------- 1. boot ---------- */
+  /* ---------- 1. boot: home shell ---------- */
   step(function (next) {
     clearData();
-    updateTexts(); updateWrongChip(); renderFoot();
-    showTab('mc-en', true);
-    ok('boot: 50 mc-en questions built', $$('#list-mc-en .q').length === 50, 'got ' + $$('#list-mc-en .q').length);
-    var allFour = $$('#list-mc-en .q').every(function (q) { return q.querySelectorAll('.opt').length === 4; });
-    ok('boot: every question has 4 options', allFour);
-    ok('boot: total = 50', $('stTotal').textContent === '50', 'got ' + $('stTotal').textContent);
-    ok('boot: 6 tabs present', $$('.tab').length === 6, 'got ' + $$('.tab').length);
+    updateChrome();
+    showScreen('home');
+    ok('boot: 4 screens', $$('.screen').length === 4, 'got ' + $$('.screen').length);
+    ok('boot: bottom nav 5 buttons', $$('.bnav button').length === 5, 'got ' + $$('.bnav button').length);
+    ok('boot: home active', (document.querySelector('.screen.active') || {}).id === 'screen-home');
+    ok('boot: nav home active', document.querySelector('.bnav .nav.active').dataset.nav === 'home');
+    ok('boot: 4 exercise cards', $$('#homeGrid [data-goto-ex]').length === 4);
+    ok('boot: no auto-speak checkbox', !document.querySelector('input[type=checkbox]'));
+    ok('boot: removed old subtitle', !$('heroSub'));
+    ok('boot: 4 exercise panels', $$('.expanel').length === 4);
     next();
   });
 
-  /* ---------- 2. answer wrong -> bank + note ---------- */
+  /* ---------- 2. open exercise from card ---------- */
+  step(function (next) {
+    document.querySelector('#homeGrid [data-goto-ex="mc-en"]').click();
+    ok('exercise: screen active', (document.querySelector('.screen.active') || {}).id === 'screen-exercise');
+    ok('exercise: 50 questions', $$('#list-mc-en .q').length === 50, 'got ' + $$('#list-mc-en .q').length);
+    var allFour = $$('#list-mc-en .q').every(function (q) { return q.querySelectorAll('.opt').length === 4; });
+    ok('exercise: every question has 4 options', allFour);
+    ok('exercise: no POS chip in questions', $$('#list-mc-en .tchip').length === 0);
+    ok('exercise: stat total 50', $('stTotal').textContent === '50', $('stTotal').textContent);
+    var opts = $$('.opt', $('mc-en-q0'));
+    var seen = {};
+    var uniq = true;
+    opts.forEach(function (o) { if (seen[o.dataset.key]) uniq = false; seen[o.dataset.key] = 1; });
+    ok('exercise: 4 unique option keys', uniq);
+    window.__optKeys = opts.map(function (o) { return o.dataset.key; });
+    next();
+  });
+
+  /* ---------- 3. answer wrong -> bank + badge ---------- */
   step(function (next) {
     var s1 = S.en1k['mc-en'];
     var v0 = s1.items[0];
     var q0 = $('mc-en-q0');
     var opts = $$('.opt', q0);
-    var correctOpt = null, wrongOpt = null;
+    var correct = null, wrongOpt = null;
     for (var i = 0; i < opts.length; i++) {
-      if (opts[i].dataset.key === v0.meaning) correctOpt = opts[i]; else wrongOpt = opts[i];
+      if (opts[i].dataset.key === v0.meaning) correct = opts[i];
+      else if (!wrongOpt) wrongOpt = opts[i];
     }
-    ok('mc: correct option present', !!correctOpt);
+    ok('answer: correct option present', !!correct);
+    ok('answer: wrong option present', !!wrongOpt);
     wrongOpt.click();
-    ok('mc: answer recorded wrong', !!s1.answers[0] && s1.answers[0].ok === false);
-    ok('mc: correct option revealed', correctOpt.classList.contains('correct'));
-    ok('mc: wrong bank en = 1', wrong.en.length === 1, 'got ' + wrong.en.length);
-    var fbTxt = $('fb-mc-en-0').textContent;
-    ok('mc: feedback notes saved to bank', fbTxt.indexOf('Từ sai') !== -1, 'fb=' + fbTxt.slice(0, 90));
+    ok('answer: recorded wrong', !!s1.answers[0] && s1.answers[0].ok === false);
+    ok('answer: correct option revealed', correct.classList.contains('correct'));
+    ok('answer: wrong bank en = 1', wrong.en.length === 1, 'got ' + wrong.en.length);
+    ok('answer: nav badge = 1', $('navBadge').textContent === '1' && $('navBadge').hidden === false);
+    ok('answer: feedback shows answer', $('fb-mc-en-0').textContent.indexOf('Đáp án') !== -1);
     window.__v0 = v0;
     next();
   });
 
-  /* ---------- 3. list-1k render ---------- */
+  /* ---------- 4. option order stable across re-render ---------- */
   step(function (next) {
-    showTab('list-1k', true);
-    waitFor(function () { return $$('#lst-body-1k .lrow').length === 1000; }, function (done) {
-      ok('list-1k: renders all 1000 rows', done, 'rows=' + $$('#lst-body-1k .lrow').length);
-      ok('list-1k: meta total', $('lst-meta-1k').textContent === 'Tổng 1.000 từ', $('lst-meta-1k').textContent);
-      var v = window.__v0;
-      var row = $$('#lst-body-1k .lrow').filter(function (r) { return r.querySelector('.lnum').textContent === String(v.num); })[0];
-      ok('list-1k: row for answered word exists', !!row);
-      if (row) {
-        ok('list-1k: bank badge on wrong word', !!row.querySelector('.lsaved'));
-        var wordBtn = row.querySelector('.spk2');
-        ok('list-1k: speak button present', !!wordBtn);
-      }
+    selectEx('mc-vn');
+    selectEx('mc-en');
+    var now = $$('.opt', $('mc-en-q0')).map(function (o) { return o.dataset.key; });
+    ok('options: order stable after tab switch', JSON.stringify(now) === JSON.stringify(window.__optKeys), now.join('|').slice(0, 80));
+    ok('options: answered question keeps highlight', !!$('mc-en-q0').querySelector('.opt.correct'));
+    next();
+  });
+
+  /* ---------- 5. draft survives tab switch ---------- */
+  step(function (next) {
+    selectEx('write-vn');
+    var inp = $('wv-in0');
+    ok('draft: write input exists', !!inp);
+    inp.value = 'draft-test';
+    inp.dispatchEvent(new Event('input', { bubbles: true }));
+    selectEx('mc-vn');
+    selectEx('write-vn');
+    ok('draft: value preserved', $('wv-in0').value === 'draft-test', $('wv-in0').value);
+    $('wv-in0').value = '';
+    $('wv-in0').dispatchEvent(new Event('input', { bubbles: true }));
+    next();
+  });
+
+  /* ---------- 6. reveal counts as wrong and goes to bank ---------- */
+  step(function (next) {
+    selectEx('write-en');
+    var s = S.en1k['write-en'];
+    var v0 = s.items[0];
+    var before = stats.answered;
+    document.querySelector('[data-reveal="write-en:0"]').click();
+    ok('reveal: recorded as wrong', !!s.answers[0] && s.answers[0].ok === false);
+    ok('reveal: stats incremented', stats.answered === before + 1, 'answered=' + stats.answered);
+    ok('reveal: word added to bank', wrong.en.some(function (w) { return w.word === v0.word && w.meaning === v0.meaning; }));
+    ok('reveal: input readonly', $('we-in0').readOnly);
+    var hasEx = !!(v0.ex && v0.ex.length);
+    ok('reveal: example block matches data', ($$('#fb-write-en-0 .exfb').length > 0) === hasEx);
+    var sampleFb = fbHtml('mc-en', { word: 'test', meaning: 'thử', ex: [{ s: 'This is a sample sentence.', t: 'Đây là một câu ví dụ.' }] }, { ok: false });
+    ok('feedback: renders example sentence', sampleFb.indexOf('This is a sample sentence.') !== -1);
+    next();
+  });
+
+  /* ---------- 7. wrong screen + practice + back ---------- */
+  step(function (next) {
+    showScreen('wrong');
+    ok('wrong: screen active', (document.querySelector('.screen.active') || {}).id === 'screen-wrong');
+    ok('wrong: rows match bank', $$('#wrongBody .drow').length === wrong.en.length, 'rows=' + $$('#wrongBody .drow').length + ' bank=' + wrong.en.length);
+    ok('wrong: practice enabled', !$('wrongPractice').disabled);
+    settings.ex = 'mc-en';
+    $('wrongPractice').click();
+    ok('wrong: practice screen active', (document.querySelector('.screen.active') || {}).id === 'screen-exercise');
+    ok('wrong: dataset is wrong', CUR_DS === 'wrong');
+    ok('wrong: questions built from bank', $$('#list-mc-en .q').length === wrong.en.length, 'q=' + $$('#list-mc-en .q').length);
+    ok('wrong: chips hidden', $('exChips').hidden === true);
+    ok('wrong: chips visually hidden', $('exChips').offsetHeight === 0);
+    document.querySelector('[data-back]').click();
+    ok('wrong: back returns to wrong screen', (document.querySelector('.screen.active') || {}).id === 'screen-wrong');
+    ok('wrong: back restores dataset', CUR_DS === 'en1k');
+    next();
+  });
+
+  /* ---------- 8. dictionary A-Z + search + detail + synonyms ---------- */
+  step(function (next) {
+    showScreen('dict');
+    ok('dict: screen active', (document.querySelector('.screen.active') || {}).id === 'screen-dict');
+    ok('dict: EN selected', settings.lang === 'en');
+    ok('dict: 27 letter chips', $$('#dictAZ .az').length === 27, 'got ' + $$('#dictAZ .az').length);
+    waitFor(function () { return $$('#dictBody .drow').length > 0; }, function (done) {
+      ok('dict: letter A rows rendered', done, 'rows=' + $$('#dictBody .drow').length);
+      var rows = $$('#dictBody .drow');
+      var allA = rows.every(function (r) { return fold(r.querySelector('.dword').textContent).charAt(0) === 'a'; });
+      ok('dict: A rows start with A', allA);
+      var meta = $('dictMeta').textContent;
+      ok('dict: meta shows letter', meta.indexOf('A ·') === 0, meta);
+
+      $('dictQ').value = 'ban do';
+      renderDict();
+      var hits = $$('#dictBody .drow');
+      ok('dict: search accent-insensitive', hits.some(function (r) { return r.querySelector('.dword').textContent.indexOf('map') === 0; }), 'hits=' + hits.length);
+      ok('dict: AZ chips hidden in search', $('dictAZ').offsetHeight === 0);
+      ok('dict: search meta', $('dictMeta').textContent.indexOf('Tìm thấy') === 0, $('dictMeta').textContent);
+
+      var mapRow = hits.filter(function (r) { return r.querySelector('.dword').textContent.indexOf('map') === 0; })[0];
+      if (mapRow) mapRow.click();
+      ok('dict: detail sheet opens', $('sheetWrap').hidden === false);
+      ok('dict: sheet has word + close', !!document.querySelector('.sheet-word') && $$('[data-sheet-close]').length >= 1);
+      ok('dict: sheet has examples or empty note', document.querySelector('.sheet .ex-none') !== null || $$('.sheet .exlist li').length > 0);
+      closeSheet();
+      ok('dict: sheet closes', $('sheetWrap').hidden === true);
+
+      $('dictQ').value = 'apple';
+      renderDict();
+      var appleRow = $$('#dictBody .drow').filter(function (r) { return r.querySelector('.dword').textContent.indexOf('apple') === 0; })[0];
+      ok('dict: apple row found', !!appleRow);
+      if (appleRow) appleRow.click();
+      ok('dict: apple sheet shows 3 examples', $$('.sheet .exlist li').length === 3, 'got ' + $$('.sheet .exlist li').length);
+      closeSheet();
+
+      $('dictQ').value = 'chắc chắn';
+      renderDict();
+      var gt = document.querySelector('#dictBody .dgt');
+      ok('dict: synonym group header', !!gt && gt.textContent.indexOf('Cùng nghĩa') !== -1, gt ? gt.textContent : 'none');
       next();
     });
   });
 
-  /* ---------- 4. search 1k + accent-insensitive ---------- */
+  /* ---------- 9. dictionary DE ---------- */
   step(function (next) {
-    var q = $('lst-q-1k');
-    q.value = 'ban do';
-    q.dispatchEvent(new Event('input', { bubbles: true }));
-    setTimeout(function () {
-      var rows = $$('#lst-body-1k .lrow');
-      ok('search: results non-empty for "ban do"', rows.length > 0, 'rows=' + rows.length);
-      var hit = rows.filter(function (r) { return r.querySelector('.lnum').textContent === '504'; })[0];
-      ok('search: accent-insensitive finds "map" (bản đồ)', !!hit, 'map row found=' + !!hit);
-      var allMatch = rows.every(function (r) {
-        var w = r.querySelector('.lword').textContent, m = r.querySelector('.lmean').textContent;
-        var s = fold(w + ' ' + m);
-        return s.indexOf('ban') !== -1 && s.indexOf('do') !== -1;
+    setDictLang('de');
+    ok('dict: DE selected', settings.lang === 'de');
+    $('dictQ').value = 'thema';
+    renderDict();
+    var hits = $$('#dictBody .drow');
+    ok('dict: DE search finds Thema', hits.some(function (r) { return r.querySelector('.dword').textContent.indexOf('Thema') !== -1; }), 'hits=' + hits.length);
+    next();
+  });
+
+  /* ---------- 10. language nav ---------- */
+  step(function (next) {
+    document.querySelector('.bnav [data-lang="de"]').click();
+    ok('lang: hero says Đức', $('heroLang').textContent === 'Đức', $('heroLang').textContent);
+    ok('lang: ds de3k', settings.ds === 'de3k', settings.ds);
+    showScreen('home');
+    ok('lang: only DE chip', $$('#homeChips .chip').length === 1, 'chips=' + $$('#homeChips .chip').length);
+    document.querySelector('.bnav [data-lang="en"]').click();
+    ok('lang: back to en1k', settings.ds === 'en1k', settings.ds);
+    showScreen('home');
+    ok('lang: EN has 2 chips', $$('#homeChips .chip').length === 2, 'chips=' + $$('#homeChips .chip').length);
+    next();
+  });
+
+  /* ---------- 11. data sanity ---------- */
+  step(function (next) {
+    var total = DATASETS.en1k.words.length + DATASETS.en3k.words.length + DATASETS.de3k.words.length;
+    ok('data: total words', total === 7514, 'got ' + total);
+    ok('data: mc option pools not POS-locked', (function () {
+      var s = S.en1k['mc-en'];
+      if (!s) return false;
+      var types = {};
+      s.items.slice(0, 5).forEach(function (w) { types[primaryType(w.type)] = 1; });
+      return Object.keys(types).length > 1;
+    })());
+    ok('data: every word has examples', (function () {
+      var missing = 0;
+      ['en1k', 'en3k', 'de3k'].forEach(function (k) {
+        DATASETS[k].words.forEach(function (w) { if (!w.ex || !w.ex.length) missing++; });
       });
-      ok('search: every row matches all tokens', allMatch);
-      ok('search: meta count format', /^Tìm thấy [\d.]+ \/ 1\.000 từ$/.test($('lst-meta-1k').textContent), $('lst-meta-1k').textContent);
-      next();
-    }, 400);
-  });
-
-  /* ---------- 5. clear button ---------- */
-  step(function (next) {
-    document.querySelector('[data-lstclear="list-1k"]').click();
-    setTimeout(function () {
-      ok('clear: input emptied', $('lst-q-1k').value === '');
-      ok('clear: meta back to total', $('lst-meta-1k').textContent === 'Tổng 1.000 từ', $('lst-meta-1k').textContent);
-      next();
-    }, 400);
-  });
-
-  /* ---------- 6. language switch -> de list ---------- */
-  step(function (next) {
-    setLang('de');
-    ok('lang de: tab 1k hidden', $('tabList1k').hidden === true);
-    ok('lang de: tab 3k relabeled', $('tabList3k').textContent.indexOf('Deutsch') !== -1, $('tabList3k').textContent);
-    showTab('list-3k', true);
-    waitFor(function () { return $$('#lst-body-3k .lrow').length === 3035; }, function (done) {
-      ok('list-de: renders all 3035 rows', done, 'rows=' + $$('#lst-body-3k .lrow').length);
-      ok('list-de: meta total', $('lst-meta-3k').textContent === 'Tổng 3.035 từ', $('lst-meta-3k').textContent);
-      $('lst-q-3k').value = 'thema';
-      $('lst-q-3k').dispatchEvent(new Event('input', { bubbles: true }));
-      setTimeout(function () {
-        var rows = $$('#lst-body-3k .lrow');
-        var hit = rows.filter(function (r) { return r.querySelector('.lnum').textContent === '1501'; })[0];
-        ok('list-de: search "thema" finds das Thema', !!hit, 'rows=' + rows.length);
-        next();
-      }, 400);
-    });
-  });
-
-  /* ---------- 7. switch back to en, session intact ---------- */
-  step(function (next) {
-    setLang('en');
-    ok('lang en: tab 1k visible again', $('tabList1k').hidden === false);
-    showTab('mc-en', true);
-    ok('back: mc-en restored with answer', !!S.en1k['mc-en'].answers[0]);
-    ok('back: stat wrong = 1', $('stWrong').textContent === '1', $('stWrong').textContent);
+      return missing === 0;
+    })());
     ok('runtime: no JS errors', window.__terrors.length === 0, JSON.stringify(window.__terrors.slice(0, 3)));
     next();
   });

@@ -9,6 +9,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, 'src')
 TEMPLATE = os.path.join(SRC, 'template.html')
 OUT = os.path.join(ROOT, 'index.html')
+EXDIR = os.path.join(SRC, 'data', 'ex')
 
 DATASETS = [
     ('en1k', 'en'),
@@ -39,11 +40,51 @@ def load(name):
     return words
 
 
+def load_examples(name, words):
+    path = os.path.join(EXDIR, name + '.json')
+    if not os.path.exists(path):
+        return {}
+    with io.open(path, encoding='utf-8') as f:
+        raw = json.load(f)
+    if not isinstance(raw, dict):
+        raise SystemExit('EX BAD ROOT in %s' % name)
+    by_num = {w['num']: w for w in words}
+    out = {}
+    for k, items in raw.items():
+        try:
+            num = int(k)
+        except (TypeError, ValueError):
+            raise SystemExit('EX BAD NUM in %s: %r' % (name, k))
+        if num not in by_num:
+            raise SystemExit('EX UNKNOWN NUM in %s: %s' % (name, num))
+        if not isinstance(items, list) or not items:
+            continue
+        clean = []
+        for it in items:
+            if not isinstance(it, dict):
+                raise SystemExit('EX BAD ITEM in %s num %s' % (name, num))
+            s = str(it.get('s', '')).strip()
+            t = str(it.get('t', '')).strip()
+            if not s or not t:
+                raise SystemExit('EX EMPTY in %s num %s' % (name, num))
+            clean.append({'s': s, 't': t})
+        out[num] = clean
+    return out
+
+
 def main():
     data = {}
     counts = []
+    ex_stats = []
     for name, lang in DATASETS:
         words = load(name)
+        ex = load_examples(name, words)
+        for w in words:
+            items = ex.get(w['num'])
+            if items:
+                w['ex'] = items
+        n_ex = sum(len(v) for v in ex.values())
+        ex_stats.append((name, len(ex), n_ex))
         data[name] = {'lang': lang, 'words': words}
         counts.append((name, len(words)))
     blob = json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
@@ -59,6 +100,8 @@ def main():
         f.write(html)
     for name, n in counts:
         print('%-6s %5d words' % (name, n))
+    for name, nw, ne in ex_stats:
+        print('%-6s %5d words with examples, %d sentences' % (name, nw, ne))
     print('WROTE %s (%d bytes)' % (OUT, os.path.getsize(OUT)))
 
 
