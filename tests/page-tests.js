@@ -143,6 +143,7 @@
     settings.ex = 'mc-en';
     $('wrongPractice').click();
     ok('wrong: practice screen active', (document.querySelector('.screen.active') || {}).id === 'screen-exercise');
+    ok('wrong: nav pill on wrong', $('bnav').style.getPropertyValue('--nav-i') === '4', $('bnav').style.getPropertyValue('--nav-i'));
     ok('wrong: dataset is wrong', CUR_DS === 'wrong');
     ok('wrong: questions built from bank', $$('#list-mc-en .q').length === wrong.en.length, 'q=' + $$('#list-mc-en .q').length);
     ok('wrong: chips hidden', $('exChips').hidden === true);
@@ -240,9 +241,9 @@
     ok('nav: no external assets', $$('script[src],link[href^="http"]').length === 0);
 
     showScreen('wrong');
-    ok('nav: pill on wrong', nav.style.getPropertyValue('--nav-i') === '3', nav.style.getPropertyValue('--nav-i'));
+    ok('nav: pill on wrong', nav.style.getPropertyValue('--nav-i') === '4', nav.style.getPropertyValue('--nav-i'));
     showScreen('dict');
-    ok('nav: pill on dict', nav.style.getPropertyValue('--nav-i') === '4', nav.style.getPropertyValue('--nav-i'));
+    ok('nav: pill on dict', nav.style.getPropertyValue('--nav-i') === '3', nav.style.getPropertyValue('--nav-i'));
     showScreen('home');
     ok('nav: pill back home', nav.style.getPropertyValue('--nav-i') === '2', nav.style.getPropertyValue('--nav-i'));
 

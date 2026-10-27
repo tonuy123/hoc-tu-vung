@@ -246,7 +246,12 @@
   .bnav .lang{font-size:12.5px;font-weight:800;letter-spacing:.5px;color:rgba(255,255,255,.55)}
   .bnav .lang.on{color:#fff}
   .bnav .ico{position:relative;display:inline-flex}
-  .bnav .badge{position:absolute;top:-4px;right:-6px;min-width:20px;height:20px;padding:0 5px;
+  .bnav .avatar-img{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#2b3f63,#17243b);border:1px solid rgba(255,255,255,.20);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.08);overflow:hidden}
+  .bnav .avatar-img svg{width:17px;height:17px;color:#dbe7fb}
+  .bnav-item.active .avatar-img{box-shadow:0 0 0 1px rgba(255,255,255,.35),0 0 12px rgba(255,230,150,.45)}
+  .bnav .badge{position:absolute;bottom:-4px;right:-6px;min-width:20px;height:20px;padding:0 5px;
     border-radius:999px;background:#ff2d55;color:#fff;font-size:10px;font-weight:800;
     line-height:16px;text-align:center;border:2px solid #1e1e1e;
     animation:softPulse 2s infinite ease-in-out}
@@ -437,11 +442,14 @@
   <button type="button" class="bnav-item nav" data-nav="home" aria-label="Trang chủ" aria-current="page">
     <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2 2.9 9.7a1.1 1.1 0 0 0 1.4 1.7l1-.8V21a1 1 0 0 0 1 1h4.6v-5.8h2.2V22h4.6a1 1 0 0 0 1-1V10.6l1 .8a1.1 1.1 0 0 0 1.4-1.7L12 2.2z"/></svg></span>
   </button>
-  <button type="button" class="bnav-item nav" data-nav="wrong" aria-label="Từ sai">
-    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.6s-8-4.9-8-10.4A4.6 4.6 0 0 1 12 7.5a4.6 4.6 0 0 1 8 2.7c0 5.5-8 10.4-8 10.4z"/></svg><span class="badge" id="navBadge" aria-hidden="true" hidden>0</span></span>
-  </button>
   <button type="button" class="bnav-item nav" data-nav="dict" aria-label="Từ điển">
     <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></span>
+  </button>
+  <button type="button" class="bnav-item nav" data-nav="wrong" aria-label="Từ sai">
+    <span class="ico">
+      <span class="avatar-img" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.2"/><path d="M5.6 20c.7-3.1 3.2-5 6.4-5s5.7 1.9 6.4 5"/></svg></span>
+      <span class="badge" id="navBadge" aria-hidden="true" hidden>0</span>
+    </span>
   </button>
 </nav>
 
@@ -681,8 +689,8 @@ function updateWrongUI(){
 
 /* ================= text / chrome ================= */
 function navIndex(){
-  if (settings.screen === 'dict') return 4;
-  if (settings.screen === 'wrong' || (settings.screen === 'exercise' && CUR_DS === 'wrong')) return 3;
+  if (settings.screen === 'dict') return 3;
+  if (settings.screen === 'wrong' || (settings.screen === 'exercise' && CUR_DS === 'wrong')) return 4;
   return 2;
 }
 function updateNav(){
@@ -694,7 +702,7 @@ function updateNav(){
   const nav = $('bnav');
   if (nav) nav.style.setProperty('--nav-i', String(idx));
 
-  const activeName = idx === 4 ? 'dict' : idx === 3 ? 'wrong' : 'home';
+  const activeName = idx === 4 ? 'wrong' : idx === 3 ? 'dict' : 'home';
   $$('.bnav .nav').forEach(function(b){
     const on = b.dataset.nav === activeName;
     b.classList.toggle('active', on);

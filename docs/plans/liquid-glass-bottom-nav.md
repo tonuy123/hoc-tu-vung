@@ -1,7 +1,7 @@
 # Liquid Glass Bottom Navigation — Implementation Plan
 
 **Status:** implemented locally (2026-10-27) — pending push  
-**Final pass:** exact Superdesign v6 — neutral glass `rgba(30,30,30,.45)`, blur 10px, bottom 34px, EN/DE text without a dot, heart = Từ sai, magnifier = Từ điển, 82/82 tests. The "App port" suggestions below were the first draft and are superseded by this final pass.  
+**Final pass:** exact Superdesign v6 — neutral glass `rgba(30,30,30,.45)`, blur 10px, bottom 34px, EN/DE text without a dot, magnifier = Từ điển, circular avatar = Từ sai (badge count), 83/83 tests. The "App port" suggestions below were the first draft and are superseded by this final pass.  
 **Target:** `hoc-tu-vung` single-file app (`src/template.html` → `index.html`)  
 **Source:** Superdesign project `5369c3ed-1fde-4aa6-8429-9c5e0af21562`, draft `72a309a0-ac54-4b3e-b7cc-730f966110ba`, version **v6**  
 **Preview:** https://p.superdesign.dev/draft/72a309a0-ac54-4b3e-b7cc-730f966110ba  
@@ -39,12 +39,12 @@ The app has 5 tabs but not the demo's home/play/heart/search/profile:
 | 0 | `EN` language | text monogram, 12.5px | small blue glow dot below; no pill |
 | 1 | `DE` language | text monogram, 12.5px | small blue glow dot below; no pill |
 | 2 | Home | house SVG | **pill** |
-| 3 | Từ sai | bookmark SVG + count badge | **pill**; red pulse badge |
-| 4 | Từ điển | book SVG | **pill** |
+| 3 | Từ điển | magnifier SVG | **pill** |
+| 4 | Từ sai | circular avatar + count badge | **pill**; red pulse badge |
 
 - The pill represents the **screen**, not the language. It moves only between slots 2/3/4.
 - Tapping `EN`/`DE` switches language and updates the dot; the pill stays on the current screen.
-- During **wrong-word practice** (`CUR_DS === 'wrong'` while `settings.screen === 'exercise'`), highlight slot 3 (`Từ sai`) instead of Home. This is more truthful than the current "Home for every exercise" behavior and matches the nav semantics.
+- During **wrong-word practice** (`CUR_DS === 'wrong'` while `settings.screen === 'exercise'`), highlight slot 4 (`Từ sai` avatar) instead of Home. This is more truthful than the current "Home for every exercise" behavior and matches the nav semantics.
 - Normal exercise screens (1k/3k questions) keep the pill on Home.
 
 ## 3. Current code map
