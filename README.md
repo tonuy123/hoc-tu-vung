@@ -10,7 +10,7 @@ App học từ vựng **1 file HTML duy nhất** — chạy offline, không serv
 
 - **7.514 từ**: 1.000 từ Anh cơ bản · 3.479 từ Anh thông dụng · 3.035 từ Đức (có mạo từ der/die/das, số nhiều)
 - **Bottom navigation 5 mục đúng bản gốc**: Home · Play · Heart (Từ sai) · Search (Từ điển) · Avatar (Hồ sơ) — liquid glass (blur 10px, saturate 180%), pill trượt 20% với glow, active icon glow, badge đỏ pulse, bar 68px/380px đặt cách đáy 34px.
-- **Hồ sơ (avatar)**: hero light-glass, avatar tròn **đổi ảnh từ máy** (resize 256px, lưu localStorage, nav avatar sync ngay), stats, tags bộ từ, ngôn ngữ EN/DE, số câu/phiên, xóa tiến độ.
+- **Hồ sơ (avatar)**: glass **theo theme thiết bị** — máy tối → navy/green + lime, máy sáng → light glass; avatar tròn **đổi ảnh từ máy** (resize 256px, lưu localStorage, nav avatar sync ngay), stats, tags bộ từ, ngôn ngữ EN/DE, số câu/phiên, xóa tiến độ.
 - **Home dashboard (fintech style)**: top bar avatar + lời chào + chuông từ sai; hero tổng câu/độ chính xác + đổi bộ từ; 4 quick action bài tập; chart tuần/tháng theo hoạt động ngày; danh sách hoạt động gần đây + sheet xem tất cả. Avatar đồng bộ từ Hồ sơ.
 - **4 dạng bài tập**: Chọn nghĩa · Viết nghĩa · Viết từ · Chọn từ.
 - **Mục "Từ sai"**: màn danh sách riêng (search, phát âm) + nút Ôn tập; làm sai tự lưu theo ngôn ngữ, ôn lại làm đúng thì tự xóa (tối đa 1.000 từ).
@@ -68,7 +68,7 @@ Sửa UI/logic: sửa `src/template.html` → rebuild → test.
 
 ## Test suite
 
-`tests/page-tests.js` chạy trong trang (**133 assertions**): boot shell/nav/home, mở bài, 4 option unique, bỏ type chip, lưu từ sai + badge, thứ tự đáp án ổn định, giữ draft khi đổi tab, reveal tính sai + vào bank + ví dụ, màn Từ sai + practice + back, dictionary A-Z EN/DE, search không dấu, ẩn A-Z khi search, nhóm đồng nghĩa, sheet chi tiết có 3 ví dụ, đổi ngôn ngữ, liquid glass nav (pill index, 5 slot đều, pill khớp slot, icon glow, badge pulse, aria, không external asset), profile/avatar (light mode, stats, tags, set/clear ảnh + nav/home sync), fintech home (hero, 4 quick actions, chart tuần/tháng, peak bar, recent + sheet, dataset cycle, bell), data sanity, no JS error. `tests/run-cdp.js` kiểm tra thêm mobile viewport 390×844 (home + dictionary không tràn ngang), screenshot `report/mobile-dict.png`, và noscript banner.
+`tests/page-tests.js` chạy trong trang (**135 assertions**): boot shell/nav/home, mở bài, 4 option unique, bỏ type chip, lưu từ sai + badge, thứ tự đáp án ổn định, giữ draft khi đổi tab, reveal tính sai + vào bank + ví dụ, màn Từ sai + practice + back, dictionary A-Z EN/DE, search không dấu, ẩn A-Z khi search, nhóm đồng nghĩa, sheet chi tiết có 3 ví dụ, đổi ngôn ngữ, liquid glass nav (pill index, 5 slot đều, pill khớp slot, icon glow, badge pulse, aria, không external asset), profile/avatar (theme-aware theo thiết bị, stats, tags, set/clear ảnh + nav/home sync), fintech home (hero, 4 quick actions, chart tuần/tháng, peak bar, recent + sheet, dataset cycle, bell), data sanity, no JS error. `tests/run-cdp.js` kiểm tra thêm mobile viewport 390×844 (home + dictionary không tràn ngang), screenshot `report/mobile-dict.png`, và noscript banner.
 
 ## Data / audit
 
@@ -77,7 +77,7 @@ Sửa UI/logic: sửa `src/template.html` → rebuild → test.
 - `report/data-cleanup.md` — các fix data đã áp (chuẩn hóa type, xóa 2 entry trùng `3055`/`3256`, sửa phon `1122`/`3047`).
 - `report/nghia-review.md` — changelog 600 fix nghĩa cũ (52 batch).
 - `report/fixes/*.json` — fix gốc từng batch nghĩa (giữ để audit).
-- `report/qa-home.png`, `qa-exercise.png`, `qa-dict-list.png`, `qa-dict-detail.png`, `qa-settings.png`, `mobile-dict.png` — screenshot QA.
+- `report/qa-home.png`, `qa-exercise.png`, `qa-dict-list.png`, `qa-dict-detail.png`, `qa-settings-dark.png`, `qa-settings-light.png`, `mobile-dict.png` — screenshot QA.
 
 ## Ghi chú
 

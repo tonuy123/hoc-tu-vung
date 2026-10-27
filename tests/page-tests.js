@@ -236,7 +236,7 @@
   /* ---------- 11. profile + avatar ---------- */
   step(function (next) {
     showScreen('settings');
-    ok('profile: light mode on', document.body.classList.contains('profile-mode'));
+    ok('profile: profile mode on', document.body.classList.contains('profile-mode'));
     ok('profile: screen active', (document.querySelector('.screen.active') || {}).id === 'screen-settings');
     ok('profile: hero + avatar', !!$('profileHero') && !!$('profileAvatarImg'));
     ok('profile: stats rendered', $('setAnswered').textContent === fmt(stats.answered));
@@ -245,6 +245,10 @@
     ok('profile: file input image', $('avatarFile').accept.indexOf('image/') !== -1);
     ok('profile: size select sync', $('setSizeSel').value === String(settings.size));
     ok('profile: settings rows', !!document.querySelector('[data-nav="wrong"]') && !!document.querySelector('[data-nav="dict"]'));
+    var darkScheme = matchMedia('(prefers-color-scheme: dark)').matches;
+    var pfInk = getComputedStyle(document.querySelector('.profile-sec-title')).color;
+    ok('profile: follows device theme', pfInk === (darkScheme ? 'rgb(242, 246, 255)' : 'rgb(15, 23, 42)'), pfInk);
+    ok('profile: color-scheme matches theme', getComputedStyle(document.body).colorScheme === (darkScheme ? 'dark' : 'light'), getComputedStyle(document.body).colorScheme);
 
     document.querySelector('[data-tag-lang="de"]').click();
     ok('profile: tag switches language', settings.lang === 'de');
@@ -270,7 +274,7 @@
     ok('profile: nav avatar has-photo off', !document.querySelector('.bnav .avatar-img').classList.contains('has-photo'));
 
     showScreen('home');
-    ok('profile: light mode off', !document.body.classList.contains('profile-mode'));
+    ok('profile: profile mode off', !document.body.classList.contains('profile-mode'));
     next();
   });
 
