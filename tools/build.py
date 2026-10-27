@@ -16,6 +16,7 @@ DATASETS = [
     ('en3k', 'en'),
     ('de3k', 'de'),
 ]
+GRAMMAR_PATH = os.path.join(SRC, 'data', 'grammar.json')
 
 
 def load(name):
@@ -72,6 +73,30 @@ def load_examples(name, words):
     return out
 
 
+def load_grammar():
+    with io.open(GRAMMAR_PATH, encoding='utf-8') as f:
+        g = json.load(f)
+    topics = g.get('topics')
+    if not isinstance(topics, list) or not topics:
+        raise SystemExit('GRAMMAR: no topics')
+    ids = [t.get('id') for t in topics]
+    if len(ids) != len(set(ids)):
+        raise SystemExit('GRAMMAR: duplicate ids')
+    times = (g.get('lexicon') or {}).get('times') or {}
+    for t in topics:
+        for k in ('id', 'cat', 'level', 'title', 'vi', 'formula', 'use'):
+            if not str(t.get(k, '')).strip():
+                raise SystemExit('GRAMMAR: missing %s in %s' % (k, t.get('id')))
+        if not t.get('examples') or not t.get('mistakes'):
+            raise SystemExit('GRAMMAR: examples/mistakes missing in %s' % t['id'])
+        gen = t.get('gen')
+        if gen:
+            tense = gen.get('tense')
+            if tense not in times:
+                raise SystemExit('GRAMMAR: bad gen tense %r in %s' % (tense, t['id']))
+    return g
+
+
 def main():
     data = {}
     counts = []
@@ -90,18 +115,26 @@ def main():
     blob = json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     if '</script' in blob.lower():
         raise SystemExit('UNSAFE: </script found in data blob')
+    grammar = load_grammar()
+    gblob = json.dumps(grammar, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    if '</script' in gblob.lower():
+        raise SystemExit('UNSAFE: </script found in grammar blob')
     with io.open(TEMPLATE, encoding='utf-8') as f:
         tpl = f.read()
     if '__DATA_JSON__' not in tpl:
         raise SystemExit('TEMPLATE PLACEHOLDER MISSING')
-    html = tpl.replace('__DATA_JSON__', blob)
+    if '__GRAMMAR_JSON__' not in tpl:
+        raise SystemExit('TEMPLATE GRAMMAR PLACEHOLDER MISSING')
+    html = tpl.replace('__DATA_JSON__', blob).replace('__GRAMMAR_JSON__', gblob)
     assert '__DATA_JSON__' not in html
+    assert '__GRAMMAR_JSON__' not in html
     with io.open(OUT, 'w', encoding='utf-8', newline='\n') as f:
         f.write(html)
     for name, n in counts:
         print('%-6s %5d words' % (name, n))
     for name, nw, ne in ex_stats:
         print('%-6s %5d words with examples, %d sentences' % (name, nw, ne))
+    print('grammar %d topics, %d with 200k bank' % (len(grammar['topics']), sum(1 for t in grammar['topics'] if t.get('gen'))))
     print('WROTE %s (%d bytes)' % (OUT, os.path.getsize(OUT)))
 
 

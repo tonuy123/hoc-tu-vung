@@ -188,6 +188,33 @@
   .dmore{color:var(--dim);font-size:12px;text-align:center;padding:6px}
   .lempty{background:var(--panel);border:1px dashed var(--line2);border-radius:var(--radius);padding:24px 16px;text-align:center;color:var(--muted)}
 
+  /* ---------- grammar dictionary ---------- */
+  .dictmode{margin-bottom:10px}
+  .gcats{justify-content:flex-start;margin:2px 0 10px}
+  .grow{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);margin-bottom:6px;cursor:pointer;transition:border-color .15s}
+  .grow:hover{border-color:var(--line2)}
+  .gmain{flex:1;min-width:0}
+  .gtop{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .gtitle{font-weight:800;color:#dbe7fb;font-size:14.5px}
+  .glvl{font-size:9.5px;font-weight:800;letter-spacing:.05em;border-radius:999px;padding:1px 7px;border:1px solid var(--line2);color:#9db4d6;background:#182742}
+  .glvl.a1,.glvl.a2{color:#7dd3fc;border-color:#164e63;background:#082f49}
+  .glvl.b1,.glvl.b2{color:#c4b5fd;border-color:#4c1d95;background:#2e1065}
+  .glvl.c1{color:#fda4af;border-color:#881337;background:#4c0519}
+  .gvi{color:var(--text);font-size:12.5px;margin-top:2px}
+  .gformula{font-family:Consolas,'Cascadia Mono',monospace;color:var(--dim);font-size:10.5px;margin-top:3px;overflow-wrap:anywhere}
+  .gbank{font-size:9.5px;color:#5eead4;border:1px solid #115e59;background:#042f2e;border-radius:999px;padding:1px 7px;white-space:nowrap}
+  .gchev{color:var(--dim);font-size:16px;flex:0 0 auto}
+  .sheet-gformula{margin-top:10px;padding:10px 12px;border:1px solid var(--line2);border-radius:10px;background:#0a1526;font-family:Consolas,'Cascadia Mono',monospace;font-size:12px;color:#7dd3fc;overflow-wrap:anywhere}
+  .sheet-guse{color:var(--text);font-size:13.5px;line-height:1.55;margin-top:8px}
+  .sheet-gsig{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+  .sheet-gsig span{font-size:10.5px;font-weight:700;color:#9db4d6;background:#182742;border:1px solid var(--line2);border-radius:999px;padding:2px 8px}
+  .sheet-gmist{margin-top:8px;border-left:3px solid #b45309;padding:8px 10px;background:#1c1206;border-radius:0 8px 8px 0;font-size:12.5px;line-height:1.55}
+  .sheet-gmist .bad{color:#fca5a5;text-decoration:line-through}
+  .sheet-gmist .good{color:#86efac}
+  .sheet-gmist .why{color:var(--muted);margin-top:3px}
+  .sheet-gbank{margin-top:12px;padding:10px 12px;border:1px dashed #115e59;border-radius:10px;color:#5eead4;font-size:12px;background:#042f2e;line-height:1.5}
+  .sheet-gexam{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.5}
+
   /* ---------- sheet ---------- */
   .sheet-wrap{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center}
   .sheet-wrap[hidden]{display:none}
@@ -692,6 +719,10 @@
           <div class="sec-sub" id="dictSub"></div>
         </div>
       </div>
+      <div class="seg dictmode" id="dictModeSeg" role="tablist" aria-label="Chế độ từ điển">
+        <button type="button" class="seg-btn active" data-dict-mode="words" role="tab">Từ vựng</button>
+        <button type="button" class="seg-btn" data-dict-mode="grammar" role="tab">Ngữ pháp</button>
+      </div>
       <div class="seg" id="dictLangSeg">
         <button type="button" class="seg-btn" data-dict-lang="en">English</button>
         <button type="button" class="seg-btn" data-dict-lang="de">Deutsch</button>
@@ -702,6 +733,7 @@
       </div>
       <div class="lstmeta" id="dictMeta"></div>
       <div class="azchips" id="dictAZ"></div>
+      <div class="chips gcats" id="dictCats" hidden></div>
       <div id="dictBody"></div>
     </section>
 
@@ -843,6 +875,9 @@
 const DATASETS = __DATA_JSON__;
 </script>
 <script>
+const GRAMMAR = __GRAMMAR_JSON__;
+</script>
+<script>
 'use strict';
 window.addEventListener('error', function(ev){
   try {
@@ -915,7 +950,7 @@ const LS = {
 };
 
 /* ================= settings / global state ================= */
-const DEF_SETTINGS = { lang: 'en', ds: 'en1k', size: 50, screen: 'home', ex: 'mc-en', dletter: 'A', chart: 'week' };
+const DEF_SETTINGS = { lang: 'en', ds: 'en1k', size: 50, screen: 'home', ex: 'mc-en', dletter: 'A', chart: 'week', dictMode: 'words', gcat: 'all' };
 const STORED_SET = LS.get('v4t:set', {}) || {};
 let settings = Object.assign({}, DEF_SETTINGS, STORED_SET);
 (function migrateSettings(){
@@ -934,6 +969,8 @@ if (DATASETS[settings.ds] && DATASETS[settings.ds].lang !== settings.lang) setti
 if (SIZES.indexOf(+settings.size) === -1) settings.size = 50;
 else settings.size = +settings.size;
 if (settings.chart !== 'month') settings.chart = 'week';
+if (settings.dictMode !== 'grammar') settings.dictMode = 'words';
+if (!settings.gcat) settings.gcat = 'all';
 if (TABS.indexOf(settings.ex) === -1) settings.ex = 'mc-en';
 delete settings.dlang;
 if (LETTERS.indexOf(settings.dletter) === -1) settings.dletter = 'A';
@@ -1369,6 +1406,154 @@ function renderDone(tab){
   el.hidden = false;
 }
 
+/* ================= grammar bank ================= */
+const GRAMMAR_TOPICS = GRAMMAR.topics || [];
+const GRAMMAR_MAP = {};
+const GRAMMAR_CATS = [];
+GRAMMAR_TOPICS.forEach(function(t){
+  GRAMMAR_MAP[t.id] = t;
+  if (GRAMMAR_CATS.indexOf(t.cat) === -1) GRAMMAR_CATS.push(t.cat);
+});
+const GRAMMAR_BANK = GRAMMAR.bankPerTopic || 200000;
+const GRAMMAR_TEMPLATES = [
+  '{S} {AUX} {V} {O} {ADV} {T}',
+  '{S} {NEG} {VQ} {O} {ADV} {T}',
+  '{Q} {S} {Q2} {VQ} {O} {ADV} {T}?',
+  '{T}, {S} {AUX} {V} {O} {ADV}'
+];
+function beFor(p){ return p === '1s' ? 'am' : (p === '3s' ? 'is' : 'are'); }
+function haveFor(p){ return p === '3s' ? 'has' : 'have'; }
+function wasFor(p){ return (p === '1s' || p === '3s') ? 'was' : 'were'; }
+const TENSE_PROFILE = {
+  'present-simple': {
+    aux: function(){ return ''; },
+    v: function(s, vb){ return s.p === '3s' ? vb.s : vb.b; },
+    vq: function(s, vb){ return vb.b; },
+    neg: function(s){ return s.p === '3s' ? 'does not' : 'do not'; },
+    q: function(s){ return s.p === '3s' ? 'Does' : 'Do'; }
+  },
+  'present-continuous': {
+    aux: function(s){ return beFor(s.p); },
+    v: function(s, vb){ return vb.ing; },
+    neg: function(s){ return beFor(s.p) + ' not'; },
+    q: function(s){ return beFor(s.p).charAt(0).toUpperCase() + beFor(s.p).slice(1); }
+  },
+  'present-perfect': {
+    aux: function(s){ return haveFor(s.p); },
+    v: function(s, vb){ return vb.pp; },
+    neg: function(s){ return haveFor(s.p) + ' not'; },
+    q: function(s){ return haveFor(s.p).charAt(0).toUpperCase() + haveFor(s.p).slice(1); }
+  },
+  'present-perfect-continuous': {
+    aux: function(s){ return haveFor(s.p) + ' been'; },
+    v: function(s, vb){ return vb.ing; },
+    neg: function(s){ return haveFor(s.p) + ' not been'; },
+    q: function(s){ return haveFor(s.p).charAt(0).toUpperCase() + haveFor(s.p).slice(1); },
+    q2: function(){ return 'been'; }
+  },
+  'past-simple': {
+    aux: function(){ return ''; },
+    v: function(s, vb){ return vb.past; },
+    vq: function(s, vb){ return vb.b; },
+    neg: function(){ return 'did not'; },
+    q: function(){ return 'Did'; }
+  },
+  'past-continuous': {
+    aux: function(s){ return wasFor(s.p); },
+    v: function(s, vb){ return vb.ing; },
+    neg: function(s){ return wasFor(s.p) + ' not'; },
+    q: function(s){ return wasFor(s.p).charAt(0).toUpperCase() + wasFor(s.p).slice(1); }
+  },
+  'past-perfect': {
+    aux: function(){ return 'had'; },
+    v: function(s, vb){ return vb.pp; },
+    neg: function(){ return 'had not'; },
+    q: function(){ return 'Had'; }
+  },
+  'past-perfect-continuous': {
+    aux: function(){ return 'had been'; },
+    v: function(s, vb){ return vb.ing; },
+    neg: function(){ return 'had not been'; },
+    q: function(){ return 'Had'; },
+    q2: function(){ return 'been'; }
+  },
+  'future-simple': {
+    aux: function(){ return 'will'; },
+    v: function(s, vb){ return vb.b; },
+    neg: function(){ return 'will not'; },
+    q: function(){ return 'Will'; }
+  },
+  'future-continuous': {
+    aux: function(){ return 'will be'; },
+    v: function(s, vb){ return vb.ing; },
+    neg: function(){ return 'will not be'; },
+    q: function(){ return 'Will'; },
+    q2: function(){ return 'be'; }
+  },
+  'future-perfect': {
+    aux: function(){ return 'will have'; },
+    v: function(s, vb){ return vb.pp; },
+    neg: function(){ return 'will not have'; },
+    q: function(){ return 'Will'; },
+    q2: function(){ return 'have'; }
+  },
+  'future-perfect-continuous': {
+    aux: function(){ return 'will have been'; },
+    v: function(s, vb){ return vb.ing; },
+    neg: function(){ return 'will not have been'; },
+    q: function(){ return 'Will'; },
+    q2: function(){ return 'have been'; }
+  }
+};
+function grammarCapacity(topicId){
+  const t = GRAMMAR_MAP[topicId];
+  return t && t.gen && TENSE_PROFILE[t.gen.tense] ? GRAMMAR_BANK : 0;
+}
+function grammarItem(topicId, n){
+  const t = GRAMMAR_MAP[topicId];
+  if (!t || !t.gen) return null;
+  const p = TENSE_PROFILE[t.gen.tense];
+  if (!p) return null;
+  const L = GRAMMAR.lexicon;
+  const S = L.subjects, V = L.verbs, A = L.adverbs, T = L.times[t.gen.tense];
+  if (!S || !V || !A || !T) return null;
+  const idx = Math.max(0, Math.min(GRAMMAR_BANK - 1, Math.floor(Number(n) || 0)));
+  let x = idx;
+  const pi = x % GRAMMAR_TEMPLATES.length; x = Math.floor(x / GRAMMAR_TEMPLATES.length);
+  const ai = x % A.length; x = Math.floor(x / A.length);
+  const ti = x % T.length; x = Math.floor(x / T.length);
+  const oi = x % 2; x = Math.floor(x / 2);
+  const vi = x % V.length; x = Math.floor(x / V.length);
+  const si = x % S.length;
+  const subj = S[si], verb = V[vi], time = T[ti], adv = A[ai], obj = verb.obj[oi];
+  const map = {
+    S: subj.t, AUX: p.aux(subj), V: p.v(subj, verb), VQ: p.vq ? p.vq(subj, verb) : p.v(subj, verb), O: obj,
+    ADV: adv, T: time, NEG: p.neg(subj), Q: p.q(subj), Q2: p.q2 ? p.q2(subj) : ''
+  };
+  let en = GRAMMAR_TEMPLATES[pi].replace(/\{(\w+)\}/g, function(m, k){
+    return map[k] == null ? m : map[k];
+  });
+  en = en.replace(/\s+/g, ' ').replace(/\s+([?.])/g, '$1').trim();
+  en = en.charAt(0).toUpperCase() + en.slice(1);
+  const tokens = en.split(' ');
+  let seed = idx + 1;
+  for (let i = 0; i < topicId.length; i++) seed = (seed * 31 + topicId.charCodeAt(i)) >>> 0;
+  const rng = mulberry32(seed);
+  return {
+    id: topicId + ':' + idx,
+    topic: topicId,
+    level: t.level,
+    title: t.title,
+    en: en,
+    tokens: shuffleRng(tokens, rng),
+    answer: en,
+    hint: t.formula
+  };
+}
+function grammarBankTotal(){
+  return GRAMMAR_TOPICS.reduce(function(n, t){ return n + grammarCapacity(t.id); }, 0);
+}
+
 /* ================= dictionary ================= */
 const DICT_CACHE = {};
 const DICT_MAP = {};
@@ -1449,10 +1634,21 @@ function dictRow(e){
     '</div>';
 }
 function renderDict(){
+  const mode = settings.dictMode === 'grammar' ? 'grammar' : 'words';
+  $$('#dictModeSeg .seg-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.dictMode === mode); });
+  $('dictLangSeg').hidden = mode === 'grammar';
+  const q = $('dictQ').value.trim();
+  if (mode === 'grammar'){
+    $('dictQ').placeholder = 'Tìm ngữ pháp, công thức, ví dụ…';
+    renderGrammar(q);
+    return;
+  }
+  $('dictQ').placeholder = 'Tìm từ hoặc nghĩa tiếng Việt…';
+  $('dictCats').hidden = true;
+  $('dictCats').innerHTML = '';
   const lang = settings.lang;
   $$('#dictLangSeg .seg-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.dictLang === lang); });
   const arr = dictArr(lang);
-  const q = $('dictQ').value.trim();
   $('dictSub').textContent = (lang === 'de' ? 'Deutsch' : 'English') + ' · ' + fmt(arr.length) + ' từ · A-Z';
   if (q){ renderDictSearch(lang, q); return; }
   const groups = {};
@@ -1517,6 +1713,85 @@ function renderDictSearch(lang, q){
   }
   $('dictMeta').textContent = 'Tìm thấy ' + fmt(shown) + ' kết quả';
   $('dictBody').innerHTML = html;
+}
+function grammarHaystack(t){
+  const ex = (t.examples || []).map(function(x){ return (x.en || '') + ' ' + (x.vi || ''); }).join(' ');
+  const mis = (t.mistakes || []).map(function(x){ return (x.wrong || '') + ' ' + (x.right || '') + ' ' + (x.why || ''); }).join(' ');
+  return fold([t.title, t.vi, t.formula, t.use, t.level, t.cat, (t.signals || []).join(' '), ex, mis, t.exam].join(' '));
+}
+function grammarRow(t){
+  const cap = grammarCapacity(t.id);
+  return '<div class="grow" data-gkey="' + esc(t.id) + '" role="button" tabindex="0">' +
+    '<div class="gmain"><div class="gtop">' +
+      '<span class="gtitle">' + esc(t.title) + '</span>' +
+      '<span class="glvl ' + esc(String(t.level).toLowerCase()) + '">' + esc(t.level) + '</span>' +
+      (cap ? '<span class="gbank">' + fmt(cap) + ' câu</span>' : '') +
+    '</div>' +
+    '<div class="gvi">' + esc(t.vi) + '</div>' +
+    '<div class="gformula">' + esc(t.formula) + '</div></div>' +
+    '<div class="gchev" aria-hidden="true">›</div></div>';
+}
+function renderGrammar(q){
+  if (GRAMMAR_CATS.indexOf(settings.gcat) === -1) settings.gcat = 'all';
+  const chips = ['all'].concat(GRAMMAR_CATS);
+  $('dictCats').hidden = false;
+  $('dictCats').innerHTML = chips.map(function(c){
+    return '<button type="button" class="chip' + (settings.gcat === c ? ' active' : '') + '" data-gcat="' + esc(c) + '">' +
+      esc(c === 'all' ? 'Tất cả' : c) + '</button>';
+  }).join('');
+  $('dictAZ').hidden = true;
+  const tokens = fold(q).split(/\s+/).filter(Boolean);
+  const items = GRAMMAR_TOPICS.filter(function(t){
+    if (settings.gcat !== 'all' && t.cat !== settings.gcat) return false;
+    if (!tokens.length) return true;
+    const hay = grammarHaystack(t);
+    return tokens.every(function(tok){ return hay.indexOf(tok) !== -1; });
+  });
+  $('dictSub').textContent = 'English · ' + fmt(GRAMMAR_TOPICS.length) + ' chuyên đề · ' + fmt(grammarBankTotal()) + ' câu luyện tập';
+  if (!items.length){
+    $('dictMeta').textContent = 'Không tìm thấy';
+    $('dictBody').innerHTML = '<div class="lempty">Không có chuyên đề nào khớp “<b>' + esc(q) + '</b>”.</div>';
+    return;
+  }
+  $('dictMeta').textContent = fmt(items.length) + ' chuyên đề' + (tokens.length ? ' · khớp “' + q + '”' : '');
+  $('dictBody').innerHTML = items.map(grammarRow).join('');
+}
+function openGrammar(id){
+  const t = GRAMMAR_MAP[id];
+  if (!t) return;
+  const cap = grammarCapacity(id);
+  const examples = (t.examples || []).length
+    ? '<ol class="exlist">' + t.examples.slice(0, 3).map(function(x){
+        return '<li><div class="ex-s">' + esc(x.en) + '</div><div class="ex-t">' + esc(x.vi) + '</div></li>';
+      }).join('') + '</ol>'
+    : '<div class="ex-none">Chưa có ví dụ.</div>';
+  const signals = (t.signals || []).length
+    ? '<div class="sheet-sec">Dấu hiệu nhận biết</div><div class="sheet-gsig">' +
+      t.signals.map(function(s){ return '<span>' + esc(s) + '</span>'; }).join('') + '</div>'
+    : '';
+  const mistakes = (t.mistakes || []).length
+    ? '<div class="sheet-sec">Lỗi thường gặp</div>' + t.mistakes.slice(0, 3).map(function(m){
+        return '<div class="sheet-gmist"><div class="bad">' + esc(m.wrong) + '</div>' +
+          '<div class="good">✓ ' + esc(m.right) + '</div>' +
+          '<div class="why">' + esc(m.why) + '</div></div>';
+      }).join('')
+    : '';
+  const bank = cap
+    ? '<div class="sheet-gbank">🎯 Ngân hàng ' + fmt(cap) + ' câu cho thì này — sẵn sàng cho bài tập sắp xếp từ và chia thì.</div>'
+    : '';
+  $('sheetBody').innerHTML =
+    '<div class="sheet-head"><div class="sheet-word">' + esc(t.title) + '</div>' +
+      '<span class="glvl ' + esc(String(t.level).toLowerCase()) + '">' + esc(t.level) + '</span></div>' +
+    '<div class="sheet-mean">' + esc(t.vi) + '</div>' +
+    '<div class="sheet-gformula">' + esc(t.formula) + '</div>' +
+    '<div class="sheet-guse">' + esc(t.use) + '</div>' +
+    signals +
+    '<div class="sheet-sec">Ví dụ</div>' + examples +
+    mistakes + bank +
+    (t.exam ? '<div class="sheet-sec">Thi cử</div><div class="sheet-gexam">' + esc(t.exam) + '</div>' : '') +
+    '<div class="sheet-actions"><button type="button" class="btn ghost" data-sheet-close>Đóng</button></div>';
+  $('sheetWrap').hidden = false;
+  document.body.style.overflow = 'hidden';
 }
 function openDetail(key){
   const lang = settings.lang;
@@ -1918,6 +2193,20 @@ function setDictLang(lang){
   LS.set('v4t:set', settings);
   renderDict();
 }
+function setDictMode(mode){
+  if (mode !== 'words' && mode !== 'grammar') return;
+  if (settings.dictMode === mode) return;
+  settings.dictMode = mode;
+  $('dictQ').value = '';
+  LS.set('v4t:set', settings);
+  renderDict();
+}
+function setGrammarCat(cat){
+  if (cat !== 'all' && GRAMMAR_CATS.indexOf(cat) === -1) return;
+  settings.gcat = cat;
+  LS.set('v4t:set', settings);
+  renderGrammar($('dictQ').value.trim());
+}
 function setDictLetter(L){
   if (LETTERS.indexOf(L) === -1) return;
   settings.dletter = L;
@@ -2125,6 +2414,9 @@ document.addEventListener('click', function(e){
   if ((el = hit('[data-back]'))){ backFromExercise(); return; }
   if ((el = hit('[data-wrong-practice]'))){ practiceWrong(); return; }
   if ((el = hit('[data-dict-lang]'))){ setDictLang(el.dataset.dictLang); return; }
+  if ((el = hit('[data-dict-mode]'))){ setDictMode(el.dataset.dictMode); return; }
+  if ((el = hit('[data-gcat]'))){ setGrammarCat(el.dataset.gcat); return; }
+  if ((el = hit('[data-gkey]'))){ openGrammar(el.dataset.gkey); return; }
   if ((el = hit('[data-az]'))){ setDictLetter(el.dataset.az); return; }
   if ((el = hit('[data-dict-clear]'))){
     $('dictQ').value = '';
@@ -2195,6 +2487,7 @@ document.addEventListener('keydown', function(e){
   const el = e.target;
   if (!el || !el.dataset || !el.dataset.winput) {
     if (e.key === 'Enter' && el && el.dataset && el.dataset.dkey){ openDetail(el.dataset.dkey); }
+    if (e.key === 'Enter' && el && el.dataset && el.dataset.gkey){ openGrammar(el.dataset.gkey); }
     return;
   }
   const parts = el.dataset.winput.split(':');

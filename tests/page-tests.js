@@ -210,6 +210,75 @@
     next();
   });
 
+  /* ---------- 9b. grammar dictionary + 200k bank ---------- */
+  step(function (next) {
+    if (settings.lang !== 'en') setLang('en');
+    showScreen('dict');
+    setDictMode('grammar');
+    ok('grammar: mode grammar', settings.dictMode === 'grammar', settings.dictMode);
+    ok('grammar: language segment hidden', $('dictLangSeg').hidden === true);
+    ok('grammar: 46 topics rendered', $$('#dictBody .grow').length === 46, 'got ' + $$('#dictBody .grow').length);
+    ok('grammar: 5 category chips', $$('#dictCats .chip').length === 5, 'got ' + $$('#dictCats .chip').length);
+    ok('grammar: 12 tense rows show bank', $$('#dictBody .gbank').length === 12, 'got ' + $$('#dictBody .gbank').length);
+    ok('grammar: bank total 2.4m', grammarBankTotal() === 2400000, String(grammarBankTotal()));
+    ok('grammar: capacity 200k only for tenses', grammarCapacity('present-simple') === 200000 && grammarCapacity('articles') === 0);
+
+    var g1 = grammarItem('present-simple', 42);
+    var g2 = grammarItem('present-simple', 42);
+    ok('grammar: deterministic item', !!g1 && !!g2 && g1.answer === g2.answer && g1.tokens.join(' ') === g2.tokens.join(' '));
+    ok('grammar: tokens keep all words', g1.tokens.slice().sort().join(' ') === g1.answer.split(' ').sort().join(' '), g1.answer);
+    ok('grammar: last index valid', !!grammarItem('present-simple', 199999));
+    ok('grammar: index clamped', grammarItem('present-simple', 999999).id === 'present-simple:199999');
+    ok('grammar: malformed input safe', grammarItem('nope') === null && grammarItem('articles') === null && !!grammarItem('present-simple', 'abc'));
+
+    ok('grammar: 3s negative uses base verb', grammarItem('present-simple', 18433).answer.indexOf('He does not read') === 0, grammarItem('present-simple', 18433).answer);
+    ok('grammar: 3s question uses base verb', grammarItem('present-simple', 18434).answer.indexOf('Does he read') === 0, grammarItem('present-simple', 18434).answer);
+    ok('grammar: 3s fronted time uses -s', grammarItem('present-simple', 18435).answer.indexOf('Every day, he reads') === 0, grammarItem('present-simple', 18435).answer);
+    ok('grammar: past negative uses base verb', grammarItem('past-simple', 18817).answer.indexOf('He did not write') === 0, grammarItem('past-simple', 18817).answer);
+    var tenseBad = 0;
+    Object.keys(TENSE_PROFILE).forEach(function (id) {
+      for (var pi = 0; pi < 4; pi++) {
+        var it = grammarItem(id, pi);
+        if (!it || /\{/.test(it.answer) || it.answer.indexOf('  ') !== -1 || it.tokens.slice().sort().join(' ') !== it.answer.split(' ').sort().join(' ')) tenseBad++;
+      }
+    });
+    ok('grammar: 12 tenses x 4 templates valid', tenseBad === 0, 'bad=' + tenseBad);
+
+    $('dictQ').value = 'perfect';
+    renderDict();
+    var perfectRows = $$('#dictBody .grow');
+    var perfectTitles = perfectRows.map(function (x) { return x.querySelector('.gtitle').textContent; });
+    ok('grammar: search perfect finds 7', perfectRows.length === 7 && perfectRows.every(function (x) { return fold(x.textContent).indexOf('perfect') !== -1; }), perfectTitles.join(', '));
+
+    $('dictQ').value = '';
+    setGrammarCat('Thì');
+    ok('grammar: cat Thì = 12', $$('#dictBody .grow').length === 12, 'got ' + $$('#dictBody .grow').length);
+    setGrammarCat('TOEIC & IELTS');
+    ok('grammar: cat TOEIC = 4', $$('#dictBody .grow').length === 4, 'got ' + $$('#dictBody .grow').length);
+    setGrammarCat('all');
+    ok('grammar: cat all = 46', $$('#dictBody .grow').length === 46);
+
+    $$('#dictBody .grow')[0].click();
+    ok('grammar: detail opens', $('sheetWrap').hidden === false);
+    ok('grammar: detail formula + use', !!document.querySelector('.sheet-gformula') && !!document.querySelector('.sheet-guse'));
+    ok('grammar: detail signals + exam', !!document.querySelector('.sheet-gsig') && !!document.querySelector('.sheet-gexam'));
+    ok('grammar: detail bank note', !!document.querySelector('.sheet-gbank') && document.querySelector('.sheet-gbank').textContent.indexOf('200') !== -1);
+    closeSheet();
+
+    var firstRow = $$('#dictBody .grow')[0];
+    firstRow.focus();
+    firstRow.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+    ok('grammar: Enter opens detail', $('sheetWrap').hidden === false);
+    closeSheet();
+    openGrammar('nope');
+    ok('grammar: unknown topic ignored', $('sheetWrap').hidden === true);
+
+    $('dictQ').value = '';
+    setDictMode('words');
+    ok('grammar: back to words mode', settings.dictMode === 'words' && $('dictLangSeg').hidden === false);
+    next();
+  });
+
   /* ---------- 10. settings + language ---------- */
   step(function (next) {
     if (settings.lang !== 'en') setLang('en');

@@ -15,6 +15,8 @@ App học từ vựng **1 file HTML duy nhất** — chạy offline, không serv
 - **4 dạng bài tập**: Chọn nghĩa · Viết nghĩa · Viết từ · Chọn từ.
 - **Mục "Từ sai"**: màn danh sách riêng (search, phát âm) + nút Ôn tập; làm sai tự lưu theo ngôn ngữ, ôn lại làm đúng thì tự xóa (tối đa 1.000 từ).
 - **Từ điển A-Z**: EN (merge 1k + 3k) và DE; lọc theo chữ cái A-Z; tìm kiếm **cả từ lẫn nghĩa**, **gõ không dấu vẫn ra**; gom nhóm **cùng nghĩa tiếng Việt**; tap từ mở chi tiết có phon, từ loại, nghĩa, **2-3 câu ví dụ + bản dịch** (tổng 15.088 câu), nút nghe.
+- **Từ điển ngữ pháp**: tab `Từ vựng | Ngữ pháp` ngay trong màn Từ điển — **46 chuyên đề** (12 thì, cấu trúc câu, từ loại, TOEIC & IELTS), lọc theo nhóm, search cả công thức/ví dụ/lỗi thường gặp, sheet chi tiết có công thức, cách dùng, dấu hiệu, ví dụ, lỗi sai và ghi chú thi cử.
+- **Ngân hàng câu luyện tập**: 12 thì × **200.000 câu** = **2.400.000 câu** địa chỉ hóa được, sinh bằng generator seed cố định (16 chủ ngữ × 24 động từ × 2 tân ngữ × 12 cụm thời gian × 4 trạng từ × 4 mẫu câu) — không nhồi hàng trăm MB text vào file HTML; mỗi câu có sẵn token đã xáo trộn cho bài tập sắp xếp từ.
 - **Chống mẹo trắc nghiệm**: distractor random từ toàn bộ pool ngôn ngữ (EN 1k+3k), không lộ từ loại, tối đa 2 option cùng POS, thứ tự đáp án ổn định theo seed.
 - Tiến độ + từ sai + cài đặt tự lưu localStorage, khôi phục sau khi đóng trang.
 - Phát âm Web Speech API bằng nút 🔊 thủ công (đã bỏ tự động đọc).
@@ -28,6 +30,7 @@ src/template.html       ← UI + logic app (sửa ở đây)
 src/data/en1k.json      ← 1.000 từ Anh cơ bản (1 entry / dòng)
 src/data/en3k.json      ← 3.479 từ Anh thông dụng
 src/data/de3k.json      ← 3.035 từ Đức
+src/data/grammar.json   ← 46 chuyên đề ngữ pháp + lexicon + cấu hình 200k câu/thì
 src/data/ex/en1k.json   ← ví dụ đã merge (num → [{s,t}]) — build tự nhúng vào app
 src/data/ex/en3k.json
 src/data/ex/de3k.json
@@ -53,6 +56,14 @@ report/                 ← audit, changelog nghĩa, data cleanup, screenshot QA
 
 Sửa UI/logic: sửa `src/template.html` → rebuild → test.
 
+### Grammar bank
+
+- `src/data/grammar.json` chứa `topics` (46 chuyên đề), `lexicon` (16 chủ ngữ, 24 động từ, 12 cụm thời gian/thì, 4 trạng từ) và `bankPerTopic: 200000`.
+- Chỉ 12 topic `cat: "Thì"` có `gen.tense`; mỗi topic expose **200.000 câu** qua `grammarItem(topicId, n)` — deterministic, cùng `n` luôn ra cùng câu và cùng thứ tự token.
+- Không lưu literal 200k câu/topic. Tổ hợp đầy đủ là 294.912 câu/thì; app expose 200.000 câu đầu, tổng **2.400.000 câu** cho 12 thì.
+- `grammarItem` trả `{ id, topic, level, title, en, tokens, answer, hint }`; `tokens` đã xáo trộn bằng `mulberry32` để dùng trực tiếp cho bài tập sắp xếp từ.
+- Thêm chuyên đề mới: sửa `grammar.json` (id/cat/level/title/vi/formula/use/signals/examples/mistakes/exam). Chỉ thêm `gen` khi đã có profile chia thì tương ứng trong `TENSE_PROFILE`.
+
 ### Format batch ví dụ
 
 ```json
@@ -68,7 +79,7 @@ Sửa UI/logic: sửa `src/template.html` → rebuild → test.
 
 ## Test suite
 
-`tests/page-tests.js` chạy trong trang (**137 assertions**): boot shell/nav/home, mở bài, 4 option unique, bỏ type chip, lưu từ sai + badge, thứ tự đáp án ổn định, giữ draft khi đổi tab, reveal tính sai + vào bank + ví dụ, màn Từ sai + practice + back, dictionary A-Z EN/DE, search không dấu, ẩn A-Z khi search, nhóm đồng nghĩa, sheet chi tiết có 3 ví dụ, đổi ngôn ngữ, liquid glass nav (pill index, 5 slot đều, pill khớp slot, icon glow, badge pulse, aria, không external asset), profile/avatar (theme-aware theo thiết bị, stats, tags, set/clear ảnh + nav/home sync), fintech home (hero, 4 quick actions, chart tuần/tháng, peak bar, recent + sheet, dataset cycle, bell), error banner (ẩn mặc định, chỉ hiện khi debug, lọc noise Firefox/Ethereum), data sanity, no JS error. `tests/run-cdp.js` kiểm tra thêm mobile viewport 390×844 (home + dictionary không tràn ngang), screenshot `report/mobile-dict.png`, và noscript banner.
+`tests/page-tests.js` chạy trong trang (**165 assertions**): boot shell/nav/home, mở bài, 4 option unique, bỏ type chip, lưu từ sai + badge, thứ tự đáp án ổn định, giữ draft khi đổi tab, reveal tính sai + vào bank + ví dụ, màn Từ sai + practice + back, dictionary A-Z EN/DE, search không dấu, ẩn A-Z khi search, nhóm đồng nghĩa, sheet chi tiết có 3 ví dụ, **grammar dictionary 46 chuyên đề + 5 nhóm + search + detail sheet + Enter**, **bank 200k/thì: capacity, clamp, deterministic, token khớp câu, chia thì 3s/past đúng**, đổi ngôn ngữ, liquid glass nav (pill index, 5 slot đều, pill khớp slot, icon glow, badge pulse, aria, không external asset), profile/avatar (theme-aware theo thiết bị, stats, tags, set/clear ảnh + nav/home sync), fintech home (hero, 4 quick actions, chart tuần/tháng, peak bar, recent + sheet, dataset cycle, bell), error banner (ẩn mặc định, chỉ hiện khi debug, lọc noise Firefox/Ethereum), data sanity, no JS error. `tests/run-cdp.js` kiểm tra thêm mobile viewport 390×844 (home + dictionary không tràn ngang), screenshot `report/mobile-dict.png`, và noscript banner.
 
 ## Data / audit
 
@@ -77,7 +88,7 @@ Sửa UI/logic: sửa `src/template.html` → rebuild → test.
 - `report/data-cleanup.md` — các fix data đã áp (chuẩn hóa type, xóa 2 entry trùng `3055`/`3256`, sửa phon `1122`/`3047`).
 - `report/nghia-review.md` — changelog 600 fix nghĩa cũ (52 batch).
 - `report/fixes/*.json` — fix gốc từng batch nghĩa (giữ để audit).
-- `report/qa-home.png`, `qa-exercise.png`, `qa-dict-list.png`, `qa-dict-detail.png`, `qa-settings-dark.png`, `qa-settings-light.png`, `mobile-dict.png` — screenshot QA.
+- `report/qa-home.png`, `qa-exercise.png`, `qa-dict-list.png`, `qa-dict-detail.png`, `qa-grammar-desktop.png`, `qa-grammar-mobile.png`, `qa-grammar-detail.png`, `qa-settings-dark.png`, `qa-settings-light.png`, `mobile-dict.png` — screenshot QA.
 
 ## Ghi chú
 

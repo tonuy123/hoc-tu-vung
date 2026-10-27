@@ -1,0 +1,2101 @@
+{
+  "version": 1,
+  "bankPerTopic": 200000,
+  "lexicon": {
+    "subjects": [
+      {
+        "t": "I",
+        "p": "1s"
+      },
+      {
+        "t": "you",
+        "p": "2s"
+      },
+      {
+        "t": "he",
+        "p": "3s"
+      },
+      {
+        "t": "she",
+        "p": "3s"
+      },
+      {
+        "t": "it",
+        "p": "3s"
+      },
+      {
+        "t": "we",
+        "p": "1p"
+      },
+      {
+        "t": "they",
+        "p": "3p"
+      },
+      {
+        "t": "my brother",
+        "p": "3s"
+      },
+      {
+        "t": "the manager",
+        "p": "3s"
+      },
+      {
+        "t": "the students",
+        "p": "3p"
+      },
+      {
+        "t": "our team",
+        "p": "3p"
+      },
+      {
+        "t": "Anna",
+        "p": "3s"
+      },
+      {
+        "t": "Tom and I",
+        "p": "1p"
+      },
+      {
+        "t": "the client",
+        "p": "3s"
+      },
+      {
+        "t": "my parents",
+        "p": "3p"
+      },
+      {
+        "t": "the company",
+        "p": "3s"
+      }
+    ],
+    "verbs": [
+      {
+        "b": "read",
+        "s": "reads",
+        "past": "read",
+        "pp": "read",
+        "ing": "reading",
+        "obj": [
+          "the detailed report",
+          "the monthly report"
+        ]
+      },
+      {
+        "b": "write",
+        "s": "writes",
+        "past": "wrote",
+        "pp": "written",
+        "ing": "writing",
+        "obj": [
+          "a short email",
+          "the final proposal"
+        ]
+      },
+      {
+        "b": "send",
+        "s": "sends",
+        "past": "sent",
+        "pp": "sent",
+        "ing": "sending",
+        "obj": [
+          "the signed contract",
+          "the updated file"
+        ]
+      },
+      {
+        "b": "buy",
+        "s": "buys",
+        "past": "bought",
+        "pp": "bought",
+        "ing": "buying",
+        "obj": [
+          "a new laptop",
+          "the office furniture"
+        ]
+      },
+      {
+        "b": "make",
+        "s": "makes",
+        "past": "made",
+        "pp": "made",
+        "ing": "making",
+        "obj": [
+          "an important decision",
+          "a detailed plan"
+        ]
+      },
+      {
+        "b": "take",
+        "s": "takes",
+        "past": "took",
+        "pp": "taken",
+        "ing": "taking",
+        "obj": [
+          "the early train",
+          "a short break"
+        ]
+      },
+      {
+        "b": "meet",
+        "s": "meets",
+        "past": "met",
+        "pp": "met",
+        "ing": "meeting",
+        "obj": [
+          "the new client",
+          "the project team"
+        ]
+      },
+      {
+        "b": "finish",
+        "s": "finishes",
+        "past": "finished",
+        "pp": "finished",
+        "ing": "finishing",
+        "obj": [
+          "the quarterly report",
+          "the urgent task"
+        ]
+      },
+      {
+        "b": "open",
+        "s": "opens",
+        "past": "opened",
+        "pp": "opened",
+        "ing": "opening",
+        "obj": [
+          "a new branch",
+          "the main office"
+        ]
+      },
+      {
+        "b": "check",
+        "s": "checks",
+        "past": "checked",
+        "pp": "checked",
+        "ing": "checking",
+        "obj": [
+          "the monthly invoice",
+          "the flight schedule"
+        ]
+      },
+      {
+        "b": "update",
+        "s": "updates",
+        "past": "updated",
+        "pp": "updated",
+        "ing": "updating",
+        "obj": [
+          "the client database",
+          "the project timeline"
+        ]
+      },
+      {
+        "b": "prepare",
+        "s": "prepares",
+        "past": "prepared",
+        "pp": "prepared",
+        "ing": "preparing",
+        "obj": [
+          "the final presentation",
+          "a weekly report"
+        ]
+      },
+      {
+        "b": "solve",
+        "s": "solves",
+        "past": "solved",
+        "pp": "solved",
+        "ing": "solving",
+        "obj": [
+          "the technical problem",
+          "the payment issue"
+        ]
+      },
+      {
+        "b": "discuss",
+        "s": "discusses",
+        "past": "discussed",
+        "pp": "discussed",
+        "ing": "discussing",
+        "obj": [
+          "the annual budget",
+          "the new policy"
+        ]
+      },
+      {
+        "b": "visit",
+        "s": "visits",
+        "past": "visited",
+        "pp": "visited",
+        "ing": "visiting",
+        "obj": [
+          "the London office",
+          "the local supplier"
+        ]
+      },
+      {
+        "b": "call",
+        "s": "calls",
+        "past": "called",
+        "pp": "called",
+        "ing": "calling",
+        "obj": [
+          "the new manager",
+          "the support team"
+        ]
+      },
+      {
+        "b": "review",
+        "s": "reviews",
+        "past": "reviewed",
+        "pp": "reviewed",
+        "ing": "reviewing",
+        "obj": [
+          "the signed contract",
+          "the annual plan"
+        ]
+      },
+      {
+        "b": "order",
+        "s": "orders",
+        "past": "ordered",
+        "pp": "ordered",
+        "ing": "ordering",
+        "obj": [
+          "some office supplies",
+          "a new printer"
+        ]
+      },
+      {
+        "b": "clean",
+        "s": "cleans",
+        "past": "cleaned",
+        "pp": "cleaned",
+        "ing": "cleaning",
+        "obj": [
+          "the meeting room",
+          "the main office"
+        ]
+      },
+      {
+        "b": "fix",
+        "s": "fixes",
+        "past": "fixed",
+        "pp": "fixed",
+        "ing": "fixing",
+        "obj": [
+          "the broken printer",
+          "the network problem"
+        ]
+      },
+      {
+        "b": "deliver",
+        "s": "delivers",
+        "past": "delivered",
+        "pp": "delivered",
+        "ing": "delivering",
+        "obj": [
+          "the urgent package",
+          "the new equipment"
+        ]
+      },
+      {
+        "b": "test",
+        "s": "tests",
+        "past": "tested",
+        "pp": "tested",
+        "ing": "testing",
+        "obj": [
+          "the new software",
+          "the payment system"
+        ]
+      },
+      {
+        "b": "plan",
+        "s": "plans",
+        "past": "planned",
+        "pp": "planned",
+        "ing": "planning",
+        "obj": [
+          "the next campaign",
+          "the annual budget"
+        ]
+      },
+      {
+        "b": "approve",
+        "s": "approves",
+        "past": "approved",
+        "pp": "approved",
+        "ing": "approving",
+        "obj": [
+          "the final budget",
+          "the new policy"
+        ]
+      }
+    ],
+    "adverbs": [
+      "carefully",
+      "quickly",
+      "regularly",
+      "efficiently"
+    ],
+    "times": {
+      "present-simple": [
+        "every day",
+        "on Mondays",
+        "at 9 a.m.",
+        "after lunch",
+        "in the morning",
+        "twice a week",
+        "every week",
+        "before work",
+        "on weekends",
+        "at the office",
+        "once a month",
+        "during the week"
+      ],
+      "present-continuous": [
+        "now",
+        "right now",
+        "at the moment",
+        "today",
+        "this week",
+        "currently",
+        "this morning",
+        "tonight",
+        "these days",
+        "at 8 p.m.",
+        "while the team works",
+        "for now"
+      ],
+      "present-perfect": [
+        "so far",
+        "this week",
+        "recently",
+        "since 2020",
+        "for three years",
+        "twice this month",
+        "lately",
+        "up to now",
+        "this month",
+        "in recent years",
+        "over the past year",
+        "by now"
+      ],
+      "present-perfect-continuous": [
+        "for two hours",
+        "since morning",
+        "all day",
+        "lately",
+        "recently",
+        "this week",
+        "for a long time",
+        "since 2021",
+        "all week",
+        "up to now",
+        "for months",
+        "these days"
+      ],
+      "past-simple": [
+        "yesterday",
+        "last week",
+        "two days ago",
+        "in 2020",
+        "last night",
+        "on Monday",
+        "last month",
+        "then",
+        "after that",
+        "in the morning",
+        "last year",
+        "once"
+      ],
+      "past-continuous": [
+        "at 8 p.m. yesterday",
+        "at 10 a.m. yesterday",
+        "when the meeting started",
+        "all evening",
+        "at that time",
+        "last night",
+        "this time yesterday",
+        "during the meeting",
+        "while they waited",
+        "at noon",
+        "all morning",
+        "when the phone rang"
+      ],
+      "past-perfect": [
+        "before the meeting",
+        "by 2020",
+        "already",
+        "by the time we arrived",
+        "before lunch",
+        "by then",
+        "after the project ended",
+        "by last Friday",
+        "before he left",
+        "by 9 a.m.",
+        "by the end of the day",
+        "up to that point"
+      ],
+      "past-perfect-continuous": [
+        "for two hours before the call",
+        "since morning",
+        "all day before the meeting",
+        "for weeks",
+        "before the deadline",
+        "by then",
+        "for months",
+        "since 2019",
+        "all afternoon",
+        "up to that point",
+        "for a long time",
+        "before the merger"
+      ],
+      "future-simple": [
+        "tomorrow",
+        "next week",
+        "soon",
+        "in 2030",
+        "next month",
+        "tonight",
+        "later",
+        "in two days",
+        "next year",
+        "on Friday",
+        "after work",
+        "eventually"
+      ],
+      "future-continuous": [
+        "at 8 p.m. tomorrow",
+        "this time next week",
+        "tomorrow morning",
+        "all day tomorrow",
+        "at noon tomorrow",
+        "during the meeting tomorrow",
+        "next month",
+        "during the night",
+        "at 9 a.m. tomorrow",
+        "all evening",
+        "next weekend",
+        "in an hour"
+      ],
+      "future-perfect": [
+        "by tomorrow",
+        "by 2030",
+        "by next week",
+        "by the end of the month",
+        "by Friday",
+        "by the time you arrive",
+        "by 9 a.m. tomorrow",
+        "by next year",
+        "before the deadline",
+        "by then",
+        "in five years",
+        "by the end of the day"
+      ],
+      "future-perfect-continuous": [
+        "for two hours by then",
+        "by 2030",
+        "for three years by next month",
+        "by the time you arrive",
+        "for a week by Friday",
+        "by next year",
+        "for months by then",
+        "by 2025",
+        "all day by tonight",
+        "for a long time by then",
+        "by the end of the month",
+        "for two years by December"
+      ]
+    }
+  },
+  "topics": [
+    {
+      "id": "present-simple",
+      "cat": "Thì",
+      "level": "A1",
+      "title": "Present Simple",
+      "vi": "Thì hiện tại đơn",
+      "formula": "S + V(s/es) + O",
+      "use": "Diễn tả thói quen, sự thật hiển nhiên, lịch trình cố định và hành động lặp lại.",
+      "signals": [
+        "every day",
+        "usually",
+        "on Mondays",
+        "never"
+      ],
+      "examples": [
+        {
+          "en": "She works at a bank in London.",
+          "vi": "Cô ấy làm việc ở một ngân hàng tại London."
+        },
+        {
+          "en": "The train leaves at 8 a.m.",
+          "vi": "Tàu rời đi lúc 8 giờ sáng."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "She work at a bank.",
+          "right": "She works at a bank.",
+          "why": "Chủ ngữ ngôi thứ 3 số ít phải thêm -s/-es."
+        }
+      ],
+      "exam": "TOEIC: câu mô tả lịch làm việc, chức năng. IELTS: dùng cho sự thật và thói quen.",
+      "gen": {
+        "tense": "present-simple"
+      }
+    },
+    {
+      "id": "present-continuous",
+      "cat": "Thì",
+      "level": "A1",
+      "title": "Present Continuous",
+      "vi": "Thì hiện tại tiếp diễn",
+      "formula": "S + am/is/are + V-ing",
+      "use": "Diễn tả hành động đang xảy ra lúc nói, kế hoạch gần hoặc tình huống tạm thời.",
+      "signals": [
+        "now",
+        "at the moment",
+        "currently",
+        "these days"
+      ],
+      "examples": [
+        {
+          "en": "She is working from home this week.",
+          "vi": "Tuần này cô ấy làm việc tại nhà."
+        },
+        {
+          "en": "They are meeting the client right now.",
+          "vi": "Họ đang gặp khách hàng ngay bây giờ."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "She is work at the office.",
+          "right": "She is working at the office.",
+          "why": "Sau be phải dùng V-ing."
+        }
+      ],
+      "exam": "TOEIC: mô tả hành động trong ảnh hoặc tình huống tạm thời. IELTS: mô tả xu hướng đang diễn ra.",
+      "gen": {
+        "tense": "present-continuous"
+      }
+    },
+    {
+      "id": "present-perfect",
+      "cat": "Thì",
+      "level": "A2",
+      "title": "Present Perfect",
+      "vi": "Thì hiện tại hoàn thành",
+      "formula": "S + have/has + V3",
+      "use": "Diễn tả kinh nghiệm, hành động đã xong nhưng còn liên quan hiện tại, hoặc khoảng thời gian chưa kết thúc.",
+      "signals": [
+        "already",
+        "just",
+        "since",
+        "for",
+        "ever",
+        "never"
+      ],
+      "examples": [
+        {
+          "en": "I have worked here for three years.",
+          "vi": "Tôi đã làm việc ở đây được ba năm."
+        },
+        {
+          "en": "She has just sent the report.",
+          "vi": "Cô ấy vừa gửi báo cáo."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I have saw that film.",
+          "right": "I have seen that film.",
+          "why": "Sau have/has phải dùng quá khứ phân từ V3."
+        }
+      ],
+      "exam": "TOEIC: kinh nghiệm làm việc, cập nhật tiến độ. IELTS: mô tả thay đổi và thành tựu.",
+      "gen": {
+        "tense": "present-perfect"
+      }
+    },
+    {
+      "id": "present-perfect-continuous",
+      "cat": "Thì",
+      "level": "B1",
+      "title": "Present Perfect Continuous",
+      "vi": "Thì hiện tại hoàn thành tiếp diễn",
+      "formula": "S + have/has been + V-ing",
+      "use": "Diễn tả hành động bắt đầu trong quá khứ và còn tiếp tục, hoặc vừa dừng nhưng để lại kết quả.",
+      "signals": [
+        "for two hours",
+        "since morning",
+        "all day",
+        "lately"
+      ],
+      "examples": [
+        {
+          "en": "They have been working on the project all week.",
+          "vi": "Họ đã làm dự án cả tuần nay."
+        },
+        {
+          "en": "I have been waiting for the client since 9 a.m.",
+          "vi": "Tôi đã đợi khách hàng từ 9 giờ sáng."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I have been knowing him for years.",
+          "right": "I have known him for years.",
+          "why": "Động từ trạng thái như know không dùng tiếp diễn."
+        }
+      ],
+      "exam": "IELTS: nhấn mạnh thời lượng. TOEIC: mô tả quá trình kéo dài.",
+      "gen": {
+        "tense": "present-perfect-continuous"
+      }
+    },
+    {
+      "id": "past-simple",
+      "cat": "Thì",
+      "level": "A1",
+      "title": "Past Simple",
+      "vi": "Thì quá khứ đơn",
+      "formula": "S + V2",
+      "use": "Diễn tả hành động đã kết thúc tại một thời điểm xác định trong quá khứ.",
+      "signals": [
+        "yesterday",
+        "last week",
+        "two days ago",
+        "in 2020"
+      ],
+      "examples": [
+        {
+          "en": "We signed the contract yesterday.",
+          "vi": "Chúng tôi đã ký hợp đồng hôm qua."
+        },
+        {
+          "en": "She called the client last night.",
+          "vi": "Cô ấy đã gọi cho khách hàng tối qua."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I did went to the meeting.",
+          "right": "I went to the meeting.",
+          "why": "Sau did dùng động từ nguyên mẫu; câu khẳng định chỉ dùng V2."
+        }
+      ],
+      "exam": "TOEIC: sự kiện đã hoàn thành. IELTS: kể lại trải nghiệm có mốc thời gian.",
+      "gen": {
+        "tense": "past-simple"
+      }
+    },
+    {
+      "id": "past-continuous",
+      "cat": "Thì",
+      "level": "A2",
+      "title": "Past Continuous",
+      "vi": "Thì quá khứ tiếp diễn",
+      "formula": "S + was/were + V-ing",
+      "use": "Diễn tả hành động đang xảy ra tại một thời điểm trong quá khứ hoặc bị một hành động khác cắt ngang.",
+      "signals": [
+        "at 8 p.m. yesterday",
+        "while",
+        "when",
+        "all evening"
+      ],
+      "examples": [
+        {
+          "en": "I was preparing the report when he called.",
+          "vi": "Tôi đang chuẩn bị báo cáo thì anh ấy gọi."
+        },
+        {
+          "en": "They were meeting the client at 10 a.m.",
+          "vi": "Họ đang gặp khách hàng lúc 10 giờ sáng."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I was study when she arrived.",
+          "right": "I was studying when she arrived.",
+          "why": "Sau was/were phải dùng V-ing."
+        }
+      ],
+      "exam": "TOEIC: hành động nền trong câu chuyện. IELTS: mô tả bối cảnh quá khứ.",
+      "gen": {
+        "tense": "past-continuous"
+      }
+    },
+    {
+      "id": "past-perfect",
+      "cat": "Thì",
+      "level": "B1",
+      "title": "Past Perfect",
+      "vi": "Thì quá khứ hoàn thành",
+      "formula": "S + had + V3",
+      "use": "Diễn tả hành động xảy ra trước một hành động khác hoặc một mốc thời gian trong quá khứ.",
+      "signals": [
+        "before",
+        "by the time",
+        "already",
+        "by 2020"
+      ],
+      "examples": [
+        {
+          "en": "The train had left before we arrived.",
+          "vi": "Tàu đã rời đi trước khi chúng tôi đến."
+        },
+        {
+          "en": "She had finished the report by 9 a.m.",
+          "vi": "Cô ấy đã hoàn thành báo cáo trước 9 giờ sáng."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "When I arrived, he already left.",
+          "right": "When I arrived, he had already left.",
+          "why": "Hành động xảy ra trước cần dùng had + V3."
+        }
+      ],
+      "exam": "TOEIC: chuỗi sự kiện. IELTS: kể lại sự việc theo trình tự phức tạp.",
+      "gen": {
+        "tense": "past-perfect"
+      }
+    },
+    {
+      "id": "past-perfect-continuous",
+      "cat": "Thì",
+      "level": "B2",
+      "title": "Past Perfect Continuous",
+      "vi": "Thì quá khứ hoàn thành tiếp diễn",
+      "formula": "S + had been + V-ing",
+      "use": "Diễn tả hành động kéo dài liên tục trước một mốc hoặc hành động khác trong quá khứ.",
+      "signals": [
+        "for two hours before",
+        "since morning",
+        "all day before",
+        "by then"
+      ],
+      "examples": [
+        {
+          "en": "They had been waiting for two hours before the manager arrived.",
+          "vi": "Họ đã đợi hai tiếng trước khi quản lý đến."
+        },
+        {
+          "en": "She had been working there for months before the merger.",
+          "vi": "Cô ấy đã làm ở đó nhiều tháng trước khi sáp nhập."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I had been work all morning.",
+          "right": "I had been working all morning.",
+          "why": "Sau had been phải dùng V-ing."
+        }
+      ],
+      "exam": "IELTS: nhấn mạnh quá trình trước một sự kiện. TOEIC ít gặp nhưng có trong câu phức.",
+      "gen": {
+        "tense": "past-perfect-continuous"
+      }
+    },
+    {
+      "id": "future-simple",
+      "cat": "Thì",
+      "level": "A1",
+      "title": "Future Simple",
+      "vi": "Thì tương lai đơn",
+      "formula": "S + will + V",
+      "use": "Diễn tả dự đoán, quyết định tức thời, lời hứa hoặc kế hoạch chưa chắc chắn.",
+      "signals": [
+        "tomorrow",
+        "next week",
+        "soon",
+        "in 2030"
+      ],
+      "examples": [
+        {
+          "en": "I will send the file tomorrow.",
+          "vi": "Tôi sẽ gửi tệp vào ngày mai."
+        },
+        {
+          "en": "The meeting will start at 9 a.m.",
+          "vi": "Cuộc họp sẽ bắt đầu lúc 9 giờ sáng."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I will to call you.",
+          "right": "I will call you.",
+          "why": "Sau will dùng động từ nguyên mẫu không to."
+        }
+      ],
+      "exam": "TOEIC: thông báo, lịch hẹn. IELTS: dự đoán tương lai.",
+      "gen": {
+        "tense": "future-simple"
+      }
+    },
+    {
+      "id": "future-continuous",
+      "cat": "Thì",
+      "level": "B1",
+      "title": "Future Continuous",
+      "vi": "Thì tương lai tiếp diễn",
+      "formula": "S + will be + V-ing",
+      "use": "Diễn tả hành động đang xảy ra tại một thời điểm trong tương lai.",
+      "signals": [
+        "at 8 p.m. tomorrow",
+        "this time next week",
+        "all day tomorrow"
+      ],
+      "examples": [
+        {
+          "en": "I will be working at 8 p.m. tomorrow.",
+          "vi": "Tôi sẽ đang làm việc lúc 8 giờ tối mai."
+        },
+        {
+          "en": "They will be traveling next week.",
+          "vi": "Tuần sau họ sẽ đang đi công tác."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I will be work at 8 p.m.",
+          "right": "I will be working at 8 p.m.",
+          "why": "Sau will be phải dùng V-ing."
+        }
+      ],
+      "exam": "TOEIC: lịch trình tương lai. IELTS: mô tả tình huống tương lai.",
+      "gen": {
+        "tense": "future-continuous"
+      }
+    },
+    {
+      "id": "future-perfect",
+      "cat": "Thì",
+      "level": "B2",
+      "title": "Future Perfect",
+      "vi": "Thì tương lai hoàn thành",
+      "formula": "S + will have + V3",
+      "use": "Diễn tả hành động sẽ hoàn thành trước một mốc thời gian trong tương lai.",
+      "signals": [
+        "by tomorrow",
+        "by 2030",
+        "by the time",
+        "by next week"
+      ],
+      "examples": [
+        {
+          "en": "I will have finished the report by Friday.",
+          "vi": "Tôi sẽ hoàn thành báo cáo trước thứ Sáu."
+        },
+        {
+          "en": "By 2030, the company will have opened five branches.",
+          "vi": "Đến năm 2030, công ty sẽ mở được năm chi nhánh."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I will have finish the report.",
+          "right": "I will have finished the report.",
+          "why": "Sau will have phải dùng V3."
+        }
+      ],
+      "exam": "TOEIC: mốc hoàn thành dự án. IELTS: dự đoán thành tựu tương lai.",
+      "gen": {
+        "tense": "future-perfect"
+      }
+    },
+    {
+      "id": "future-perfect-continuous",
+      "cat": "Thì",
+      "level": "C1",
+      "title": "Future Perfect Continuous",
+      "vi": "Thì tương lai hoàn thành tiếp diễn",
+      "formula": "S + will have been + V-ing",
+      "use": "Diễn tả hành động kéo dài liên tục tính đến một mốc trong tương lai.",
+      "signals": [
+        "for two hours by then",
+        "by 2030",
+        "by the time you arrive"
+      ],
+      "examples": [
+        {
+          "en": "By next month, she will have been working here for three years.",
+          "vi": "Đến tháng sau, cô ấy sẽ làm việc ở đây được ba năm."
+        },
+        {
+          "en": "They will have been waiting for two hours by then.",
+          "vi": "Đến lúc đó họ sẽ đợi được hai tiếng."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I will have been work here for a year.",
+          "right": "I will have been working here for a year.",
+          "why": "Sau will have been phải dùng V-ing."
+        }
+      ],
+      "exam": "IELTS: nhấn mạnh thời lượng tính đến tương lai. TOEIC: hiếm, thường ở câu dài.",
+      "gen": {
+        "tense": "future-perfect-continuous"
+      }
+    },
+    {
+      "id": "sentence-structures",
+      "cat": "Cấu trúc câu",
+      "level": "A1",
+      "title": "Five Basic Sentence Patterns",
+      "vi": "Năm mẫu câu cơ bản",
+      "formula": "S+V / S+V+O / S+V+C / S+V+O+O / S+V+O+C",
+      "use": "Nắm năm mẫu câu giúp xác định thành phần câu và tránh thiếu động từ hoặc tân ngữ.",
+      "signals": [
+        "S = subject",
+        "V = verb",
+        "O = object",
+        "C = complement"
+      ],
+      "examples": [
+        {
+          "en": "The manager smiled.",
+          "vi": "Quản lý mỉm cười. (S+V)"
+        },
+        {
+          "en": "She sent the client an email.",
+          "vi": "Cô ấy gửi khách hàng một email. (S+V+O+O)"
+        },
+        {
+          "en": "They elected her team leader.",
+          "vi": "Họ bầu cô ấy làm trưởng nhóm. (S+V+O+C)"
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "The manager very happy.",
+          "right": "The manager is very happy.",
+          "why": "Câu cần động từ vị ngữ; tính từ không thể đứng một mình làm vị ngữ."
+        }
+      ],
+      "exam": "TOEIC: nhận diện thành phần câu trong câu hỏi điền từ. IELTS: viết câu đủ chủ vị."
+    },
+    {
+      "id": "there-is-are",
+      "cat": "Cấu trúc câu",
+      "level": "A1",
+      "title": "There is / There are",
+      "vi": "Cấu trúc There is / There are",
+      "formula": "There is + N(ít) / There are + N(nhiều)",
+      "use": "Diễn tả sự tồn tại của người hoặc vật ở một nơi hoặc thời điểm.",
+      "signals": [
+        "there is",
+        "there are",
+        "there was",
+        "there were"
+      ],
+      "examples": [
+        {
+          "en": "There is a meeting at 10 a.m.",
+          "vi": "Có một cuộc họp lúc 10 giờ sáng."
+        },
+        {
+          "en": "There are two new clients in the office.",
+          "vi": "Có hai khách hàng mới trong văn phòng."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "There is many problems.",
+          "right": "There are many problems.",
+          "why": "Danh từ số nhiều dùng there are."
+        }
+      ],
+      "exam": "TOEIC: mô tả văn phòng, số lượng. IELTS: giới thiệu thông tin trong bài viết."
+    },
+    {
+      "id": "questions",
+      "cat": "Cấu trúc câu",
+      "level": "A1",
+      "title": "Questions",
+      "vi": "Câu hỏi Yes/No và Wh-",
+      "formula": "Aux + S + V? / Wh- + Aux + S + V?",
+      "use": "Đảo trợ động từ lên trước chủ ngữ; Wh- đứng đầu câu hỏi.",
+      "signals": [
+        "do/does",
+        "did",
+        "is/are",
+        "what/where/when/why/how"
+      ],
+      "examples": [
+        {
+          "en": "Do you work here?",
+          "vi": "Bạn làm việc ở đây à?"
+        },
+        {
+          "en": "Where did she send the file?",
+          "vi": "Cô ấy đã gửi tệp ở đâu?"
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Where you are from?",
+          "right": "Where are you from?",
+          "why": "Câu hỏi phải đảo be/trợ động từ lên trước chủ ngữ."
+        }
+      ],
+      "exam": "TOEIC: câu hỏi phỏng vấn, lịch hẹn. IELTS: dùng trong Speaking Part 1."
+    },
+    {
+      "id": "negation",
+      "cat": "Cấu trúc câu",
+      "level": "A1",
+      "title": "Negation",
+      "vi": "Câu phủ định",
+      "formula": "S + aux + not + V",
+      "use": "Thêm not sau trợ động từ; với động từ thường dùng do/does/did + not.",
+      "signals": [
+        "do not",
+        "does not",
+        "did not",
+        "is not",
+        "will not"
+      ],
+      "examples": [
+        {
+          "en": "She does not work on weekends.",
+          "vi": "Cô ấy không làm việc vào cuối tuần."
+        },
+        {
+          "en": "They are not ready for the meeting.",
+          "vi": "Họ chưa sẵn sàng cho cuộc họp."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "She not like coffee.",
+          "right": "She does not like coffee.",
+          "why": "Động từ thường cần trợ động từ do/does + not."
+        }
+      ],
+      "exam": "TOEIC: câu phủ định trong email. IELTS: diễn đạt ý phản đối nhẹ nhàng."
+    },
+    {
+      "id": "passive-voice",
+      "cat": "Cấu trúc câu",
+      "level": "B1",
+      "title": "Passive Voice",
+      "vi": "Câu bị động",
+      "formula": "S + be + V3 (+ by O)",
+      "use": "Nhấn mạnh hành động hoặc đối tượng chịu tác động, không nhất thiết nêu người thực hiện.",
+      "signals": [
+        "by",
+        "is done",
+        "was sent",
+        "has been approved"
+      ],
+      "examples": [
+        {
+          "en": "The report was written by the manager.",
+          "vi": "Báo cáo được viết bởi quản lý."
+        },
+        {
+          "en": "The contract has been approved.",
+          "vi": "Hợp đồng đã được phê duyệt."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "The report was wrote yesterday.",
+          "right": "The report was written yesterday.",
+          "why": "Bị động dùng quá khứ phân từ V3, không dùng V2."
+        }
+      ],
+      "exam": "TOEIC: email thương mại, quy trình. IELTS: văn phong học thuật khách quan."
+    },
+    {
+      "id": "relative-clauses",
+      "cat": "Cấu trúc câu",
+      "level": "B1",
+      "title": "Relative Clauses",
+      "vi": "Mệnh đề quan hệ",
+      "formula": "N + who/which/that/whose/where + clause",
+      "use": "Bổ sung thông tin về danh từ; defining không dùng dấu phẩy, non-defining dùng dấu phẩy.",
+      "signals": [
+        "who",
+        "which",
+        "that",
+        "whose",
+        "where"
+      ],
+      "examples": [
+        {
+          "en": "The manager who called you is in the meeting.",
+          "vi": "Quản lý người đã gọi cho bạn đang ở trong cuộc họp."
+        },
+        {
+          "en": "The report, which was sent yesterday, is on your desk.",
+          "vi": "Báo cáo, được gửi hôm qua, đang ở trên bàn bạn."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "The man who he called is my boss.",
+          "right": "The man who called is my boss.",
+          "why": "Who đã thay cho chủ ngữ nên không lặp lại he."
+        }
+      ],
+      "exam": "TOEIC: câu mô tả người/vật. IELTS: câu phức trong Writing Task 2."
+    },
+    {
+      "id": "conditionals",
+      "cat": "Cấu trúc câu",
+      "level": "B1",
+      "title": "Conditionals",
+      "vi": "Câu điều kiện",
+      "formula": "If + present, will / If + past, would / If + had V3, would have V3",
+      "use": "Loại 0 sự thật, loại 1 có thể xảy ra, loại 2 giả định hiện tại, loại 3 giả định quá khứ.",
+      "signals": [
+        "if",
+        "unless",
+        "provided that",
+        "otherwise"
+      ],
+      "examples": [
+        {
+          "en": "If you send the file today, I will review it tomorrow.",
+          "vi": "Nếu bạn gửi tệp hôm nay, tôi sẽ xem vào ngày mai."
+        },
+        {
+          "en": "If I had more time, I would join the project.",
+          "vi": "Nếu tôi có nhiều thời gian hơn, tôi sẽ tham gia dự án."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "If I will see him, I will call you.",
+          "right": "If I see him, I will call you.",
+          "why": "Mệnh đề if loại 1 dùng hiện tại đơn, không dùng will."
+        }
+      ],
+      "exam": "TOEIC: điều kiện trong hợp đồng. IELTS: lập luận giả định trong Writing Task 2."
+    },
+    {
+      "id": "reported-speech",
+      "cat": "Cấu trúc câu",
+      "level": "B1",
+      "title": "Reported Speech",
+      "vi": "Câu tường thuật",
+      "formula": "S + said (that) + clause / S + told O + (that) + clause",
+      "use": "Thuật lại lời nói; thường lùi thì, đổi đại từ và trạng từ thời gian.",
+      "signals": [
+        "said",
+        "told",
+        "asked",
+        "explained"
+      ],
+      "examples": [
+        {
+          "en": "She said that she was busy.",
+          "vi": "Cô ấy nói rằng cô ấy bận."
+        },
+        {
+          "en": "He told me he would send the file.",
+          "vi": "Anh ấy nói với tôi rằng anh ấy sẽ gửi tệp."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "She said me that she was tired.",
+          "right": "She told me that she was tired.",
+          "why": "Tell cần tân ngữ người; say không cần tân ngữ người."
+        }
+      ],
+      "exam": "TOEIC: ghi chú cuộc họp. IELTS: tường thuật quan điểm trong Writing/Speaking."
+    },
+    {
+      "id": "wish-clauses",
+      "cat": "Cấu trúc câu",
+      "level": "B2",
+      "title": "Wish / If Only",
+      "vi": "Câu ước với wish / if only",
+      "formula": "wish + past simple / past perfect / would + V",
+      "use": "Ước hiện tại dùng quá khứ đơn; ước quá khứ dùng quá khứ hoàn thành; ước thay đổi tương lai dùng would.",
+      "signals": [
+        "wish",
+        "if only",
+        "could",
+        "would"
+      ],
+      "examples": [
+        {
+          "en": "I wish I had more time.",
+          "vi": "Tôi ước tôi có nhiều thời gian hơn."
+        },
+        {
+          "en": "She wishes she had applied for the job.",
+          "vi": "Cô ấy ước cô ấy đã ứng tuyển công việc đó."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I wish I have a bigger office.",
+          "right": "I wish I had a bigger office.",
+          "why": "Wish về hiện tại dùng quá khứ đơn."
+        }
+      ],
+      "exam": "IELTS: diễn đạt mong muốn trong Speaking. TOEIC: ít gặp."
+    },
+    {
+      "id": "causative",
+      "cat": "Cấu trúc câu",
+      "level": "B2",
+      "title": "Causative",
+      "vi": "Cấu trúc nhờ vả have/get",
+      "formula": "S + have/get + O + V3 (+ by O)",
+      "use": "Diễn tả việc nhờ người khác làm gì đó cho mình.",
+      "signals": [
+        "have something done",
+        "get something done",
+        "by"
+      ],
+      "examples": [
+        {
+          "en": "I had my laptop repaired yesterday.",
+          "vi": "Tôi đã nhờ sửa laptop hôm qua."
+        },
+        {
+          "en": "She got the report translated by a professional.",
+          "vi": "Cô ấy đã nhờ chuyên gia dịch báo cáo."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I had my car repair yesterday.",
+          "right": "I had my car repaired yesterday.",
+          "why": "Cấu trúc causative dùng V3 cho vật được tác động."
+        }
+      ],
+      "exam": "TOEIC: dịch vụ, sửa chữa. IELTS: mô tả quy trình thuê ngoài."
+    },
+    {
+      "id": "inversion",
+      "cat": "Cấu trúc câu",
+      "level": "C1",
+      "title": "Inversion",
+      "vi": "Đảo ngữ",
+      "formula": "Never/Rarely/Not only + aux + S + V",
+      "use": "Nhấn mạnh bằng cách đưa trạng từ phủ định hoặc giới hạn lên đầu câu và đảo trợ động từ.",
+      "signals": [
+        "never",
+        "rarely",
+        "seldom",
+        "not only",
+        "hardly"
+      ],
+      "examples": [
+        {
+          "en": "Never have I seen such a detailed report.",
+          "vi": "Tôi chưa bao giờ thấy một báo cáo chi tiết như vậy."
+        },
+        {
+          "en": "Not only did she finish early, but she also helped the team.",
+          "vi": "Cô ấy không chỉ xong sớm mà còn giúp cả đội."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Never I have seen this before.",
+          "right": "Never have I seen this before.",
+          "why": "Sau trạng từ phủ định đầu câu phải đảo trợ động từ."
+        }
+      ],
+      "exam": "IELTS: câu nhấn mạnh trong Writing Task 2. TOEIC: hiếm, thường ở câu nâng cao."
+    },
+    {
+      "id": "cleft-sentences",
+      "cat": "Cấu trúc câu",
+      "level": "C1",
+      "title": "Cleft Sentences",
+      "vi": "Câu chẻ",
+      "formula": "It is + focus + that + clause / What + clause + is + focus",
+      "use": "Nhấn mạnh một thành phần của câu bằng cách tách thành hai mệnh đề.",
+      "signals": [
+        "it is ... that",
+        "what ... is",
+        "the reason why"
+      ],
+      "examples": [
+        {
+          "en": "It was the manager who approved the budget.",
+          "vi": "Chính quản lý là người phê duyệt ngân sách."
+        },
+        {
+          "en": "What I need is more time.",
+          "vi": "Điều tôi cần là thêm thời gian."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "It is the manager who he approved the budget.",
+          "right": "It is the manager who approved the budget.",
+          "why": "Who thay cho chủ ngữ, không lặp lại đại từ."
+        }
+      ],
+      "exam": "IELTS: nhấn mạnh trong Speaking/Writing. TOEIC: đọc hiểu câu phức."
+    },
+    {
+      "id": "participle-clauses",
+      "cat": "Cấu trúc câu",
+      "level": "C1",
+      "title": "Participle Clauses",
+      "vi": "Mệnh đề phân từ",
+      "formula": "V-ing / V3 + clause",
+      "use": "Rút gọn mệnh đề chủ động bằng V-ing, bị động bằng V3; chủ ngữ phải tương ứng.",
+      "signals": [
+        "-ing",
+        "V3",
+        "having + V3"
+      ],
+      "examples": [
+        {
+          "en": "Walking into the office, she noticed a new client.",
+          "vi": "Bước vào văn phòng, cô ấy nhận ra một khách hàng mới."
+        },
+        {
+          "en": "Written in 2020, the report is still useful.",
+          "vi": "Được viết năm 2020, báo cáo vẫn hữu ích."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Walking into the office, the phone rang.",
+          "right": "Walking into the office, I heard the phone ring.",
+          "why": "Chủ ngữ của mệnh đề phân từ phải trùng với chủ ngữ câu chính."
+        }
+      ],
+      "exam": "IELTS: câu phức gọn trong Writing. TOEIC: đọc hiểu văn bản dài."
+    },
+    {
+      "id": "noun-clauses",
+      "cat": "Cấu trúc câu",
+      "level": "B2",
+      "title": "Noun Clauses",
+      "vi": "Mệnh đề danh từ",
+      "formula": "that / whether / wh- + clause",
+      "use": "Mệnh đề danh từ làm chủ ngữ, tân ngữ hoặc bổ ngữ cho động từ.",
+      "signals": [
+        "that",
+        "whether",
+        "what",
+        "how",
+        "why"
+      ],
+      "examples": [
+        {
+          "en": "I do not know whether the client will come.",
+          "vi": "Tôi không biết liệu khách hàng có đến không."
+        },
+        {
+          "en": "What she said surprised everyone.",
+          "vi": "Điều cô ấy nói khiến mọi người ngạc nhiên."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I do not know that whether he will come.",
+          "right": "I do not know whether he will come.",
+          "why": "Không dùng that và whether cùng lúc."
+        }
+      ],
+      "exam": "TOEIC: câu hỏi gián tiếp. IELTS: mệnh đề phức trong Writing."
+    },
+    {
+      "id": "adverb-clauses",
+      "cat": "Cấu trúc câu",
+      "level": "B1",
+      "title": "Adverb Clauses",
+      "vi": "Mệnh đề trạng ngữ",
+      "formula": "because / although / while / if + clause, main clause",
+      "use": "Diễn tả nguyên nhân, nhượng bộ, thời gian, điều kiện hoặc mục đích.",
+      "signals": [
+        "because",
+        "although",
+        "while",
+        "so that",
+        "unless"
+      ],
+      "examples": [
+        {
+          "en": "Although the traffic was heavy, we arrived on time.",
+          "vi": "Dù giao thông đông, chúng tôi vẫn đến đúng giờ."
+        },
+        {
+          "en": "I stayed late because the report was urgent.",
+          "vi": "Tôi ở lại muộn vì báo cáo gấp."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Although it rained, but we went out.",
+          "right": "Although it rained, we went out.",
+          "why": "Although và but không dùng cùng trong một câu."
+        }
+      ],
+      "exam": "TOEIC: câu nối ý trong email. IELTS: liên kết lập luận trong Writing."
+    },
+    {
+      "id": "articles",
+      "cat": "Từ loại",
+      "level": "A1",
+      "title": "Articles",
+      "vi": "Mạo từ a / an / the",
+      "formula": "a/an + N số ít đếm được / the + N xác định / zero article",
+      "use": "A/an cho danh từ chưa xác định; the cho danh từ đã xác định; không dùng mạo từ với danh từ không đếm được hoặc số nhiều khái quát.",
+      "signals": [
+        "a",
+        "an",
+        "the",
+        "zero article"
+      ],
+      "examples": [
+        {
+          "en": "I need a new laptop and an external monitor.",
+          "vi": "Tôi cần một laptop mới và một màn hình ngoài."
+        },
+        {
+          "en": "The report on your desk is urgent.",
+          "vi": "Báo cáo trên bàn bạn thì gấp."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "She is an university student.",
+          "right": "She is a university student.",
+          "why": "University bắt đầu bằng âm /juː/ nên dùng a."
+        }
+      ],
+      "exam": "TOEIC: điền mạo từ trong email. IELTS: dùng mạo từ chính xác trong Writing."
+    },
+    {
+      "id": "countable-uncountable",
+      "cat": "Từ loại",
+      "level": "A1",
+      "title": "Countable & Uncountable Nouns",
+      "vi": "Danh từ đếm được và không đếm được",
+      "formula": "many/few + N đếm được / much/little + N không đếm được",
+      "use": "Danh từ đếm được có số ít/số nhiều; danh từ không đếm được không có dạng số nhiều.",
+      "signals": [
+        "many",
+        "much",
+        "a few",
+        "a little",
+        "information",
+        "advice"
+      ],
+      "examples": [
+        {
+          "en": "We need more information before the meeting.",
+          "vi": "Chúng tôi cần thêm thông tin trước cuộc họp."
+        },
+        {
+          "en": "There are a few errors in the report.",
+          "vi": "Có một vài lỗi trong báo cáo."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "She gave me some informations.",
+          "right": "She gave me some information.",
+          "why": "Information là danh từ không đếm được, không thêm -s."
+        }
+      ],
+      "exam": "TOEIC: phân biệt much/many trong câu hỏi. IELTS: dùng đúng lượng từ trong Writing."
+    },
+    {
+      "id": "quantifiers",
+      "cat": "Từ loại",
+      "level": "A2",
+      "title": "Quantifiers",
+      "vi": "Lượng từ",
+      "formula": "some/any/much/many/a lot of/few/little",
+      "use": "Some dùng câu khẳng định, any câu phủ định/nghi vấn; much/many theo loại danh từ.",
+      "signals": [
+        "some",
+        "any",
+        "much",
+        "many",
+        "a lot of",
+        "few",
+        "little"
+      ],
+      "examples": [
+        {
+          "en": "We have a lot of work this week.",
+          "vi": "Tuần này chúng tôi có nhiều việc."
+        },
+        {
+          "en": "There is not much time left.",
+          "vi": "Không còn nhiều thời gian."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "There are much people in the hall.",
+          "right": "There are many people in the hall.",
+          "why": "People là danh từ số nhiều đếm được nên dùng many."
+        }
+      ],
+      "exam": "TOEIC: lượng từ trong hóa đơn, báo cáo. IELTS: mô tả số liệu biểu đồ."
+    },
+    {
+      "id": "pronouns",
+      "cat": "Từ loại",
+      "level": "A1",
+      "title": "Pronouns",
+      "vi": "Đại từ nhân xưng",
+      "formula": "I/you/he/she/it/we/they + me/you/him/her/it/us/them",
+      "use": "Đại từ chủ ngữ đứng trước động từ; đại từ tân ngữ đứng sau động từ hoặc giới từ.",
+      "signals": [
+        "I",
+        "me",
+        "he",
+        "him",
+        "they",
+        "them"
+      ],
+      "examples": [
+        {
+          "en": "She called me after the meeting.",
+          "vi": "Cô ấy gọi cho tôi sau cuộc họp."
+        },
+        {
+          "en": "They sent us the new contract.",
+          "vi": "Họ gửi cho chúng tôi hợp đồng mới."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Me and Tom went to the meeting.",
+          "right": "Tom and I went to the meeting.",
+          "why": "Chủ ngữ dùng I, không dùng me; đặt người khác trước."
+        }
+      ],
+      "exam": "TOEIC: đại từ trong email. IELTS: tránh lặp danh từ trong Writing."
+    },
+    {
+      "id": "possessives",
+      "cat": "Từ loại",
+      "level": "A1",
+      "title": "Possessives",
+      "vi": "Sở hữu cách",
+      "formula": "N + 's / possessive adjective + N",
+      "use": "Dùng 's cho người, of cho vật; my/your/his/her/our/their đứng trước danh từ.",
+      "signals": [
+        "'s",
+        "my",
+        "your",
+        "his",
+        "her",
+        "our",
+        "their"
+      ],
+      "examples": [
+        {
+          "en": "The manager's office is on the second floor.",
+          "vi": "Văn phòng của quản lý ở tầng hai."
+        },
+        {
+          "en": "Their new project starts next week.",
+          "vi": "Dự án mới của họ bắt đầu tuần sau."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "The car of Tom is new.",
+          "right": "Tom's car is new.",
+          "why": "Với người, sở hữu cách 's tự nhiên hơn of."
+        }
+      ],
+      "exam": "TOEIC: mô tả vị trí, sở hữu. IELTS: diễn đạt quan hệ sở hữu."
+    },
+    {
+      "id": "comparatives",
+      "cat": "Từ loại",
+      "level": "A2",
+      "title": "Comparatives",
+      "vi": "So sánh hơn",
+      "formula": "adj + -er + than / more + adj + than",
+      "use": "So sánh hai đối tượng; tính từ ngắn thêm -er, tính từ dài dùng more.",
+      "signals": [
+        "than",
+        "more",
+        "-er",
+        "less"
+      ],
+      "examples": [
+        {
+          "en": "This report is more detailed than the previous one.",
+          "vi": "Báo cáo này chi tiết hơn báo cáo trước."
+        },
+        {
+          "en": "The new office is larger than the old one.",
+          "vi": "Văn phòng mới lớn hơn văn phòng cũ."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "This plan is more better.",
+          "right": "This plan is better.",
+          "why": "Better đã là so sánh hơn, không thêm more."
+        }
+      ],
+      "exam": "TOEIC: so sánh sản phẩm, chi phí. IELTS: mô tả xu hướng biểu đồ."
+    },
+    {
+      "id": "superlatives",
+      "cat": "Từ loại",
+      "level": "A2",
+      "title": "Superlatives",
+      "vi": "So sánh nhất",
+      "formula": "the + adj + -est / the most + adj",
+      "use": "So sánh một đối tượng với toàn bộ nhóm; luôn dùng the trước so sánh nhất.",
+      "signals": [
+        "the most",
+        "the -est",
+        "of all",
+        "in the team"
+      ],
+      "examples": [
+        {
+          "en": "This is the most important meeting of the month.",
+          "vi": "Đây là cuộc họp quan trọng nhất trong tháng."
+        },
+        {
+          "en": "She is the fastest worker in the team.",
+          "vi": "Cô ấy là người làm việc nhanh nhất trong đội."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "He is the most tallest in the office.",
+          "right": "He is the tallest in the office.",
+          "why": "Tallest đã là so sánh nhất, không dùng most."
+        }
+      ],
+      "exam": "TOEIC: so sánh nhất trong quảng cáo. IELTS: mô tả mức cao nhất trong biểu đồ."
+    },
+    {
+      "id": "adjective-order",
+      "cat": "Từ loại",
+      "level": "B1",
+      "title": "Adjective Order",
+      "vi": "Trật tự tính từ",
+      "formula": "opinion + size + age + shape + color + origin + material + purpose + N",
+      "use": "Khi nhiều tính từ cùng bổ nghĩa, sắp xếp theo thứ tự cố định thay vì tùy ý.",
+      "signals": [
+        "opinion",
+        "size",
+        "age",
+        "color",
+        "origin",
+        "material"
+      ],
+      "examples": [
+        {
+          "en": "She bought a beautiful small old blue Italian leather bag.",
+          "vi": "Cô ấy mua một chiếc túi da Ý nhỏ, cũ, màu xanh đẹp."
+        },
+        {
+          "en": "We need a modern large meeting room.",
+          "vi": "Chúng tôi cần một phòng họp lớn hiện đại."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "a red big car",
+          "right": "a big red car",
+          "why": "Kích thước đứng trước màu sắc."
+        }
+      ],
+      "exam": "TOEIC: mô tả sản phẩm. IELTS: mô tả chi tiết trong Speaking."
+    },
+    {
+      "id": "adverbs",
+      "cat": "Từ loại",
+      "level": "B1",
+      "title": "Adverbs",
+      "vi": "Trạng từ",
+      "formula": "adj + -ly / irregular adverbs",
+      "use": "Trạng từ bổ nghĩa động từ, tính từ hoặc trạng từ khác; phân biệt good/well, fast/fast.",
+      "signals": [
+        "carefully",
+        "quickly",
+        "well",
+        "hard",
+        "late"
+      ],
+      "examples": [
+        {
+          "en": "She reviewed the contract carefully.",
+          "vi": "Cô ấy xem xét hợp đồng một cách cẩn thận."
+        },
+        {
+          "en": "He works hard every day.",
+          "vi": "Anh ấy làm việc chăm chỉ mỗi ngày."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "He drives very careful.",
+          "right": "He drives very carefully.",
+          "why": "Cần trạng từ để bổ nghĩa cho động từ drive."
+        }
+      ],
+      "exam": "TOEIC: phân biệt tính từ/trạng từ trong câu điền từ. IELTS: dùng trạng từ linh hoạt."
+    },
+    {
+      "id": "prepositions",
+      "cat": "Từ loại",
+      "level": "A1",
+      "title": "Prepositions",
+      "vi": "Giới từ",
+      "formula": "in / on / at / by / with / for / from",
+      "use": "Giới từ chỉ thời gian, nơi chốn, phương tiện, nguyên nhân; nhiều cụm cố định phải học thuộc.",
+      "signals": [
+        "in",
+        "on",
+        "at",
+        "by",
+        "with",
+        "for"
+      ],
+      "examples": [
+        {
+          "en": "The meeting is on Monday at 9 a.m.",
+          "vi": "Cuộc họp vào thứ Hai lúc 9 giờ sáng."
+        },
+        {
+          "en": "She sent the file by email.",
+          "vi": "Cô ấy gửi tệp qua email."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "The meeting is in Monday.",
+          "right": "The meeting is on Monday.",
+          "why": "Thứ trong tuần dùng on."
+        }
+      ],
+      "exam": "TOEIC: giới từ trong email, lịch hẹn. IELTS: cụm giới từ trong Writing."
+    },
+    {
+      "id": "conjunctions",
+      "cat": "Từ loại",
+      "level": "A2",
+      "title": "Conjunctions",
+      "vi": "Liên từ",
+      "formula": "and / but / or / so / because / although",
+      "use": "Nối từ, cụm từ hoặc mệnh đề; mỗi liên từ diễn tả một quan hệ logic khác nhau.",
+      "signals": [
+        "and",
+        "but",
+        "or",
+        "so",
+        "because",
+        "although"
+      ],
+      "examples": [
+        {
+          "en": "The report was long but useful.",
+          "vi": "Báo cáo dài nhưng hữu ích."
+        },
+        {
+          "en": "I called because the deadline was near.",
+          "vi": "Tôi gọi vì hạn chót đã gần."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Because it rained, so we stayed inside.",
+          "right": "Because it rained, we stayed inside.",
+          "why": "Because và so không dùng cùng lúc."
+        }
+      ],
+      "exam": "TOEIC: nối ý trong email. IELTS: liên kết câu trong Writing Task 2."
+    },
+    {
+      "id": "subject-verb-agreement",
+      "cat": "Từ loại",
+      "level": "B1",
+      "title": "Subject-Verb Agreement",
+      "vi": "Hòa hợp chủ ngữ - động từ",
+      "formula": "S số ít + V(s/es) / S số nhiều + V",
+      "use": "Động từ chia theo chủ ngữ; cẩn thận với cụm giới từ, each/every, tập thể.",
+      "signals": [
+        "each",
+        "every",
+        "the number of",
+        "a number of"
+      ],
+      "examples": [
+        {
+          "en": "The list of items is on the desk.",
+          "vi": "Danh sách các mục ở trên bàn."
+        },
+        {
+          "en": "Each employee receives a new laptop.",
+          "vi": "Mỗi nhân viên nhận một laptop mới."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "The list of items are on the desk.",
+          "right": "The list of items is on the desk.",
+          "why": "Chủ ngữ chính là the list (số ít), không phải items."
+        }
+      ],
+      "exam": "TOEIC: lỗi kinh điển trong câu điền từ. IELTS: kiểm tra số ít/số nhiều khi viết."
+    },
+    {
+      "id": "modal-verbs",
+      "cat": "Từ loại",
+      "level": "A2",
+      "title": "Modal Verbs",
+      "vi": "Động từ khuyết thiếu",
+      "formula": "S + modal + V (không to)",
+      "use": "Can/could chỉ khả năng; may/might chỉ khả năng; must/have to chỉ bắt buộc; should chỉ lời khuyên.",
+      "signals": [
+        "can",
+        "could",
+        "may",
+        "might",
+        "must",
+        "should",
+        "have to"
+      ],
+      "examples": [
+        {
+          "en": "You should check the contract before signing.",
+          "vi": "Bạn nên kiểm tra hợp đồng trước khi ký."
+        },
+        {
+          "en": "We must submit the report by Friday.",
+          "vi": "Chúng tôi phải nộp báo cáo trước thứ Sáu."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "You must to go now.",
+          "right": "You must go now.",
+          "why": "Sau modal dùng động từ nguyên mẫu không to."
+        }
+      ],
+      "exam": "TOEIC: modal trong email công việc. IELTS: dùng should/could để đưa giải pháp."
+    },
+    {
+      "id": "gerund-infinitive",
+      "cat": "Từ loại",
+      "level": "B1",
+      "title": "Gerund & Infinitive",
+      "vi": "Danh động từ và động từ nguyên mẫu",
+      "formula": "enjoy/like + V-ing / want/decide + to V",
+      "use": "Một số động từ theo sau bởi V-ing, một số theo sau bởi to V; nghĩa có thể đổi.",
+      "signals": [
+        "enjoy",
+        "avoid",
+        "suggest",
+        "want",
+        "decide",
+        "plan"
+      ],
+      "examples": [
+        {
+          "en": "I enjoy working with this team.",
+          "vi": "Tôi thích làm việc với đội này."
+        },
+        {
+          "en": "She decided to apply for the position.",
+          "vi": "Cô ấy quyết định ứng tuyển vị trí đó."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I enjoy to read reports.",
+          "right": "I enjoy reading reports.",
+          "why": "Enjoy + V-ing."
+        }
+      ],
+      "exam": "TOEIC: động từ theo sau trong câu điền từ. IELTS: dùng gerund làm chủ ngữ."
+    },
+    {
+      "id": "phrasal-verbs",
+      "cat": "Từ loại",
+      "level": "B1",
+      "title": "Phrasal Verbs",
+      "vi": "Cụm động từ",
+      "formula": "verb + particle",
+      "use": "Nghĩa của cụm thường khác nghĩa gốc; một số tách được tân ngữ, một số không.",
+      "signals": [
+        "pick up",
+        "turn down",
+        "set up",
+        "follow up",
+        "look into"
+      ],
+      "examples": [
+        {
+          "en": "Please follow up with the client tomorrow.",
+          "vi": "Vui lòng theo dõi với khách hàng vào ngày mai."
+        },
+        {
+          "en": "They turned down the offer.",
+          "vi": "Họ đã từ chối lời đề nghị."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Please pick up it.",
+          "right": "Please pick it up.",
+          "why": "Cụm tách được đặt đại từ ở giữa."
+        }
+      ],
+      "exam": "TOEIC: cụm động từ trong hội thoại. IELTS: dùng tự nhiên trong Speaking."
+    },
+    {
+      "id": "toeic-business",
+      "cat": "TOEIC & IELTS",
+      "level": "B1",
+      "title": "TOEIC Business English",
+      "vi": "Tiếng Anh thương mại TOEIC",
+      "formula": "formal request / passive / polite offer",
+      "use": "Email, thông báo, hóa đơn, lịch họp; ưu tiên câu ngắn, rõ, lịch sự.",
+      "signals": [
+        "please find attached",
+        "we would like to",
+        "as requested",
+        "by Friday"
+      ],
+      "examples": [
+        {
+          "en": "Please find attached the updated contract.",
+          "vi": "Vui lòng xem hợp đồng đã cập nhật đính kèm."
+        },
+        {
+          "en": "We would like to confirm the meeting on Friday.",
+          "vi": "Chúng tôi muốn xác nhận cuộc họp vào thứ Sáu."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Please kindly send me the file until Friday.",
+          "right": "Please send me the file by Friday.",
+          "why": "Hạn chót dùng by, không dùng until."
+        }
+      ],
+      "exam": "TOEIC Part 5-7: email, notice, invoice. IELTS: ít dùng trực tiếp nhưng hữu ích cho task 1."
+    },
+    {
+      "id": "ielts-linking",
+      "cat": "TOEIC & IELTS",
+      "level": "B2",
+      "title": "IELTS Linking Devices",
+      "vi": "Từ nối IELTS",
+      "formula": "However / Therefore / In addition / Whereas / Consequently",
+      "use": "Liên kết câu và đoạn trong Writing Task 2; tránh dùng quá dày hoặc sai logic.",
+      "signals": [
+        "however",
+        "therefore",
+        "in addition",
+        "whereas",
+        "consequently"
+      ],
+      "examples": [
+        {
+          "en": "The cost increased; therefore, the company changed its supplier.",
+          "vi": "Chi phí tăng; do đó, công ty đã đổi nhà cung cấp."
+        },
+        {
+          "en": "Whereas the old system was slow, the new one is efficient.",
+          "vi": "Trong khi hệ thống cũ chậm, hệ thống mới lại hiệu quả."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "However the cost increased, the company changed its supplier.",
+          "right": "The cost increased; however, the company changed its supplier.",
+          "why": "However là trạng từ liên kết, không phải liên từ nối trực tiếp hai mệnh đề."
+        }
+      ],
+      "exam": "IELTS Writing Task 2: coherence and cohesion. TOEIC: đọc hiểu đoạn văn."
+    },
+    {
+      "id": "ielts-complex",
+      "cat": "TOEIC & IELTS",
+      "level": "B2",
+      "title": "IELTS Complex Sentences",
+      "vi": "Câu phức IELTS",
+      "formula": "relative + conditional + participle combinations",
+      "use": "Kết hợp mệnh đề quan hệ, điều kiện và phân từ để đạt tiêu chí grammatical range.",
+      "signals": [
+        "which",
+        "if",
+        "although",
+        "having + V3"
+      ],
+      "examples": [
+        {
+          "en": "People who live in cities often face higher costs, which can affect their savings.",
+          "vi": "Người sống ở thành phố thường đối mặt chi phí cao hơn, điều này có thể ảnh hưởng đến tiết kiệm."
+        },
+        {
+          "en": "Having considered both options, I believe the second is more practical.",
+          "vi": "Sau khi cân nhắc cả hai lựa chọn, tôi tin lựa chọn thứ hai thực tế hơn."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "People who they live in cities face higher costs.",
+          "right": "People who live in cities face higher costs.",
+          "why": "Who thay cho chủ ngữ nên không lặp they."
+        }
+      ],
+      "exam": "IELTS Writing Task 2: complex sentences. TOEIC: câu đọc hiểu nâng cao."
+    },
+    {
+      "id": "academic-hedging",
+      "cat": "TOEIC & IELTS",
+      "level": "C1",
+      "title": "Academic Hedging",
+      "vi": "Ngôn ngữ thận trọng học thuật",
+      "formula": "may / might / tend to / it is likely that / to some extent",
+      "use": "Giảm mức độ khẳng định tuyệt đối trong IELTS Writing và nghiên cứu.",
+      "signals": [
+        "may",
+        "might",
+        "tend to",
+        "likely",
+        "to some extent"
+      ],
+      "examples": [
+        {
+          "en": "Remote work may improve productivity to some extent.",
+          "vi": "Làm việc từ xa có thể cải thiện năng suất ở một mức độ nào đó."
+        },
+        {
+          "en": "Young people tend to spend more time online.",
+          "vi": "Người trẻ có xu hướng dành nhiều thời gian hơn trên mạng."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Remote work always improves productivity for everyone.",
+          "right": "Remote work may improve productivity for some employees.",
+          "why": "Tránh khẳng định tuyệt đối khi chưa có bằng chứng."
+        }
+      ],
+      "exam": "IELTS Writing Task 2: tránh overgeneralization. TOEIC: ít gặp."
+    }
+  ]
+}
