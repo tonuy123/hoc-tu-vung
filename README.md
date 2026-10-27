@@ -9,7 +9,7 @@ App học từ vựng **1 file HTML duy nhất** — chạy offline, không serv
 ## Tính năng
 
 - **7.514 từ**: 1.000 từ Anh cơ bản · 3.479 từ Anh thông dụng · 3.035 từ Đức (có mạo từ der/die/das, số nhiều)
-- **Bottom navigation 5 mục**: English · Deutsch · Home · Từ sai · Từ điển. Floating pill, blur, badge đỏ trên "Từ sai", safe-area iPhone.
+- **Bottom navigation 5 mục**: English · Deutsch · Home · Từ sai · Từ điển — liquid glass (blur 10px, saturate 180%), pill trượt 20% với glow, active icon glow, badge đỏ pulse, bar 68px/380px đặt cách đáy 34px. Icon: home filled, heart = Từ sai, kính lúp = Từ điển.
 - **Home dashboard**: thống kê (đã làm / đúng % / từ sai), 4 card bài tập kèm tiến độ, chọn bộ từ 1k/3k, số câu/phiên.
 - **4 dạng bài tập**: Chọn nghĩa · Viết nghĩa · Viết từ · Chọn từ.
 - **Mục "Từ sai"**: màn danh sách riêng (search, phát âm) + nút Ôn tập; làm sai tự lưu theo ngôn ngữ, ôn lại làm đúng thì tự xóa (tối đa 1.000 từ).
@@ -67,7 +67,7 @@ Sửa UI/logic: sửa `src/template.html` → rebuild → test.
 
 ## Test suite
 
-`tests/page-tests.js` chạy trong trang (**68 assertions**): boot shell/nav/home, mở bài, 4 option unique, bỏ type chip, lưu từ sai + badge, thứ tự đáp án ổn định, giữ draft khi đổi tab, reveal tính sai + vào bank + ví dụ, màn Từ sai + practice + back, dictionary A-Z EN/DE, search không dấu, ẩn A-Z khi search, nhóm đồng nghĩa, sheet chi tiết có 3 ví dụ, đổi ngôn ngữ, data sanity, no JS error. `tests/run-cdp.js` kiểm tra thêm mobile viewport 390×844 (home + dictionary không tràn ngang), screenshot `report/mobile-dict.png`, và noscript banner.
+`tests/page-tests.js` chạy trong trang (**82 assertions**): boot shell/nav/home, mở bài, 4 option unique, bỏ type chip, lưu từ sai + badge, thứ tự đáp án ổn định, giữ draft khi đổi tab, reveal tính sai + vào bank + ví dụ, màn Từ sai + practice + back, dictionary A-Z EN/DE, search không dấu, ẩn A-Z khi search, nhóm đồng nghĩa, sheet chi tiết có 3 ví dụ, đổi ngôn ngữ, liquid glass nav (pill index, 5 slot đều, pill khớp slot, icon glow, badge pulse, aria, không external asset), data sanity, no JS error. `tests/run-cdp.js` kiểm tra thêm mobile viewport 390×844 (home + dictionary không tràn ngang), screenshot `report/mobile-dict.png`, và noscript banner.
 
 ## Data / audit
 

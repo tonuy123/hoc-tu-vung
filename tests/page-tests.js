@@ -223,7 +223,41 @@
     next();
   });
 
-  /* ---------- 11. data sanity ---------- */
+  /* ---------- 11. liquid glass bottom nav ---------- */
+  step(function (next) {
+    showScreen('home');
+    var nav = $('bnav');
+    var pill = document.querySelector('.bnav-pill');
+    var items = $$('.bnav-item');
+    ok('nav: 5 equal slots', items.length === 5 && (function () {
+      var w = items.map(function (b) { return b.getBoundingClientRect().width; });
+      return Math.max.apply(null, w) - Math.min.apply(null, w) < 1.5;
+    })(), items.map(function (b) { return Math.round(b.getBoundingClientRect().width); }).join(','));
+    ok('nav: pill index home', nav.style.getPropertyValue('--nav-i') === '2', nav.style.getPropertyValue('--nav-i'));
+    ok('nav: pill matches slot width', Math.abs(pill.getBoundingClientRect().width - items[2].getBoundingClientRect().width) < 1.5, pill.getBoundingClientRect().width + ' vs ' + items[2].getBoundingClientRect().width);
+    ok('nav: active icon glow', getComputedStyle(document.querySelector('.bnav .nav.active svg')).filter.indexOf('drop-shadow') !== -1);
+    ok('nav: badge pulse', getComputedStyle($('navBadge')).animationName.indexOf('softPulse') !== -1, getComputedStyle($('navBadge')).animationName);
+    ok('nav: no external assets', $$('script[src],link[href^="http"]').length === 0);
+
+    showScreen('wrong');
+    ok('nav: pill on wrong', nav.style.getPropertyValue('--nav-i') === '3', nav.style.getPropertyValue('--nav-i'));
+    showScreen('dict');
+    ok('nav: pill on dict', nav.style.getPropertyValue('--nav-i') === '4', nav.style.getPropertyValue('--nav-i'));
+    showScreen('home');
+    ok('nav: pill back home', nav.style.getPropertyValue('--nav-i') === '2', nav.style.getPropertyValue('--nav-i'));
+
+    var before = nav.style.getPropertyValue('--nav-i');
+    document.querySelector('.bnav [data-lang="de"]').click();
+    ok('nav: language does not move pill', nav.style.getPropertyValue('--nav-i') === before, nav.style.getPropertyValue('--nav-i'));
+    ok('nav: DE pressed', document.querySelector('.bnav [data-lang="de"]').getAttribute('aria-pressed') === 'true');
+    ok('nav: DE dot on', document.querySelector('.bnav [data-lang="de"]').classList.contains('on'));
+    ok('nav: EN off', !document.querySelector('.bnav [data-lang="en"]').classList.contains('on'));
+    document.querySelector('.bnav [data-lang="en"]').click();
+    ok('nav: EN restored', document.querySelector('.bnav [data-lang="en"]').getAttribute('aria-pressed') === 'true');
+    next();
+  });
+
+  /* ---------- 12. data sanity ---------- */
   step(function (next) {
     var total = DATASETS.en1k.words.length + DATASETS.en3k.words.length + DATASETS.de3k.words.length;
     ok('data: total words', total === 7514, 'got ' + total);
