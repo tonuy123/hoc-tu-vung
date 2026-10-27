@@ -68,7 +68,7 @@ async function main() {
   await new Promise((r) => setTimeout(r, 2500));
   await evaljs("(function(){ showScreen('home'); return 1; })()");
   await new Promise((r) => setTimeout(r, 500));
-  const home = JSON.parse(await evaljs(`JSON.stringify({sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth, nav: document.querySelectorAll('.bnav button').length, cards: document.querySelectorAll('#homeGrid [data-goto-ex]').length})`));
+  const home = JSON.parse(await evaljs(`JSON.stringify({sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth, nav: document.querySelectorAll('.bnav button').length, cards: document.querySelectorAll('.qa-row [data-goto-ex]').length})`));
   console.log('MOBILE_HOME:', JSON.stringify(home));
   console.log('MOBILE_HOME_OK:', home.sw <= home.cw + 1);
 

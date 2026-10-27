@@ -1,7 +1,7 @@
 # Liquid Glass Bottom Navigation — Implementation Plan
 
 **Status:** implemented locally (2026-10-27) — pending push  
-**Final pass:** exact Superdesign v6 nav — neutral glass `rgba(30,30,30,.45)`, blur 10px, bottom 34px, five icons Home · Play · Heart · Search · Avatar. Avatar opens the light-glass **Hồ sơ** (profile) with device avatar upload, nav avatar sync, EN/DE and settings. 111/111 tests. The "App port" suggestions below were the first draft and are superseded by this final pass.  
+**Final pass:** exact Superdesign v6 nav — neutral glass `rgba(30,30,30,.45)`, blur 10px, bottom 34px, five icons Home · Play · Heart · Search · Avatar. Avatar opens the light-glass **Hồ sơ** (profile) with device avatar upload, nav avatar sync, EN/DE and settings. 133/133 tests. The "App port" suggestions below were the first draft and are superseded by this final pass.  
 **Target:** `hoc-tu-vung` single-file app (`src/template.html` → `index.html`)  
 **Source:** Superdesign project `5369c3ed-1fde-4aa6-8429-9c5e0af21562`, draft `72a309a0-ac54-4b3e-b7cc-730f966110ba`, version **v6**  
 **Preview:** https://p.superdesign.dev/draft/72a309a0-ac54-4b3e-b7cc-730f966110ba  

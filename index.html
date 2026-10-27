@@ -372,6 +372,91 @@
     .profile-insights{margin:-20px 12px 0;padding:20px;border-radius:28px}
     .profile-block{padding:20px 12px 0}
   }
+
+  /* ---------- home dashboard (fintech) ---------- */
+  body.home-mode{background:#0a1120;color:#f2f6ff}
+  body.home-mode .hero{display:none}
+  body.home-mode .wrap{padding:0 0 112px}
+  body.home-mode .foot{display:none}
+  .home{max-width:440px;margin:0 auto;padding:0 0 8px;font-family:'Inter','Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;color:#f2f6ff}
+  .home-top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(10,17,32,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+  .home-avatar{position:relative;width:44px;height:44px;flex:0 0 auto;padding:0;border-radius:50%;border:2px solid rgba(255,255,255,.12);background:#1d2c49;overflow:hidden;cursor:pointer}
+  .home-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .home-avatar-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#8fa0bf}
+  .home-avatar-fallback svg{width:22px;height:22px}
+  .home-greet{flex:1;min-width:0}
+  .home-greet .hi{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#8fa0bf;font-weight:700}
+  .home-greet .name{font-family:'Space Grotesk','Segoe UI',system-ui,sans-serif;font-size:16px;font-weight:700;color:#f2f6ff;margin-top:2px}
+  .home-bell{position:relative;width:42px;height:42px;flex:0 0 auto;border-radius:50%;border:1px solid rgba(255,255,255,.07);background:#17233c;color:#f2f6ff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .home-bell svg{width:19px;height:19px}
+  .home-bell .dot{position:absolute;top:7px;right:7px;width:8px;height:8px;border-radius:50%;background:#c3f24d;border:2px solid #0a1120}
+  .home-hero{position:relative;margin:14px 16px 0;padding:20px;border-radius:26px;overflow:hidden;background:linear-gradient(150deg,#1c3a2f 0%,#16324a 55%,#14213b 100%);border:1px solid rgba(255,255,255,.10);box-shadow:0 20px 50px -30px rgba(0,0,0,.9)}
+  .home-hero::before,.home-hero::after{content:'';position:absolute;width:220px;height:220px;border-radius:50%;filter:blur(45px);pointer-events:none}
+  .home-hero::before{top:-90px;right:-60px;background:rgba(87,224,168,.35)}
+  .home-hero::after{bottom:-110px;left:-70px;background:rgba(195,242,77,.25)}
+  .home-hero > *{position:relative;z-index:1}
+  .hero-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .hero-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,246,255,.6);font-weight:700}
+  .hero-pill{display:inline-flex;align-items:center;gap:4px;padding:5px 9px;border-radius:999px;background:rgba(87,224,168,.14);border:1px solid rgba(87,224,168,.22);color:#57e0a8;font-size:10px;font-weight:800;white-space:nowrap}
+  .hero-pill svg{width:11px;height:11px}
+  .hero-value{font-family:'Space Grotesk','Segoe UI',system-ui,sans-serif;font-size:46px;font-weight:700;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin-top:10px;color:#f2f6ff}
+  .hero-value .cents{font-size:18px;font-weight:500;color:rgba(242,246,255,.5);letter-spacing:0}
+  .hero-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:24px}
+  .hero-ds{display:inline-flex;align-items:center;gap:7px;border:0;background:none;padding:0;color:rgba(242,246,255,.72);font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-family:inherit;text-align:left}
+  .hero-ds svg{width:15px;height:15px;color:#57e0a8}
+  .hero-ds .chev{color:rgba(242,246,255,.35);font-size:14px;letter-spacing:0}
+  .vocab-mark{font-family:'Space Grotesk','Segoe UI',system-ui,sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;color:rgba(242,246,255,.85)}
+  .qa-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 16px 0}
+  .qa{display:flex;flex-direction:column;align-items:center;gap:9px;border:0;background:none;color:#f2f6ff;font-size:10.5px;font-weight:600;cursor:pointer;font-family:inherit;padding:0}
+  .qa-disc{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(87,224,168,.35);background:rgba(87,224,168,.07);color:#57e0a8;transition:transform .3s cubic-bezier(.175,.885,.32,1.275),background .2s}
+  .qa:active .qa-disc{transform:scale(.94)}
+  .qa.primary .qa-disc{background:#c3f24d;border-color:#c3f24d;color:#0e1626;box-shadow:0 12px 26px -14px rgba(195,242,77,.65)}
+  .qa-disc svg{width:22px;height:22px}
+  .home-card{background:#17233c;border:1px solid rgba(255,255,255,.06);border-radius:24px;padding:18px;margin:16px 16px 0}
+  .card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+  .card-title{font-size:12.5px;font-weight:700;color:#f2f6ff}
+  .card-total{font-family:'Space Grotesk','Segoe UI',system-ui,sans-serif;font-size:15px;font-weight:700;color:#57e0a8;margin-top:2px}
+  .chart-toggle{display:flex;gap:2px;background:#0e1626;border:1px solid rgba(255,255,255,.06);border-radius:999px;padding:3px}
+  .chart-toggle button{border:0;background:transparent;color:#8fa0bf;font-size:10px;font-weight:700;padding:5px 9px;border-radius:999px;cursor:pointer;font-family:inherit}
+  .chart-toggle button.active{background:#1d2c49;color:#f2f6ff}
+  .chart{display:flex;gap:8px;margin-top:16px}
+  .chart-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;min-width:0}
+  .chart-bars{height:112px;width:100%;display:flex;align-items:flex-end;justify-content:center}
+  .chart-bar{width:100%;max-width:18px;border-radius:6px;background:#1d2c49;min-height:4px;transition:height .4s ease}
+  .chart-bar.peak{background:#c3f24d;box-shadow:0 0 16px rgba(195,242,77,.35)}
+  .chart-day{font-size:9px;font-weight:700;color:#8fa0bf;letter-spacing:.04em;text-transform:uppercase}
+  .chart-day.peak{color:#c3f24d}
+  .home-sec-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:20px 16px 8px}
+  .home-sec-title{font-family:'Space Grotesk','Segoe UI',system-ui,sans-serif;font-size:16px;font-weight:700;color:#f2f6ff;letter-spacing:-.01em}
+  .home-see{background:none;border:0;color:#57e0a8;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit}
+  .act-row{display:flex;align-items:center;gap:12px;margin:0 16px 6px;padding:10px 12px;background:#17233c;border:1px solid rgba(255,255,255,.06);border-radius:16px}
+  .act-ic{width:44px;height:44px;flex:0 0 auto;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk','Segoe UI',system-ui,sans-serif;font-weight:700;font-size:14px}
+  .act-ic.mc-en{background:rgba(59,130,246,.14);color:#60a5fa}
+  .act-ic.write-en{background:rgba(87,224,168,.14);color:#57e0a8}
+  .act-ic.write-vn{background:rgba(251,191,36,.14);color:#fbbf24}
+  .act-ic.mc-vn{background:rgba(244,63,94,.14);color:#ff7a7a}
+  .act-main{flex:1;min-width:0}
+  .act-word{font-size:13px;font-weight:700;color:#f2f6ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .act-sub{font-size:10.5px;color:#8fa0bf;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .act-amount{text-align:right;flex:0 0 auto;font-family:'Space Grotesk','Segoe UI',system-ui,sans-serif;font-weight:700;font-size:13px}
+  .act-amount.ok{color:#57e0a8}
+  .act-amount.bad{color:#ff7a7a}
+  .act-tag{font-size:9px;color:#8fa0bf;margin-top:2px}
+  .home-empty{margin:0 16px;padding:24px 18px;border:1px dashed rgba(255,255,255,.12);border-radius:20px;text-align:center;color:#8fa0bf;font-size:12px;line-height:1.5}
+  .home-empty .btn{margin-top:12px}
+  .home-empty .btn.primary{background:#c3f24d;border-color:#c3f24d;color:#0e1626}
+  .home-empty .btn.primary:hover{filter:brightness(1.04)}
+  @media (max-width:560px){
+    .home{max-width:none}
+    .home-top{padding:12px}
+    .home-hero{margin:12px 12px 0}
+    .qa-row{margin:16px 12px 0;gap:8px}
+    .qa-disc{width:48px;height:48px}
+    .home-card{margin:14px 12px 0;padding:16px}
+    .home-sec-head{margin:18px 12px 8px}
+    .act-row{margin:0 12px 6px}
+    .home-empty{margin:0 12px}
+  }
   @keyframes softPulse{
     0%,100%{transform:scale(1);opacity:1}
     50%{transform:scale(1.1);opacity:.9}
@@ -415,59 +500,77 @@
 
   <main>
     <!-- ================= HOME ================= -->
-    <section class="screen" id="screen-home" aria-label="Trang chủ">
-      <div class="statcard">
-        <div class="sc"><div class="sc-n" id="homeAnswered">0</div><div class="sc-l">câu đã làm</div></div>
-        <div class="sc"><div class="sc-n" id="homeAcc">—</div><div class="sc-l">đúng</div></div>
-        <div class="sc"><div class="sc-n warn" id="homeWrong">0</div><div class="sc-l">từ sai</div></div>
-      </div>
+    <section class="screen home" id="screen-home" aria-label="Trang chủ">
+      <div class="home">
+        <header class="home-top">
+          <button type="button" class="home-avatar" data-nav="settings" aria-label="Hồ sơ">
+            <span class="home-avatar-fallback" id="homeAvatarFallback" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.4"/><path d="M5.2 20c.8-3.2 3.4-5.2 6.8-5.2s6 2 6.8 5.2"/></svg></span>
+            <img id="homeAvatarImg" alt="" hidden>
+          </button>
+          <div class="home-greet">
+            <div class="hi" id="homeGreet">Chào buổi sáng</div>
+            <div class="name">Học viên</div>
+          </div>
+          <button type="button" class="home-bell" data-nav="wrong" aria-label="Từ sai">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+            <span class="dot" id="homeBellDot" hidden></span>
+          </button>
+        </header>
 
-      <div class="sec-head">
-        <div>
-          <div class="sec-title">4 bài tập</div>
-          <div class="sec-sub" id="homeSub">English · 1.000 từ cơ bản</div>
+        <div class="home-hero">
+          <div class="hero-top">
+            <div class="hero-label">Tổng câu đã làm</div>
+            <span class="hero-pill" id="heroPill">Bắt đầu</span>
+          </div>
+          <div class="hero-value" id="heroValue">0<span class="cents"> câu</span></div>
+          <div class="hero-bottom">
+            <button type="button" class="hero-ds" data-ds-cycle id="heroDs" aria-label="Đổi bộ từ">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 10h19"/><path d="M6 15h4"/></svg>
+              <span id="heroDsLabel">1.000 từ cơ bản</span>
+              <span class="chev">⌄</span>
+            </button>
+            <div class="vocab-mark">VOCAB</div>
+          </div>
         </div>
-      </div>
 
-      <div class="homegrid" id="homeGrid">
-        <button type="button" class="hcard" data-goto-ex="mc-en">
-          <span class="hn">1</span><span class="ht">Chọn nghĩa</span>
-          <span class="hs">Nhìn từ ngoại ngữ, chọn nghĩa đúng</span>
-          <span class="hp" id="hp-mc-en">Bắt đầu</span>
-        </button>
-        <button type="button" class="hcard" data-goto-ex="write-en">
-          <span class="hn">2</span><span class="ht">Viết nghĩa</span>
-          <span class="hs">Nhìn từ, gõ nghĩa tiếng Việt</span>
-          <span class="hp" id="hp-write-en">Bắt đầu</span>
-        </button>
-        <button type="button" class="hcard" data-goto-ex="write-vn">
-          <span class="hn">3</span><span class="ht">Viết từ</span>
-          <span class="hs">Nhìn nghĩa, viết từ ngoại ngữ</span>
-          <span class="hp" id="hp-write-vn">Bắt đầu</span>
-        </button>
-        <button type="button" class="hcard" data-goto-ex="mc-vn">
-          <span class="hn">4</span><span class="ht">Chọn từ</span>
-          <span class="hs">Nhìn nghĩa, chọn từ đúng</span>
-          <span class="hp" id="hp-mc-vn">Bắt đầu</span>
-        </button>
-      </div>
+        <div class="qa-row">
+          <button type="button" class="qa primary" data-goto-ex="mc-en">
+            <span class="qa-disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 1.5 1.5L8 5"/><path d="M11 6h9"/><path d="m4 12 1.5 1.5L8 11"/><path d="M11 12h9"/><path d="m4 18 1.5 1.5L8 17"/><path d="M11 18h9"/></svg></span>
+            <span>Chọn nghĩa</span>
+          </button>
+          <button type="button" class="qa" data-goto-ex="write-en">
+            <span class="qa-disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 20 4.5-1 9.5-9.5a2 2 0 0 0-3-3L5.5 16 4 20z"/><path d="m13.5 6.5 3 3"/></svg></span>
+            <span>Viết nghĩa</span>
+          </button>
+          <button type="button" class="qa" data-goto-ex="write-vn">
+            <span class="qa-disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M7 10h.01M11 10h.01M15 10h.01M18 10h.01M7 14h10"/></svg></span>
+            <span>Viết từ</span>
+          </button>
+          <button type="button" class="qa" data-goto-ex="mc-vn">
+            <span class="qa-disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></span>
+            <span>Chọn từ</span>
+          </button>
+        </div>
 
-      <div class="row">
-        <span class="lbl">Bộ từ:</span>
-        <div class="chips dchips" data-chips id="homeChips"></div>
-      </div>
-      <div class="row">
-        <label class="field">Số câu/phiên
-          <select id="sizeSel" aria-label="Số câu mỗi phiên">
-            <option value="20">20</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-          </select>
-        </label>
-      </div>
-      <div class="quick">
-        <button type="button" class="qbtn warn" data-nav="wrong">Ôn từ sai <span id="homeWrong2">0</span></button>
-        <button type="button" class="qbtn" data-nav="dict">Từ điển A-Z</button>
+        <div class="home-card">
+          <div class="card-head">
+            <div>
+              <div class="card-title" id="chartTitle">Hoạt động tuần này</div>
+              <div class="card-total"><span id="chartTotal">0</span> câu</div>
+            </div>
+            <div class="chart-toggle">
+              <button type="button" data-chart="week" id="chartWeek" class="active">Tuần</button>
+              <button type="button" data-chart="month" id="chartMonth">Tháng</button>
+            </div>
+          </div>
+          <div class="chart" id="chart"></div>
+        </div>
+
+        <div class="home-sec-head">
+          <div class="home-sec-title">Hoạt động gần đây</div>
+          <button type="button" class="home-see" data-activity-all>Xem tất cả</button>
+        </div>
+        <div id="recentBody"></div>
       </div>
     </section>
 
@@ -688,6 +791,7 @@ window.addEventListener('error', function(ev){
   try {
     const msg = String(ev.message || '').trim();
     if (!msg || /^script error\.?$/i.test(msg)) return;
+    if (/window\.ethereum|ethereum\.selectedAddress|selectedAddress|metamask|coinbase|trust ?wallet/i.test(msg)) return;
     const file = String(ev.filename || '');
     if (file && location.origin && file.indexOf(location.origin) !== 0 && file.indexOf('file://') !== 0) return;
     const bar = document.getElementById('errBar');
@@ -747,7 +851,7 @@ const LS = {
 };
 
 /* ================= settings / global state ================= */
-const DEF_SETTINGS = { lang: 'en', ds: 'en1k', size: 50, screen: 'home', ex: 'mc-en', dletter: 'A' };
+const DEF_SETTINGS = { lang: 'en', ds: 'en1k', size: 50, screen: 'home', ex: 'mc-en', dletter: 'A', chart: 'week' };
 const STORED_SET = LS.get('v4t:set', {}) || {};
 let settings = Object.assign({}, DEF_SETTINGS, STORED_SET);
 (function migrateSettings(){
@@ -765,6 +869,7 @@ if (settings.ds === 'wrong' || !DATASETS[settings.ds]) settings.ds = settings.la
 if (DATASETS[settings.ds] && DATASETS[settings.ds].lang !== settings.lang) settings.ds = settings.lang === 'de' ? 'de3k' : 'en1k';
 if (SIZES.indexOf(+settings.size) === -1) settings.size = 50;
 else settings.size = +settings.size;
+if (settings.chart !== 'month') settings.chart = 'week';
 if (TABS.indexOf(settings.ex) === -1) settings.ex = 'mc-en';
 delete settings.dlang;
 if (LETTERS.indexOf(settings.dletter) === -1) settings.dletter = 'A';
@@ -772,6 +877,11 @@ let stats = Object.assign({ answered: 0, correct: 0 }, LS.get('v4t:stats', {}));
 let wrong = LS.get('v4t:wrong', { en: [], de: [] });
 wrong.en = Array.isArray(wrong.en) ? wrong.en : [];
 wrong.de = Array.isArray(wrong.de) ? wrong.de : [];
+let daily = LS.get('v4t:daily', {});
+if (!daily || typeof daily !== 'object' || Array.isArray(daily)) daily = {};
+let recent = LS.get('v4t:recent', []);
+if (!Array.isArray(recent)) recent = [];
+recent = recent.filter(function(r){ return r && typeof r === 'object' && typeof r.ts === 'number'; }).slice(0, 20);
 const wrongStamp = { en: 0, de: 0 };
 
 const S = {};
@@ -1377,6 +1487,7 @@ function rerender(){
   else if (settings.screen === 'dict') renderDict();
   else if (settings.screen === 'settings') renderSettings();
   document.body.classList.toggle('profile-mode', settings.screen === 'settings');
+  document.body.classList.toggle('home-mode', settings.screen === 'home');
   var foot = $('foot');
   if (foot) foot.hidden = (settings.screen !== 'home');
   updateNav();
@@ -1384,21 +1495,135 @@ function rerender(){
 }
 function renderHome(){
   CUR_DS = settings.ds;
-  $('homeAnswered').textContent = fmt(stats.answered);
-  $('homeAcc').textContent = stats.answered ? Math.round(stats.correct / stats.answered * 100) + '%' : '—';
   const wn = wrong[settings.lang].length;
-  $('homeWrong').textContent = fmt(wn);
-  $('homeWrong2').textContent = fmt(wn);
-  $('homeSub').textContent = 'Chọn bài để bắt đầu';
-  TABS.forEach(function(ex){
-    const el = $('hp-' + ex);
-    if (!el) return;
-    const p = sessionProgress(settings.ds, ex);
-    el.textContent = p ? (fmt(p.done) + '/' + fmt(p.total) + ' câu') : 'Bắt đầu';
-    el.classList.toggle('done', !!p && p.done >= p.total);
-  });
-  renderChips();
+  const answered = stats.answered || 0;
+  const acc = answered ? Math.round(stats.correct / answered * 100) : 0;
+  const greet = $('homeGreet');
+  if (greet) greet.textContent = greeting();
+  const dot = $('homeBellDot');
+  if (dot) dot.hidden = wn === 0;
+  const hv = $('heroValue');
+  if (hv) hv.innerHTML = fmt(answered) + '<span class="cents"> câu</span>';
+  const pill = $('heroPill');
+  if (pill) pill.textContent = answered ? acc + '% đúng' : 'Bắt đầu';
+  const dsEl = $('heroDsLabel');
+  if (dsEl) dsEl.textContent = dsLabel(settings.ds);
+  renderChart();
+  renderRecent();
   updateChrome();
+}
+function greeting(){
+  const h = new Date().getHours();
+  if (h < 11) return 'Chào buổi sáng';
+  if (h < 18) return 'Chào buổi chiều';
+  return 'Chào buổi tối';
+}
+function ymd(d){
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+function addDays(d, n){
+  const x = new Date(d);
+  x.setDate(x.getDate() + n);
+  x.setHours(0, 0, 0, 0);
+  return x;
+}
+function startOfWeek(d){
+  const x = new Date(d);
+  x.setHours(0, 0, 0, 0);
+  const day = (x.getDay() + 6) % 7;
+  x.setDate(x.getDate() - day);
+  return x;
+}
+function renderChart(){
+  const mode = settings.chart === 'month' ? 'month' : 'week';
+  const wb = $('chartWeek'), mb = $('chartMonth');
+  if (wb) wb.classList.toggle('active', mode === 'week');
+  if (mb) mb.classList.toggle('active', mode === 'month');
+  const title = $('chartTitle');
+  if (title) title.textContent = mode === 'week' ? 'Hoạt động tuần này' : 'Hoạt động tháng này';
+  const vals = [], labels = [];
+  if (mode === 'week'){
+    const start = startOfWeek(new Date());
+    const names = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
+    for (let i = 0; i < 7; i++){
+      const rec = daily[ymd(addDays(start, i))];
+      vals.push(rec && typeof rec.a === 'number' ? rec.a : 0);
+      labels.push(names[i]);
+    }
+  } else {
+    const base = addDays(startOfWeek(new Date()), -21);
+    for (let i = 0; i < 4; i++){
+      let sum = 0;
+      for (let j = 0; j < 7; j++){
+        const rec = daily[ymd(addDays(base, i * 7 + j))];
+        if (rec && typeof rec.a === 'number') sum += rec.a;
+      }
+      vals.push(sum);
+      labels.push('T' + (i + 1));
+    }
+  }
+  const max = Math.max.apply(null, vals.concat([0]));
+  const peak = max > 0 ? vals.indexOf(max) : -1;
+  const total = vals.reduce(function(a, b){ return a + b; }, 0);
+  const ct = $('chartTotal');
+  if (ct) ct.textContent = fmt(total);
+  const chart = $('chart');
+  if (!chart) return;
+  chart.innerHTML = vals.map(function(v, i){
+    const h = v ? Math.max(8, Math.round(v / max * 100)) : 4;
+    const isPeak = i === peak;
+    return '<div class="chart-col"><div class="chart-bars"><div class="chart-bar' + (isPeak ? ' peak' : '') + '" style="height:' + h + '%"></div></div><div class="chart-day' + (isPeak ? ' peak' : '') + '">' + labels[i] + '</div></div>';
+  }).join('');
+}
+function timeAgo(ts){
+  const s = Math.max(0, Math.floor((Date.now() - ts) / 1000));
+  if (s < 60) return 'vừa xong';
+  const m = Math.floor(s / 60);
+  if (m < 60) return m + ' phút trước';
+  const h = Math.floor(m / 60);
+  if (h < 24) return h + ' giờ trước';
+  const d = Math.floor(h / 24);
+  if (d < 7) return d + ' ngày trước';
+  const dt = new Date(ts);
+  return String(dt.getDate()).padStart(2, '0') + '/' + String(dt.getMonth() + 1).padStart(2, '0');
+}
+function activityRow(r){
+  const tab = TABS.indexOf(r.tab) !== -1 ? r.tab : 'mc-en';
+  const label = EX_LABEL[tab] || 'Bài tập';
+  const amount = r.ok ? '+1' : '−1';
+  const cls = r.ok ? 'ok' : 'bad';
+  return '<div class="act-row">' +
+    '<div class="act-ic ' + tab + '">' + (TABS.indexOf(tab) + 1) + '</div>' +
+    '<div class="act-main"><div class="act-word">' + esc(dispWord(r.word)) + '</div>' +
+    '<div class="act-sub">' + esc(timeAgo(r.ts)) + ' · ' + esc(r.meaning || '') + '</div></div>' +
+    '<div><div class="act-amount ' + cls + '">' + amount + '</div><div class="act-tag">' + esc(label) + '</div></div>' +
+    '</div>';
+}
+function renderRecent(){
+  const body = $('recentBody');
+  if (!body) return;
+  if (!recent.length){
+    body.innerHTML = '<div class="home-empty">Chưa có hoạt động nào.<br>Chọn một bài tập để bắt đầu nhé.' +
+      '<br><button type="button" class="btn primary" data-goto-ex="mc-en">Bắt đầu ngay</button></div>';
+    return;
+  }
+  body.innerHTML = recent.slice(0, 4).map(activityRow).join('');
+}
+function openActivity(){
+  const body = $('sheetBody');
+  if (!body) return;
+  const list = recent.length
+    ? recent.map(activityRow).join('')
+    : '<div class="ex-none">Chưa có hoạt động nào.</div>';
+  body.innerHTML = '<div class="sheet-head"><div class="sheet-word">Hoạt động gần đây</div></div>' +
+    '<div style="margin-top:12px">' + list + '</div>' +
+    '<div class="sheet-actions"><button type="button" class="btn ghost" data-sheet-close>Đóng</button></div>';
+  $('sheetWrap').hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+function cycleDs(){
+  if (settings.lang === 'de') return;
+  setDs(settings.ds === 'en1k' ? 'en3k' : 'en1k');
 }
 function renderWrong(){
   const lang = settings.lang;
@@ -1470,6 +1695,13 @@ function applyAvatar(data){
   }
   const pFall = $('profileAvatarFallback');
   if (pFall) pFall.hidden = has;
+  const hImg = $('homeAvatarImg');
+  if (hImg){
+    if (has){ hImg.src = data; hImg.hidden = false; }
+    else { hImg.removeAttribute('src'); hImg.hidden = true; }
+  }
+  const hFall = $('homeAvatarFallback');
+  if (hFall) hFall.hidden = has;
   const hero = $('profileHero');
   if (hero) hero.classList.toggle('has-photo', has);
   const heroBg = $('profileHeroBg');
@@ -1679,6 +1911,8 @@ function clearData(){
   } catch (e) {}
   wrong = { en: [], de: [] };
   stats = { answered: 0, correct: 0 };
+  daily = {};
+  recent = [];
   settings = Object.assign({}, DEF_SETTINGS);
   wrongStamp.en = 0; wrongStamp.de = 0;
   Object.keys(S).forEach(function(k){ delete S[k]; });
@@ -1696,6 +1930,14 @@ function recordAnswer(tab, v, ok){
   stats.answered++;
   if (ok) stats.correct++;
   LS.set('v4t:stats', stats);
+  const dayKey = ymd(new Date());
+  if (!daily[dayKey]) daily[dayKey] = { a: 0, c: 0 };
+  daily[dayKey].a++;
+  if (ok) daily[dayKey].c++;
+  LS.set('v4t:daily', daily);
+  recent.unshift({ word: v.word, meaning: v.meaning, ok: ok, ts: Date.now(), tab: tab, lang: settings.lang });
+  if (recent.length > 20) recent.length = 20;
+  LS.set('v4t:recent', recent);
   if (!ok) addWrong(v);
   else if (CUR_DS === 'wrong') removeWrong(v);
   renderFoot();
@@ -1805,6 +2047,14 @@ document.addEventListener('click', function(e){
   if ((el = hit('[data-tag-lang]'))){ setLang(el.dataset.tagLang); return; }
   if ((el = hit('[data-avatar-edit]'))){ pickAvatar(); return; }
   if ((el = hit('[data-avatar-clear]'))){ clearAvatar(); return; }
+  if ((el = hit('[data-chart]'))){
+    settings.chart = el.dataset.chart === 'month' ? 'month' : 'week';
+    LS.set('v4t:set', settings);
+    renderHome();
+    return;
+  }
+  if ((el = hit('[data-ds-cycle]'))){ cycleDs(); return; }
+  if ((el = hit('[data-activity-all]'))){ openActivity(); return; }
   if ((el = hit('[data-goto-ex]'))){ showExercise(el.dataset.gotoEx); return; }
   if ((el = hit('[data-ex]'))){ selectEx(el.dataset.ex); return; }
   if ((el = hit('[data-ds]'))){ setDs(el.dataset.ds); return; }
@@ -1898,8 +2148,11 @@ document.addEventListener('keydown', function(e){
 
 /* ================= init ================= */
 (function init(){
-  $('sizeSel').value = String(settings.size);
-  $('sizeSel').addEventListener('change', function(e){ setSize(+e.target.value); });
+  const homeSize = $('sizeSel');
+  if (homeSize){
+    homeSize.value = String(settings.size);
+    homeSize.addEventListener('change', function(e){ setSize(+e.target.value); });
+  }
   const profileSize = $('setSizeSel');
   if (profileSize){
     profileSize.value = String(settings.size);

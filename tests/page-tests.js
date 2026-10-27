@@ -43,7 +43,7 @@
     ok('boot: bottom nav 5 buttons', $$('.bnav button').length === 5, 'got ' + $$('.bnav button').length);
     ok('boot: home active', (document.querySelector('.screen.active') || {}).id === 'screen-home');
     ok('boot: nav home active', document.querySelector('.bnav .nav.active').dataset.nav === 'home');
-    ok('boot: 4 exercise cards', $$('#homeGrid [data-goto-ex]').length === 4);
+    ok('boot: 4 exercise cards', $$('.qa-row [data-goto-ex]').length === 4);
     ok('boot: no auto-speak checkbox', !document.querySelector('input[type=checkbox]'));
     ok('boot: removed old subtitle', !$('heroSub'));
     ok('boot: 4 exercise panels', $$('.expanel').length === 4);
@@ -52,7 +52,7 @@
 
   /* ---------- 2. open exercise from card ---------- */
   step(function (next) {
-    document.querySelector('#homeGrid [data-goto-ex="mc-en"]').click();
+    document.querySelector('.qa-row [data-goto-ex="mc-en"]').click();
     ok('exercise: screen active', (document.querySelector('.screen.active') || {}).id === 'screen-exercise');
     ok('exercise: 50 questions', $$('#list-mc-en .q').length === 50, 'got ' + $$('#list-mc-en .q').length);
     var allFour = $$('#list-mc-en .q').every(function (q) { return q.querySelectorAll('.opt').length === 4; });
@@ -223,13 +223,13 @@
     ok('settings: DE active', document.querySelector('[data-set-lang="de"]').classList.contains('active'));
     ok('settings: pill stays on avatar', $('bnav').style.getPropertyValue('--nav-i') === '4', $('bnav').style.getPropertyValue('--nav-i'));
     showScreen('home');
-    ok('lang: only DE chip', $$('#homeChips .chip').length === 1, 'chips=' + $$('#homeChips .chip').length);
+    ok('lang: only DE dataset', settings.ds === 'de3k' && $('heroDsLabel').textContent.indexOf('Deutsch') !== -1, settings.ds + ' / ' + $('heroDsLabel').textContent);
     showScreen('settings');
     document.querySelector('[data-set-lang="en"]').click();
     ok('lang: back to en1k', settings.ds === 'en1k', settings.ds);
     ok('settings: EN active again', document.querySelector('[data-set-lang="en"]').classList.contains('active'));
     showScreen('home');
-    ok('lang: EN has 2 chips', $$('#homeChips .chip').length === 2, 'chips=' + $$('#homeChips .chip').length);
+    ok('lang: EN dataset', settings.ds === 'en1k' && $('heroDsLabel').textContent.indexOf('1.000') !== -1, settings.ds + ' / ' + $('heroDsLabel').textContent);
     next();
   });
 
@@ -256,6 +256,8 @@
     setAvatar(px);
     ok('profile: nav avatar photo', $('navAvatarImg').getAttribute('src') === px);
     ok('profile: profile avatar photo', $('profileAvatarImg').getAttribute('src') === px);
+    ok('profile: home avatar photo', $('homeAvatarImg').getAttribute('src') === px);
+    ok('profile: home avatar visible', $('homeAvatarImg').hidden === false);
     ok('profile: nav avatar has-photo', document.querySelector('.bnav .avatar-img').classList.contains('has-photo'));
     ok('profile: hero has-photo', $('profileHero').classList.contains('has-photo'));
     ok('profile: hero bg uses photo', $('profileHeroBg').style.backgroundImage.indexOf('data:image/png') !== -1);
@@ -263,6 +265,7 @@
     ok('profile: clear button visible', $('avatarClear').hidden === false);
     clearAvatar();
     ok('profile: nav avatar cleared', $('navAvatarImg').hidden === true);
+    ok('profile: home avatar cleared', $('homeAvatarImg').hidden === true);
     ok('profile: avatar storage cleared', LS.get('v4t:avatar', null) === null);
     ok('profile: nav avatar has-photo off', !document.querySelector('.bnav .avatar-img').classList.contains('has-photo'));
 
@@ -303,7 +306,45 @@
     next();
   });
 
-  /* ---------- 12. data sanity ---------- */
+  /* ---------- 13. fintech home ---------- */
+  step(function (next) {
+    showScreen('home');
+    ok('home: mode on', document.body.classList.contains('home-mode'));
+    ok('home: top bar', !!$('homeAvatarImg') && !!$('homeBellDot') && !!$('homeGreet'));
+    ok('home: hero value', $('heroValue').textContent.indexOf('2') === 0, $('heroValue').textContent);
+    ok('home: hero pill', $('heroPill').textContent.indexOf('% đúng') !== -1, $('heroPill').textContent);
+    ok('home: 4 quick actions', $$('.qa-row [data-goto-ex]').length === 4);
+    ok('home: 7 week bars', $$('#chart .chart-col').length === 7, 'got ' + $$('#chart .chart-col').length);
+    ok('home: week total', $('chartTotal').textContent === '2', $('chartTotal').textContent);
+    ok('home: peak bar', $$('#chart .chart-bar.peak').length === 1);
+    ok('home: bell dot', $('homeBellDot').hidden === false);
+    ok('home: recent rows', $$('#recentBody .act-row').length === 2, 'got ' + $$('#recentBody .act-row').length);
+    ok('home: recent amount', $$('#recentBody .act-amount').length === 2);
+
+    document.querySelector('[data-chart="month"]').click();
+    ok('home: month mode', settings.chart === 'month' && $$('#chart .chart-col').length === 4, 'got ' + $$('#chart .chart-col').length);
+    document.querySelector('[data-chart="week"]').click();
+    ok('home: back to week', settings.chart === 'week' && $$('#chart .chart-col').length === 7);
+
+    var dsBefore = settings.ds;
+    document.querySelector('[data-ds-cycle]').click();
+    ok('home: dataset cycles', settings.ds !== dsBefore, settings.ds);
+    document.querySelector('[data-ds-cycle]').click();
+    ok('home: dataset restored', settings.ds === dsBefore, settings.ds);
+
+    document.querySelector('[data-activity-all]').click();
+    ok('home: activity sheet', $('sheetWrap').hidden === false);
+    ok('home: activity sheet rows', $$('#sheetBody .act-row').length === 2, 'got ' + $$('#sheetBody .act-row').length);
+    closeSheet();
+
+    document.querySelector('.home-bell').click();
+    ok('home: bell opens wrong', (document.querySelector('.screen.active') || {}).id === 'screen-wrong');
+    showScreen('home');
+    ok('home: back home', (document.querySelector('.screen.active') || {}).id === 'screen-home');
+    next();
+  });
+
+  /* ---------- 14. data sanity ---------- */
   step(function (next) {
     var total = DATASETS.en1k.words.length + DATASETS.en3k.words.length + DATASETS.de3k.words.length;
     ok('data: total words', total === 7514, 'got ' + total);
