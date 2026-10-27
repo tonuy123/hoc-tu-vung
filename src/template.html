@@ -213,7 +213,7 @@
   .foot .btn{padding:8px 14px;font-size:13px}
 
   /* ---------- error bar ---------- */
-  .errbar{position:fixed;left:8px;right:8px;top:8px;z-index:99;background:#7c2d12;color:#fed7aa;border:1px solid #b45309;border-radius:10px;padding:10px 14px;font-size:13px;display:none;box-shadow:0 10px 30px -10px #000}
+  .errbar{position:fixed;left:8px;right:8px;top:8px;z-index:99;background:#7c2d12;color:#fed7aa;border:1px solid #b45309;border-radius:10px;padding:10px 14px;font-size:13px;display:none;box-shadow:0 10px 30px -10px #000;cursor:pointer;user-select:none}
 
   /* ---------- liquid glass bottom nav (Superdesign v6) ---------- */
   .bnav{position:fixed;left:50%;bottom:34px;transform:translateX(-50%);z-index:70;
@@ -686,8 +686,15 @@ const DATASETS = __DATA_JSON__;
 'use strict';
 window.addEventListener('error', function(ev){
   try {
+    const msg = String(ev.message || '').trim();
+    if (!msg || /^script error\.?$/i.test(msg)) return;
+    const file = String(ev.filename || '');
+    if (file && location.origin && file.indexOf(location.origin) !== 0 && file.indexOf('file://') !== 0) return;
     const bar = document.getElementById('errBar');
-    if (bar){ bar.style.display = 'block'; bar.textContent = '⚠️ Lỗi JavaScript: ' + (ev.message || 'unknown') + ' — chụp màn hình gửi lại để được hỗ trợ.'; }
+    if (!bar) return;
+    bar.style.display = 'block';
+    bar.textContent = '⚠️ Lỗi JavaScript: ' + msg + ' — chạm để đóng.';
+    bar.onclick = function(){ bar.style.display = 'none'; bar.onclick = null; };
   } catch (e) {}
 });
 /* ================= utils ================= */
