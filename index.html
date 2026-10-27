@@ -243,18 +243,135 @@
   .bnav-item:hover{color:#fff}
   .bnav-item.active{color:#fff}
   .bnav-item.active svg{filter:drop-shadow(0 0 12px rgba(255,230,150,.8))}
-  .bnav .lang{font-size:12.5px;font-weight:800;letter-spacing:.5px;color:rgba(255,255,255,.55)}
-  .bnav .lang.on{color:#fff}
   .bnav .ico{position:relative;display:inline-flex}
   .bnav .avatar-img{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
     background:linear-gradient(135deg,#2b3f63,#17243b);border:1px solid rgba(255,255,255,.20);
     box-shadow:inset 0 1px 1px rgba(255,255,255,.08);overflow:hidden}
   .bnav .avatar-img svg{width:17px;height:17px;color:#dbe7fb}
+  .bnav .avatar-dot{position:absolute;right:-1px;bottom:-1px;width:8px;height:8px;border-radius:50%;
+    background:#ff2d55;border:1px solid #1e1e1e}
   .bnav-item.active .avatar-img{box-shadow:0 0 0 1px rgba(255,255,255,.35),0 0 12px rgba(255,230,150,.45)}
-  .bnav .badge{position:absolute;bottom:-4px;right:-6px;min-width:20px;height:20px;padding:0 5px;
+  .bnav .badge{position:absolute;top:-4px;right:-6px;min-width:20px;height:20px;padding:0 5px;
     border-radius:999px;background:#ff2d55;color:#fff;font-size:10px;font-weight:800;
     line-height:16px;text-align:center;border:2px solid #1e1e1e;
     animation:softPulse 2s infinite ease-in-out}
+  .setnote{color:var(--dim);font-size:12.5px;text-align:center;margin-top:18px;line-height:1.5}
+
+  /* ---------- profile (light glass) ---------- */
+  body.profile-mode{
+    background:linear-gradient(135deg,#f0f4ff 0%,#fdf2f8 50%,#f0fdf4 100%) fixed;
+    color:#0f172a;
+  }
+  body.profile-mode .hero{display:none}
+  body.profile-mode .wrap{padding:0 0 112px;max-width:880px}
+  .profile{
+    font-family:'Manrope','Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+    color:#0f172a;
+  }
+  .glass-high{
+    background:rgba(255,255,255,.65);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.4);
+    box-shadow:0 18px 50px -22px rgba(15,23,42,.35);
+  }
+  .glass-low{
+    background:rgba(255,255,255,.25);
+    backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,.3);
+  }
+  .profile-hero{position:relative;height:420px;overflow:hidden;border-radius:0 0 34px 34px;background:#dbeafe;color:#fff}
+  .profile-hero-bg{
+    position:absolute;inset:0;
+    background:linear-gradient(135deg,#93c5fd 0%,#f9a8d4 48%,#86efac 100%);
+    background-size:cover;background-position:center;
+    transform:scale(1.02);
+    transition:filter .35s ease,transform .35s ease;
+  }
+  .profile-hero.has-photo .profile-hero-bg{filter:blur(14px) saturate(1.1);transform:scale(1.16)}
+  .profile-hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,42,.55) 0%,rgba(15,23,42,.06) 38%,rgba(15,23,42,.72) 100%)}
+  .profile-hero-top{position:absolute;top:0;left:0;right:0;padding:20px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:2}
+  .profile-brand{font-family:'Archivo','Segoe UI',system-ui,sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+  .profile-edit{
+    display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:999px;
+    border:1px solid rgba(255,255,255,.35);color:#fff;font-size:12.5px;font-weight:700;cursor:pointer;
+    transition:transform .3s cubic-bezier(.175,.885,.32,1.275),background .2s;
+  }
+  .profile-edit:hover{background:rgba(255,255,255,.35)}
+  .profile-edit:active{transform:scale(.96)}
+  .profile-hero-bottom{position:absolute;left:18px;right:18px;bottom:22px;display:flex;align-items:center;gap:14px;z-index:2}
+  .profile-avatar{
+    position:relative;flex:0 0 auto;width:96px;height:96px;padding:0;border-radius:50%;
+    border:4px solid #fff;background:linear-gradient(135deg,#2b3f63,#17243b);
+    box-shadow:0 12px 34px rgba(15,23,42,.28);cursor:pointer;overflow:visible;
+    transition:transform .3s cubic-bezier(.175,.885,.32,1.275);
+  }
+  .profile-avatar:active{transform:scale(.96)}
+  .profile-avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+  .profile-avatar-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#dbe7fb}
+  .profile-avatar-fallback svg{width:44px;height:44px}
+  .profile-verify{
+    position:absolute;right:-3px;bottom:-3px;width:28px;height:28px;border-radius:50%;
+    background:#3b82f6;color:#fff;border:3px solid #fff;display:flex;align-items:center;justify-content:center;
+    font-size:14px;font-weight:800;box-shadow:0 4px 12px rgba(59,130,246,.4);
+  }
+  .profile-id{min-width:0;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+  .profile-name{font-family:'Archivo','Segoe UI',system-ui,sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.04}
+  .profile-bio{font-size:14px;font-weight:500;color:rgba(255,255,255,.84);margin-top:6px}
+  .profile-insights{
+    position:relative;z-index:3;margin:-24px 16px 0;padding:24px;border-radius:32px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  }
+  .pstat{position:relative;text-align:center;padding:2px 6px;border-radius:16px;
+    transition:transform .3s cubic-bezier(.175,.885,.32,1.275)}
+  .pstat:hover{transform:scale(1.02)}
+  .pstat:active{transform:scale(.95)}
+  .pstat+.pstat::before{content:'';position:absolute;left:0;top:12%;bottom:12%;width:1px;background:rgba(148,163,184,.35)}
+  .pstat-ic{width:34px;height:34px;margin:0 auto 6px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+  .pstat-ic svg{width:18px;height:18px}
+  .pstat-ic.blue{background:rgba(59,130,246,.12);color:#3b82f6}
+  .pstat-ic.emerald{background:rgba(16,185,129,.12);color:#10b981}
+  .pstat-ic.rose{background:rgba(244,63,94,.12);color:#f43f5e}
+  .pstat-l{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#94a3b8;font-weight:800}
+  .pstat-v{font-family:'Archivo','Segoe UI',system-ui,sans-serif;font-size:24px;font-weight:800;color:#0f172a;margin-top:3px;font-variant-numeric:tabular-nums}
+  .profile-block{padding:22px 16px 0}
+  .profile-sec-title{font-family:'Archivo','Segoe UI',system-ui,sans-serif;font-size:18px;font-weight:800;letter-spacing:-.02em;color:#0f172a;margin-bottom:12px}
+  .profile-tags{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:2px 0 6px}
+  .profile-tags::-webkit-scrollbar{display:none}
+  .tag{
+    flex:0 0 auto;padding:13px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.35);
+    background:rgba(255,255,255,.25);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+    color:#334155;font-size:12px;font-weight:800;cursor:pointer;
+    transition:transform .3s cubic-bezier(.175,.885,.32,1.275),background .2s,color .2s;
+  }
+  .tag:hover{background:rgba(255,255,255,.4)}
+  .tag:active{transform:scale(.96)}
+  .tag.active{background:rgba(255,255,255,.62);color:#0f172a;box-shadow:0 10px 26px -14px rgba(15,23,42,.35)}
+  .profile-menu{border-radius:35px;padding:6px 14px}
+  .prow{display:flex;align-items:center;gap:12px;width:100%;padding:12px 2px;border:0;border-bottom:1px solid rgba(255,255,255,.4);background:none;text-align:left;cursor:pointer;color:#0f172a;font-family:inherit}
+  .prow:last-child{border-bottom:0}
+  .prow:hover{background:rgba(255,255,255,.3);border-radius:16px}
+  .prow-ic{width:40px;height:40px;flex:0 0 auto;border-radius:16px;background:rgba(255,255,255,.8);display:flex;align-items:center;justify-content:center;color:#3b82f6}
+  .prow-ic svg{width:19px;height:19px}
+  .prow-label{flex:1;min-width:0;font-size:14px;font-weight:800}
+  .prow-sub{font-size:11px;color:#94a3b8;font-weight:600;margin-top:1px}
+  .prow .chev{color:#94a3b8;font-size:18px;line-height:1}
+  .prow.danger .prow-ic{color:#f43f5e}
+  .profile-seg{background:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:3px;flex:0 0 auto}
+  .profile-seg .seg-btn{font-size:11px;font-weight:800;padding:6px 9px;color:#64748b;border-radius:999px}
+  .profile-seg .seg-btn.active{background:#0f172a;color:#fff}
+  .profile-select{border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.4);border-radius:12px;padding:7px 9px;font-size:12px;font-weight:800;color:#0f172a;font-family:inherit;outline:none}
+  .profile-mini{border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.45);border-radius:999px;padding:6px 10px;font-size:11px;font-weight:800;color:#0f172a;cursor:pointer;font-family:inherit}
+  .profile-mini.danger{color:#f43f5e}
+  .profile-note{color:#94a3b8;font-size:12px;text-align:center;margin:18px 16px 0;line-height:1.5}
+  .bnav .avatar-img .avatar-photo{width:100%;height:100%;object-fit:cover;display:block}
+  .bnav .avatar-img.has-photo svg{display:none}
+  @media (max-width:560px){
+    .profile-hero{height:380px}
+    .profile-name{font-size:26px}
+    .profile-avatar{width:84px;height:84px}
+    .profile-insights{margin:-20px 12px 0;padding:20px;border-radius:28px}
+    .profile-block{padding:20px 12px 0}
+  }
   @keyframes softPulse{
     0%,100%{transform:scale(1);opacity:1}
     50%{transform:scale(1.1);opacity:.9}
@@ -427,6 +544,106 @@
       <div class="azchips" id="dictAZ"></div>
       <div id="dictBody"></div>
     </section>
+
+    <!-- ================= PROFILE ================= -->
+    <section class="screen profile" id="screen-settings" aria-label="Hồ sơ">
+      <div class="profile-hero" id="profileHero">
+        <div class="profile-hero-bg" id="profileHeroBg"></div>
+        <div class="profile-hero-shade"></div>
+        <div class="profile-hero-top">
+          <div class="profile-brand">Học Từ Vựng</div>
+          <button type="button" class="profile-edit glass-low" data-avatar-edit>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="m4 20 4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20z"/><path d="m13.5 5.5 3 3"/></svg>
+            Sửa ảnh
+          </button>
+        </div>
+        <div class="profile-hero-bottom">
+          <button type="button" class="profile-avatar" data-avatar-edit aria-label="Đổi ảnh đại diện">
+            <span class="profile-avatar-fallback" id="profileAvatarFallback" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8.4" r="3.5"/><path d="M4.8 20c.8-3.4 3.5-5.4 7.2-5.4s6.4 2 7.2 5.4"/></svg></span>
+            <img id="profileAvatarImg" alt="Ảnh đại diện" hidden>
+            <span class="profile-verify" aria-hidden="true">✓</span>
+          </button>
+          <div class="profile-id">
+            <div class="profile-name">Học viên</div>
+            <div class="profile-bio">Học từ vựng mỗi ngày · Anh &amp; Đức</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-insights glass-high">
+        <div class="pstat">
+          <div class="pstat-ic blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.2-7 4.1 14L15 12h6"/></svg></div>
+          <div class="pstat-l">Câu đã làm</div>
+          <div class="pstat-v" id="setAnswered">0</div>
+        </div>
+        <div class="pstat">
+          <div class="pstat-ic emerald"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.2 4.2L19 6.8"/></svg></div>
+          <div class="pstat-l">Đúng</div>
+          <div class="pstat-v" id="setAcc">—</div>
+        </div>
+        <div class="pstat">
+          <div class="pstat-ic rose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 2.8 20.5h18.4L12 3.5z"/><path d="M12 9.5v4.5"/><circle cx="12" cy="17.3" r=".9" fill="currentColor" stroke="none"/></svg></div>
+          <div class="pstat-l">Từ sai</div>
+          <div class="pstat-v" id="setWrong">0</div>
+        </div>
+      </div>
+
+      <div class="profile-block">
+        <div class="profile-sec-title">Bộ từ</div>
+        <div class="profile-tags">
+          <button type="button" class="tag" data-tag-lang="en">English</button>
+          <button type="button" class="tag" data-tag-lang="de">Deutsch</button>
+          <button type="button" class="tag" data-nav="wrong">Từ sai · <span id="profileWrongTag">0</span></button>
+          <button type="button" class="tag" data-nav="dict">Từ điển</button>
+        </div>
+      </div>
+
+      <div class="profile-block">
+        <div class="profile-sec-title">Cài đặt</div>
+        <div class="profile-menu glass-low">
+          <div class="prow">
+            <span class="prow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.8 12h16.4"/><path d="M12 3.5a14 14 0 0 1 0 17 14 14 0 0 1 0-17z"/></svg></span>
+            <span class="prow-label">Ngôn ngữ</span>
+            <div class="seg profile-seg" id="setLangSeg">
+              <button type="button" class="seg-btn" data-set-lang="en">EN</button>
+              <button type="button" class="seg-btn" data-set-lang="de">DE</button>
+            </div>
+          </div>
+          <div class="prow">
+            <span class="prow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 8 4.2-8 4.2-8-4.2 8-4.2z"/><path d="m4 12 8 4.2 8-4.2"/><path d="m4 16.4 8 4.2 8-4.2"/></svg></span>
+            <span class="prow-label">Số câu/phiên</span>
+            <select id="setSizeSel" class="profile-select" aria-label="Số câu mỗi phiên">
+              <option value="20">20</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+          <div class="prow">
+            <span class="prow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h3l1.2-2h7.6l1.2 2h3v11H4z"/><circle cx="12" cy="14" r="3.2"/></svg></span>
+            <span class="prow-label">Ảnh đại diện</span>
+            <button type="button" class="profile-mini" data-avatar-edit>Đổi</button>
+            <button type="button" class="profile-mini danger" data-avatar-clear id="avatarClear" hidden>Xóa</button>
+          </div>
+          <button type="button" class="prow" data-nav="wrong">
+            <span class="prow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7.6a4.5 4.5 0 0 1 7.5 2.9c0 5.4-7.5 10-7.5 10z"/></svg></span>
+            <span class="prow-label">Từ sai <span class="prow-sub" id="setWrongRow">0 từ</span></span>
+            <span class="chev">›</span>
+          </button>
+          <button type="button" class="prow" data-nav="dict">
+            <span class="prow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></span>
+            <span class="prow-label">Từ điển</span>
+            <span class="chev">›</span>
+          </button>
+          <button type="button" class="prow danger" data-reset>
+            <span class="prow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V4.5h6V7"/><path d="M6.5 7l1 13h9l1-13"/><path d="M10 11v5M14 11v5"/></svg></span>
+            <span class="prow-label">Xóa tiến độ &amp; từ sai</span>
+            <span class="chev">›</span>
+          </button>
+        </div>
+      </div>
+      <div class="profile-note">1 file HTML · chạy offline · ảnh đại diện chỉ lưu trên máy bạn</div>
+      <input type="file" id="avatarFile" accept="image/*" hidden>
+    </section>
   </main>
 
   <footer class="foot" id="foot">
@@ -437,19 +654,20 @@
 
 <nav class="bnav" id="bnav" aria-label="Điều hướng chính">
   <span class="bnav-pill" aria-hidden="true"></span>
-  <button type="button" class="bnav-item lang" data-lang="en" aria-label="Tiếng Anh" aria-pressed="true">EN</button>
-  <button type="button" class="bnav-item lang" data-lang="de" aria-label="Tiếng Đức" aria-pressed="false">DE</button>
   <button type="button" class="bnav-item nav" data-nav="home" aria-label="Trang chủ" aria-current="page">
     <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2 2.9 9.7a1.1 1.1 0 0 0 1.4 1.7l1-.8V21a1 1 0 0 0 1 1h4.6v-5.8h2.2V22h4.6a1 1 0 0 0 1-1V10.6l1 .8a1.1 1.1 0 0 0 1.4-1.7L12 2.2z"/></svg></span>
+  </button>
+  <button type="button" class="bnav-item nav" data-nav="exercise" aria-label="Luyện tập">
+    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m10 8.3 5.5 3.7-5.5 3.7z"/></svg></span>
+  </button>
+  <button type="button" class="bnav-item nav" data-nav="wrong" aria-label="Từ sai">
+    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.6s-8-4.9-8-10.4A4.6 4.6 0 0 1 12 7.5a4.6 4.6 0 0 1 8 2.7c0 5.5-8 10.4-8 10.4z"/></svg><span class="badge" id="navBadge" aria-hidden="true" hidden>0</span></span>
   </button>
   <button type="button" class="bnav-item nav" data-nav="dict" aria-label="Từ điển">
     <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></span>
   </button>
-  <button type="button" class="bnav-item nav" data-nav="wrong" aria-label="Từ sai">
-    <span class="ico">
-      <span class="avatar-img" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.2"/><path d="M5.6 20c.7-3.1 3.2-5 6.4-5s5.7 1.9 6.4 5"/></svg></span>
-      <span class="badge" id="navBadge" aria-hidden="true" hidden>0</span>
-    </span>
+  <button type="button" class="bnav-item nav" data-nav="settings" aria-label="Hồ sơ">
+    <span class="ico"><span class="avatar-img" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.2"/><path d="M5.6 20c.7-3.1 3.2-5 6.4-5s5.7 1.9 6.4 5"/></svg><img id="navAvatarImg" class="avatar-photo" alt="" hidden></span><span class="avatar-dot" aria-hidden="true"></span></span>
   </button>
 </nav>
 
@@ -510,7 +728,7 @@ function shuffleRng(arr, rng){
 }
 const TABS = ['mc-en', 'write-en', 'write-vn', 'mc-vn'];
 const EX_LABEL = { 'mc-en': 'Chọn nghĩa', 'write-en': 'Viết nghĩa', 'write-vn': 'Viết từ', 'mc-vn': 'Chọn từ' };
-const SCREENS = ['home', 'exercise', 'wrong', 'dict'];
+const SCREENS = ['home', 'exercise', 'wrong', 'dict', 'settings'];
 const SIZES = [20, 50, 100];
 const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').concat(['#']);
 
@@ -689,9 +907,11 @@ function updateWrongUI(){
 
 /* ================= text / chrome ================= */
 function navIndex(){
+  if (settings.screen === 'settings') return 4;
   if (settings.screen === 'dict') return 3;
-  if (settings.screen === 'wrong' || (settings.screen === 'exercise' && CUR_DS === 'wrong')) return 4;
-  return 2;
+  if (settings.screen === 'wrong' || (settings.screen === 'exercise' && CUR_DS === 'wrong')) return 2;
+  if (settings.screen === 'exercise') return 1;
+  return 0;
 }
 function updateNav(){
   const wn = wrong[settings.lang].length;
@@ -702,17 +922,12 @@ function updateNav(){
   const nav = $('bnav');
   if (nav) nav.style.setProperty('--nav-i', String(idx));
 
-  const activeName = idx === 4 ? 'wrong' : idx === 3 ? 'dict' : 'home';
+  const activeName = idx === 4 ? 'settings' : idx === 3 ? 'dict' : idx === 2 ? 'wrong' : idx === 1 ? 'exercise' : 'home';
   $$('.bnav .nav').forEach(function(b){
     const on = b.dataset.nav === activeName;
     b.classList.toggle('active', on);
     if (on) b.setAttribute('aria-current', 'page');
     else b.removeAttribute('aria-current');
-  });
-  $$('.bnav .lang').forEach(function(b){
-    const on = b.dataset.lang === settings.lang;
-    b.classList.toggle('on', on);
-    b.setAttribute('aria-pressed', on ? 'true' : 'false');
   });
   const wrongBtn = document.querySelector('.bnav [data-nav="wrong"]');
   if (wrongBtn) wrongBtn.setAttribute('aria-label', wn ? 'Từ sai, ' + fmt(wn) + ' từ' : 'Từ sai');
@@ -1153,6 +1368,8 @@ function rerender(){
   else if (settings.screen === 'exercise') renderExercise();
   else if (settings.screen === 'wrong') renderWrong();
   else if (settings.screen === 'dict') renderDict();
+  else if (settings.screen === 'settings') renderSettings();
+  document.body.classList.toggle('profile-mode', settings.screen === 'settings');
   var foot = $('foot');
   if (foot) foot.hidden = (settings.screen !== 'home');
   updateNav();
@@ -1211,6 +1428,91 @@ function renderWrong(){
   }
   $('wrongMeta').textContent = arr.length ? ('Hiển thị ' + fmt(list.length) + ' / ' + fmt(arr.length) + ' từ') : '';
   $('wrongBody').innerHTML = html;
+}
+function renderSettings(){
+  const wn = wrong[settings.lang].length;
+  $('setAnswered').textContent = fmt(stats.answered);
+  $('setAcc').textContent = stats.answered ? Math.round(stats.correct / stats.answered * 100) + '%' : '—';
+  $('setWrong').textContent = fmt(wn);
+  const tagWrong = $('profileWrongTag');
+  if (tagWrong) tagWrong.textContent = fmt(wn);
+  const rowWrong = $('setWrongRow');
+  if (rowWrong) rowWrong.textContent = fmt(wn) + ' từ';
+  $$('#setLangSeg .seg-btn').forEach(function(b){
+    b.classList.toggle('active', b.dataset.setLang === settings.lang);
+  });
+  $$('.tag[data-tag-lang]').forEach(function(b){
+    b.classList.toggle('active', b.dataset.tagLang === settings.lang);
+  });
+  const sizeSel = $('setSizeSel');
+  if (sizeSel) sizeSel.value = String(settings.size);
+}
+function applyAvatar(data){
+  const has = typeof data === 'string' && data.indexOf('data:image/') === 0;
+  const navImg = $('navAvatarImg');
+  if (navImg){
+    if (has){ navImg.src = data; navImg.hidden = false; }
+    else { navImg.removeAttribute('src'); navImg.hidden = true; }
+  }
+  const navWrap = document.querySelector('.bnav .avatar-img');
+  if (navWrap) navWrap.classList.toggle('has-photo', has);
+  const pImg = $('profileAvatarImg');
+  if (pImg){
+    if (has){ pImg.src = data; pImg.hidden = false; }
+    else { pImg.removeAttribute('src'); pImg.hidden = true; }
+  }
+  const pFall = $('profileAvatarFallback');
+  if (pFall) pFall.hidden = has;
+  const hero = $('profileHero');
+  if (hero) hero.classList.toggle('has-photo', has);
+  const heroBg = $('profileHeroBg');
+  if (heroBg) heroBg.style.backgroundImage = has ? 'url("' + data + '")' : '';
+  const clearBtn = $('avatarClear');
+  if (clearBtn) clearBtn.hidden = !has;
+}
+function setAvatar(data){
+  try { localStorage.setItem('v4t:avatar', JSON.stringify(data)); }
+  catch (e) { alert('Bộ nhớ trình duyệt đã đầy, không lưu được ảnh.'); }
+  applyAvatar(data);
+}
+function clearAvatar(){
+  try { localStorage.removeItem('v4t:avatar'); } catch (e) {}
+  applyAvatar(null);
+}
+function loadAvatar(){
+  const d = LS.get('v4t:avatar', null);
+  applyAvatar(typeof d === 'string' ? d : null);
+}
+function pickAvatar(){
+  const f = $('avatarFile');
+  if (f) f.click();
+}
+function handleAvatarFile(file){
+  if (!file) return;
+  if (!/^image\//.test(file.type)){ alert('Vui lòng chọn file ảnh.'); return; }
+  if (file.size > 8 * 1024 * 1024){ alert('Ảnh tối đa 8MB.'); return; }
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.onload = function(){
+    try {
+      const S = 256;
+      const c = document.createElement('canvas');
+      c.width = S; c.height = S;
+      const ctx = c.getContext('2d');
+      const scale = Math.max(S / img.width, S / img.height);
+      const w = img.width * scale, h = img.height * scale;
+      ctx.drawImage(img, (S - w) / 2, (S - h) / 2, w, h);
+      setAvatar(c.toDataURL('image/jpeg', 0.86));
+    } catch (e) {
+      alert('Không xử lý được ảnh này.');
+    }
+    URL.revokeObjectURL(url);
+  };
+  img.onerror = function(){
+    URL.revokeObjectURL(url);
+    alert('Ảnh không hợp lệ.');
+  };
+  img.src = url;
 }
 function renderExercise(){
   const ex = settings.ex;
@@ -1340,6 +1642,10 @@ function backFromExercise(){
 function setSize(n){
   if (SIZES.indexOf(n) === -1) return;
   settings.size = n;
+  const homeSel = $('sizeSel');
+  if (homeSel) homeSel.value = String(n);
+  const profileSel = $('setSizeSel');
+  if (profileSel) profileSel.value = String(n);
   LS.set('v4t:set', settings);
   Object.keys(S).forEach(function(ds){ delete S[ds]; });
   Object.keys(DRAFT).forEach(function(k){ delete DRAFT[k]; });
@@ -1482,8 +1788,16 @@ function navFocus(tab, i, dir){
 document.addEventListener('click', function(e){
   const hit = function(sel){ return e.target.closest(sel); };
   let el;
-  if ((el = hit('[data-nav]'))){ showScreen(el.dataset.nav); return; }
-  if ((el = hit('[data-lang]'))){ setLang(el.dataset.lang); return; }
+  if ((el = hit('[data-nav]'))){
+    const n = el.dataset.nav;
+    if (n === 'exercise') showExercise(settings.ex);
+    else showScreen(n);
+    return;
+  }
+  if ((el = hit('[data-set-lang]'))){ setLang(el.dataset.setLang); return; }
+  if ((el = hit('[data-tag-lang]'))){ setLang(el.dataset.tagLang); return; }
+  if ((el = hit('[data-avatar-edit]'))){ pickAvatar(); return; }
+  if ((el = hit('[data-avatar-clear]'))){ clearAvatar(); return; }
   if ((el = hit('[data-goto-ex]'))){ showExercise(el.dataset.gotoEx); return; }
   if ((el = hit('[data-ex]'))){ selectEx(el.dataset.ex); return; }
   if ((el = hit('[data-ds]'))){ setDs(el.dataset.ds); return; }
@@ -1579,6 +1893,20 @@ document.addEventListener('keydown', function(e){
 (function init(){
   $('sizeSel').value = String(settings.size);
   $('sizeSel').addEventListener('change', function(e){ setSize(+e.target.value); });
+  const profileSize = $('setSizeSel');
+  if (profileSize){
+    profileSize.value = String(settings.size);
+    profileSize.addEventListener('change', function(e){ setSize(+e.target.value); });
+  }
+  const avatarInput = $('avatarFile');
+  if (avatarInput){
+    avatarInput.addEventListener('change', function(e){
+      const f = e.target.files && e.target.files[0];
+      e.target.value = '';
+      handleAvatarFile(f);
+    });
+  }
+  loadAvatar();
   const dq = $('dictQ');
   let dt = null;
   dq.addEventListener('input', function(){

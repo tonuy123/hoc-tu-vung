@@ -39,7 +39,7 @@
     clearData();
     updateChrome();
     showScreen('home');
-    ok('boot: 4 screens', $$('.screen').length === 4, 'got ' + $$('.screen').length);
+    ok('boot: 5 screens', $$('.screen').length === 5, 'got ' + $$('.screen').length);
     ok('boot: bottom nav 5 buttons', $$('.bnav button').length === 5, 'got ' + $$('.bnav button').length);
     ok('boot: home active', (document.querySelector('.screen.active') || {}).id === 'screen-home');
     ok('boot: nav home active', document.querySelector('.bnav .nav.active').dataset.nav === 'home');
@@ -143,7 +143,7 @@
     settings.ex = 'mc-en';
     $('wrongPractice').click();
     ok('wrong: practice screen active', (document.querySelector('.screen.active') || {}).id === 'screen-exercise');
-    ok('wrong: nav pill on wrong', $('bnav').style.getPropertyValue('--nav-i') === '4', $('bnav').style.getPropertyValue('--nav-i'));
+    ok('wrong: nav pill on wrong', $('bnav').style.getPropertyValue('--nav-i') === '2', $('bnav').style.getPropertyValue('--nav-i'));
     ok('wrong: dataset is wrong', CUR_DS === 'wrong');
     ok('wrong: questions built from bank', $$('#list-mc-en .q').length === wrong.en.length, 'q=' + $$('#list-mc-en .q').length);
     ok('wrong: chips hidden', $('exChips').hidden === true);
@@ -210,21 +210,68 @@
     next();
   });
 
-  /* ---------- 10. language nav ---------- */
+  /* ---------- 10. settings + language ---------- */
   step(function (next) {
-    document.querySelector('.bnav [data-lang="de"]').click();
+    if (settings.lang !== 'en') setLang('en');
+    showScreen('settings');
+    ok('settings: screen active', (document.querySelector('.screen.active') || {}).id === 'screen-settings');
+    ok('settings: nav pill on settings', $('bnav').style.getPropertyValue('--nav-i') === '4', $('bnav').style.getPropertyValue('--nav-i'));
+    ok('settings: EN active', document.querySelector('[data-set-lang="en"]').classList.contains('active'));
+    document.querySelector('[data-set-lang="de"]').click();
     ok('lang: hero says Đức', $('heroLang').textContent === 'Đức', $('heroLang').textContent);
     ok('lang: ds de3k', settings.ds === 'de3k', settings.ds);
+    ok('settings: DE active', document.querySelector('[data-set-lang="de"]').classList.contains('active'));
+    ok('settings: pill stays on avatar', $('bnav').style.getPropertyValue('--nav-i') === '4', $('bnav').style.getPropertyValue('--nav-i'));
     showScreen('home');
     ok('lang: only DE chip', $$('#homeChips .chip').length === 1, 'chips=' + $$('#homeChips .chip').length);
-    document.querySelector('.bnav [data-lang="en"]').click();
+    showScreen('settings');
+    document.querySelector('[data-set-lang="en"]').click();
     ok('lang: back to en1k', settings.ds === 'en1k', settings.ds);
+    ok('settings: EN active again', document.querySelector('[data-set-lang="en"]').classList.contains('active'));
     showScreen('home');
     ok('lang: EN has 2 chips', $$('#homeChips .chip').length === 2, 'chips=' + $$('#homeChips .chip').length);
     next();
   });
 
-  /* ---------- 11. liquid glass bottom nav ---------- */
+  /* ---------- 11. profile + avatar ---------- */
+  step(function (next) {
+    showScreen('settings');
+    ok('profile: light mode on', document.body.classList.contains('profile-mode'));
+    ok('profile: screen active', (document.querySelector('.screen.active') || {}).id === 'screen-settings');
+    ok('profile: hero + avatar', !!$('profileHero') && !!$('profileAvatarImg'));
+    ok('profile: stats rendered', $('setAnswered').textContent === fmt(stats.answered));
+    ok('profile: language seg active', document.querySelector('[data-set-lang="en"]').classList.contains('active'));
+    ok('profile: tag active', document.querySelector('[data-tag-lang="en"]').classList.contains('active'));
+    ok('profile: file input image', $('avatarFile').accept.indexOf('image/') !== -1);
+    ok('profile: size select sync', $('setSizeSel').value === String(settings.size));
+    ok('profile: settings rows', !!document.querySelector('[data-nav="wrong"]') && !!document.querySelector('[data-nav="dict"]'));
+
+    document.querySelector('[data-tag-lang="de"]').click();
+    ok('profile: tag switches language', settings.lang === 'de');
+    ok('profile: DE tag active', document.querySelector('[data-tag-lang="de"]').classList.contains('active'));
+    document.querySelector('[data-tag-lang="en"]').click();
+    ok('profile: back to English', settings.lang === 'en');
+
+    var px = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Y9Zl1sAAAAASUVORK5CYII=';
+    setAvatar(px);
+    ok('profile: nav avatar photo', $('navAvatarImg').getAttribute('src') === px);
+    ok('profile: profile avatar photo', $('profileAvatarImg').getAttribute('src') === px);
+    ok('profile: nav avatar has-photo', document.querySelector('.bnav .avatar-img').classList.contains('has-photo'));
+    ok('profile: hero has-photo', $('profileHero').classList.contains('has-photo'));
+    ok('profile: hero bg uses photo', $('profileHeroBg').style.backgroundImage.indexOf('data:image/png') !== -1);
+    ok('profile: avatar persisted', LS.get('v4t:avatar', null) === px);
+    ok('profile: clear button visible', $('avatarClear').hidden === false);
+    clearAvatar();
+    ok('profile: nav avatar cleared', $('navAvatarImg').hidden === true);
+    ok('profile: avatar storage cleared', LS.get('v4t:avatar', null) === null);
+    ok('profile: nav avatar has-photo off', !document.querySelector('.bnav .avatar-img').classList.contains('has-photo'));
+
+    showScreen('home');
+    ok('profile: light mode off', !document.body.classList.contains('profile-mode'));
+    next();
+  });
+
+  /* ---------- 12. liquid glass bottom nav ---------- */
   step(function (next) {
     showScreen('home');
     var nav = $('bnav');
@@ -234,27 +281,25 @@
       var w = items.map(function (b) { return b.getBoundingClientRect().width; });
       return Math.max.apply(null, w) - Math.min.apply(null, w) < 1.5;
     })(), items.map(function (b) { return Math.round(b.getBoundingClientRect().width); }).join(','));
-    ok('nav: pill index home', nav.style.getPropertyValue('--nav-i') === '2', nav.style.getPropertyValue('--nav-i'));
-    ok('nav: pill matches slot width', Math.abs(pill.getBoundingClientRect().width - items[2].getBoundingClientRect().width) < 1.5, pill.getBoundingClientRect().width + ' vs ' + items[2].getBoundingClientRect().width);
+    ok('nav: pill index home', nav.style.getPropertyValue('--nav-i') === '0', nav.style.getPropertyValue('--nav-i'));
+    ok('nav: pill matches slot width', Math.abs(pill.getBoundingClientRect().width - items[0].getBoundingClientRect().width) < 1.5, pill.getBoundingClientRect().width + ' vs ' + items[0].getBoundingClientRect().width);
     ok('nav: active icon glow', getComputedStyle(document.querySelector('.bnav .nav.active svg')).filter.indexOf('drop-shadow') !== -1);
     ok('nav: badge pulse', getComputedStyle($('navBadge')).animationName.indexOf('softPulse') !== -1, getComputedStyle($('navBadge')).animationName);
     ok('nav: no external assets', $$('script[src],link[href^="http"]').length === 0);
 
+    document.querySelector('.bnav [data-nav="exercise"]').click();
+    ok('nav: play opens exercise', (document.querySelector('.screen.active') || {}).id === 'screen-exercise');
+    ok('nav: pill on exercise', nav.style.getPropertyValue('--nav-i') === '1', nav.style.getPropertyValue('--nav-i'));
+    ok('nav: exercise active', document.querySelector('.bnav [data-nav="exercise"]').classList.contains('active'));
+
     showScreen('wrong');
-    ok('nav: pill on wrong', nav.style.getPropertyValue('--nav-i') === '4', nav.style.getPropertyValue('--nav-i'));
+    ok('nav: pill on wrong', nav.style.getPropertyValue('--nav-i') === '2', nav.style.getPropertyValue('--nav-i'));
     showScreen('dict');
     ok('nav: pill on dict', nav.style.getPropertyValue('--nav-i') === '3', nav.style.getPropertyValue('--nav-i'));
+    showScreen('settings');
+    ok('nav: pill on settings', nav.style.getPropertyValue('--nav-i') === '4', nav.style.getPropertyValue('--nav-i'));
     showScreen('home');
-    ok('nav: pill back home', nav.style.getPropertyValue('--nav-i') === '2', nav.style.getPropertyValue('--nav-i'));
-
-    var before = nav.style.getPropertyValue('--nav-i');
-    document.querySelector('.bnav [data-lang="de"]').click();
-    ok('nav: language does not move pill', nav.style.getPropertyValue('--nav-i') === before, nav.style.getPropertyValue('--nav-i'));
-    ok('nav: DE pressed', document.querySelector('.bnav [data-lang="de"]').getAttribute('aria-pressed') === 'true');
-    ok('nav: DE dot on', document.querySelector('.bnav [data-lang="de"]').classList.contains('on'));
-    ok('nav: EN off', !document.querySelector('.bnav [data-lang="en"]').classList.contains('on'));
-    document.querySelector('.bnav [data-lang="en"]').click();
-    ok('nav: EN restored', document.querySelector('.bnav [data-lang="en"]').getAttribute('aria-pressed') === 'true');
+    ok('nav: pill back home', nav.style.getPropertyValue('--nav-i') === '0', nav.style.getPropertyValue('--nav-i'));
     next();
   });
 

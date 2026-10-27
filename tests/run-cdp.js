@@ -40,7 +40,7 @@ async function main() {
 
   let appReady = false;
   for (let i = 0; i < 80; i++) {
-    const st = await evaljs("(typeof DATASETS === 'undefined' || typeof showScreen !== 'function' || document.querySelectorAll('.screen').length !== 4 || document.querySelectorAll('.bnav button').length !== 5) ? 'no' : 'yes'");
+    const st = await evaljs("(typeof DATASETS === 'undefined' || typeof showScreen !== 'function' || document.querySelectorAll('.screen').length !== 5 || document.querySelectorAll('.bnav button').length !== 5) ? 'no' : 'yes'");
     if (st === 'yes') { appReady = true; break; }
     await new Promise((r) => setTimeout(r, 500));
   }
@@ -93,7 +93,7 @@ async function main() {
   await send('Emulation.setScriptExecutionDisabled', { value: false });
   await send('Page.reload', {});
   await new Promise((r) => setTimeout(r, 2500));
-  const back = await evaljs("(function(){ return typeof DATASETS !== 'undefined' && document.querySelectorAll('.screen').length === 4 && document.querySelectorAll('.bnav button').length === 5; })()");
+  const back = await evaljs("(function(){ return typeof DATASETS !== 'undefined' && document.querySelectorAll('.screen').length === 5 && document.querySelectorAll('.bnav button').length === 5; })()");
   console.log('JS_REENABLED_BOOT_OK:', back);
 
   ws.close();
