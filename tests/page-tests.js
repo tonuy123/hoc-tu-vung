@@ -367,6 +367,15 @@
       return missing === 0;
     })());
     ok('runtime: no JS errors', window.__terrors.length === 0, JSON.stringify(window.__terrors.slice(0, 3)));
+
+    localStorage.setItem('v4t:debug', '1');
+    window.dispatchEvent(new ErrorEvent('error', { message: 'TypeError: real app bug' }));
+    ok('errors: debug banner shows real error', $('errBar').style.display === 'block', $('errBar').style.display);
+    $('errBar').style.display = 'none';
+    window.dispatchEvent(new ErrorEvent('error', { message: "TypeError: undefined is not an object (evaluating 'window.__firefox__.reader')" }));
+    ok('errors: firefox reader noise filtered', $('errBar').style.display !== 'block', $('errBar').style.display);
+    localStorage.removeItem('v4t:debug');
+    window.__terrors.length = 0;
     next();
   });
 

@@ -68,7 +68,7 @@ Sửa UI/logic: sửa `src/template.html` → rebuild → test.
 
 ## Test suite
 
-`tests/page-tests.js` chạy trong trang (**135 assertions**): boot shell/nav/home, mở bài, 4 option unique, bỏ type chip, lưu từ sai + badge, thứ tự đáp án ổn định, giữ draft khi đổi tab, reveal tính sai + vào bank + ví dụ, màn Từ sai + practice + back, dictionary A-Z EN/DE, search không dấu, ẩn A-Z khi search, nhóm đồng nghĩa, sheet chi tiết có 3 ví dụ, đổi ngôn ngữ, liquid glass nav (pill index, 5 slot đều, pill khớp slot, icon glow, badge pulse, aria, không external asset), profile/avatar (theme-aware theo thiết bị, stats, tags, set/clear ảnh + nav/home sync), fintech home (hero, 4 quick actions, chart tuần/tháng, peak bar, recent + sheet, dataset cycle, bell), data sanity, no JS error. `tests/run-cdp.js` kiểm tra thêm mobile viewport 390×844 (home + dictionary không tràn ngang), screenshot `report/mobile-dict.png`, và noscript banner.
+`tests/page-tests.js` chạy trong trang (**137 assertions**): boot shell/nav/home, mở bài, 4 option unique, bỏ type chip, lưu từ sai + badge, thứ tự đáp án ổn định, giữ draft khi đổi tab, reveal tính sai + vào bank + ví dụ, màn Từ sai + practice + back, dictionary A-Z EN/DE, search không dấu, ẩn A-Z khi search, nhóm đồng nghĩa, sheet chi tiết có 3 ví dụ, đổi ngôn ngữ, liquid glass nav (pill index, 5 slot đều, pill khớp slot, icon glow, badge pulse, aria, không external asset), profile/avatar (theme-aware theo thiết bị, stats, tags, set/clear ảnh + nav/home sync), fintech home (hero, 4 quick actions, chart tuần/tháng, peak bar, recent + sheet, dataset cycle, bell), error banner (ẩn mặc định, chỉ hiện khi debug, lọc noise Firefox/Ethereum), data sanity, no JS error. `tests/run-cdp.js` kiểm tra thêm mobile viewport 390×844 (home + dictionary không tràn ngang), screenshot `report/mobile-dict.png`, và noscript banner.
 
 ## Data / audit
 
@@ -82,6 +82,7 @@ Sửa UI/logic: sửa `src/template.html` → rebuild → test.
 ## Ghi chú
 
 - `index.html` hiện ~2.69MB (đủ 15.088 câu ví dụ; gzip ~700KB) — load 4G ước 2-3s, sau đó browser cache.
+- Banner lỗi JS **tắt mặc định** (tránh noise từ extension/browser như Firefox Reader, MetaMask). Bật để debug: mở `?debug=1` hoặc `localStorage.setItem('v4t:debug','1')`.
 - en3k thiếu `num` 2247 (gap ID, không ảnh hưởng runtime; **không renumber**).
 - 181 entry en3k thiếu `phon` — UI ẩn dòng phiên âm; không bịa IPA.
 - Repo public (điều kiện dùng GitHub Pages miễn phí). Trong file không chứa key/credential — chỉ data từ vựng.

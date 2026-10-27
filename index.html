@@ -847,8 +847,15 @@ const DATASETS = {"en1k":{"lang":"en","words":[{"num":1,"word":"a","type":"det",
 window.addEventListener('error', function(ev){
   try {
     const msg = String(ev.message || '').trim();
-    if (!msg || /^script error\.?$/i.test(msg)) return;
-    if (/window\.ethereum|ethereum\.selectedAddress|selectedAddress|metamask|coinbase|trust ?wallet/i.test(msg)) return;
+    if (!msg) return;
+    if (/^script error\.?$/i.test(msg)) return;
+    if (/window\.ethereum|ethereum\.selectedAddress|selectedAddress|metamask|coinbase|trust ?wallet|__firefox__|window\.webkit|webkit\.messageHandlers|window\.chrome|chrome\.runtime|safari\.|readerMode|reader-mode/i.test(msg)) return;
+    const debug = (function(){
+      try {
+        return /(?:[?&])debug=1(?:&|$)/.test(location.search) || localStorage.getItem('v4t:debug') === '1';
+      } catch (e) { return false; }
+    })();
+    if (!debug) return;
     const file = String(ev.filename || '');
     if (file && location.origin && file.indexOf(location.origin) !== 0 && file.indexOf('file://') !== 0) return;
     const bar = document.getElementById('errBar');
