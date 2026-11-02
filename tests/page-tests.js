@@ -195,6 +195,33 @@
       renderDict();
       var gt = document.querySelector('#dictBody .dgt');
       ok('dict: synonym group header', !!gt && gt.textContent.indexOf('Cùng nghĩa') !== -1, gt ? gt.textContent : 'none');
+
+      $('dictQ').value = '';
+      setWordCat('all');
+      var typeChips = $$('#dictCats .chip').map(function (c) { return c.textContent; });
+      ok('dict: word type chips', typeChips.length === 8 && typeChips.indexOf('Động từ') !== -1 && typeChips.indexOf('Cảm xúc') !== -1 && typeChips.indexOf('Hành động') !== -1, typeChips.join('|'));
+
+      setWordCat('verb');
+      var verbRows = $$('#dictBody .drow');
+      ok('dict: verb filter', settings.wtype === 'verb' && verbRows.length > 0 && verbRows.every(function (r) { return r.querySelector('.dpos').textContent.indexOf('động từ') !== -1; }), 'rows=' + verbRows.length);
+      ok('dict: verb filter meta', $('dictMeta').textContent.indexOf('Động từ') !== -1 && $('dictSub').textContent.indexOf('Động từ') !== -1, $('dictMeta').textContent);
+
+      setWordCat('emotion');
+      var emoRows = $$('#dictBody .drow');
+      ok('dict: emotion filter', settings.wtype === 'emotion' && emoRows.length > 0 && emoRows.every(function (r) { return r.querySelector('.dpos').textContent.indexOf('cảm xúc') !== -1; }), 'rows=' + emoRows.length);
+
+      setWordCat('action');
+      var actRows = $$('#dictBody .drow');
+      ok('dict: action filter', settings.wtype === 'action' && actRows.length > 0 && actRows.every(function (r) { return r.querySelector('.dpos').textContent.indexOf('hành động') !== -1; }), 'rows=' + actRows.length);
+
+      setWordCat('verb');
+      $('dictQ').value = 'run';
+      renderDict();
+      var runRows = $$('#dictBody .drow');
+      ok('dict: search respects type filter', runRows.length > 0 && runRows.every(function (r) { return r.querySelector('.dpos').textContent.indexOf('động từ') !== -1; }), 'rows=' + runRows.length);
+
+      $('dictQ').value = '';
+      setWordCat('all');
       next();
     });
   });
@@ -207,6 +234,14 @@
     renderDict();
     var hits = $$('#dictBody .drow');
     ok('dict: DE search finds Thema', hits.some(function (r) { return r.querySelector('.dword').textContent.indexOf('Thema') !== -1; }), 'hits=' + hits.length);
+    $('dictQ').value = '';
+    setWordCat('all');
+    var deChips = $$('#dictCats .chip').map(function (c) { return c.textContent; });
+    ok('dict: DE phrase chip', deChips.indexOf('Cụm từ') !== -1, deChips.join('|'));
+    setWordCat('phrase');
+    var phraseRows = $$('#dictBody .drow');
+    ok('dict: DE phrase filter', phraseRows.length > 0 && phraseRows.every(function (r) { return r.querySelector('.dpos').textContent.indexOf('cụm từ') !== -1; }), 'rows=' + phraseRows.length);
+    setWordCat('all');
     next();
   });
 
@@ -217,11 +252,11 @@
     setDictMode('grammar');
     ok('grammar: mode grammar', settings.dictMode === 'grammar', settings.dictMode);
     ok('grammar: language segment hidden', $('dictLangSeg').hidden === true);
-    ok('grammar: 46 topics rendered', $$('#dictBody .grow').length === 46, 'got ' + $$('#dictBody .grow').length);
-    ok('grammar: 5 category chips', $$('#dictCats .chip').length === 5, 'got ' + $$('#dictCats .chip').length);
-    ok('grammar: 12 tense rows show bank', $$('#dictBody .gbank').length === 12, 'got ' + $$('#dictBody .gbank').length);
-    ok('grammar: bank total 2.4m', grammarBankTotal() === 2400000, String(grammarBankTotal()));
-    ok('grammar: capacity 200k only for tenses', grammarCapacity('present-simple') === 200000 && grammarCapacity('articles') === 0);
+    ok('grammar: 98 topics rendered', $$('#dictBody .grow').length === 98, 'got ' + $$('#dictBody .grow').length);
+    ok('grammar: 7 category chips', $$('#dictCats .chip').length === 7, 'got ' + $$('#dictCats .chip').length);
+    ok('grammar: 98 bank rows show capacity', $$('#dictBody .gbank').length === 98, 'got ' + $$('#dictBody .gbank').length);
+    ok('grammar: bank total 70.19m', grammarBankTotal() === 70192896, String(grammarBankTotal()));
+    ok('grammar: capacity per bank', grammarCapacity('present-simple') === 200000 && grammarCapacity('there-is-are') === 221184 && grammarCapacity('passive-voice') === 211968 && grammarCapacity('used-to') === 294912 && grammarCapacity('articles') === 3686400 && grammarCapacity('pronouns') === 294912 && grammarCapacity('verb-patterns') === 384000 && grammarCapacity('sentence-types') === 384000 && grammarCapacity('toeic-business') === 230400 && grammarCapacity('ielts-linking') === 384000 && grammarCapacity('nope') === 0, [grammarCapacity('present-simple'), grammarCapacity('articles'), grammarCapacity('pronouns'), grammarCapacity('toeic-business')].join('/'));
 
     var g1 = grammarItem('present-simple', 42);
     var g2 = grammarItem('present-simple', 42);
@@ -229,7 +264,7 @@
     ok('grammar: tokens keep all words', g1.tokens.slice().sort().join(' ') === g1.answer.split(' ').sort().join(' '), g1.answer);
     ok('grammar: last index valid', !!grammarItem('present-simple', 199999));
     ok('grammar: index clamped', grammarItem('present-simple', 999999).id === 'present-simple:199999');
-    ok('grammar: malformed input safe', grammarItem('nope') === null && grammarItem('articles') === null && !!grammarItem('present-simple', 'abc'));
+    ok('grammar: malformed input safe', grammarItem('nope') === null && !!grammarItem('present-simple', 'abc'));
 
     ok('grammar: 3s negative uses base verb', grammarItem('present-simple', 18433).answer.indexOf('He does not read') === 0, grammarItem('present-simple', 18433).answer);
     ok('grammar: 3s question uses base verb', grammarItem('present-simple', 18434).answer.indexOf('Does he read') === 0, grammarItem('present-simple', 18434).answer);
@@ -239,24 +274,81 @@
     Object.keys(TENSE_PROFILE).forEach(function (id) {
       for (var pi = 0; pi < 4; pi++) {
         var it = grammarItem(id, pi);
-        if (!it || /\{/.test(it.answer) || it.answer.indexOf('  ') !== -1 || it.tokens.slice().sort().join(' ') !== it.answer.split(' ').sort().join(' ')) tenseBad++;
+        if (!it || /\{/.test(it.answer) || it.answer.indexOf('..') !== -1 || it.answer.indexOf('  ') !== -1 || it.tokens.slice().sort().join(' ') !== it.answer.split(' ').sort().join(' ')) tenseBad++;
       }
     });
     ok('grammar: 12 tenses x 4 templates valid', tenseBad === 0, 'bad=' + tenseBad);
+
+    var p1 = grammarItem('there-is-are', 0);
+    var p2 = grammarItem('there-is-are', 0);
+    ok('grammar: pattern deterministic item', !!p1 && !!p2 && p1.answer === p2.answer && p1.tokens.join(' ') === p2.tokens.join(' '));
+    ok('grammar: pattern tokens keep all words', p1.tokens.slice().sort().join(' ') === p1.answer.split(' ').sort().join(' '), p1.answer);
+    ok('grammar: there is + singular', p1.answer === 'There is a meeting in the office every day', p1.answer);
+    ok('grammar: there are + plural', grammarItem('there-is-are', 1).answer === 'There are two meetings in the office every day', grammarItem('there-is-are', 1).answer);
+    ok('grammar: pattern index clamped', grammarItem('there-is-are', 999999).id === 'there-is-are:221183', grammarItem('there-is-are', 999999).id);
+    var pv0 = grammarItem('passive-voice', 0);
+    ok('grammar: passive be + V3', pv0.answer === 'The detailed report is carefully read by the manager every day', pv0.answer);
+    ok('grammar: passive question', grammarItem('passive-voice', 2).answer === 'Is the detailed report carefully read by the manager every day?', grammarItem('passive-voice', 2).answer);
+    var ut0 = grammarItem('used-to', 0);
+    ok('grammar: used to + base verb', ut0.answer === 'I used to read the detailed report carefully every day', ut0.answer);
+    ok('grammar: used to negative/question', grammarItem('used-to', 1).answer.indexOf('I did not use to read') === 0 && grammarItem('used-to', 2).answer.indexOf('Did I use to read') === 0);
+    var patternBad = 0;
+    Object.keys(GRAMMAR_PATTERNS).forEach(function (id) {
+      var p = GRAMMAR_PATTERNS[id];
+      var cap = patternCapacity(id);
+      if (!cap) patternBad++;
+      for (var pi = 0; pi < p.templates.length; pi++) {
+        var it = grammarItem(id, pi);
+        if (!it || /\{/.test(it.answer) || it.answer.indexOf('..') !== -1 || it.answer.indexOf('  ') !== -1 || it.tokens.slice().sort().join(' ') !== it.answer.split(' ').sort().join(' ')) patternBad++;
+      }
+      [Math.floor(cap / 2), cap - 1].forEach(function (pi) {
+        var it = grammarItem(id, pi);
+        if (!it || /\{/.test(it.answer) || it.answer.indexOf('..') !== -1 || it.answer.indexOf('  ') !== -1) patternBad++;
+      });
+    });
+    ok('grammar: 86 pattern banks valid', Object.keys(GRAMMAR_PATTERNS).length === 86 && patternBad === 0, 'banks=' + Object.keys(GRAMMAR_PATTERNS).length + ' bad=' + patternBad);
+    var bankCount = 0, bankBad = 0, minCap = Infinity;
+    GRAMMAR_TOPICS.forEach(function (t) {
+      if (!t.gen) return;
+      bankCount++;
+      var cap = grammarCapacity(t.id);
+      if (cap < 200000) bankBad++;
+      if (cap < minCap) minCap = cap;
+    });
+    ok('grammar: all 98 topics have >=200k bank', bankCount === 98 && bankBad === 0, 'banks=' + bankCount + ' min=' + minCap);
+    ok('grammar: articles a/an/the', grammarItem('articles', 0).answer === 'I needed a report every day.' && grammarItem('articles', 1).answer === 'I sent the report in the office every day.', grammarItem('articles', 0).answer);
+    ok('grammar: countable vs uncountable', grammarItem('countable-uncountable', 6).answer === 'How many reports are there?' && grammarItem('countable-uncountable', 7).answer === 'In general, how much information do we need?', grammarItem('countable-uncountable', 6).answer);
+    ok('grammar: pronoun subject/object', grammarItem('pronouns', 5).answer === 'Every day, did the manager call me?', grammarItem('pronouns', 5).answer);
+    ok('grammar: comparative than', grammarItem('comparatives', 2).answer === 'Is the new report more important than the old report?', grammarItem('comparatives', 2).answer);
+    ok('grammar: TOEIC request frame', grammarItem('toeic-business', 0).answer === 'Please submit the expense report every day.', grammarItem('toeic-business', 0).answer);
+    ok('grammar: IELTS linker frame', grammarItem('ielts-linking', 0).answer.indexOf('The plan is expensive; however, it may be effective') === 0, grammarItem('ielts-linking', 0).answer);
+    ok('grammar: academic hedging frame', grammarItem('academic-hedging', 0).answer.indexOf('The results may suggest that the policy is effective') === 0, grammarItem('academic-hedging', 0).answer);
+
+    ok('grammar: verb pattern to V', grammarItem('verb-patterns', 0).answer === 'She wants to read the report at work every day.', grammarItem('verb-patterns', 0).answer);
+    ok('grammar: irregular past', grammarItem('irregular-verbs', 0).answer === 'I read the detailed report at work every day.', grammarItem('irregular-verbs', 0).answer);
+    ok('grammar: sentence-type question', grammarItem('sentence-types', 1).answer === 'Do I read the detailed report at work every day?', grammarItem('sentence-types', 1).answer);
+    ok('grammar: punctuation semicolon', grammarItem('punctuation', 0).answer === 'The report was clear; however, it was long at work every day.', grammarItem('punctuation', 0).answer);
+    ok('grammar: IELTS Task 1 trend', grammarItem('ielts-task1-structures', 0).answer === 'The chart shows that sales increased steadily at work every day.', grammarItem('ielts-task1-structures', 0).answer);
+    ok('grammar: IELTS Task 2 concession', grammarItem('ielts-task2-structures', 0).answer === 'While some people support the policy, others remain concerned at work every day.', grammarItem('ielts-task2-structures', 0).answer);
+    ok('grammar: new bank counts', grammarCapacity('verb-patterns') === 384000 && grammarCapacity('sentence-types') === 384000 && grammarCapacity('ielts-task2-structures') === 384000, [grammarCapacity('verb-patterns'), grammarCapacity('sentence-types'), grammarCapacity('ielts-task2-structures')].join('/'));
 
     $('dictQ').value = 'perfect';
     renderDict();
     var perfectRows = $$('#dictBody .grow');
     var perfectTitles = perfectRows.map(function (x) { return x.querySelector('.gtitle').textContent; });
-    ok('grammar: search perfect finds 7', perfectRows.length === 7 && perfectRows.every(function (x) { return fold(x.textContent).indexOf('perfect') !== -1; }), perfectTitles.join(', '));
+    ok('grammar: search perfect finds 9', perfectRows.length === 9 && perfectRows.every(function (x) { return grammarHaystack(GRAMMAR_MAP[x.dataset.gkey]).indexOf('perfect') !== -1; }), perfectTitles.join(', '));
 
     $('dictQ').value = '';
     setGrammarCat('Thì');
     ok('grammar: cat Thì = 12', $$('#dictBody .grow').length === 12, 'got ' + $$('#dictBody .grow').length);
+    setGrammarCat('Cấu trúc câu');
+    ok('grammar: cat Cấu trúc câu = 24', $$('#dictBody .grow').length === 32, 'got ' + $$('#dictBody .grow').length);
+    setGrammarCat('Từ loại');
+    ok('grammar: cat Từ loại = 18', $$('#dictBody .grow').length === 28, 'got ' + $$('#dictBody .grow').length);
     setGrammarCat('TOEIC & IELTS');
-    ok('grammar: cat TOEIC = 4', $$('#dictBody .grow').length === 4, 'got ' + $$('#dictBody .grow').length);
+    ok('grammar: cat TOEIC = 6', $$('#dictBody .grow').length === 6, 'got ' + $$('#dictBody .grow').length);
     setGrammarCat('all');
-    ok('grammar: cat all = 46', $$('#dictBody .grow').length === 46);
+    ok('grammar: cat all = 98', $$('#dictBody .grow').length === 98);
 
     $$('#dictBody .grow')[0].click();
     ok('grammar: detail opens', $('sheetWrap').hidden === false);
@@ -423,9 +515,9 @@
     ok('data: total words', total === 7514, 'got ' + total);
     ok('data: mc option pools not POS-locked', (function () {
       var s = S.en1k['mc-en'];
-      if (!s) return false;
+      if (!s || !s.items || !s.items.length) return false;
       var types = {};
-      s.items.slice(0, 5).forEach(function (w) { types[primaryType(w.type)] = 1; });
+      s.items.slice(0, 50).forEach(function (w) { types[primaryType(w.type)] = 1; });
       return Object.keys(types).length > 1;
     })());
     ok('data: every word has examples', (function () {

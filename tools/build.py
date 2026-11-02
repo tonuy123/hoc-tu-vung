@@ -4,6 +4,7 @@
 import io
 import json
 import os
+import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, 'src')
@@ -82,7 +83,55 @@ def load_grammar():
     ids = [t.get('id') for t in topics]
     if len(ids) != len(set(ids)):
         raise SystemExit('GRAMMAR: duplicate ids')
-    times = (g.get('lexicon') or {}).get('times') or {}
+    lex = g.get('lexicon') or {}
+    times = lex.get('times') or {}
+    patterns = lex.get('patterns') or {}
+    bank = int(g.get('bankPerTopic') or 0)
+    if bank <= 0:
+        raise SystemExit('GRAMMAR: bad bankPerTopic')
+
+    for bank_id, p in patterns.items():
+        if not isinstance(p, dict):
+            raise SystemExit('GRAMMAR: bad pattern %s' % bank_id)
+        tpls = p.get('templates')
+        dims = p.get('dims')
+        slots = p.get('slots')
+        if not isinstance(tpls, list) or not tpls or not all(isinstance(x, str) and x.strip() for x in tpls):
+            raise SystemExit('GRAMMAR: bad templates in %s' % bank_id)
+        if not isinstance(dims, list) or not dims or len(dims) != len(set(dims)):
+            raise SystemExit('GRAMMAR: bad dims in %s' % bank_id)
+        if not isinstance(slots, dict):
+            raise SystemExit('GRAMMAR: bad slots in %s' % bank_id)
+        fields = set()
+        total = len(tpls)
+        for dim in dims:
+            vals = slots.get(dim)
+            if not isinstance(vals, list) or not vals:
+                raise SystemExit('GRAMMAR: empty dim %r in %s' % (dim, bank_id))
+            total *= len(vals)
+            first = vals[0]
+            if isinstance(first, dict):
+                if not first or not all(isinstance(k, str) and isinstance(v, str) and v.strip() for k, v in first.items()):
+                    raise SystemExit('GRAMMAR: bad object slot %r in %s' % (dim, bank_id))
+                for v in vals:
+                    if not isinstance(v, dict) or set(v) != set(first):
+                        raise SystemExit('GRAMMAR: inconsistent slot %r in %s' % (dim, bank_id))
+                    if not all(isinstance(x, str) and x.strip() for x in v.values()):
+                        raise SystemExit('GRAMMAR: bad value %r in %s' % (dim, bank_id))
+                fields.update(dim + '_' + k.upper() for k in first)
+            elif isinstance(first, str):
+                if not first.strip() or not all(isinstance(v, str) and v.strip() for v in vals):
+                    raise SystemExit('GRAMMAR: bad scalar slot %r in %s' % (dim, bank_id))
+                fields.add(dim)
+            else:
+                raise SystemExit('GRAMMAR: bad slot type %r in %s' % (dim, bank_id))
+        if total < bank:
+            raise SystemExit('GRAMMAR: pattern %s only %d < %d' % (bank_id, total, bank))
+        for tpl in tpls:
+            for key in set(re.findall(r'\{(\w+)\}', tpl)):
+                if key not in fields:
+                    raise SystemExit('GRAMMAR: unknown placeholder %r in %s' % (key, bank_id))
+
     for t in topics:
         for k in ('id', 'cat', 'level', 'title', 'vi', 'formula', 'use'):
             if not str(t.get(k, '')).strip():
@@ -91,10 +140,27 @@ def load_grammar():
             raise SystemExit('GRAMMAR: examples/mistakes missing in %s' % t['id'])
         gen = t.get('gen')
         if gen:
-            tense = gen.get('tense')
-            if tense not in times:
-                raise SystemExit('GRAMMAR: bad gen tense %r in %s' % (tense, t['id']))
+            if gen.get('bank'):
+                if gen['bank'] not in patterns:
+                    raise SystemExit('GRAMMAR: bad gen bank %r in %s' % (gen['bank'], t['id']))
+            else:
+                tense = gen.get('tense')
+                if tense not in times:
+                    raise SystemExit('GRAMMAR: bad gen tense %r in %s' % (tense, t['id']))
     return g
+
+
+def grammar_capacity(g, topic):
+    gen = topic.get('gen') or {}
+    if not gen:
+        return 0
+    if gen.get('bank'):
+        p = g['lexicon']['patterns'][gen['bank']]
+        n = len(p['templates'])
+        for dim in p['dims']:
+            n *= len(p['slots'][dim])
+        return n
+    return int(g.get('bankPerTopic') or 0)
 
 
 def main():
@@ -134,7 +200,10 @@ def main():
         print('%-6s %5d words' % (name, n))
     for name, nw, ne in ex_stats:
         print('%-6s %5d words with examples, %d sentences' % (name, nw, ne))
-    print('grammar %d topics, %d with 200k bank' % (len(grammar['topics']), sum(1 for t in grammar['topics'] if t.get('gen'))))
+    print('grammar %d topics, %d with bank, %d sentences' % (
+        len(grammar['topics']),
+        sum(1 for t in grammar['topics'] if t.get('gen')),
+        sum(grammar_capacity(grammar, t) for t in grammar['topics'])))
     print('WROTE %s (%d bytes)' % (OUT, os.path.getsize(OUT)))
 
 

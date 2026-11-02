@@ -950,7 +950,20 @@ const LS = {
 };
 
 /* ================= settings / global state ================= */
-const DEF_SETTINGS = { lang: 'en', ds: 'en1k', size: 50, screen: 'home', ex: 'mc-en', dletter: 'A', chart: 'week', dictMode: 'words', gcat: 'all' };
+const WORD_CATS = [
+  { id: 'all', label: 'Tất cả' },
+  { id: 'noun', label: 'Danh từ' },
+  { id: 'verb', label: 'Động từ' },
+  { id: 'adj', label: 'Tính từ' },
+  { id: 'adv', label: 'Trạng từ' },
+  { id: 'emotion', label: 'Cảm xúc' },
+  { id: 'action', label: 'Hành động' },
+  { id: 'phrase', label: 'Cụm từ' },
+  { id: 'other', label: 'Khác' }
+];
+const WORD_CAT_LABEL = {};
+WORD_CATS.forEach(function(c){ WORD_CAT_LABEL[c.id] = c.label; });
+const DEF_SETTINGS = { lang: 'en', ds: 'en1k', size: 50, screen: 'home', ex: 'mc-en', dletter: 'A', chart: 'week', dictMode: 'words', gcat: 'all', wtype: 'all' };
 const STORED_SET = LS.get('v4t:set', {}) || {};
 let settings = Object.assign({}, DEF_SETTINGS, STORED_SET);
 (function migrateSettings(){
@@ -971,6 +984,7 @@ else settings.size = +settings.size;
 if (settings.chart !== 'month') settings.chart = 'week';
 if (settings.dictMode !== 'grammar') settings.dictMode = 'words';
 if (!settings.gcat) settings.gcat = 'all';
+if (!WORD_CAT_LABEL[settings.wtype]) settings.wtype = 'all';
 if (TABS.indexOf(settings.ex) === -1) settings.ex = 'mc-en';
 delete settings.dlang;
 if (LETTERS.indexOf(settings.dletter) === -1) settings.dletter = 'A';
@@ -1505,13 +1519,80 @@ const TENSE_PROFILE = {
     q2: function(){ return 'have been'; }
   }
 };
+const GRAMMAR_PATTERNS = (GRAMMAR.lexicon && GRAMMAR.lexicon.patterns) || {};
+function grammarPattern(bankId){
+  const p = GRAMMAR_PATTERNS[bankId];
+  if (!p || !Array.isArray(p.templates) || !p.templates.length || !Array.isArray(p.dims)) return null;
+  const slots = p.slots || {};
+  for (let i = 0; i < p.dims.length; i++){
+    const vals = slots[p.dims[i]];
+    if (!Array.isArray(vals) || !vals.length) return null;
+  }
+  return p;
+}
+function patternCapacity(bankId){
+  const p = grammarPattern(bankId);
+  if (!p) return 0;
+  let total = p.templates.length;
+  p.dims.forEach(function(d){ total *= p.slots[d].length; });
+  return total;
+}
 function grammarCapacity(topicId){
   const t = GRAMMAR_MAP[topicId];
-  return t && t.gen && TENSE_PROFILE[t.gen.tense] ? GRAMMAR_BANK : 0;
+  if (!t || !t.gen) return 0;
+  if (t.gen.bank) return patternCapacity(t.gen.bank);
+  return TENSE_PROFILE[t.gen.tense] ? GRAMMAR_BANK : 0;
 }
-function grammarItem(topicId, n){
-  const t = GRAMMAR_MAP[topicId];
-  if (!t || !t.gen) return null;
+function grammarSentence(raw){
+  let en = raw.replace(/\s+/g, ' ')
+    .replace(/\s+([?.])/g, '$1')
+    .replace(/\.\./g, '.')
+    .replace(/\?\./g, '?')
+    .replace(/!\./g, '!')
+    .trim();
+  return en.charAt(0).toUpperCase() + en.slice(1);
+}
+function grammarItemMeta(t, idx, en){
+  const tokens = en.split(' ');
+  let seed = idx + 1;
+  for (let i = 0; i < t.id.length; i++) seed = (seed * 31 + t.id.charCodeAt(i)) >>> 0;
+  const rng = mulberry32(seed);
+  return {
+    id: t.id + ':' + idx,
+    topic: t.id,
+    level: t.level,
+    title: t.title,
+    en: en,
+    tokens: shuffleRng(tokens, rng),
+    answer: en,
+    hint: t.formula
+  };
+}
+function grammarPatternItem(t, n){
+  const p = grammarPattern(t.gen.bank);
+  const total = patternCapacity(t.gen.bank);
+  if (!p || !total) return null;
+  const idx = Math.max(0, Math.min(total - 1, Math.floor(Number(n) || 0)));
+  let x = idx;
+  const pi = x % p.templates.length; x = Math.floor(x / p.templates.length);
+  const map = {};
+  p.dims.forEach(function(dim){
+    const vals = p.slots[dim];
+    const val = vals[x % vals.length];
+    x = Math.floor(x / vals.length);
+    if (val && typeof val === 'object' && !Array.isArray(val)){
+      Object.keys(val).forEach(function(k){ map[dim + '_' + k.toUpperCase()] = val[k]; });
+    } else {
+      map[dim] = val;
+    }
+  });
+  const en = grammarSentence(p.templates[pi].replace(/\{(\w+)\}/g, function(m, k){
+    return map[k] == null ? m : map[k];
+  }));
+  if (/\{/.test(en)) return null;
+  return grammarItemMeta(t, idx, en);
+}
+function grammarTenseItem(t, n){
   const p = TENSE_PROFILE[t.gen.tense];
   if (!p) return null;
   const L = GRAMMAR.lexicon;
@@ -1530,25 +1611,15 @@ function grammarItem(topicId, n){
     S: subj.t, AUX: p.aux(subj), V: p.v(subj, verb), VQ: p.vq ? p.vq(subj, verb) : p.v(subj, verb), O: obj,
     ADV: adv, T: time, NEG: p.neg(subj), Q: p.q(subj), Q2: p.q2 ? p.q2(subj) : ''
   };
-  let en = GRAMMAR_TEMPLATES[pi].replace(/\{(\w+)\}/g, function(m, k){
+  const en = grammarSentence(GRAMMAR_TEMPLATES[pi].replace(/\{(\w+)\}/g, function(m, k){
     return map[k] == null ? m : map[k];
-  });
-  en = en.replace(/\s+/g, ' ').replace(/\s+([?.])/g, '$1').trim();
-  en = en.charAt(0).toUpperCase() + en.slice(1);
-  const tokens = en.split(' ');
-  let seed = idx + 1;
-  for (let i = 0; i < topicId.length; i++) seed = (seed * 31 + topicId.charCodeAt(i)) >>> 0;
-  const rng = mulberry32(seed);
-  return {
-    id: topicId + ':' + idx,
-    topic: topicId,
-    level: t.level,
-    title: t.title,
-    en: en,
-    tokens: shuffleRng(tokens, rng),
-    answer: en,
-    hint: t.formula
-  };
+  }));
+  return grammarItemMeta(t, idx, en);
+}
+function grammarItem(topicId, n){
+  const t = GRAMMAR_MAP[topicId];
+  if (!t || !t.gen) return null;
+  return t.gen.bank ? grammarPatternItem(t, n) : grammarTenseItem(t, n);
 }
 function grammarBankTotal(){
   return GRAMMAR_TOPICS.reduce(function(n, t){ return n + grammarCapacity(t.id); }, 0);
@@ -1559,6 +1630,109 @@ const DICT_CACHE = {};
 const DICT_MAP = {};
 const SEG_CACHE = {};
 const WRONG_VIEW = [];
+
+const EMOTION_ADJ = new Set([
+  'happy', 'sad', 'angry', 'afraid', 'scared', 'frightened', 'terrified', 'excited',
+  'bored', 'tired', 'exhausted', 'worried', 'nervous', 'anxious', 'proud', 'ashamed',
+  'embarrassed', 'jealous', 'lonely', 'surprised', 'shocked', 'confused', 'disappointed',
+  'frustrated', 'satisfied', 'pleased', 'delighted', 'upset', 'calm', 'relaxed', 'stressed',
+  'curious', 'grateful', 'thankful', 'hopeful', 'hopeless', 'guilty', 'annoyed', 'furious',
+  'miserable', 'cheerful', 'content', 'eager', 'enthusiastic', 'impatient', 'comfortable',
+  'uncomfortable', 'confident', 'insecure', 'relieved', 'sorry', 'amazed', 'impressed',
+  'interested', 'unhappy', 'joyful', 'fearful', 'peaceful', 'loving', 'caring', 'kind',
+  'friendly', 'hostile', 'envious', 'regretful', 'thoughtful', 'irritated', 'offended',
+  'hurt', 'depressed', 'contented', 'gl\u00fccklich', 'traurig', 'w\u00fctend', 'b\u00f6se',
+  '\u00e4ngstlich', 'ver\u00e4ngstigt', 'aufgeregt', 'gelangweilt', 'm\u00fcde', 'ersch\u00f6pft',
+  'besorgt', 'nerv\u00f6s', 'stolz', 'besch\u00e4mt', 'peinlich', 'eifers\u00fcchtig', 'einsam',
+  '\u00fcberrascht', 'schockiert', 'verwirrt', 'entt\u00e4uscht', 'frustriert', 'zufrieden',
+  'erfreut', 'ver\u00e4rgert', 'ruhig', 'entspannt', 'gestresst', 'neugierig', 'dankbar',
+  'hoffnungsvoll', 'hoffnungslos', 'schuldig', 'genervt', 'ungl\u00fccklich', 'fr\u00f6hlich',
+  'zuversichtlich', 'unsicher', 'erleichtert', 'leid', 'erstaunt', 'beeindruckt', 'interessiert',
+  'verliebt', 'freundlich', 'feindlich', 'bescheiden', 'geduldig', 'ungeduldig', 'sensibel',
+  'mutig'
+]);
+
+const ACTION_VERBS = new Set([
+  'run', 'walk', 'jump', 'climb', 'swim', 'dance', 'sing', 'write', 'read', 'speak',
+  'talk', 'listen', 'eat', 'drink', 'cook', 'drive', 'ride', 'fly', 'travel', 'build',
+  'make', 'create', 'draw', 'paint', 'clean', 'wash', 'carry', 'push', 'pull', 'open',
+  'close', 'start', 'stop', 'play', 'work', 'study', 'teach', 'learn', 'buy', 'sell',
+  'send', 'call', 'meet', 'visit', 'help', 'fix', 'cut', 'put', 'take', 'give', 'bring',
+  'throw', 'catch', 'hold', 'move', 'turn', 'look', 'watch', 'see', 'hear', 'feel',
+  'touch', 'smell', 'taste', 'sit', 'stand', 'sleep', 'wake', 'brush', 'comb', 'dress',
+  'pay', 'count', 'type', 'print', 'sign', 'file', 'organize', 'plan', 'check', 'test',
+  'deliver', 'order', 'book', 'confirm', 'cancel', 'answer', 'ask', 'tell', 'say', 'bake',
+  'laufen', 'gehen', 'springen', 'klettern', 'schwimmen', 'tanzen', 'singen', 'schreiben',
+  'lesen', 'sprechen', 'reden', 'h\u00f6ren', 'essen', 'trinken', 'kochen', 'fahren', 'reiten',
+  'fliegen', 'reisen', 'bauen', 'machen', 'erstellen', 'zeichnen', 'malen', 'putzen', 'waschen',
+  'tragen', 'schieben', 'ziehen', '\u00f6ffnen', 'schlie\u00dfen', 'starten', 'stoppen',
+  'spielen', 'arbeiten', 'studieren', 'lehren', 'lernen', 'kaufen', 'verkaufen', 'senden',
+  'anrufen', 'treffen', 'besuchen', 'helfen', 'reparieren', 'schneiden', 'legen', 'nehmen',
+  'geben', 'bringen', 'werfen', 'fangen', 'halten', 'bewegen', 'drehen', 'schauen',
+  'beobachten', 'sehen', 'f\u00fchlen', 'ber\u00fchren', 'riechen', 'schmecken', 'sitzen',
+  'stehen', 'schlafen', 'aufwachen', 'b\u00fcrsten', 'k\u00e4mmen', 'anziehen', 'ausziehen',
+  'bezahlen', 'z\u00e4hlen', 'tippen', 'drucken', 'unterschreiben', 'organisieren', 'planen',
+  'pr\u00fcfen', 'testen', 'liefern', 'bestellen', 'buchen', 'best\u00e4tigen', 'stornieren',
+  'antworten', 'fragen', 'sagen', 'erz\u00e4hlen'
+]);
+
+function typeTokens(type){
+  return String(type || '').toLowerCase()
+    .replace(/[\/;]/g, ',')
+    .split(',')
+    .map(function(x){ return x.trim().replace(/\.$/, ''); })
+    .filter(Boolean);
+}
+function wordClasses(e){
+  const out = {};
+  const toks = typeTokens(e.type);
+  toks.forEach(function(t){
+    if (t === 'n' || t === 'noun') out.noun = 1;
+    else if (t === 'v' || t === 'verb' || t === 'modal v' || t === 'modal verb') out.verb = 1;
+    else if (t === 'adj' || t === 'adjective') out.adj = 1;
+    else if (t === 'adv' || t === 'adverb') out.adv = 1;
+    else if (t === 'phrase') out.phrase = 1;
+    else if (t === 'n v') { out.noun = 1; out.verb = 1; }
+    else if (t === 'adj v') { out.adj = 1; out.verb = 1; }
+    else out.other = 1;
+  });
+  const lemma = String(e.sort || e.disp || '').toLowerCase();
+  if (out.adj && EMOTION_ADJ.has(lemma)) out.emotion = 1;
+  if (out.verb && ACTION_VERBS.has(lemma)) out.action = 1;
+  if (!toks.length){
+    if (EMOTION_ADJ.has(lemma)) { out.adj = 1; out.emotion = 1; }
+    else if (ACTION_VERBS.has(lemma)) { out.verb = 1; out.action = 1; }
+    else out.other = 1;
+  }
+  return out;
+}
+function wordTypeLabel(e){
+  const c = e.classes || {};
+  const parts = [];
+  if (c.emotion) parts.push('tính từ cảm xúc');
+  else if (c.adj) parts.push('tính từ');
+  if (c.action) parts.push('động từ hành động');
+  else if (c.verb) parts.push('động từ');
+  if (c.noun) parts.push('danh từ');
+  if (c.adv) parts.push('trạng từ');
+  if (c.phrase) parts.push('cụm từ');
+  if (!parts.length) parts.push('khác');
+  return parts.join(' · ');
+}
+function matchWordType(e, type){
+  return type === 'all' || !!(e.classes && e.classes[type]);
+}
+function wordTypeCounts(lang){
+  const counts = { all: 0 };
+  WORD_CATS.forEach(function(c){ counts[c.id] = 0; });
+  dictArr(lang).forEach(function(e){
+    counts.all++;
+    WORD_CATS.forEach(function(c){
+      if (c.id !== 'all' && e.classes[c.id]) counts[c.id]++;
+    });
+  });
+  return counts;
+}
 function dictArr(lang){
   if (!DICT_CACHE[lang]){
     DICT_CACHE[lang] = buildDict(lang);
@@ -1595,6 +1769,7 @@ function buildDict(lang){
     e.mean = e.meanings.join(' · ');
     e.sort = e.key.replace(/^(der|die|das|ein|eine|einen|einem|einer)\s+/, '');
     e.letter = /^[a-z]/.test(e.sort) ? e.sort.charAt(0).toUpperCase() : '#';
+    e.classes = wordClasses(e);
   });
   arr.sort(function(a, b){ return a.sort.localeCompare(b.sort, lang === 'de' ? 'de' : 'en'); });
   return arr;
@@ -1623,7 +1798,7 @@ function dictRow(e){
   const inBank = e.pairs.some(function(p){ return bankSet(settings.lang)[p]; });
   return '<div class="drow" data-dkey="' + esc(e.key) + '" role="button" tabindex="0">' +
     '<div class="dmain"><div class="dword">' + esc(e.disp) +
-      (e.type ? '<span class="dpos">' + esc(e.type) + '</span>' : '') +
+      '<span class="dpos">' + esc(wordTypeLabel(e)) + '</span>' +
       (inBank ? '<span class="lsaved" title="Đang trong danh sách từ sai">⚠️</span>' : '') +
     '</div>' +
     (e.phon ? '<div class="dphon">' + esc(e.phon) + '</div>' : '') +
@@ -1644,13 +1819,21 @@ function renderDict(){
     return;
   }
   $('dictQ').placeholder = 'Tìm từ hoặc nghĩa tiếng Việt…';
-  $('dictCats').hidden = true;
-  $('dictCats').innerHTML = '';
   const lang = settings.lang;
   $$('#dictLangSeg .seg-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.dictLang === lang); });
-  const arr = dictArr(lang);
-  $('dictSub').textContent = (lang === 'de' ? 'Deutsch' : 'English') + ' · ' + fmt(arr.length) + ' từ · A-Z';
-  if (q){ renderDictSearch(lang, q); return; }
+  const counts = wordTypeCounts(lang);
+  if (settings.wtype !== 'all' && !counts[settings.wtype]) settings.wtype = 'all';
+  const type = settings.wtype;
+  $('dictCats').hidden = false;
+  $('dictCats').innerHTML = WORD_CATS.filter(function(c){ return c.id === 'all' || counts[c.id] > 0; }).map(function(c){
+    return '<button type="button" class="chip' + (type === c.id ? ' active' : '') + '" data-wcat="' + esc(c.id) + '">' +
+      esc(c.label) + '</button>';
+  }).join('');
+  const all = dictArr(lang);
+  const arr = type === 'all' ? all : all.filter(function(e){ return matchWordType(e, type); });
+  $('dictSub').textContent = (lang === 'de' ? 'Deutsch' : 'English') + ' · ' + fmt(arr.length) + ' từ' +
+    (type === 'all' ? '' : ' · ' + WORD_CAT_LABEL[type]) + ' · A-Z';
+  if (q){ renderDictSearch(lang, q, type); return; }
   const groups = {};
   arr.forEach(function(e){ (groups[e.letter] = groups[e.letter] || []).push(e); });
   let html = '';
@@ -1674,11 +1857,11 @@ function renderDict(){
     return;
   }
   const rows = groups[letter] || [];
-  $('dictMeta').textContent = letter + ' · ' + fmt(rows.length) + ' từ';
+  $('dictMeta').textContent = letter + ' · ' + fmt(rows.length) + ' từ' + (type === 'all' ? '' : ' · ' + WORD_CAT_LABEL[type]);
   $('dictBody').innerHTML = rows.map(dictRow).join('') || '<div class="lempty">Không có từ nào.</div>';
 }
-function renderDictSearch(lang, q){
-  const arr = dictArr(lang);
+function renderDictSearch(lang, q, type){
+  const arr = dictArr(lang).filter(function(e){ return matchWordType(e, type); });
   const seg = segIndex(lang);
   const tokens = fold(q).split(/\s+/).filter(Boolean);
   $('dictAZ').hidden = true;
@@ -1691,7 +1874,10 @@ function renderDictSearch(lang, q){
   const groups = [];
   const fullKey = fold(q).replace(/\s+/g, ' ').trim();
   const exact = seg[fullKey];
-  if (exact && exact.items.length >= 2) groups.push(exact);
+  if (exact){
+    const items = exact.items.filter(function(e){ return matchWordType(e, type); });
+    if (items.length >= 2) groups.push({ label: exact.label, items: items });
+  }
   let html = '';
   let shown = 0;
   function section(title, items){
@@ -1711,7 +1897,7 @@ function renderDictSearch(lang, q){
     $('dictBody').innerHTML = '<div class="lempty">Không tìm thấy từ nào khớp “<b>' + esc(q) + '</b>”.</div>';
     return;
   }
-  $('dictMeta').textContent = 'Tìm thấy ' + fmt(shown) + ' kết quả';
+  $('dictMeta').textContent = 'Tìm thấy ' + fmt(shown) + ' kết quả' + (type === 'all' ? '' : ' · ' + WORD_CAT_LABEL[type]);
   $('dictBody').innerHTML = html;
 }
 function grammarHaystack(t){
@@ -1777,7 +1963,7 @@ function openGrammar(id){
       }).join('')
     : '';
   const bank = cap
-    ? '<div class="sheet-gbank">🎯 Ngân hàng ' + fmt(cap) + ' câu cho thì này — sẵn sàng cho bài tập sắp xếp từ và chia thì.</div>'
+    ? '<div class="sheet-gbank">🎯 Ngân hàng ' + fmt(cap) + ' câu cho chuyên đề này — sẵn sàng cho bài tập sắp xếp từ và chia thì.</div>'
     : '';
   $('sheetBody').innerHTML =
     '<div class="sheet-head"><div class="sheet-word">' + esc(t.title) + '</div>' +
@@ -1804,7 +1990,7 @@ function openDetail(key){
     : '<div class="ex-none">Chưa có ví dụ cho từ này.</div>';
   $('sheetBody').innerHTML =
     '<div class="sheet-head"><div class="sheet-word">' + esc(e.disp) + '</div>' +
-    (e.type ? '<span class="dpos">' + esc(e.type) + '</span>' : '') +
+    (e.type ? '<span class="dpos">' + esc(wordTypeLabel(e)) + '</span>' : '') +
     (e.phon ? '<div class="sheet-phon">' + esc(e.phon) + '</div>' : '') +
     '<button type="button" class="spk" data-sheet-spk="' + esc(e.key) + '">🔊 Nghe</button></div>' +
     '<div class="sheet-mean">' + esc(e.mean) + '</div>' +
@@ -2178,6 +2364,7 @@ function setDs(ds){
 function setLang(lang){
   if ((lang !== 'en' && lang !== 'de') || lang === settings.lang) return;
   settings.lang = lang;
+  settings.wtype = 'all';
   if (DATASETS[settings.ds] && DATASETS[settings.ds].lang !== lang) settings.ds = lang === 'de' ? 'de3k' : 'en1k';
   if (settings.screen === 'dict') settings.dletter = 'A';
   if (CUR_DS !== 'wrong') CUR_DS = settings.ds;
@@ -2197,6 +2384,13 @@ function setDictMode(mode){
   if (mode !== 'words' && mode !== 'grammar') return;
   if (settings.dictMode === mode) return;
   settings.dictMode = mode;
+  $('dictQ').value = '';
+  LS.set('v4t:set', settings);
+  renderDict();
+}
+function setWordCat(cat){
+  if (!WORD_CAT_LABEL[cat] || settings.wtype === cat) return;
+  settings.wtype = cat;
   $('dictQ').value = '';
   LS.set('v4t:set', settings);
   renderDict();
@@ -2416,6 +2610,7 @@ document.addEventListener('click', function(e){
   if ((el = hit('[data-dict-lang]'))){ setDictLang(el.dataset.dictLang); return; }
   if ((el = hit('[data-dict-mode]'))){ setDictMode(el.dataset.dictMode); return; }
   if ((el = hit('[data-gcat]'))){ setGrammarCat(el.dataset.gcat); return; }
+  if ((el = hit('[data-wcat]'))){ setWordCat(el.dataset.wcat); return; }
   if ((el = hit('[data-gkey]'))){ openGrammar(el.dataset.gkey); return; }
   if ((el = hit('[data-az]'))){ setDictLetter(el.dataset.az); return; }
   if ((el = hit('[data-dict-clear]'))){
