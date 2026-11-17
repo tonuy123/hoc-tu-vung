@@ -18,6 +18,8 @@ DATASETS = [
     ('de3k', 'de'),
 ]
 GRAMMAR_PATH = os.path.join(SRC, 'data', 'grammar.json')
+DE_A1_PATH = os.path.join(SRC, 'data', 'de_a1.json')
+DE_TOPICS_PATH = os.path.join(SRC, 'data', 'de_topics.json')
 
 
 def load(name):
@@ -72,6 +74,115 @@ def load_examples(name, words):
             clean.append({'s': s, 't': t})
         out[num] = clean
     return out
+
+
+def load_de_topics():
+    with io.open(DE_TOPICS_PATH, encoding='utf-8') as f:
+        topics = json.load(f)
+    if not isinstance(topics, list) or not topics:
+        raise SystemExit('DE TOPICS: empty')
+    ids = []
+    for t in topics:
+        for k in ('id', 'name', 'short'):
+            if not str(t.get(k, '')).strip():
+                raise SystemExit('DE TOPICS: missing %s' % k)
+        ids.append(t['id'])
+    if len(ids) != len(set(ids)):
+        raise SystemExit('DE TOPICS: duplicate ids')
+    return topics
+
+
+def load_de_a1(topic_ids):
+    with io.open(DE_A1_PATH, encoding='utf-8') as f:
+        words = json.load(f)
+    if not isinstance(words, list) or not words:
+        raise SystemExit('DE A1: empty')
+    seen = set()
+    for w in words:
+        for k in ('num', 'word', 'meaning', 'type'):
+            if not str(w.get(k, '')).strip():
+                raise SystemExit('DE A1: missing %s in %s' % (k, json.dumps(w, ensure_ascii=False)))
+        w['num'] = int(w['num'])
+        if w['num'] in seen:
+            raise SystemExit('DE A1: dup num %s' % w['num'])
+        seen.add(w['num'])
+        topics = w.get('topics')
+        if not isinstance(topics, list) or not topics:
+            raise SystemExit('DE A1: no topics in %s' % w['word'])
+        for t in topics:
+            if t not in topic_ids:
+                raise SystemExit('DE A1: bad topic %s in %s' % (t, w['word']))
+        w['topics'] = list(dict.fromkeys(topics))
+        w.setdefault('phon', '')
+    return words
+
+
+def meaning_parts(text):
+    clean = re.sub(r'\([^)]*\)', ' ', str(text or ''))
+    parts = [p.strip().lower() for p in re.split(r'[;,/|]', clean)]
+    return [p for p in parts if p]
+
+
+def meanings_overlap(a, b):
+    pa, pb = meaning_parts(a), meaning_parts(b)
+    for x in pa:
+        for y in pb:
+            if x == y:
+                return True
+            if len(x) >= 2 and len(y) >= 2 and (x in y or y in x):
+                return True
+    return False
+
+
+def merge_de(words, a1):
+    """Merge the A1 topic list into the German dataset.
+
+    Same word + same POS is folded into one entry (topics and meanings merged);
+    a word with a different POS stays a separate entry, as in the English sets.
+    """
+    index = {}
+    for w in words:
+        index.setdefault(norm_word(w['word']), []).append(w)
+    nxt = max(w['num'] for w in words) + 1
+    for rec in a1:
+        key = norm_word(rec['word'])
+        target = None
+        for cand in index.get(key, []):
+            if cand.get('type', '') == rec['type']:
+                target = cand
+                break
+        if target:
+            for t in rec['topics']:
+                target.setdefault('topics', [])
+                if t not in target['topics']:
+                    target['topics'].append(t)
+            if rec.get('extra'):
+                if not target.get('extra'):
+                    target['extra'] = rec['extra']
+                target['meaning'] = re.sub(r'\s*\(Pl[^)]*\)', '', target['meaning']).strip()
+            if not meanings_overlap(target['meaning'], rec['meaning']):
+                target['meaning'] = target['meaning'] + ' · ' + rec['meaning']
+        else:
+            new = {
+                'num': nxt,
+                'word': rec['word'],
+                'meaning': rec['meaning'],
+                'type': rec['type'],
+                'phon': '',
+                'topics': list(rec['topics']),
+            }
+            if rec.get('extra'):
+                new['extra'] = rec['extra']
+            nxt += 1
+            words.append(new)
+            index.setdefault(key, []).append(new)
+    for w in words:
+        w.setdefault('topics', [])
+    return words
+
+
+def norm_word(s):
+    return re.sub(r'\s+', ' ', str(s or '')).strip().lower()
 
 
 def load_grammar():
@@ -167,6 +278,8 @@ def main():
     data = {}
     counts = []
     ex_stats = []
+    de_topics = load_de_topics()
+    de_a1 = load_de_a1({t['id'] for t in de_topics})
     for name, lang in DATASETS:
         words = load(name)
         ex = load_examples(name, words)
@@ -175,9 +288,26 @@ def main():
             if items:
                 w['ex'] = items
         n_ex = sum(len(v) for v in ex.values())
+        if name == 'de3k':
+            words = merge_de(words, de_a1)
+        else:
+            for w in words:
+                w.setdefault('topics', [])
         ex_stats.append((name, len(ex), n_ex))
         data[name] = {'lang': lang, 'words': words}
         counts.append((name, len(words)))
+
+    used = {}
+    for w in data['de3k']['words']:
+        for t in w['topics']:
+            used[t] = used.get(t, 0) + 1
+    for t in de_topics:
+        t['count'] = used.get(t['id'], 0)
+        if not t['count']:
+            raise SystemExit('DE TOPICS: no words for %s' % t['id'])
+    data['de3k']['topics'] = de_topics
+    if len(data['de3k']['words']) != len({w['num'] for w in data['de3k']['words']}):
+        raise SystemExit('DE MERGE: duplicate nums')
     blob = json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     if '</script' in blob.lower():
         raise SystemExit('UNSAFE: </script found in data blob')

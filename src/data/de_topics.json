@@ -1,0 +1,146 @@
+[
+{
+"id": "01",
+"name": "Chào hỏi và thông tin cá nhân",
+"short": "Chào hỏi",
+"count": 27
+},
+{
+"id": "02",
+"name": "Gia đình và quan hệ",
+"short": "Gia đình",
+"count": 26
+},
+{
+"id": "03",
+"name": "Nhà cửa và đồ dùng",
+"short": "Nhà cửa",
+"count": 40
+},
+{
+"id": "04",
+"name": "Đồ ăn và thức uống",
+"short": "Đồ ăn",
+"count": 58
+},
+{
+"id": "05",
+"name": "Quán ăn và gọi món",
+"short": "Quán ăn",
+"count": 12
+},
+{
+"id": "06",
+"name": "Mua sắm, tiền bạc và quần áo",
+"short": "Mua sắm",
+"count": 36
+},
+{
+"id": "07",
+"name": "Thành phố và địa điểm",
+"short": "Thành phố",
+"count": 32
+},
+{
+"id": "08",
+"name": "Phương tiện và du lịch",
+"short": "Du lịch",
+"count": 37
+},
+{
+"id": "09",
+"name": "Sinh hoạt hằng ngày",
+"short": "Hằng ngày",
+"count": 19
+},
+{
+"id": "10",
+"name": "Trường học và công việc",
+"short": "Học & làm",
+"count": 41
+},
+{
+"id": "11",
+"name": "Sở thích và thể thao",
+"short": "Sở thích",
+"count": 25
+},
+{
+"id": "12",
+"name": "Thời tiết và thiên nhiên",
+"short": "Thời tiết",
+"count": 29
+},
+{
+"id": "13",
+"name": "Cơ thể và sức khỏe",
+"short": "Sức khỏe",
+"count": 31
+},
+{
+"id": "14",
+"name": "Cảm xúc và trạng thái",
+"short": "Cảm xúc",
+"count": 10
+},
+{
+"id": "15",
+"name": "Quốc gia, quốc tịch và ngôn ngữ",
+"short": "Quốc gia",
+"count": 59
+},
+{
+"id": "16",
+"name": "Lịch và thời gian",
+"short": "Lịch",
+"count": 31
+},
+{
+"id": "17",
+"name": "Động từ thiết yếu",
+"short": "Động từ",
+"count": 104
+},
+{
+"id": "18",
+"name": "Tính từ và trạng từ",
+"short": "Tính từ",
+"count": 99
+},
+{
+"id": "19",
+"name": "Màu sắc",
+"short": "Màu sắc",
+"count": 12
+},
+{
+"id": "20",
+"name": "Từ để hỏi, đại từ và từ chỉ định",
+"short": "Đại từ",
+"count": 39
+},
+{
+"id": "21",
+"name": "Giới từ, liên từ và từ phủ định",
+"short": "Giới từ",
+"count": 40
+},
+{
+"id": "22",
+"name": "Cụm giao tiếp thường dùng",
+"short": "Giao tiếp",
+"count": 71
+},
+{
+"id": "23",
+"name": "Số đếm tham khảo",
+"short": "Số đếm",
+"count": 36
+},
+{
+"id": "24",
+"name": "Nói giờ và mốc thời gian",
+"short": "Nói giờ",
+"count": 21
+}
+]

@@ -1,0 +1,8867 @@
+[
+{
+"word": "der Name",
+"meaning": "tên",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Namen",
+"num": 100001
+},
+{
+"word": "der Vorname",
+"meaning": "tên gọi",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Vornamen",
+"num": 100002
+},
+{
+"word": "der Familienname",
+"meaning": "họ",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Familiennamen",
+"num": 100003
+},
+{
+"word": "die Adresse",
+"meaning": "địa chỉ",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Adressen",
+"num": 100004
+},
+{
+"word": "die Telefonnummer",
+"meaning": "số điện thoại",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Telefonnummern",
+"num": 100005
+},
+{
+"word": "die E-Mail-Adresse",
+"meaning": "địa chỉ email",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die E-Mail-Adressen",
+"num": 100006
+},
+{
+"word": "das Land",
+"meaning": "đất nước",
+"type": "n",
+"topics": [
+"01",
+"15"
+],
+"extra": "Pl.: die Länder",
+"num": 100007
+},
+{
+"word": "die Stadt",
+"meaning": "thành phố",
+"type": "n",
+"topics": [
+"01",
+"07"
+],
+"extra": "Pl.: die Städte",
+"num": 100008
+},
+{
+"word": "die Straße",
+"meaning": "đường phố",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Straßen",
+"num": 100009
+},
+{
+"word": "die Hausnummer",
+"meaning": "số nhà",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Hausnummern",
+"num": 100010
+},
+{
+"word": "die Postleitzahl",
+"meaning": "mã bưu chính",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Postleitzahlen",
+"num": 100011
+},
+{
+"word": "das Alter",
+"meaning": "tuổi",
+"type": "n",
+"topics": [
+"01"
+],
+"num": 100012
+},
+{
+"word": "der Geburtstag",
+"meaning": "sinh nhật",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Geburtstage",
+"num": 100013
+},
+{
+"word": "der Beruf",
+"meaning": "nghề nghiệp",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Berufe",
+"num": 100014
+},
+{
+"word": "die Sprache",
+"meaning": "ngôn ngữ",
+"type": "n",
+"topics": [
+"01",
+"15"
+],
+"extra": "Pl.: die Sprachen",
+"num": 100015
+},
+{
+"word": "die Muttersprache",
+"meaning": "tiếng mẹ đẻ",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Muttersprachen",
+"num": 100016
+},
+{
+"word": "die Person",
+"meaning": "người, cá nhân",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Personen",
+"num": 100017
+},
+{
+"word": "der Mann",
+"meaning": "người đàn ông; chồng",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Männer",
+"num": 100018
+},
+{
+"word": "die Frau",
+"meaning": "người phụ nữ; vợ",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Frauen",
+"num": 100019
+},
+{
+"word": "das Kind",
+"meaning": "trẻ em; con",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Kinder",
+"num": 100020
+},
+{
+"word": "der Junge",
+"meaning": "bé trai, chàng trai",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Jungen",
+"num": 100021
+},
+{
+"word": "das Mädchen",
+"meaning": "bé gái, cô gái",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Mädchen",
+"num": 100022
+},
+{
+"word": "der Herr",
+"meaning": "ông, ngài",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Herren",
+"num": 100023
+},
+{
+"word": "die Dame",
+"meaning": "quý bà, quý cô",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Damen",
+"num": 100024
+},
+{
+"word": "der Gast",
+"meaning": "khách",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Gäste",
+"num": 100025
+},
+{
+"word": "der Freund",
+"meaning": "bạn nam",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Freunde",
+"num": 100026
+},
+{
+"word": "die Freundin",
+"meaning": "bạn nữ",
+"type": "n",
+"topics": [
+"01"
+],
+"extra": "Pl.: die Freundinnen",
+"num": 100027
+},
+{
+"word": "die Familie",
+"meaning": "gia đình",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Familien",
+"num": 100028
+},
+{
+"word": "die Eltern (Pl.)",
+"meaning": "bố mẹ",
+"type": "n",
+"topics": [
+"02"
+],
+"num": 100029
+},
+{
+"word": "die Mutter",
+"meaning": "mẹ",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Mütter",
+"num": 100030
+},
+{
+"word": "der Vater",
+"meaning": "bố",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Väter",
+"num": 100031
+},
+{
+"word": "die Mama",
+"meaning": "mẹ (thân mật)",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Mamas",
+"num": 100032
+},
+{
+"word": "der Papa",
+"meaning": "bố (thân mật)",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Papas",
+"num": 100033
+},
+{
+"word": "die Schwester",
+"meaning": "chị/em gái",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Schwestern",
+"num": 100034
+},
+{
+"word": "der Bruder",
+"meaning": "anh/em trai",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Brüder",
+"num": 100035
+},
+{
+"word": "die Geschwister (Pl.)",
+"meaning": "anh chị em ruột",
+"type": "n",
+"topics": [
+"02"
+],
+"num": 100036
+},
+{
+"word": "die Tochter",
+"meaning": "con gái",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Töchter",
+"num": 100037
+},
+{
+"word": "der Sohn",
+"meaning": "con trai",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Söhne",
+"num": 100038
+},
+{
+"word": "die Großmutter",
+"meaning": "bà",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Großmütter",
+"num": 100039
+},
+{
+"word": "der Großvater",
+"meaning": "ông",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Großväter",
+"num": 100040
+},
+{
+"word": "die Oma",
+"meaning": "bà (thân mật)",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Omas",
+"num": 100041
+},
+{
+"word": "der Opa",
+"meaning": "ông (thân mật)",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Opas",
+"num": 100042
+},
+{
+"word": "die Großeltern (Pl.)",
+"meaning": "ông bà",
+"type": "n",
+"topics": [
+"02"
+],
+"num": 100043
+},
+{
+"word": "die Tante",
+"meaning": "cô, dì, bác gái",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Tanten",
+"num": 100044
+},
+{
+"word": "der Onkel",
+"meaning": "chú, cậu, bác trai",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Onkel",
+"num": 100045
+},
+{
+"word": "die Cousine",
+"meaning": "chị/em họ nữ",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Cousinen",
+"num": 100046
+},
+{
+"word": "der Cousin",
+"meaning": "anh/em họ nam",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Cousins",
+"num": 100047
+},
+{
+"word": "die Ehefrau",
+"meaning": "vợ",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Ehefrauen",
+"num": 100048
+},
+{
+"word": "der Ehemann",
+"meaning": "chồng",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Ehemänner",
+"num": 100049
+},
+{
+"word": "der Partner",
+"meaning": "bạn đời nam",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Partner",
+"num": 100050
+},
+{
+"word": "die Partnerin",
+"meaning": "bạn đời nữ",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Partnerinnen",
+"num": 100051
+},
+{
+"word": "die Hochzeit",
+"meaning": "đám cưới",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Hochzeiten",
+"num": 100052
+},
+{
+"word": "das Baby",
+"meaning": "em bé",
+"type": "n",
+"topics": [
+"02"
+],
+"extra": "Pl.: die Babys",
+"num": 100053
+},
+{
+"word": "das Haus",
+"meaning": "nhà",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Häuser",
+"num": 100054
+},
+{
+"word": "die Wohnung",
+"meaning": "căn hộ",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Wohnungen",
+"num": 100055
+},
+{
+"word": "das Zimmer",
+"meaning": "phòng",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Zimmer",
+"num": 100056
+},
+{
+"word": "das Wohnzimmer",
+"meaning": "phòng khách",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Wohnzimmer",
+"num": 100057
+},
+{
+"word": "das Schlafzimmer",
+"meaning": "phòng ngủ",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Schlafzimmer",
+"num": 100058
+},
+{
+"word": "das Kinderzimmer",
+"meaning": "phòng trẻ em",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Kinderzimmer",
+"num": 100059
+},
+{
+"word": "die Küche",
+"meaning": "nhà bếp",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Küchen",
+"num": 100060
+},
+{
+"word": "das Bad",
+"meaning": "phòng tắm",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Bäder",
+"num": 100061
+},
+{
+"word": "das Badezimmer",
+"meaning": "phòng tắm",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Badezimmer",
+"num": 100062
+},
+{
+"word": "die Toilette",
+"meaning": "nhà vệ sinh",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Toiletten",
+"num": 100063
+},
+{
+"word": "der Flur",
+"meaning": "hành lang",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Flure",
+"num": 100064
+},
+{
+"word": "der Balkon",
+"meaning": "ban công",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Balkone",
+"num": 100065
+},
+{
+"word": "der Garten",
+"meaning": "vườn",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Gärten",
+"num": 100066
+},
+{
+"word": "die Tür",
+"meaning": "cửa ra vào",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Türen",
+"num": 100067
+},
+{
+"word": "das Fenster",
+"meaning": "cửa sổ",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Fenster",
+"num": 100068
+},
+{
+"word": "die Wand",
+"meaning": "tường",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Wände",
+"num": 100069
+},
+{
+"word": "der Boden",
+"meaning": "sàn nhà",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Böden",
+"num": 100070
+},
+{
+"word": "das Dach",
+"meaning": "mái nhà",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Dächer",
+"num": 100071
+},
+{
+"word": "die Treppe",
+"meaning": "cầu thang",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Treppen",
+"num": 100072
+},
+{
+"word": "der Schlüssel",
+"meaning": "chìa khóa",
+"type": "n",
+"topics": [
+"03",
+"09"
+],
+"extra": "Pl.: die Schlüssel",
+"num": 100073
+},
+{
+"word": "der Tisch",
+"meaning": "bàn",
+"type": "n",
+"topics": [
+"03",
+"05"
+],
+"extra": "Pl.: die Tische",
+"num": 100074
+},
+{
+"word": "der Stuhl",
+"meaning": "ghế",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Stühle",
+"num": 100075
+},
+{
+"word": "das Sofa",
+"meaning": "ghế sofa",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Sofas",
+"num": 100076
+},
+{
+"word": "das Bett",
+"meaning": "giường",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Betten",
+"num": 100077
+},
+{
+"word": "der Schrank",
+"meaning": "tủ",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Schränke",
+"num": 100078
+},
+{
+"word": "das Regal",
+"meaning": "kệ",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Regale",
+"num": 100079
+},
+{
+"word": "die Lampe",
+"meaning": "đèn",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Lampen",
+"num": 100080
+},
+{
+"word": "der Teppich",
+"meaning": "thảm",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Teppiche",
+"num": 100081
+},
+{
+"word": "der Spiegel",
+"meaning": "gương",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Spiegel",
+"num": 100082
+},
+{
+"word": "der Kühlschrank",
+"meaning": "tủ lạnh",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Kühlschränke",
+"num": 100083
+},
+{
+"word": "der Herd",
+"meaning": "bếp nấu",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Herde",
+"num": 100084
+},
+{
+"word": "die Waschmaschine",
+"meaning": "máy giặt",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Waschmaschinen",
+"num": 100085
+},
+{
+"word": "die Dusche",
+"meaning": "vòi sen",
+"type": "n",
+"topics": [
+"03",
+"09"
+],
+"extra": "Pl.: die Duschen",
+"num": 100086
+},
+{
+"word": "die Badewanne",
+"meaning": "bồn tắm",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Badewannen",
+"num": 100087
+},
+{
+"word": "die Heizung",
+"meaning": "máy/hệ thống sưởi",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Heizungen",
+"num": 100088
+},
+{
+"word": "der Fernseher",
+"meaning": "ti vi",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Fernseher",
+"num": 100089
+},
+{
+"word": "der Computer",
+"meaning": "máy tính",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Computer",
+"num": 100090
+},
+{
+"word": "das Bild",
+"meaning": "bức tranh, hình ảnh",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Bilder",
+"num": 100091
+},
+{
+"word": "die Uhr",
+"meaning": "đồng hồ",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Uhren",
+"num": 100092
+},
+{
+"word": "die Miete",
+"meaning": "tiền thuê nhà",
+"type": "n",
+"topics": [
+"03"
+],
+"extra": "Pl.: die Mieten",
+"num": 100093
+},
+{
+"word": "das Essen",
+"meaning": "thức ăn, bữa ăn",
+"type": "n",
+"topics": [
+"04"
+],
+"num": 100094
+},
+{
+"word": "das Frühstück",
+"meaning": "bữa sáng",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Frühstücke",
+"num": 100095
+},
+{
+"word": "das Mittagessen",
+"meaning": "bữa trưa",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Mittagessen",
+"num": 100096
+},
+{
+"word": "das Abendessen",
+"meaning": "bữa tối",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Abendessen",
+"num": 100097
+},
+{
+"word": "das Brot",
+"meaning": "bánh mì",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Brote",
+"num": 100098
+},
+{
+"word": "das Brötchen",
+"meaning": "bánh mì nhỏ",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Brötchen",
+"num": 100099
+},
+{
+"word": "die Butter",
+"meaning": "bơ",
+"type": "n",
+"topics": [
+"04"
+],
+"num": 100100
+},
+{
+"word": "der Käse",
+"meaning": "phô mai",
+"type": "n",
+"topics": [
+"04"
+],
+"num": 100101
+},
+{
+"word": "die Milch",
+"meaning": "sữa",
+"type": "n",
+"topics": [
+"04"
+],
+"num": 100102
+},
+{
+"word": "der Joghurt",
+"meaning": "sữa chua",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Joghurts",
+"num": 100103
+},
+{
+"word": "das Ei",
+"meaning": "trứng",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Eier",
+"num": 100104
+},
+{
+"word": "das Fleisch",
+"meaning": "thịt",
+"type": "n",
+"topics": [
+"04"
+],
+"num": 100105
+},
+{
+"word": "das Hähnchen",
+"meaning": "gà, thịt gà",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Hähnchen",
+"num": 100106
+},
+{
+"word": "der Fisch",
+"meaning": "cá",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Fische",
+"num": 100107
+},
+{
+"word": "die Wurst",
+"meaning": "xúc xích",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Würste",
+"num": 100108
+},
+{
+"word": "der Schinken",
+"meaning": "giăm bông",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Schinken",
+"num": 100109
+},
+{
+"word": "der Reis",
+"meaning": "gạo, cơm",
+"type": "n",
+"topics": [
+"04"
+],
+"num": 100110
+},
+{
+"word": "die Kartoffel",
+"meaning": "khoai tây",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Kartoffeln",
+"num": 100111
+},
+{
+"word": "die Nudel",
+"meaning": "mì sợi",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Nudeln",
+"num": 100112
+},
+{
+"word": "die Suppe",
+"meaning": "súp",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Suppen",
+"num": 100113
+},
+{
+"word": "der Salat",
+"meaning": "rau trộn, xà lách",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Salate",
+"num": 100114
+},
+{
+"word": "das Gemüse",
+"meaning": "rau củ",
+"type": "n",
+"topics": [
+"04"
+],
+"num": 100115
+},
+{
+"word": "die Tomate",
+"meaning": "cà chua",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Tomaten",
+"num": 100116
+},
+{
+"word": "die Gurke",
+"meaning": "dưa chuột",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Gurken",
+"num": 100117
+},
+{
+"word": "die Karotte",
+"meaning": "cà rốt",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Karotten",
+"num": 100118
+},
+{
+"word": "die Zwiebel",
+"meaning": "hành tây",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Zwiebeln",
+"num": 100119
+},
+{
+"word": "der Apfel",
+"meaning": "táo",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Äpfel",
+"num": 100120
+},
+{
+"word": "die Banane",
+"meaning": "chuối",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Bananen",
+"num": 100121
+},
+{
+"word": "die Orange",
+"meaning": "cam",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Orangen",
+"num": 100122
+},
+{
+"word": "die Zitrone",
+"meaning": "chanh vàng",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Zitronen",
+"num": 100123
+},
+{
+"word": "die Traube",
+"meaning": "quả nho",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Trauben",
+"num": 100124
+},
+{
+"word": "die Erdbeere",
+"meaning": "dâu tây",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Erdbeeren",
+"num": 100125
+},
+{
+"word": "die Birne",
+"meaning": "lê",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Birnen",
+"num": 100126
+},
+{
+"word": "der Kuchen",
+"meaning": "bánh ngọt",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Kuchen",
+"num": 100127
+},
+{
+"word": "die Torte",
+"meaning": "bánh kem",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Torten",
+"num": 100128
+},
+{
+"word": "der Keks",
+"meaning": "bánh quy",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Kekse",
+"num": 100129
+},
+{
+"word": "die Schokolade",
+"meaning": "sô-cô-la",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Schokoladen",
+"num": 100130
+},
+{
+"word": "das Eis",
+"meaning": "kem",
+"type": "n",
+"topics": [
+"04"
+],
+"num": 100131
+},
+{
+"word": "der Zucker",
+"meaning": "đường",
+"type": "n",
+"topics": [
+"04"
+],
+"num": 100132
+},
+{
+"word": "das Salz",
+"meaning": "muối",
+"type": "n",
+"topics": [
+"04"
+],
+"num": 100133
+},
+{
+"word": "der Pfeffer",
+"meaning": "tiêu",
+"type": "n",
+"topics": [
+"04"
+],
+"num": 100134
+},
+{
+"word": "das Öl",
+"meaning": "dầu ăn",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Öle",
+"num": 100135
+},
+{
+"word": "das Wasser",
+"meaning": "nước",
+"type": "n",
+"topics": [
+"04"
+],
+"num": 100136
+},
+{
+"word": "das Mineralwasser",
+"meaning": "nước khoáng",
+"type": "n",
+"topics": [
+"04"
+],
+"num": 100137
+},
+{
+"word": "der Saft",
+"meaning": "nước ép",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Säfte",
+"num": 100138
+},
+{
+"word": "der Apfelsaft",
+"meaning": "nước táo",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Apfelsäfte",
+"num": 100139
+},
+{
+"word": "der Kaffee",
+"meaning": "cà phê",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Kaffees",
+"num": 100140
+},
+{
+"word": "der Tee",
+"meaning": "trà",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Tees",
+"num": 100141
+},
+{
+"word": "die Cola",
+"meaning": "cola",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Colas",
+"num": 100142
+},
+{
+"word": "das Bier",
+"meaning": "bia",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Biere",
+"num": 100143
+},
+{
+"word": "der Wein",
+"meaning": "rượu vang",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Weine",
+"num": 100144
+},
+{
+"word": "die Flasche",
+"meaning": "chai",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Flaschen",
+"num": 100145
+},
+{
+"word": "das Glas",
+"meaning": "cốc thủy tinh",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Gläser",
+"num": 100146
+},
+{
+"word": "die Tasse",
+"meaning": "tách",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Tassen",
+"num": 100147
+},
+{
+"word": "der Teller",
+"meaning": "đĩa",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Teller",
+"num": 100148
+},
+{
+"word": "das Messer",
+"meaning": "dao",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Messer",
+"num": 100149
+},
+{
+"word": "die Gabel",
+"meaning": "nĩa",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Gabeln",
+"num": 100150
+},
+{
+"word": "der Löffel",
+"meaning": "thìa",
+"type": "n",
+"topics": [
+"04"
+],
+"extra": "Pl.: die Löffel",
+"num": 100151
+},
+{
+"word": "das Restaurant",
+"meaning": "nhà hàng",
+"type": "n",
+"topics": [
+"05"
+],
+"extra": "Pl.: die Restaurants",
+"num": 100152
+},
+{
+"word": "das Café",
+"meaning": "quán cà phê",
+"type": "n",
+"topics": [
+"05"
+],
+"extra": "Pl.: die Cafés",
+"num": 100153
+},
+{
+"word": "die Speisekarte",
+"meaning": "thực đơn",
+"type": "n",
+"topics": [
+"05"
+],
+"extra": "Pl.: die Speisekarten",
+"num": 100154
+},
+{
+"word": "die Rechnung",
+"meaning": "hóa đơn",
+"type": "n",
+"topics": [
+"05"
+],
+"extra": "Pl.: die Rechnungen",
+"num": 100155
+},
+{
+"word": "der Preis",
+"meaning": "giá tiền",
+"type": "n",
+"topics": [
+"05"
+],
+"extra": "Pl.: die Preise",
+"num": 100156
+},
+{
+"word": "die Bestellung",
+"meaning": "món/đơn gọi",
+"type": "n",
+"topics": [
+"05"
+],
+"extra": "Pl.: die Bestellungen",
+"num": 100157
+},
+{
+"word": "der Kellner",
+"meaning": "nhân viên phục vụ nam",
+"type": "n",
+"topics": [
+"05"
+],
+"extra": "Pl.: die Kellner",
+"num": 100158
+},
+{
+"word": "die Kellnerin",
+"meaning": "nhân viên phục vụ nữ",
+"type": "n",
+"topics": [
+"05"
+],
+"extra": "Pl.: die Kellnerinnen",
+"num": 100159
+},
+{
+"word": "die Reservierung",
+"meaning": "đặt chỗ",
+"type": "n",
+"topics": [
+"05"
+],
+"extra": "Pl.: die Reservierungen",
+"num": 100160
+},
+{
+"word": "das Trinkgeld",
+"meaning": "tiền boa",
+"type": "n",
+"topics": [
+"05"
+],
+"extra": "Pl.: die Trinkgelder",
+"num": 100161
+},
+{
+"word": "die Portion",
+"meaning": "khẩu phần",
+"type": "n",
+"topics": [
+"05"
+],
+"extra": "Pl.: die Portionen",
+"num": 100162
+},
+{
+"word": "das Geschäft",
+"meaning": "cửa hàng",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Geschäfte",
+"num": 100163
+},
+{
+"word": "der Supermarkt",
+"meaning": "siêu thị",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Supermärkte",
+"num": 100164
+},
+{
+"word": "der Markt",
+"meaning": "chợ",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Märkte",
+"num": 100165
+},
+{
+"word": "die Bäckerei",
+"meaning": "tiệm bánh mì",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Bäckereien",
+"num": 100166
+},
+{
+"word": "die Apotheke",
+"meaning": "hiệu thuốc",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Apotheken",
+"num": 100167
+},
+{
+"word": "der Laden",
+"meaning": "cửa hàng",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Läden",
+"num": 100168
+},
+{
+"word": "der Einkauf",
+"meaning": "việc mua sắm",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Einkäufe",
+"num": 100169
+},
+{
+"word": "das Geld",
+"meaning": "tiền",
+"type": "n",
+"topics": [
+"06"
+],
+"num": 100170
+},
+{
+"word": "der Euro",
+"meaning": "euro",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Euro",
+"num": 100171
+},
+{
+"word": "der Cent",
+"meaning": "xu",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Cent",
+"num": 100172
+},
+{
+"word": "die Kasse",
+"meaning": "quầy tính tiền",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Kassen",
+"num": 100173
+},
+{
+"word": "die Karte",
+"meaning": "thẻ; bản đồ",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Karten",
+"num": 100174
+},
+{
+"word": "das Angebot",
+"meaning": "ưu đãi, mặt hàng chào bán",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Angebote",
+"num": 100175
+},
+{
+"word": "die Größe",
+"meaning": "cỡ, kích thước",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Größen",
+"num": 100176
+},
+{
+"word": "die Farbe",
+"meaning": "màu sắc",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Farben",
+"num": 100177
+},
+{
+"word": "die Kleidung",
+"meaning": "quần áo",
+"type": "n",
+"topics": [
+"06"
+],
+"num": 100178
+},
+{
+"word": "die Hose",
+"meaning": "quần dài",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Hosen",
+"num": 100179
+},
+{
+"word": "die Jeans (Pl.)",
+"meaning": "quần jean",
+"type": "n",
+"topics": [
+"06"
+],
+"num": 100180
+},
+{
+"word": "das T-Shirt",
+"meaning": "áo thun",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die T-Shirts",
+"num": 100181
+},
+{
+"word": "das Hemd",
+"meaning": "áo sơ mi nam",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Hemden",
+"num": 100182
+},
+{
+"word": "die Bluse",
+"meaning": "áo sơ mi nữ",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Blusen",
+"num": 100183
+},
+{
+"word": "der Pullover",
+"meaning": "áo len",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Pullover",
+"num": 100184
+},
+{
+"word": "die Jacke",
+"meaning": "áo khoác",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Jacken",
+"num": 100185
+},
+{
+"word": "der Mantel",
+"meaning": "áo khoác dài",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Mäntel",
+"num": 100186
+},
+{
+"word": "das Kleid",
+"meaning": "váy liền",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Kleider",
+"num": 100187
+},
+{
+"word": "der Rock",
+"meaning": "chân váy",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Röcke",
+"num": 100188
+},
+{
+"word": "der Schuh",
+"meaning": "giày",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Schuhe",
+"num": 100189
+},
+{
+"word": "der Stiefel",
+"meaning": "ủng, bốt",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Stiefel",
+"num": 100190
+},
+{
+"word": "die Socke",
+"meaning": "tất",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Socken",
+"num": 100191
+},
+{
+"word": "der Hut",
+"meaning": "mũ có vành",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Hüte",
+"num": 100192
+},
+{
+"word": "die Mütze",
+"meaning": "mũ len",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Mützen",
+"num": 100193
+},
+{
+"word": "der Schal",
+"meaning": "khăn quàng",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Schals",
+"num": 100194
+},
+{
+"word": "die Tasche",
+"meaning": "túi",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Taschen",
+"num": 100195
+},
+{
+"word": "der Rucksack",
+"meaning": "ba lô",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Rucksäcke",
+"num": 100196
+},
+{
+"word": "die Brille",
+"meaning": "kính mắt",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Brillen",
+"num": 100197
+},
+{
+"word": "der Regenschirm",
+"meaning": "ô, dù",
+"type": "n",
+"topics": [
+"06"
+],
+"extra": "Pl.: die Regenschirme",
+"num": 100198
+},
+{
+"word": "das Dorf",
+"meaning": "làng",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Dörfer",
+"num": 100199
+},
+{
+"word": "das Zentrum",
+"meaning": "trung tâm",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Zentren",
+"num": 100200
+},
+{
+"word": "der Bahnhof",
+"meaning": "nhà ga",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Bahnhöfe",
+"num": 100201
+},
+{
+"word": "die Haltestelle",
+"meaning": "trạm dừng",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Haltestellen",
+"num": 100202
+},
+{
+"word": "der Flughafen",
+"meaning": "sân bay",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Flughäfen",
+"num": 100203
+},
+{
+"word": "die Schule",
+"meaning": "trường học",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Schulen",
+"num": 100204
+},
+{
+"word": "die Universität",
+"meaning": "đại học",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Universitäten",
+"num": 100205
+},
+{
+"word": "der Kindergarten",
+"meaning": "trường mẫu giáo",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Kindergärten",
+"num": 100206
+},
+{
+"word": "das Krankenhaus",
+"meaning": "bệnh viện",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Krankenhäuser",
+"num": 100207
+},
+{
+"word": "die Praxis",
+"meaning": "phòng khám",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Praxen",
+"num": 100208
+},
+{
+"word": "die Bank",
+"meaning": "ngân hàng",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Banken",
+"num": 100209
+},
+{
+"word": "die Post",
+"meaning": "bưu điện",
+"type": "n",
+"topics": [
+"07"
+],
+"num": 100210
+},
+{
+"word": "das Hotel",
+"meaning": "khách sạn",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Hotels",
+"num": 100211
+},
+{
+"word": "die Polizei",
+"meaning": "cảnh sát",
+"type": "n",
+"topics": [
+"07"
+],
+"num": 100212
+},
+{
+"word": "das Rathaus",
+"meaning": "tòa thị chính",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Rathäuser",
+"num": 100213
+},
+{
+"word": "die Kirche",
+"meaning": "nhà thờ",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Kirchen",
+"num": 100214
+},
+{
+"word": "das Museum",
+"meaning": "bảo tàng",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Museen",
+"num": 100215
+},
+{
+"word": "das Kino",
+"meaning": "rạp chiếu phim",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Kinos",
+"num": 100216
+},
+{
+"word": "das Theater",
+"meaning": "nhà hát",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Theater",
+"num": 100217
+},
+{
+"word": "der Park",
+"meaning": "công viên",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Parks",
+"num": 100218
+},
+{
+"word": "der Spielplatz",
+"meaning": "sân chơi",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Spielplätze",
+"num": 100219
+},
+{
+"word": "das Schwimmbad",
+"meaning": "hồ bơi",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Schwimmbäder",
+"num": 100220
+},
+{
+"word": "der Sportplatz",
+"meaning": "sân thể thao",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Sportplätze",
+"num": 100221
+},
+{
+"word": "die Bibliothek",
+"meaning": "thư viện",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Bibliotheken",
+"num": 100222
+},
+{
+"word": "die Straße",
+"meaning": "con đường",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Straßen",
+"num": 100223
+},
+{
+"word": "der Platz",
+"meaning": "quảng trường; chỗ",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Plätze",
+"num": 100224
+},
+{
+"word": "die Brücke",
+"meaning": "cây cầu",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Brücken",
+"num": 100225
+},
+{
+"word": "die Ampel",
+"meaning": "đèn giao thông",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Ampeln",
+"num": 100226
+},
+{
+"word": "die Ecke",
+"meaning": "góc đường",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Ecken",
+"num": 100227
+},
+{
+"word": "die Kreuzung",
+"meaning": "ngã tư",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Kreuzungen",
+"num": 100228
+},
+{
+"word": "der Parkplatz",
+"meaning": "bãi đỗ xe",
+"type": "n",
+"topics": [
+"07"
+],
+"extra": "Pl.: die Parkplätze",
+"num": 100229
+},
+{
+"word": "das Auto",
+"meaning": "ô tô",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Autos",
+"num": 100230
+},
+{
+"word": "der Bus",
+"meaning": "xe buýt",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Busse",
+"num": 100231
+},
+{
+"word": "die Straßenbahn",
+"meaning": "xe điện mặt đất",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Straßenbahnen",
+"num": 100232
+},
+{
+"word": "die U-Bahn",
+"meaning": "tàu điện ngầm",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die U-Bahnen",
+"num": 100233
+},
+{
+"word": "die S-Bahn",
+"meaning": "tàu nội đô/vùng",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die S-Bahnen",
+"num": 100234
+},
+{
+"word": "der Zug",
+"meaning": "tàu hỏa",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Züge",
+"num": 100235
+},
+{
+"word": "das Fahrrad",
+"meaning": "xe đạp",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Fahrräder",
+"num": 100236
+},
+{
+"word": "das Taxi",
+"meaning": "taxi",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Taxis",
+"num": 100237
+},
+{
+"word": "das Flugzeug",
+"meaning": "máy bay",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Flugzeuge",
+"num": 100238
+},
+{
+"word": "das Schiff",
+"meaning": "tàu thủy",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Schiffe",
+"num": 100239
+},
+{
+"word": "der Fahrplan",
+"meaning": "thời gian biểu",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Fahrpläne",
+"num": 100240
+},
+{
+"word": "die Fahrkarte",
+"meaning": "vé xe",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Fahrkarten",
+"num": 100241
+},
+{
+"word": "das Ticket",
+"meaning": "vé",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Tickets",
+"num": 100242
+},
+{
+"word": "die Reise",
+"meaning": "chuyến đi",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Reisen",
+"num": 100243
+},
+{
+"word": "der Weg",
+"meaning": "đường đi",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Wege",
+"num": 100244
+},
+{
+"word": "die Richtung",
+"meaning": "phương hướng",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Richtungen",
+"num": 100245
+},
+{
+"word": "die Karte",
+"meaning": "bản đồ",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Karten",
+"num": 100246
+},
+{
+"word": "der Fahrer",
+"meaning": "tài xế nam",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Fahrer",
+"num": 100247
+},
+{
+"word": "die Fahrerin",
+"meaning": "tài xế nữ",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Fahrerinnen",
+"num": 100248
+},
+{
+"word": "der Verkehr",
+"meaning": "giao thông",
+"type": "n",
+"topics": [
+"08"
+],
+"num": 100249
+},
+{
+"word": "der Unfall",
+"meaning": "tai nạn",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Unfälle",
+"num": 100250
+},
+{
+"word": "die Verspätung",
+"meaning": "sự trễ giờ",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Verspätungen",
+"num": 100251
+},
+{
+"word": "der Urlaub",
+"meaning": "kỳ nghỉ",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Urlaube",
+"num": 100252
+},
+{
+"word": "die Ferien (Pl.)",
+"meaning": "kỳ nghỉ học",
+"type": "n",
+"topics": [
+"08"
+],
+"num": 100253
+},
+{
+"word": "der Ausflug",
+"meaning": "chuyến đi chơi",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Ausflüge",
+"num": 100254
+},
+{
+"word": "der Tourist",
+"meaning": "khách du lịch nam",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Touristen",
+"num": 100255
+},
+{
+"word": "die Touristin",
+"meaning": "khách du lịch nữ",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Touristinnen",
+"num": 100256
+},
+{
+"word": "das Einzelzimmer",
+"meaning": "phòng đơn",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Einzelzimmer",
+"num": 100257
+},
+{
+"word": "das Doppelzimmer",
+"meaning": "phòng đôi",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Doppelzimmer",
+"num": 100258
+},
+{
+"word": "die Übernachtung",
+"meaning": "việc nghỉ qua đêm",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Übernachtungen",
+"num": 100259
+},
+{
+"word": "die Rezeption",
+"meaning": "quầy lễ tân",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Rezeptionen",
+"num": 100260
+},
+{
+"word": "der Pass",
+"meaning": "hộ chiếu",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Pässe",
+"num": 100261
+},
+{
+"word": "der Koffer",
+"meaning": "va-li",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Koffer",
+"num": 100262
+},
+{
+"word": "das Gepäck",
+"meaning": "hành lý",
+"type": "n",
+"topics": [
+"08"
+],
+"num": 100263
+},
+{
+"word": "die Sehenswürdigkeit",
+"meaning": "điểm tham quan",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Sehenswürdigkeiten",
+"num": 100264
+},
+{
+"word": "der Strand",
+"meaning": "bãi biển",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Strände",
+"num": 100265
+},
+{
+"word": "das Meer",
+"meaning": "biển",
+"type": "n",
+"topics": [
+"08"
+],
+"extra": "Pl.: die Meere",
+"num": 100266
+},
+{
+"word": "der Alltag",
+"meaning": "sinh hoạt hằng ngày",
+"type": "n",
+"topics": [
+"09"
+],
+"num": 100267
+},
+{
+"word": "der Morgen",
+"meaning": "buổi sáng",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Morgen",
+"num": 100268
+},
+{
+"word": "der Vormittag",
+"meaning": "buổi sáng trước trưa",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Vormittage",
+"num": 100269
+},
+{
+"word": "der Mittag",
+"meaning": "buổi trưa",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Mittage",
+"num": 100270
+},
+{
+"word": "der Nachmittag",
+"meaning": "buổi chiều",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Nachmittage",
+"num": 100271
+},
+{
+"word": "der Abend",
+"meaning": "buổi tối",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Abende",
+"num": 100272
+},
+{
+"word": "die Nacht",
+"meaning": "ban đêm",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Nächte",
+"num": 100273
+},
+{
+"word": "der Wecker",
+"meaning": "đồng hồ báo thức",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Wecker",
+"num": 100274
+},
+{
+"word": "die Zahnbürste",
+"meaning": "bàn chải đánh răng",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Zahnbürsten",
+"num": 100275
+},
+{
+"word": "die Zahnpasta",
+"meaning": "kem đánh răng",
+"type": "n",
+"topics": [
+"09"
+],
+"num": 100276
+},
+{
+"word": "die Seife",
+"meaning": "xà phòng",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Seifen",
+"num": 100277
+},
+{
+"word": "das Handtuch",
+"meaning": "khăn tắm",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Handtücher",
+"num": 100278
+},
+{
+"word": "das Handy",
+"meaning": "điện thoại di động",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Handys",
+"num": 100279
+},
+{
+"word": "die Nachricht",
+"meaning": "tin nhắn; tin tức",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Nachrichten",
+"num": 100280
+},
+{
+"word": "der Kalender",
+"meaning": "lịch",
+"type": "n",
+"topics": [
+"09",
+"16"
+],
+"extra": "Pl.: die Kalender",
+"num": 100281
+},
+{
+"word": "die Pause",
+"meaning": "giờ nghỉ",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Pausen",
+"num": 100282
+},
+{
+"word": "das Wochenende",
+"meaning": "cuối tuần",
+"type": "n",
+"topics": [
+"09"
+],
+"extra": "Pl.: die Wochenenden",
+"num": 100283
+},
+{
+"word": "die Arbeit",
+"meaning": "công việc",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Arbeiten",
+"num": 100284
+},
+{
+"word": "der Schüler",
+"meaning": "học sinh nam",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Schüler",
+"num": 100285
+},
+{
+"word": "die Schülerin",
+"meaning": "học sinh nữ",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Schülerinnen",
+"num": 100286
+},
+{
+"word": "der Lehrer",
+"meaning": "giáo viên nam",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Lehrer",
+"num": 100287
+},
+{
+"word": "die Lehrerin",
+"meaning": "giáo viên nữ",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Lehrerinnen",
+"num": 100288
+},
+{
+"word": "der Student",
+"meaning": "sinh viên nam",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Studenten",
+"num": 100289
+},
+{
+"word": "die Studentin",
+"meaning": "sinh viên nữ",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Studentinnen",
+"num": 100290
+},
+{
+"word": "der Kurs",
+"meaning": "khóa học",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Kurse",
+"num": 100291
+},
+{
+"word": "der Unterricht",
+"meaning": "giờ học, việc giảng dạy",
+"type": "n",
+"topics": [
+"10"
+],
+"num": 100292
+},
+{
+"word": "die Klasse",
+"meaning": "lớp học",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Klassen",
+"num": 100293
+},
+{
+"word": "das Klassenzimmer",
+"meaning": "phòng học",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Klassenzimmer",
+"num": 100294
+},
+{
+"word": "das Buch",
+"meaning": "sách",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Bücher",
+"num": 100295
+},
+{
+"word": "das Wörterbuch",
+"meaning": "từ điển",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Wörterbücher",
+"num": 100296
+},
+{
+"word": "das Heft",
+"meaning": "vở",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Hefte",
+"num": 100297
+},
+{
+"word": "der Bleistift",
+"meaning": "bút chì",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Bleistifte",
+"num": 100298
+},
+{
+"word": "der Kugelschreiber",
+"meaning": "bút bi",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Kugelschreiber",
+"num": 100299
+},
+{
+"word": "der Füller",
+"meaning": "bút máy",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Füller",
+"num": 100300
+},
+{
+"word": "der Radiergummi",
+"meaning": "cục tẩy",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Radiergummis",
+"num": 100301
+},
+{
+"word": "das Papier",
+"meaning": "giấy",
+"type": "n",
+"topics": [
+"10"
+],
+"num": 100302
+},
+{
+"word": "die Aufgabe",
+"meaning": "bài tập; nhiệm vụ",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Aufgaben",
+"num": 100303
+},
+{
+"word": "die Hausaufgabe",
+"meaning": "bài tập về nhà",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Hausaufgaben",
+"num": 100304
+},
+{
+"word": "die Prüfung",
+"meaning": "kỳ thi",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Prüfungen",
+"num": 100305
+},
+{
+"word": "die Frage",
+"meaning": "câu hỏi",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Fragen",
+"num": 100306
+},
+{
+"word": "die Antwort",
+"meaning": "câu trả lời",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Antworten",
+"num": 100307
+},
+{
+"word": "das Wort",
+"meaning": "từ",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Wörter",
+"num": 100308
+},
+{
+"word": "der Satz",
+"meaning": "câu",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Sätze",
+"num": 100309
+},
+{
+"word": "die Grammatik",
+"meaning": "ngữ pháp",
+"type": "n",
+"topics": [
+"10"
+],
+"num": 100310
+},
+{
+"word": "der Arbeitsplatz",
+"meaning": "nơi làm việc",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Arbeitsplätze",
+"num": 100311
+},
+{
+"word": "das Büro",
+"meaning": "văn phòng",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Büros",
+"num": 100312
+},
+{
+"word": "der Chef",
+"meaning": "sếp nam",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Chefs",
+"num": 100313
+},
+{
+"word": "die Chefin",
+"meaning": "sếp nữ",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Chefinnen",
+"num": 100314
+},
+{
+"word": "der Kollege",
+"meaning": "đồng nghiệp nam",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Kollegen",
+"num": 100315
+},
+{
+"word": "die Kollegin",
+"meaning": "đồng nghiệp nữ",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Kolleginnen",
+"num": 100316
+},
+{
+"word": "der Arzt",
+"meaning": "bác sĩ nam",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Ärzte",
+"num": 100317
+},
+{
+"word": "die Ärztin",
+"meaning": "bác sĩ nữ",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Ärztinnen",
+"num": 100318
+},
+{
+"word": "der Verkäufer",
+"meaning": "nhân viên bán hàng nam",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Verkäufer",
+"num": 100319
+},
+{
+"word": "die Verkäuferin",
+"meaning": "nhân viên bán hàng nữ",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Verkäuferinnen",
+"num": 100320
+},
+{
+"word": "der Koch",
+"meaning": "đầu bếp nam",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Köche",
+"num": 100321
+},
+{
+"word": "die Köchin",
+"meaning": "đầu bếp nữ",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Köchinnen",
+"num": 100322
+},
+{
+"word": "der Termin",
+"meaning": "cuộc hẹn",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Termine",
+"num": 100323
+},
+{
+"word": "die Besprechung",
+"meaning": "cuộc họp",
+"type": "n",
+"topics": [
+"10"
+],
+"extra": "Pl.: die Besprechungen",
+"num": 100324
+},
+{
+"word": "das Hobby",
+"meaning": "sở thích",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Hobbys",
+"num": 100325
+},
+{
+"word": "die Freizeit",
+"meaning": "thời gian rảnh",
+"type": "n",
+"topics": [
+"11"
+],
+"num": 100326
+},
+{
+"word": "die Musik",
+"meaning": "âm nhạc",
+"type": "n",
+"topics": [
+"11"
+],
+"num": 100327
+},
+{
+"word": "das Lied",
+"meaning": "bài hát",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Lieder",
+"num": 100328
+},
+{
+"word": "das Konzert",
+"meaning": "buổi hòa nhạc",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Konzerte",
+"num": 100329
+},
+{
+"word": "der Film",
+"meaning": "phim",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Filme",
+"num": 100330
+},
+{
+"word": "das Fernsehen",
+"meaning": "truyền hình",
+"type": "n",
+"topics": [
+"11"
+],
+"num": 100331
+},
+{
+"word": "das Spiel",
+"meaning": "trò chơi; trận đấu",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Spiele",
+"num": 100332
+},
+{
+"word": "das Computerspiel",
+"meaning": "trò chơi điện tử",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Computerspiele",
+"num": 100333
+},
+{
+"word": "die Zeitung",
+"meaning": "báo",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Zeitungen",
+"num": 100334
+},
+{
+"word": "das Foto",
+"meaning": "ảnh",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Fotos",
+"num": 100335
+},
+{
+"word": "die Party",
+"meaning": "tiệc",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Partys",
+"num": 100336
+},
+{
+"word": "der Sport",
+"meaning": "thể thao",
+"type": "n",
+"topics": [
+"11"
+],
+"num": 100337
+},
+{
+"word": "der Fußball",
+"meaning": "bóng đá",
+"type": "n",
+"topics": [
+"11"
+],
+"num": 100338
+},
+{
+"word": "der Ball",
+"meaning": "quả bóng",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Bälle",
+"num": 100339
+},
+{
+"word": "das Schwimmen",
+"meaning": "việc bơi lội",
+"type": "n",
+"topics": [
+"11"
+],
+"num": 100340
+},
+{
+"word": "das Tennis",
+"meaning": "quần vợt",
+"type": "n",
+"topics": [
+"11"
+],
+"num": 100341
+},
+{
+"word": "der Volleyball",
+"meaning": "bóng chuyền",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Volleybälle",
+"num": 100342
+},
+{
+"word": "das Fitnessstudio",
+"meaning": "phòng tập thể hình",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Fitnessstudios",
+"num": 100343
+},
+{
+"word": "der Spaziergang",
+"meaning": "cuộc đi dạo",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Spaziergänge",
+"num": 100344
+},
+{
+"word": "der Tanz",
+"meaning": "điệu nhảy",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Tänze",
+"num": 100345
+},
+{
+"word": "die Gitarre",
+"meaning": "đàn ghi-ta",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Gitarren",
+"num": 100346
+},
+{
+"word": "das Klavier",
+"meaning": "đàn piano",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die Klaviere",
+"num": 100347
+},
+{
+"word": "das Internet",
+"meaning": "internet",
+"type": "n",
+"topics": [
+"11"
+],
+"num": 100348
+},
+{
+"word": "die E-Mail",
+"meaning": "thư điện tử",
+"type": "n",
+"topics": [
+"11"
+],
+"extra": "Pl.: die E-Mails",
+"num": 100349
+},
+{
+"word": "das Wetter",
+"meaning": "thời tiết",
+"type": "n",
+"topics": [
+"12"
+],
+"num": 100350
+},
+{
+"word": "die Sonne",
+"meaning": "mặt trời",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Sonnen",
+"num": 100351
+},
+{
+"word": "der Regen",
+"meaning": "mưa",
+"type": "n",
+"topics": [
+"12"
+],
+"num": 100352
+},
+{
+"word": "der Schnee",
+"meaning": "tuyết",
+"type": "n",
+"topics": [
+"12"
+],
+"num": 100353
+},
+{
+"word": "der Wind",
+"meaning": "gió",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Winde",
+"num": 100354
+},
+{
+"word": "die Wolke",
+"meaning": "đám mây",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Wolken",
+"num": 100355
+},
+{
+"word": "der Himmel",
+"meaning": "bầu trời",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Himmel",
+"num": 100356
+},
+{
+"word": "der Nebel",
+"meaning": "sương mù",
+"type": "n",
+"topics": [
+"12"
+],
+"num": 100357
+},
+{
+"word": "das Gewitter",
+"meaning": "giông bão",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Gewitter",
+"num": 100358
+},
+{
+"word": "der Frühling",
+"meaning": "mùa xuân",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Frühlinge",
+"num": 100359
+},
+{
+"word": "der Sommer",
+"meaning": "mùa hè",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Sommer",
+"num": 100360
+},
+{
+"word": "der Herbst",
+"meaning": "mùa thu",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Herbste",
+"num": 100361
+},
+{
+"word": "der Winter",
+"meaning": "mùa đông",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Winter",
+"num": 100362
+},
+{
+"word": "die Temperatur",
+"meaning": "nhiệt độ",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Temperaturen",
+"num": 100363
+},
+{
+"word": "der Grad",
+"meaning": "độ",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Grade",
+"num": 100364
+},
+{
+"word": "das Tier",
+"meaning": "động vật",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Tiere",
+"num": 100365
+},
+{
+"word": "der Hund",
+"meaning": "chó",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Hunde",
+"num": 100366
+},
+{
+"word": "die Katze",
+"meaning": "mèo",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Katzen",
+"num": 100367
+},
+{
+"word": "der Vogel",
+"meaning": "chim",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Vögel",
+"num": 100368
+},
+{
+"word": "das Pferd",
+"meaning": "ngựa",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Pferde",
+"num": 100369
+},
+{
+"word": "die Kuh",
+"meaning": "bò cái",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Kühe",
+"num": 100370
+},
+{
+"word": "das Schwein",
+"meaning": "lợn",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Schweine",
+"num": 100371
+},
+{
+"word": "das Huhn",
+"meaning": "gà mái",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Hühner",
+"num": 100372
+},
+{
+"word": "der Baum",
+"meaning": "cây",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Bäume",
+"num": 100373
+},
+{
+"word": "die Blume",
+"meaning": "hoa",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Blumen",
+"num": 100374
+},
+{
+"word": "der Wald",
+"meaning": "rừng",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Wälder",
+"num": 100375
+},
+{
+"word": "der Berg",
+"meaning": "núi",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Berge",
+"num": 100376
+},
+{
+"word": "der Fluss",
+"meaning": "sông",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Flüsse",
+"num": 100377
+},
+{
+"word": "der See",
+"meaning": "hồ",
+"type": "n",
+"topics": [
+"12"
+],
+"extra": "Pl.: die Seen",
+"num": 100378
+},
+{
+"word": "der Körper",
+"meaning": "cơ thể",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Körper",
+"num": 100379
+},
+{
+"word": "der Kopf",
+"meaning": "đầu",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Köpfe",
+"num": 100380
+},
+{
+"word": "das Gesicht",
+"meaning": "khuôn mặt",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Gesichter",
+"num": 100381
+},
+{
+"word": "das Auge",
+"meaning": "mắt",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Augen",
+"num": 100382
+},
+{
+"word": "das Ohr",
+"meaning": "tai",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Ohren",
+"num": 100383
+},
+{
+"word": "die Nase",
+"meaning": "mũi",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Nasen",
+"num": 100384
+},
+{
+"word": "der Mund",
+"meaning": "miệng",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Münder",
+"num": 100385
+},
+{
+"word": "der Zahn",
+"meaning": "răng",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Zähne",
+"num": 100386
+},
+{
+"word": "der Hals",
+"meaning": "cổ; họng",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Hälse",
+"num": 100387
+},
+{
+"word": "der Rücken",
+"meaning": "lưng",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Rücken",
+"num": 100388
+},
+{
+"word": "der Bauch",
+"meaning": "bụng",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Bäuche",
+"num": 100389
+},
+{
+"word": "der Arm",
+"meaning": "cánh tay",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Arme",
+"num": 100390
+},
+{
+"word": "die Hand",
+"meaning": "bàn tay",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Hände",
+"num": 100391
+},
+{
+"word": "der Finger",
+"meaning": "ngón tay",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Finger",
+"num": 100392
+},
+{
+"word": "das Bein",
+"meaning": "chân",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Beine",
+"num": 100393
+},
+{
+"word": "das Knie",
+"meaning": "đầu gối",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Knie",
+"num": 100394
+},
+{
+"word": "der Fuß",
+"meaning": "bàn chân",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Füße",
+"num": 100395
+},
+{
+"word": "das Haar",
+"meaning": "tóc; sợi tóc",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Haare",
+"num": 100396
+},
+{
+"word": "das Herz",
+"meaning": "tim",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Herzen",
+"num": 100397
+},
+{
+"word": "die Gesundheit",
+"meaning": "sức khỏe",
+"type": "n",
+"topics": [
+"13"
+],
+"num": 100398
+},
+{
+"word": "die Krankheit",
+"meaning": "bệnh tật",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Krankheiten",
+"num": 100399
+},
+{
+"word": "der Schmerz",
+"meaning": "cơn đau",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Schmerzen",
+"num": 100400
+},
+{
+"word": "die Kopfschmerzen (Pl.)",
+"meaning": "chứng đau đầu",
+"type": "n",
+"topics": [
+"13"
+],
+"num": 100401
+},
+{
+"word": "die Bauchschmerzen (Pl.)",
+"meaning": "chứng đau bụng",
+"type": "n",
+"topics": [
+"13"
+],
+"num": 100402
+},
+{
+"word": "das Fieber",
+"meaning": "sốt",
+"type": "n",
+"topics": [
+"13"
+],
+"num": 100403
+},
+{
+"word": "der Husten",
+"meaning": "ho",
+"type": "n",
+"topics": [
+"13"
+],
+"num": 100404
+},
+{
+"word": "der Schnupfen",
+"meaning": "sổ mũi",
+"type": "n",
+"topics": [
+"13"
+],
+"num": 100405
+},
+{
+"word": "die Erkältung",
+"meaning": "cảm lạnh",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Erkältungen",
+"num": 100406
+},
+{
+"word": "das Medikament",
+"meaning": "thuốc",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Medikamente",
+"num": 100407
+},
+{
+"word": "das Rezept",
+"meaning": "đơn thuốc; công thức",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Rezepte",
+"num": 100408
+},
+{
+"word": "der Notfall",
+"meaning": "trường hợp khẩn cấp",
+"type": "n",
+"topics": [
+"13"
+],
+"extra": "Pl.: die Notfälle",
+"num": 100409
+},
+{
+"word": "das Gefühl",
+"meaning": "cảm xúc",
+"type": "n",
+"topics": [
+"14"
+],
+"extra": "Pl.: die Gefühle",
+"num": 100410
+},
+{
+"word": "die Freude",
+"meaning": "niềm vui",
+"type": "n",
+"topics": [
+"14"
+],
+"num": 100411
+},
+{
+"word": "die Angst",
+"meaning": "nỗi sợ",
+"type": "n",
+"topics": [
+"14"
+],
+"extra": "Pl.: die Ängste",
+"num": 100412
+},
+{
+"word": "der Spaß",
+"meaning": "niềm vui; trò vui",
+"type": "n",
+"topics": [
+"14"
+],
+"extra": "Pl.: die Späße",
+"num": 100413
+},
+{
+"word": "die Liebe",
+"meaning": "tình yêu",
+"type": "n",
+"topics": [
+"14"
+],
+"num": 100414
+},
+{
+"word": "der Stress",
+"meaning": "căng thẳng",
+"type": "n",
+"topics": [
+"14"
+],
+"num": 100415
+},
+{
+"word": "die Ruhe",
+"meaning": "sự yên tĩnh",
+"type": "n",
+"topics": [
+"14"
+],
+"num": 100416
+},
+{
+"word": "das Glück",
+"meaning": "hạnh phúc; may mắn",
+"type": "n",
+"topics": [
+"14"
+],
+"num": 100417
+},
+{
+"word": "die Meinung",
+"meaning": "ý kiến",
+"type": "n",
+"topics": [
+"14"
+],
+"extra": "Pl.: die Meinungen",
+"num": 100418
+},
+{
+"word": "das Problem",
+"meaning": "vấn đề",
+"type": "n",
+"topics": [
+"14"
+],
+"extra": "Pl.: die Probleme",
+"num": 100419
+},
+{
+"word": "die Nationalität",
+"meaning": "quốc tịch",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Nationalitäten",
+"num": 100420
+},
+{
+"word": "Deutschland",
+"meaning": "nước Đức",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100421
+},
+{
+"word": "Vietnam",
+"meaning": "Việt Nam",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100422
+},
+{
+"word": "Österreich",
+"meaning": "nước Áo",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100423
+},
+{
+"word": "die Schweiz",
+"meaning": "Thụy Sĩ",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100424
+},
+{
+"word": "Frankreich",
+"meaning": "Pháp",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100425
+},
+{
+"word": "Italien",
+"meaning": "Ý",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100426
+},
+{
+"word": "Spanien",
+"meaning": "Tây Ban Nha",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100427
+},
+{
+"word": "England",
+"meaning": "Anh",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100428
+},
+{
+"word": "die Niederlande",
+"meaning": "Hà Lan",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100429
+},
+{
+"word": "Belgien",
+"meaning": "Bỉ",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100430
+},
+{
+"word": "Portugal",
+"meaning": "Bồ Đào Nha",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100431
+},
+{
+"word": "Polen",
+"meaning": "Ba Lan",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100432
+},
+{
+"word": "China",
+"meaning": "Trung Quốc",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100433
+},
+{
+"word": "Japan",
+"meaning": "Nhật Bản",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100434
+},
+{
+"word": "die Türkei",
+"meaning": "Thổ Nhĩ Kỳ",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100435
+},
+{
+"word": "die USA",
+"meaning": "Mỹ",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100436
+},
+{
+"word": "Deutsch",
+"meaning": "tiếng Đức",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100437
+},
+{
+"word": "deutsch",
+"meaning": "tiếng Đức (tính từ)",
+"type": "adj",
+"topics": [
+"15"
+],
+"num": 100438
+},
+{
+"word": "Vietnamesisch",
+"meaning": "tiếng Việt",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100439
+},
+{
+"word": "vietnamesisch",
+"meaning": "tiếng Việt (tính từ)",
+"type": "adj",
+"topics": [
+"15"
+],
+"num": 100440
+},
+{
+"word": "Englisch",
+"meaning": "tiếng Anh",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100441
+},
+{
+"word": "englisch",
+"meaning": "tiếng Anh (tính từ)",
+"type": "adj",
+"topics": [
+"15"
+],
+"num": 100442
+},
+{
+"word": "Französisch",
+"meaning": "tiếng Pháp",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100443
+},
+{
+"word": "französisch",
+"meaning": "tiếng Pháp (tính từ)",
+"type": "adj",
+"topics": [
+"15"
+],
+"num": 100444
+},
+{
+"word": "Italienisch",
+"meaning": "tiếng Ý",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100445
+},
+{
+"word": "italienisch",
+"meaning": "tiếng Ý (tính từ)",
+"type": "adj",
+"topics": [
+"15"
+],
+"num": 100446
+},
+{
+"word": "Spanisch",
+"meaning": "tiếng Tây Ban Nha",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100447
+},
+{
+"word": "spanisch",
+"meaning": "tiếng Tây Ban Nha (tính từ)",
+"type": "adj",
+"topics": [
+"15"
+],
+"num": 100448
+},
+{
+"word": "Niederländisch",
+"meaning": "tiếng Hà Lan",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100449
+},
+{
+"word": "niederländisch",
+"meaning": "tiếng Hà Lan (tính từ)",
+"type": "adj",
+"topics": [
+"15"
+],
+"num": 100450
+},
+{
+"word": "Portugiesisch",
+"meaning": "tiếng Bồ Đào Nha",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100451
+},
+{
+"word": "portugiesisch",
+"meaning": "tiếng Bồ Đào Nha (tính từ)",
+"type": "adj",
+"topics": [
+"15"
+],
+"num": 100452
+},
+{
+"word": "Polnisch",
+"meaning": "tiếng Ba Lan",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100453
+},
+{
+"word": "polnisch",
+"meaning": "tiếng Ba Lan (tính từ)",
+"type": "adj",
+"topics": [
+"15"
+],
+"num": 100454
+},
+{
+"word": "Chinesisch",
+"meaning": "tiếng Trung",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100455
+},
+{
+"word": "chinesisch",
+"meaning": "tiếng Trung (tính từ)",
+"type": "adj",
+"topics": [
+"15"
+],
+"num": 100456
+},
+{
+"word": "Japanisch",
+"meaning": "tiếng Nhật",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100457
+},
+{
+"word": "japanisch",
+"meaning": "tiếng Nhật (tính từ)",
+"type": "adj",
+"topics": [
+"15"
+],
+"num": 100458
+},
+{
+"word": "Türkisch",
+"meaning": "tiếng Thổ Nhĩ Kỳ",
+"type": "n",
+"topics": [
+"15"
+],
+"num": 100459
+},
+{
+"word": "türkisch",
+"meaning": "tiếng Thổ Nhĩ Kỳ (tính từ)",
+"type": "adj",
+"topics": [
+"15"
+],
+"num": 100460
+},
+{
+"word": "der Deutsche",
+"meaning": "người Đức (nam)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Deutschen",
+"num": 100461
+},
+{
+"word": "die Deutsche",
+"meaning": "người Đức (nữ)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Deutschen",
+"num": 100462
+},
+{
+"word": "der Vietnamese",
+"meaning": "người Việt Nam (nam)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Vietnamesen / Vietnamesinnen",
+"num": 100463
+},
+{
+"word": "die Vietnamesin",
+"meaning": "người Việt Nam (nữ)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Vietnamesen / Vietnamesinnen",
+"num": 100464
+},
+{
+"word": "der Engländer",
+"meaning": "người Anh (nam)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Engländer / Engländerinnen",
+"num": 100465
+},
+{
+"word": "die Engländerin",
+"meaning": "người Anh (nữ)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Engländer / Engländerinnen",
+"num": 100466
+},
+{
+"word": "der Franzose",
+"meaning": "người Pháp (nam)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Franzosen / Französinnen",
+"num": 100467
+},
+{
+"word": "die Französin",
+"meaning": "người Pháp (nữ)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Franzosen / Französinnen",
+"num": 100468
+},
+{
+"word": "der Italiener",
+"meaning": "người Ý (nam)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Italiener / Italienerinnen",
+"num": 100469
+},
+{
+"word": "die Italienerin",
+"meaning": "người Ý (nữ)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Italiener / Italienerinnen",
+"num": 100470
+},
+{
+"word": "der Spanier",
+"meaning": "người Tây Ban Nha (nam)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Spanier / Spanierinnen",
+"num": 100471
+},
+{
+"word": "die Spanierin",
+"meaning": "người Tây Ban Nha (nữ)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Spanier / Spanierinnen",
+"num": 100472
+},
+{
+"word": "der Österreicher",
+"meaning": "người Áo (nam)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Österreicher / Österreicherinnen",
+"num": 100473
+},
+{
+"word": "die Österreicherin",
+"meaning": "người Áo (nữ)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Österreicher / Österreicherinnen",
+"num": 100474
+},
+{
+"word": "der Schweizer",
+"meaning": "người Thụy Sĩ (nam)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Schweizer / Schweizerinnen",
+"num": 100475
+},
+{
+"word": "die Schweizerin",
+"meaning": "người Thụy Sĩ (nữ)",
+"type": "n",
+"topics": [
+"15"
+],
+"extra": "Pl.: die Schweizer / Schweizerinnen",
+"num": 100476
+},
+{
+"word": "die Woche",
+"meaning": "tuần",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Wochen",
+"num": 100477
+},
+{
+"word": "der Wochentag",
+"meaning": "ngày trong tuần",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Wochentage",
+"num": 100478
+},
+{
+"word": "der Montag",
+"meaning": "thứ Hai",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Montage",
+"num": 100479
+},
+{
+"word": "der Dienstag",
+"meaning": "thứ Ba",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Dienstage",
+"num": 100480
+},
+{
+"word": "der Mittwoch",
+"meaning": "thứ Tư",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Mittwoche",
+"num": 100481
+},
+{
+"word": "der Donnerstag",
+"meaning": "thứ Năm",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Donnerstage",
+"num": 100482
+},
+{
+"word": "der Freitag",
+"meaning": "thứ Sáu",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Freitage",
+"num": 100483
+},
+{
+"word": "der Samstag",
+"meaning": "thứ Bảy",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Samstage",
+"num": 100484
+},
+{
+"word": "der Sonnabend",
+"meaning": "thứ Bảy (một số vùng)",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Sonnabende",
+"num": 100485
+},
+{
+"word": "der Sonntag",
+"meaning": "Chủ nhật",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Sonntage",
+"num": 100486
+},
+{
+"word": "der Monat",
+"meaning": "tháng",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Monate",
+"num": 100487
+},
+{
+"word": "der Januar",
+"meaning": "tháng Một",
+"type": "n",
+"topics": [
+"16"
+],
+"num": 100488
+},
+{
+"word": "der Februar",
+"meaning": "tháng Hai",
+"type": "n",
+"topics": [
+"16"
+],
+"num": 100489
+},
+{
+"word": "der März",
+"meaning": "tháng Ba",
+"type": "n",
+"topics": [
+"16"
+],
+"num": 100490
+},
+{
+"word": "der April",
+"meaning": "tháng Tư",
+"type": "n",
+"topics": [
+"16"
+],
+"num": 100491
+},
+{
+"word": "der Mai",
+"meaning": "tháng Năm",
+"type": "n",
+"topics": [
+"16"
+],
+"num": 100492
+},
+{
+"word": "der Juni",
+"meaning": "tháng Sáu",
+"type": "n",
+"topics": [
+"16"
+],
+"num": 100493
+},
+{
+"word": "der Juli",
+"meaning": "tháng Bảy",
+"type": "n",
+"topics": [
+"16"
+],
+"num": 100494
+},
+{
+"word": "der August",
+"meaning": "tháng Tám",
+"type": "n",
+"topics": [
+"16"
+],
+"num": 100495
+},
+{
+"word": "der September",
+"meaning": "tháng Chín",
+"type": "n",
+"topics": [
+"16"
+],
+"num": 100496
+},
+{
+"word": "der Oktober",
+"meaning": "tháng Mười",
+"type": "n",
+"topics": [
+"16"
+],
+"num": 100497
+},
+{
+"word": "der November",
+"meaning": "tháng Mười một",
+"type": "n",
+"topics": [
+"16"
+],
+"num": 100498
+},
+{
+"word": "der Dezember",
+"meaning": "tháng Mười hai",
+"type": "n",
+"topics": [
+"16"
+],
+"num": 100499
+},
+{
+"word": "das Jahr",
+"meaning": "năm",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Jahre",
+"num": 100500
+},
+{
+"word": "das Datum",
+"meaning": "ngày tháng",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Daten",
+"num": 100501
+},
+{
+"word": "die Jahreszeit",
+"meaning": "mùa",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Jahreszeiten",
+"num": 100502
+},
+{
+"word": "die Stunde",
+"meaning": "giờ",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Stunden",
+"num": 100503
+},
+{
+"word": "die Minute",
+"meaning": "phút",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Minuten",
+"num": 100504
+},
+{
+"word": "die Sekunde",
+"meaning": "giây",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Sekunden",
+"num": 100505
+},
+{
+"word": "die Uhrzeit",
+"meaning": "thời gian trên đồng hồ",
+"type": "n",
+"topics": [
+"16"
+],
+"extra": "Pl.: die Uhrzeiten",
+"num": 100506
+},
+{
+"word": "sein",
+"meaning": "là, thì, ở",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich bin; du bist; er/sie/es ist · bất quy tắc",
+"num": 100507
+},
+{
+"word": "haben",
+"meaning": "có",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich habe; du hast; er/sie/es hat · bất quy tắc",
+"num": 100508
+},
+{
+"word": "heißen",
+"meaning": "tên là",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich heiße; du heißt; er/sie/es heißt · ß đọc như âm s",
+"num": 100509
+},
+{
+"word": "kommen",
+"meaning": "đến; đến từ",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich komme; du kommst; er/sie/es kommt · kommen aus = đến từ",
+"num": 100510
+},
+{
+"word": "wohnen",
+"meaning": "sống, cư trú",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich wohne; du wohnst; er/sie/es wohnt",
+"num": 100511
+},
+{
+"word": "leben",
+"meaning": "sống",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich lebe; du lebst; er/sie/es lebt",
+"num": 100512
+},
+{
+"word": "arbeiten",
+"meaning": "làm việc",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich arbeite; du arbeitest; er/sie/es arbeitet",
+"num": 100513
+},
+{
+"word": "lernen",
+"meaning": "học",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich lerne; du lernst; er/sie/es lernt",
+"num": 100514
+},
+{
+"word": "sprechen",
+"meaning": "nói",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich spreche; du sprichst; er/sie/es spricht · đổi e thành i",
+"num": 100515
+},
+{
+"word": "verstehen",
+"meaning": "hiểu",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich verstehe; du verstehst; er/sie/es versteht",
+"num": 100516
+},
+{
+"word": "fragen",
+"meaning": "hỏi",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich frage; du fragst; er/sie/es fragt",
+"num": 100517
+},
+{
+"word": "antworten",
+"meaning": "trả lời",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich antworte; du antwortest; er/sie/es antwortet",
+"num": 100518
+},
+{
+"word": "sagen",
+"meaning": "nói",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich sage; du sagst; er/sie/es sagt",
+"num": 100519
+},
+{
+"word": "buchstabieren",
+"meaning": "đánh vần",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich buchstabiere",
+"num": 100520
+},
+{
+"word": "lesen",
+"meaning": "đọc",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich lese; du liest; er/sie/es liest · đổi e thành ie",
+"num": 100521
+},
+{
+"word": "schreiben",
+"meaning": "viết",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich schreibe; du schreibst; er/sie/es schreibt",
+"num": 100522
+},
+{
+"word": "hören",
+"meaning": "nghe",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich höre; du hörst; er/sie/es hört",
+"num": 100523
+},
+{
+"word": "sehen",
+"meaning": "nhìn; xem",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich sehe; du siehst; er/sie/es sieht · đổi e thành ie",
+"num": 100524
+},
+{
+"word": "schauen",
+"meaning": "nhìn, xem",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich schaue; du schaust; er/sie/es schaut",
+"num": 100525
+},
+{
+"word": "machen",
+"meaning": "làm",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich mache; du machst; er/sie/es macht",
+"num": 100526
+},
+{
+"word": "spielen",
+"meaning": "chơi",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich spiele; du spielst; er/sie/es spielt",
+"num": 100527
+},
+{
+"word": "gehen",
+"meaning": "đi",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich gehe; du gehst; er/sie/es geht · Perfekt: ist gegangen",
+"num": 100528
+},
+{
+"word": "fahren",
+"meaning": "đi bằng xe; lái xe",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich fahre; du fährst; er/sie/es fährt · đổi a thành ä; Perfekt: ist gefahren",
+"num": 100529
+},
+{
+"word": "fliegen",
+"meaning": "bay",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich fliege; du fliegst; er/sie/es fliegt",
+"num": 100530
+},
+{
+"word": "laufen",
+"meaning": "chạy; đi bộ",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich laufe; du läufst; er/sie/es läuft · đổi au thành äu",
+"num": 100531
+},
+{
+"word": "bleiben",
+"meaning": "ở lại",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich bleibe; du bleibst; er/sie/es bleibt · Perfekt: ist geblieben",
+"num": 100532
+},
+{
+"word": "bringen",
+"meaning": "mang đến",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich bringe; du bringst; er/sie/es bringt",
+"num": 100533
+},
+{
+"word": "holen",
+"meaning": "đi lấy; mang về",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich hole; du holst; er/sie/es holt",
+"num": 100534
+},
+{
+"word": "geben",
+"meaning": "đưa, cho",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich gebe; du gibst; er/sie/es gibt · đổi e thành i; es gibt = có",
+"num": 100535
+},
+{
+"word": "nehmen",
+"meaning": "lấy",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich nehme; du nimmst; er/sie/es nimmt · đổi e thành i",
+"num": 100536
+},
+{
+"word": "essen",
+"meaning": "ăn",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich esse; du isst; er/sie/es isst · đổi e thành i; Perfekt: hat gegessen",
+"num": 100537
+},
+{
+"word": "trinken",
+"meaning": "uống",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich trinke; du trinkst; er/sie/es trinkt · Perfekt: hat getrunken",
+"num": 100538
+},
+{
+"word": "kochen",
+"meaning": "nấu ăn",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich koche; du kochst; er/sie/es kocht",
+"num": 100539
+},
+{
+"word": "kaufen",
+"meaning": "mua",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich kaufe; du kaufst; er/sie/es kauft",
+"num": 100540
+},
+{
+"word": "einkaufen",
+"meaning": "đi mua sắm",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich kaufe ein; du kaufst ein · tách tiền tố ein-",
+"num": 100541
+},
+{
+"word": "bezahlen",
+"meaning": "thanh toán",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich bezahle; du bezahlst; er/sie/es bezahlt",
+"num": 100542
+},
+{
+"word": "kosten",
+"meaning": "có giá",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "es kostet",
+"num": 100543
+},
+{
+"word": "suchen",
+"meaning": "tìm kiếm",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich suche; du suchst; er/sie/es sucht",
+"num": 100544
+},
+{
+"word": "finden",
+"meaning": "tìm thấy; thấy",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich finde; du findest; er/sie/es findet",
+"num": 100545
+},
+{
+"word": "brauchen",
+"meaning": "cần",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich brauche; du brauchst; er/sie/es braucht",
+"num": 100546
+},
+{
+"word": "mögen",
+"meaning": "thích; muốn (lịch sự)",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich mag; du magst; er/sie/es mag; ich möchte · möchten là dạng Konjunktiv II thường dùng khi yêu cầu",
+"num": 100547
+},
+{
+"word": "können",
+"meaning": "có thể; biết làm",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich kann; du kannst; er/sie/es kann · động từ khuyết thiếu",
+"num": 100548
+},
+{
+"word": "müssen",
+"meaning": "phải",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich muss; du musst; er/sie/es muss · động từ khuyết thiếu",
+"num": 100549
+},
+{
+"word": "wollen",
+"meaning": "muốn",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich will; du willst; er/sie/es will · động từ khuyết thiếu",
+"num": 100550
+},
+{
+"word": "dürfen",
+"meaning": "được phép",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich darf; du darfst; er/sie/es darf · động từ khuyết thiếu",
+"num": 100551
+},
+{
+"word": "sollen",
+"meaning": "nên; được yêu cầu",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich soll; du sollst; er/sie/es soll · động từ khuyết thiếu",
+"num": 100552
+},
+{
+"word": "wissen",
+"meaning": "biết (thông tin)",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich weiß; du weißt; er/sie/es weiß · bất quy tắc",
+"num": 100553
+},
+{
+"word": "kennen",
+"meaning": "quen; biết người/nơi",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich kenne; du kennst; er/sie/es kennt",
+"num": 100554
+},
+{
+"word": "denken",
+"meaning": "nghĩ",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich denke; du denkst; er/sie/es denkt",
+"num": 100555
+},
+{
+"word": "glauben",
+"meaning": "tin; nghĩ rằng",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich glaube; du glaubst; er/sie/es glaubt",
+"num": 100556
+},
+{
+"word": "öffnen",
+"meaning": "mở",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich öffne; du öffnest; er/sie/es öffnet",
+"num": 100557
+},
+{
+"word": "schließen",
+"meaning": "đóng",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich schließe; du schließt; er/sie/es schließt",
+"num": 100558
+},
+{
+"word": "anfangen",
+"meaning": "bắt đầu",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich fange an; du fängst an · tách an-; đổi a thành ä",
+"num": 100559
+},
+{
+"word": "beginnen",
+"meaning": "bắt đầu",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich beginne; du beginnst; er/sie/es beginnt",
+"num": 100560
+},
+{
+"word": "aufhören",
+"meaning": "dừng lại",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich höre auf; du hörst auf · tách auf-",
+"num": 100561
+},
+{
+"word": "warten",
+"meaning": "chờ",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich warte; du wartest; er/sie/es wartet · warten auf + Akk.",
+"num": 100562
+},
+{
+"word": "helfen",
+"meaning": "giúp đỡ",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich helfe; du hilfst; er/sie/es hilft · đổi e thành i",
+"num": 100563
+},
+{
+"word": "schlafen",
+"meaning": "ngủ",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich schlafe; du schläfst; er/sie/es schläft · đổi a thành ä",
+"num": 100564
+},
+{
+"word": "aufstehen",
+"meaning": "thức dậy; đứng lên",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich stehe auf; du stehst auf · tách auf-",
+"num": 100565
+},
+{
+"word": "aufwachen",
+"meaning": "tỉnh giấc",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich wache auf; du wachst auf · tách auf-",
+"num": 100566
+},
+{
+"word": "waschen",
+"meaning": "rửa, giặt",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich wasche; du wäschst; er/sie/es wäscht · đổi a thành ä",
+"num": 100567
+},
+{
+"word": "putzen",
+"meaning": "lau chùi; đánh răng",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich putze; du putzt; er/sie/es putzt · Zähne putzen",
+"num": 100568
+},
+{
+"word": "duschen",
+"meaning": "tắm vòi sen",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich dusche; du duschst; er/sie/es duscht",
+"num": 100569
+},
+{
+"word": "anziehen",
+"meaning": "mặc quần áo",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich ziehe mich an; du ziehst dich an · tách an-; phản thân",
+"num": 100570
+},
+{
+"word": "ausziehen",
+"meaning": "cởi quần áo",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich ziehe mich aus; du ziehst dich aus · tách aus-",
+"num": 100571
+},
+{
+"word": "tragen",
+"meaning": "mặc; mang",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich trage; du trägst; er/sie/es trägt · đổi a thành ä",
+"num": 100572
+},
+{
+"word": "treffen",
+"meaning": "gặp",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich treffe; du triffst; er/sie/es trifft · đổi e thành i",
+"num": 100573
+},
+{
+"word": "besuchen",
+"meaning": "thăm; tham dự",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich besuche; du besuchst; er/sie/es besucht",
+"num": 100574
+},
+{
+"word": "anrufen",
+"meaning": "gọi điện",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich rufe an; du rufst an · tách an-",
+"num": 100575
+},
+{
+"word": "telefonieren",
+"meaning": "nói chuyện điện thoại",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich telefoniere · telefonieren mit + Dat.",
+"num": 100576
+},
+{
+"word": "schicken",
+"meaning": "gửi",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich schicke; du schickst; er/sie/es schickt",
+"num": 100577
+},
+{
+"word": "bekommen",
+"meaning": "nhận được",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich bekomme; du bekommst; er/sie/es bekommt",
+"num": 100578
+},
+{
+"word": "vergessen",
+"meaning": "quên",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich vergesse; du vergisst; er/sie/es vergisst · đổi e thành i",
+"num": 100579
+},
+{
+"word": "verlieren",
+"meaning": "làm mất; thua",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich verliere; du verlierst; er/sie/es verliert",
+"num": 100580
+},
+{
+"word": "gewinnen",
+"meaning": "thắng",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich gewinne; du gewinnst; er/sie/es gewinnt",
+"num": 100581
+},
+{
+"word": "feiern",
+"meaning": "ăn mừng; tổ chức tiệc",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich feiere; du feierst; er/sie/es feiert",
+"num": 100582
+},
+{
+"word": "tanzen",
+"meaning": "nhảy, khiêu vũ",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich tanze; du tanzt; er/sie/es tanzt",
+"num": 100583
+},
+{
+"word": "schwimmen",
+"meaning": "bơi",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich schwimme; du schwimmst; er/sie/es schwimmt",
+"num": 100584
+},
+{
+"word": "reisen",
+"meaning": "du lịch",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich reise; du reist; er/sie/es reist",
+"num": 100585
+},
+{
+"word": "reservieren",
+"meaning": "đặt trước",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich reserviere",
+"num": 100586
+},
+{
+"word": "buchen",
+"meaning": "đặt vé/phòng",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich buche; du buchst; er/sie/es bucht",
+"num": 100587
+},
+{
+"word": "einsteigen",
+"meaning": "lên xe/tàu",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich steige ein; du steigst ein · tách ein-",
+"num": 100588
+},
+{
+"word": "aussteigen",
+"meaning": "xuống xe/tàu",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich steige aus; du steigst aus · tách aus-",
+"num": 100589
+},
+{
+"word": "umsteigen",
+"meaning": "chuyển tuyến",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich steige um; du steigst um · tách um-",
+"num": 100590
+},
+{
+"word": "ankommen",
+"meaning": "đến nơi",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich komme an; du kommst an · tách an-; Perfekt ist angekommen",
+"num": 100591
+},
+{
+"word": "abfahren",
+"meaning": "khởi hành",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich fahre ab; du fährst ab · tách ab-; đổi a thành ä",
+"num": 100592
+},
+{
+"word": "abholen",
+"meaning": "đón; đi lấy",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich hole ab; du holst ab · tách ab-",
+"num": 100593
+},
+{
+"word": "mitkommen",
+"meaning": "đi cùng",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich komme mit; du kommst mit · tách mit-",
+"num": 100594
+},
+{
+"word": "mitbringen",
+"meaning": "mang theo",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich bringe mit; du bringst mit · tách mit-",
+"num": 100595
+},
+{
+"word": "einschlafen",
+"meaning": "ngủ thiếp đi",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich schlafe ein; du schläfst ein · tách ein-; đổi a thành ä",
+"num": 100596
+},
+{
+"word": "aufmachen",
+"meaning": "mở ra",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich mache auf · tách auf-",
+"num": 100597
+},
+{
+"word": "zumachen",
+"meaning": "đóng lại",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich mache zu · tách zu-",
+"num": 100598
+},
+{
+"word": "aussehen",
+"meaning": "trông có vẻ",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich sehe aus; du siehst aus · tách aus-; đổi e thành ie",
+"num": 100599
+},
+{
+"word": "fehlen",
+"meaning": "thiếu; vắng",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich fehle; du fehlst; er/sie/es fehlt",
+"num": 100600
+},
+{
+"word": "gefallen",
+"meaning": "làm ai thích",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "es gefällt; du gefällst · Das gefällt mir = tôi thích cái đó",
+"num": 100601
+},
+{
+"word": "gehören",
+"meaning": "thuộc về",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich gehöre · gehören zu + Dat.",
+"num": 100602
+},
+{
+"word": "passieren",
+"meaning": "xảy ra",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "es passiert",
+"num": 100603
+},
+{
+"word": "regnen",
+"meaning": "mưa",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "es regnet",
+"num": 100604
+},
+{
+"word": "schneien",
+"meaning": "tuyết rơi",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "es schneit",
+"num": 100605
+},
+{
+"word": "scheinen",
+"meaning": "chiếu sáng",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "die Sonne scheint",
+"num": 100606
+},
+{
+"word": "hoffen",
+"meaning": "hy vọng",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich hoffe",
+"num": 100607
+},
+{
+"word": "lieben",
+"meaning": "yêu",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich liebe",
+"num": 100608
+},
+{
+"word": "fühlen",
+"meaning": "cảm thấy",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "ich fühle",
+"num": 100609
+},
+{
+"word": "wehtun",
+"meaning": "đau",
+"type": "v",
+"topics": [
+"17"
+],
+"extra": "der Kopf tut weh · tách weh; tut là dạng của tun",
+"num": 100610
+},
+{
+"word": "alt",
+"meaning": "già; cũ",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100611
+},
+{
+"word": "jung",
+"meaning": "trẻ",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100612
+},
+{
+"word": "groß",
+"meaning": "to; cao; lớn",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100613
+},
+{
+"word": "klein",
+"meaning": "nhỏ; thấp",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100614
+},
+{
+"word": "lang",
+"meaning": "dài",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100615
+},
+{
+"word": "kurz",
+"meaning": "ngắn",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100616
+},
+{
+"word": "breit",
+"meaning": "rộng",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100617
+},
+{
+"word": "schmal",
+"meaning": "hẹp",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100618
+},
+{
+"word": "hoch",
+"meaning": "cao",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100619
+},
+{
+"word": "niedrig",
+"meaning": "thấp",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100620
+},
+{
+"word": "gut",
+"meaning": "tốt",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100621
+},
+{
+"word": "schlecht",
+"meaning": "xấu; tệ",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100622
+},
+{
+"word": "schön",
+"meaning": "đẹp",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100623
+},
+{
+"word": "neu",
+"meaning": "mới",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100624
+},
+{
+"word": "teuer",
+"meaning": "đắt",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100625
+},
+{
+"word": "billig",
+"meaning": "rẻ",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100626
+},
+{
+"word": "kostenlos",
+"meaning": "miễn phí",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100627
+},
+{
+"word": "leicht",
+"meaning": "nhẹ; dễ",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100628
+},
+{
+"word": "schwer",
+"meaning": "nặng; khó",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100629
+},
+{
+"word": "einfach",
+"meaning": "đơn giản",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100630
+},
+{
+"word": "schwierig",
+"meaning": "khó",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100631
+},
+{
+"word": "schnell",
+"meaning": "nhanh",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100632
+},
+{
+"word": "langsam",
+"meaning": "chậm",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100633
+},
+{
+"word": "früh",
+"meaning": "sớm",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100634
+},
+{
+"word": "spät",
+"meaning": "muộn",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100635
+},
+{
+"word": "warm",
+"meaning": "ấm",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100636
+},
+{
+"word": "heiß",
+"meaning": "nóng",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100637
+},
+{
+"word": "kalt",
+"meaning": "lạnh",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100638
+},
+{
+"word": "kühl",
+"meaning": "mát",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100639
+},
+{
+"word": "freundlich",
+"meaning": "thân thiện",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100640
+},
+{
+"word": "nett",
+"meaning": "dễ mến; tốt bụng",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100641
+},
+{
+"word": "unfreundlich",
+"meaning": "không thân thiện",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100642
+},
+{
+"word": "müde",
+"meaning": "mệt",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100643
+},
+{
+"word": "wach",
+"meaning": "tỉnh táo",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100644
+},
+{
+"word": "krank",
+"meaning": "ốm",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100645
+},
+{
+"word": "gesund",
+"meaning": "khỏe mạnh",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100646
+},
+{
+"word": "hungrig",
+"meaning": "đói",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100647
+},
+{
+"word": "durstig",
+"meaning": "khát",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100648
+},
+{
+"word": "glücklich",
+"meaning": "hạnh phúc",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100649
+},
+{
+"word": "traurig",
+"meaning": "buồn",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100650
+},
+{
+"word": "froh",
+"meaning": "vui",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100651
+},
+{
+"word": "zufrieden",
+"meaning": "hài lòng",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100652
+},
+{
+"word": "ärgerlich",
+"meaning": "bực mình",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100653
+},
+{
+"word": "gestresst",
+"meaning": "căng thẳng",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100654
+},
+{
+"word": "ruhig",
+"meaning": "yên tĩnh; bình tĩnh",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100655
+},
+{
+"word": "laut",
+"meaning": "ồn; to tiếng",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100656
+},
+{
+"word": "leise",
+"meaning": "nhỏ tiếng",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100657
+},
+{
+"word": "voll",
+"meaning": "đầy",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100658
+},
+{
+"word": "leer",
+"meaning": "trống",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100659
+},
+{
+"word": "sauber",
+"meaning": "sạch",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100660
+},
+{
+"word": "schmutzig",
+"meaning": "bẩn",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100661
+},
+{
+"word": "offen",
+"meaning": "mở",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100662
+},
+{
+"word": "geschlossen",
+"meaning": "đóng cửa",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100663
+},
+{
+"word": "richtig",
+"meaning": "đúng",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100664
+},
+{
+"word": "falsch",
+"meaning": "sai",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100665
+},
+{
+"word": "wichtig",
+"meaning": "quan trọng",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100666
+},
+{
+"word": "interessant",
+"meaning": "thú vị",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100667
+},
+{
+"word": "langweilig",
+"meaning": "nhàm chán",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100668
+},
+{
+"word": "bekannt",
+"meaning": "quen thuộc; nổi tiếng",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100669
+},
+{
+"word": "fertig",
+"meaning": "xong",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100670
+},
+{
+"word": "bereit",
+"meaning": "sẵn sàng",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100671
+},
+{
+"word": "allein",
+"meaning": "một mình",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100672
+},
+{
+"word": "zusammen",
+"meaning": "cùng nhau",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100673
+},
+{
+"word": "gern(e)",
+"meaning": "thích (làm gì)",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100674
+},
+{
+"word": "lieber",
+"meaning": "thích hơn",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100675
+},
+{
+"word": "am liebsten",
+"meaning": "thích nhất",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100676
+},
+{
+"word": "sehr",
+"meaning": "rất",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100677
+},
+{
+"word": "ziemlich",
+"meaning": "khá",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100678
+},
+{
+"word": "ein bisschen",
+"meaning": "một chút",
+"type": "adj",
+"topics": [
+"18"
+],
+"num": 100679
+},
+{
+"word": "auch",
+"meaning": "cũng",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100680
+},
+{
+"word": "nur",
+"meaning": "chỉ",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100681
+},
+{
+"word": "noch",
+"meaning": "vẫn; còn; thêm",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100682
+},
+{
+"word": "schon",
+"meaning": "đã; rồi",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100683
+},
+{
+"word": "erst",
+"meaning": "mới chỉ",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100684
+},
+{
+"word": "wieder",
+"meaning": "lại",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100685
+},
+{
+"word": "immer",
+"meaning": "luôn luôn",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100686
+},
+{
+"word": "oft",
+"meaning": "thường xuyên",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100687
+},
+{
+"word": "manchmal",
+"meaning": "thỉnh thoảng",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100688
+},
+{
+"word": "selten",
+"meaning": "hiếm khi",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100689
+},
+{
+"word": "nie",
+"meaning": "không bao giờ",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100690
+},
+{
+"word": "heute",
+"meaning": "hôm nay",
+"type": "adv",
+"topics": [
+"18",
+"24"
+],
+"num": 100691
+},
+{
+"word": "gestern",
+"meaning": "hôm qua",
+"type": "adv",
+"topics": [
+"18",
+"24"
+],
+"num": 100692
+},
+{
+"word": "morgen",
+"meaning": "ngày mai",
+"type": "adv",
+"topics": [
+"18",
+"24"
+],
+"num": 100693
+},
+{
+"word": "jetzt",
+"meaning": "bây giờ",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100694
+},
+{
+"word": "später",
+"meaning": "sau đó; muộn hơn",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100695
+},
+{
+"word": "hier",
+"meaning": "ở đây",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100696
+},
+{
+"word": "dort",
+"meaning": "ở đó",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100697
+},
+{
+"word": "links",
+"meaning": "bên trái",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100698
+},
+{
+"word": "rechts",
+"meaning": "bên phải",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100699
+},
+{
+"word": "geradeaus",
+"meaning": "thẳng về phía trước",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100700
+},
+{
+"word": "oben",
+"meaning": "ở trên",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100701
+},
+{
+"word": "unten",
+"meaning": "ở dưới",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100702
+},
+{
+"word": "drinnen",
+"meaning": "ở bên trong",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100703
+},
+{
+"word": "draußen",
+"meaning": "ở bên ngoài",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100704
+},
+{
+"word": "vielleicht",
+"meaning": "có lẽ",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100705
+},
+{
+"word": "leider",
+"meaning": "tiếc là",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100706
+},
+{
+"word": "wirklich",
+"meaning": "thật sự",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100707
+},
+{
+"word": "genau",
+"meaning": "chính xác",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100708
+},
+{
+"word": "ungefähr",
+"meaning": "khoảng chừng",
+"type": "adv",
+"topics": [
+"18"
+],
+"num": 100709
+},
+{
+"word": "weiß",
+"meaning": "trắng",
+"type": "adj",
+"topics": [
+"19"
+],
+"num": 100710
+},
+{
+"word": "schwarz",
+"meaning": "đen",
+"type": "adj",
+"topics": [
+"19"
+],
+"num": 100711
+},
+{
+"word": "rot",
+"meaning": "đỏ",
+"type": "adj",
+"topics": [
+"19"
+],
+"num": 100712
+},
+{
+"word": "blau",
+"meaning": "xanh dương",
+"type": "adj",
+"topics": [
+"19"
+],
+"num": 100713
+},
+{
+"word": "grün",
+"meaning": "xanh lá",
+"type": "adj",
+"topics": [
+"19"
+],
+"num": 100714
+},
+{
+"word": "gelb",
+"meaning": "vàng",
+"type": "adj",
+"topics": [
+"19"
+],
+"num": 100715
+},
+{
+"word": "braun",
+"meaning": "nâu",
+"type": "adj",
+"topics": [
+"19"
+],
+"num": 100716
+},
+{
+"word": "grau",
+"meaning": "xám",
+"type": "adj",
+"topics": [
+"19"
+],
+"num": 100717
+},
+{
+"word": "rosa",
+"meaning": "hồng",
+"type": "adj",
+"topics": [
+"19"
+],
+"num": 100718
+},
+{
+"word": "orange",
+"meaning": "cam",
+"type": "adj",
+"topics": [
+"19"
+],
+"num": 100719
+},
+{
+"word": "lila",
+"meaning": "tím",
+"type": "adj",
+"topics": [
+"19"
+],
+"num": 100720
+},
+{
+"word": "bunt",
+"meaning": "nhiều màu",
+"type": "adj",
+"topics": [
+"19"
+],
+"num": 100721
+},
+{
+"word": "wer",
+"meaning": "ai",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100722
+},
+{
+"word": "was",
+"meaning": "cái gì",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100723
+},
+{
+"word": "wo",
+"meaning": "ở đâu",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100724
+},
+{
+"word": "woher",
+"meaning": "từ đâu",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100725
+},
+{
+"word": "wohin",
+"meaning": "đi đâu",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100726
+},
+{
+"word": "wann",
+"meaning": "khi nào",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100727
+},
+{
+"word": "wie",
+"meaning": "như thế nào",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100728
+},
+{
+"word": "wie viel",
+"meaning": "bao nhiêu (giá/lượng)",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100729
+},
+{
+"word": "wie viele",
+"meaning": "bao nhiêu (đếm được)",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100730
+},
+{
+"word": "warum",
+"meaning": "tại sao",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100731
+},
+{
+"word": "welcher / welche / welches",
+"meaning": "cái nào; người nào",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100732
+},
+{
+"word": "wie lange",
+"meaning": "bao lâu",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100733
+},
+{
+"word": "wie oft",
+"meaning": "bao lâu một lần",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100734
+},
+{
+"word": "wie spät",
+"meaning": "mấy giờ",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100735
+},
+{
+"word": "wie alt",
+"meaning": "bao nhiêu tuổi",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100736
+},
+{
+"word": "ich",
+"meaning": "tôi",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100737
+},
+{
+"word": "du",
+"meaning": "bạn (thân mật, số ít)",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100738
+},
+{
+"word": "er",
+"meaning": "anh ấy",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100739
+},
+{
+"word": "sie",
+"meaning": "cô ấy; họ",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100740
+},
+{
+"word": "es",
+"meaning": "nó",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100741
+},
+{
+"word": "wir",
+"meaning": "chúng tôi/chúng ta",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100742
+},
+{
+"word": "ihr",
+"meaning": "các bạn (thân mật)",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100743
+},
+{
+"word": "Sie",
+"meaning": "ông/bà/anh/chị (lịch sự)",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100744
+},
+{
+"word": "mich / mir",
+"meaning": "tôi (Akkusativ / Dativ)",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100745
+},
+{
+"word": "dich / dir",
+"meaning": "bạn (Akkusativ / Dativ)",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100746
+},
+{
+"word": "mein / meine",
+"meaning": "của tôi",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100747
+},
+{
+"word": "dein / deine",
+"meaning": "của bạn",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100748
+},
+{
+"word": "sein / seine",
+"meaning": "của anh ấy",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100749
+},
+{
+"word": "ihr / ihre",
+"meaning": "của cô ấy; của họ",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100750
+},
+{
+"word": "unser / unsere",
+"meaning": "của chúng tôi",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100751
+},
+{
+"word": "euer / eure",
+"meaning": "của các bạn",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100752
+},
+{
+"word": "Ihr / Ihre",
+"meaning": "của ông/bà/anh/chị (lịch sự)",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100753
+},
+{
+"word": "dieser / diese / dieses",
+"meaning": "này",
+"type": "adv",
+"topics": [
+"20"
+],
+"num": 100754
+},
+{
+"word": "alle",
+"meaning": "tất cả",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100755
+},
+{
+"word": "man",
+"meaning": "người ta; mọi người (chủ ngữ chung)",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100756
+},
+{
+"word": "jemand",
+"meaning": "ai đó",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100757
+},
+{
+"word": "niemand",
+"meaning": "không ai",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100758
+},
+{
+"word": "etwas",
+"meaning": "một thứ gì đó",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100759
+},
+{
+"word": "nichts",
+"meaning": "không gì cả",
+"type": "pron",
+"topics": [
+"20"
+],
+"num": 100760
+},
+{
+"word": "in",
+"meaning": "trong; ở; vào",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "in Berlin; im Haus",
+"num": 100761
+},
+{
+"word": "an",
+"meaning": "ở cạnh; tại; vào (ngày)",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "am Montag; am Bahnhof",
+"num": 100762
+},
+{
+"word": "auf",
+"meaning": "trên; đến/trên bề mặt",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "auf dem Tisch",
+"num": 100763
+},
+{
+"word": "unter",
+"meaning": "dưới",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "unter dem Tisch",
+"num": 100764
+},
+{
+"word": "über",
+"meaning": "phía trên; qua",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "über der Stadt",
+"num": 100765
+},
+{
+"word": "vor",
+"meaning": "trước; phía trước",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "vor dem Haus",
+"num": 100766
+},
+{
+"word": "hinter",
+"meaning": "phía sau",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "hinter dem Bahnhof",
+"num": 100767
+},
+{
+"word": "neben",
+"meaning": "bên cạnh",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "neben der Schule",
+"num": 100768
+},
+{
+"word": "zwischen",
+"meaning": "ở giữa",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "zwischen den Häusern",
+"num": 100769
+},
+{
+"word": "bei",
+"meaning": "tại chỗ ai; ở gần",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "bei meiner Mutter",
+"num": 100770
+},
+{
+"word": "mit",
+"meaning": "với; bằng",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "mit dem Bus",
+"num": 100771
+},
+{
+"word": "nach",
+"meaning": "đến (thành phố); sau",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "nach Berlin; nach dem Essen",
+"num": 100772
+},
+{
+"word": "zu",
+"meaning": "đến chỗ ai/nơi nào",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "zum Arzt; zur Schule",
+"num": 100773
+},
+{
+"word": "aus",
+"meaning": "từ bên trong; đến từ",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "aus Vietnam",
+"num": 100774
+},
+{
+"word": "von",
+"meaning": "từ; của",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "von meiner Freundin",
+"num": 100775
+},
+{
+"word": "für",
+"meaning": "cho; dành cho",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "für dich",
+"num": 100776
+},
+{
+"word": "ohne",
+"meaning": "không có",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "ohne Zucker",
+"num": 100777
+},
+{
+"word": "um",
+"meaning": "vào lúc; xung quanh",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "um acht Uhr",
+"num": 100778
+},
+{
+"word": "bis",
+"meaning": "đến/tới mốc",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "bis morgen",
+"num": 100779
+},
+{
+"word": "ab",
+"meaning": "từ (mốc thời gian)",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "ab Montag",
+"num": 100780
+},
+{
+"word": "gegen",
+"meaning": "khoảng; vào khoảng",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "gegen zehn Uhr",
+"num": 100781
+},
+{
+"word": "durch",
+"meaning": "xuyên qua",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "durch den Park",
+"num": 100782
+},
+{
+"word": "seit",
+"meaning": "từ mốc thời gian đến nay",
+"type": "prep",
+"topics": [
+"21"
+],
+"extra": "seit Montag",
+"num": 100783
+},
+{
+"word": "und",
+"meaning": "và",
+"type": "conj",
+"topics": [
+"21"
+],
+"num": 100784
+},
+{
+"word": "oder",
+"meaning": "hoặc",
+"type": "conj",
+"topics": [
+"21"
+],
+"num": 100785
+},
+{
+"word": "aber",
+"meaning": "nhưng",
+"type": "conj",
+"topics": [
+"21"
+],
+"num": 100786
+},
+{
+"word": "denn",
+"meaning": "bởi vì",
+"type": "conj",
+"topics": [
+"21"
+],
+"num": 100787
+},
+{
+"word": "weil",
+"meaning": "bởi vì",
+"type": "conj",
+"topics": [
+"21"
+],
+"extra": "động từ chia thường ở cuối mệnh đề",
+"num": 100788
+},
+{
+"word": "dass",
+"meaning": "rằng",
+"type": "conj",
+"topics": [
+"21"
+],
+"extra": "động từ chia ở cuối mệnh đề",
+"num": 100789
+},
+{
+"word": "wenn",
+"meaning": "nếu; khi/mỗi khi",
+"type": "conj",
+"topics": [
+"21"
+],
+"num": 100790
+},
+{
+"word": "deshalb",
+"meaning": "vì vậy",
+"type": "adv",
+"topics": [
+"21"
+],
+"num": 100791
+},
+{
+"word": "also",
+"meaning": "vậy thì; do đó",
+"type": "adv",
+"topics": [
+"21"
+],
+"num": 100792
+},
+{
+"word": "und dann",
+"meaning": "và sau đó",
+"type": "adv",
+"topics": [
+"21"
+],
+"num": 100793
+},
+{
+"word": "nicht",
+"meaning": "không (phủ định động từ/tính từ)",
+"type": "part",
+"topics": [
+"21"
+],
+"num": 100794
+},
+{
+"word": "kein / keine",
+"meaning": "không có (phủ định danh từ)",
+"type": "part",
+"topics": [
+"21"
+],
+"num": 100795
+},
+{
+"word": "ja",
+"meaning": "vâng; có",
+"type": "part",
+"topics": [
+"21"
+],
+"num": 100796
+},
+{
+"word": "nein",
+"meaning": "không",
+"type": "part",
+"topics": [
+"21"
+],
+"num": 100797
+},
+{
+"word": "doch",
+"meaning": "có chứ; ngược lại (đáp lại câu phủ định)",
+"type": "part",
+"topics": [
+"21"
+],
+"num": 100798
+},
+{
+"word": "bitte",
+"meaning": "làm ơn; xin mời; không có gì",
+"type": "part",
+"topics": [
+"21"
+],
+"num": 100799
+},
+{
+"word": "danke",
+"meaning": "cảm ơn",
+"type": "part",
+"topics": [
+"21"
+],
+"num": 100800
+},
+{
+"word": "Hallo!",
+"meaning": "Xin chào!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100801
+},
+{
+"word": "Guten Morgen!",
+"meaning": "Chào buổi sáng!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100802
+},
+{
+"word": "Guten Tag!",
+"meaning": "Chào bạn/ông/bà!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100803
+},
+{
+"word": "Guten Abend!",
+"meaning": "Chào buổi tối!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100804
+},
+{
+"word": "Gute Nacht!",
+"meaning": "Chúc ngủ ngon!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100805
+},
+{
+"word": "Tschüs!",
+"meaning": "Tạm biệt (thân mật)!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100806
+},
+{
+"word": "Auf Wiedersehen!",
+"meaning": "Tạm biệt (lịch sự)!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100807
+},
+{
+"word": "Bis bald!",
+"meaning": "Hẹn sớm gặp lại!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100808
+},
+{
+"word": "Wie geht es dir?",
+"meaning": "Bạn khỏe không?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100809
+},
+{
+"word": "Wie geht es Ihnen?",
+"meaning": "Ông/bà/anh/chị khỏe không?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100810
+},
+{
+"word": "Mir geht es gut, danke.",
+"meaning": "Tôi khỏe, cảm ơn.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100811
+},
+{
+"word": "Und dir? / Und Ihnen?",
+"meaning": "Còn bạn? / Còn ông bà?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100812
+},
+{
+"word": "Wie heißt du?",
+"meaning": "Bạn tên là gì?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100813
+},
+{
+"word": "Wie heißen Sie?",
+"meaning": "Ông/bà tên là gì?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100814
+},
+{
+"word": "Ich heiße …",
+"meaning": "Tôi tên là …",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100815
+},
+{
+"word": "Freut mich.",
+"meaning": "Rất vui được gặp bạn.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100816
+},
+{
+"word": "Woher kommst du?",
+"meaning": "Bạn đến từ đâu?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100817
+},
+{
+"word": "Ich komme aus Vietnam.",
+"meaning": "Tôi đến từ Việt Nam.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100818
+},
+{
+"word": "Wo wohnst du?",
+"meaning": "Bạn sống ở đâu?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100819
+},
+{
+"word": "Ich wohne in …",
+"meaning": "Tôi sống ở …",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100820
+},
+{
+"word": "Wie alt bist du?",
+"meaning": "Bạn bao nhiêu tuổi?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100821
+},
+{
+"word": "Ich bin … Jahre alt.",
+"meaning": "Tôi … tuổi.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100822
+},
+{
+"word": "Was machst du beruflich?",
+"meaning": "Bạn làm nghề gì?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100823
+},
+{
+"word": "Ich bin … von Beruf.",
+"meaning": "Nghề của tôi là …",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100824
+},
+{
+"word": "Kannst du das bitte wiederholen?",
+"meaning": "Bạn nhắc lại được không?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100825
+},
+{
+"word": "Können Sie das bitte wiederholen?",
+"meaning": "Ông/bà có thể nhắc lại không?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100826
+},
+{
+"word": "Bitte langsam.",
+"meaning": "Làm ơn nói chậm.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100827
+},
+{
+"word": "Ich verstehe nicht.",
+"meaning": "Tôi không hiểu.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100828
+},
+{
+"word": "Was bedeutet das?",
+"meaning": "Cái đó nghĩa là gì?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100829
+},
+{
+"word": "Wie schreibt man das?",
+"meaning": "Từ đó viết thế nào?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100830
+},
+{
+"word": "Wie bitte?",
+"meaning": "Xin lỗi, bạn nói gì cơ?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100831
+},
+{
+"word": "Entschuldigung!",
+"meaning": "Xin lỗi!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100832
+},
+{
+"word": "Es tut mir leid.",
+"meaning": "Tôi rất tiếc / xin lỗi.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100833
+},
+{
+"word": "Kein Problem.",
+"meaning": "Không sao.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100834
+},
+{
+"word": "Vielen Dank!",
+"meaning": "Cảm ơn rất nhiều!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100835
+},
+{
+"word": "Bitte schön.",
+"meaning": "Không có gì / xin mời.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100836
+},
+{
+"word": "Gern geschehen.",
+"meaning": "Rất vui được giúp.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100837
+},
+{
+"word": "Ja, natürlich.",
+"meaning": "Vâng, tất nhiên.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100838
+},
+{
+"word": "Vielleicht.",
+"meaning": "Có lẽ.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100839
+},
+{
+"word": "Ich weiß nicht.",
+"meaning": "Tôi không biết.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100840
+},
+{
+"word": "Einen Moment, bitte.",
+"meaning": "Xin chờ một lát.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100841
+},
+{
+"word": "Wie viel kostet das?",
+"meaning": "Cái này giá bao nhiêu?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100842
+},
+{
+"word": "Das ist zu teuer.",
+"meaning": "Cái đó đắt quá.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100843
+},
+{
+"word": "Ich nehme das.",
+"meaning": "Tôi lấy/mua cái này.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100844
+},
+{
+"word": "Kann ich mit Karte zahlen?",
+"meaning": "Tôi trả bằng thẻ được không?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100845
+},
+{
+"word": "Die Rechnung, bitte.",
+"meaning": "Cho tôi xin hóa đơn.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100846
+},
+{
+"word": "Ich hätte gern …",
+"meaning": "Tôi muốn gọi/mua …",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100847
+},
+{
+"word": "Ein Wasser, bitte.",
+"meaning": "Cho tôi một nước lọc.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100848
+},
+{
+"word": "Guten Appetit!",
+"meaning": "Chúc ngon miệng!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100849
+},
+{
+"word": "Prost!",
+"meaning": "Chúc sức khỏe khi cụng ly!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100850
+},
+{
+"word": "Wo ist der Bahnhof?",
+"meaning": "Nhà ga ở đâu?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100851
+},
+{
+"word": "Wie komme ich zum Bahnhof?",
+"meaning": "Tôi đi đến nhà ga thế nào?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100852
+},
+{
+"word": "Gehen Sie geradeaus.",
+"meaning": "Đi thẳng.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100853
+},
+{
+"word": "Dann links / rechts.",
+"meaning": "Sau đó rẽ trái / phải.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100854
+},
+{
+"word": "Ist das weit?",
+"meaning": "Chỗ đó xa không?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100855
+},
+{
+"word": "Ich suche diese Adresse.",
+"meaning": "Tôi đang tìm địa chỉ này.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100856
+},
+{
+"word": "Wann fährt der Zug ab?",
+"meaning": "Tàu khởi hành lúc mấy giờ?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100857
+},
+{
+"word": "Wo kann ich eine Fahrkarte kaufen?",
+"meaning": "Tôi mua vé ở đâu được?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100858
+},
+{
+"word": "Ich habe eine Reservierung.",
+"meaning": "Tôi đã đặt chỗ.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100859
+},
+{
+"word": "Können Sie mir helfen?",
+"meaning": "Ông/bà giúp tôi được không?",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100860
+},
+{
+"word": "Hilfe!",
+"meaning": "Cứu với!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100861
+},
+{
+"word": "Rufen Sie bitte einen Arzt!",
+"meaning": "Xin hãy gọi bác sĩ!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100862
+},
+{
+"word": "Mir ist schlecht.",
+"meaning": "Tôi thấy buồn nôn/không khỏe.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100863
+},
+{
+"word": "Ich habe Kopfschmerzen.",
+"meaning": "Tôi bị đau đầu.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100864
+},
+{
+"word": "Ich bin krank.",
+"meaning": "Tôi bị ốm.",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100865
+},
+{
+"word": "Gute Besserung!",
+"meaning": "Chúc mau khỏe!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100866
+},
+{
+"word": "Herzlichen Glückwunsch!",
+"meaning": "Chúc mừng!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100867
+},
+{
+"word": "Alles Gute zum Geburtstag!",
+"meaning": "Chúc mừng sinh nhật!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100868
+},
+{
+"word": "Viel Erfolg!",
+"meaning": "Chúc thành công!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100869
+},
+{
+"word": "Gute Reise!",
+"meaning": "Chúc chuyến đi vui vẻ!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100870
+},
+{
+"word": "Viel Spaß!",
+"meaning": "Chúc vui vẻ!",
+"type": "phrase",
+"topics": [
+"22"
+],
+"num": 100871
+},
+{
+"word": "null",
+"meaning": "không",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100872
+},
+{
+"word": "eins",
+"meaning": "một",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100873
+},
+{
+"word": "zwei",
+"meaning": "hai",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100874
+},
+{
+"word": "drei",
+"meaning": "ba",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100875
+},
+{
+"word": "vier",
+"meaning": "bốn",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100876
+},
+{
+"word": "fünf",
+"meaning": "năm",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100877
+},
+{
+"word": "sechs",
+"meaning": "sáu",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100878
+},
+{
+"word": "sieben",
+"meaning": "bảy",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100879
+},
+{
+"word": "acht",
+"meaning": "tám",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100880
+},
+{
+"word": "neun",
+"meaning": "chín",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100881
+},
+{
+"word": "zehn",
+"meaning": "mười",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100882
+},
+{
+"word": "elf",
+"meaning": "mười một",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100883
+},
+{
+"word": "zwölf",
+"meaning": "mười hai",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100884
+},
+{
+"word": "dreizehn",
+"meaning": "mười ba",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100885
+},
+{
+"word": "vierzehn",
+"meaning": "mười bốn",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100886
+},
+{
+"word": "fünfzehn",
+"meaning": "mười lăm",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100887
+},
+{
+"word": "sechzehn",
+"meaning": "mười sáu",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100888
+},
+{
+"word": "siebzehn",
+"meaning": "mười bảy",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100889
+},
+{
+"word": "achtzehn",
+"meaning": "mười tám",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100890
+},
+{
+"word": "neunzehn",
+"meaning": "mười chín",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100891
+},
+{
+"word": "zwanzig",
+"meaning": "hai mươi",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100892
+},
+{
+"word": "einundzwanzig",
+"meaning": "hai mươi mốt",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100893
+},
+{
+"word": "dreißig",
+"meaning": "ba mươi",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100894
+},
+{
+"word": "vierzig",
+"meaning": "bốn mươi",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100895
+},
+{
+"word": "fünfzig",
+"meaning": "năm mươi",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100896
+},
+{
+"word": "sechzig",
+"meaning": "sáu mươi",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100897
+},
+{
+"word": "siebzig",
+"meaning": "bảy mươi",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100898
+},
+{
+"word": "achtzig",
+"meaning": "tám mươi",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100899
+},
+{
+"word": "neunzig",
+"meaning": "chín mươi",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100900
+},
+{
+"word": "(ein)hundert",
+"meaning": "một trăm",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100901
+},
+{
+"word": "(ein)tausend",
+"meaning": "một nghìn",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100902
+},
+{
+"word": "erste / erster / erstes",
+"meaning": "thứ nhất",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100903
+},
+{
+"word": "zweite / zweiter / zweites",
+"meaning": "thứ hai",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100904
+},
+{
+"word": "dritte / dritter / drittes",
+"meaning": "thứ ba",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100905
+},
+{
+"word": "vierte",
+"meaning": "thứ tư",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100906
+},
+{
+"word": "fünfte",
+"meaning": "thứ năm",
+"type": "num",
+"topics": [
+"23"
+],
+"num": 100907
+},
+{
+"word": "Wie spät ist es?",
+"meaning": "Bây giờ là mấy giờ?",
+"type": "phrase",
+"topics": [
+"24"
+],
+"num": 100908
+},
+{
+"word": "Es ist ein Uhr.",
+"meaning": "Bây giờ là một giờ.",
+"type": "phrase",
+"topics": [
+"24"
+],
+"num": 100909
+},
+{
+"word": "Es ist halb drei.",
+"meaning": "Hai giờ rưỡi (nửa đường đến ba giờ).",
+"type": "phrase",
+"topics": [
+"24"
+],
+"num": 100910
+},
+{
+"word": "Es ist Viertel nach vier.",
+"meaning": "Bốn giờ mười lăm.",
+"type": "phrase",
+"topics": [
+"24"
+],
+"num": 100911
+},
+{
+"word": "Es ist Viertel vor fünf.",
+"meaning": "Năm giờ kém mười lăm.",
+"type": "phrase",
+"topics": [
+"24"
+],
+"num": 100912
+},
+{
+"word": "um acht Uhr",
+"meaning": "lúc tám giờ",
+"type": "phrase",
+"topics": [
+"24"
+],
+"num": 100913
+},
+{
+"word": "morgens",
+"meaning": "vào buổi sáng",
+"type": "adv",
+"topics": [
+"24"
+],
+"num": 100914
+},
+{
+"word": "mittags",
+"meaning": "vào buổi trưa",
+"type": "adv",
+"topics": [
+"24"
+],
+"num": 100915
+},
+{
+"word": "nachmittags",
+"meaning": "vào buổi chiều",
+"type": "adv",
+"topics": [
+"24"
+],
+"num": 100916
+},
+{
+"word": "abends",
+"meaning": "vào buổi tối",
+"type": "adv",
+"topics": [
+"24"
+],
+"num": 100917
+},
+{
+"word": "nachts",
+"meaning": "vào ban đêm",
+"type": "adv",
+"topics": [
+"24"
+],
+"num": 100918
+},
+{
+"word": "am Montag",
+"meaning": "vào thứ Hai",
+"type": "phrase",
+"topics": [
+"24"
+],
+"num": 100919
+},
+{
+"word": "im Januar",
+"meaning": "vào tháng Một",
+"type": "phrase",
+"topics": [
+"24"
+],
+"num": 100920
+},
+{
+"word": "im Sommer",
+"meaning": "vào mùa hè",
+"type": "phrase",
+"topics": [
+"24"
+],
+"num": 100921
+},
+{
+"word": "vorgestern",
+"meaning": "hôm kia",
+"type": "adv",
+"topics": [
+"24"
+],
+"num": 100922
+},
+{
+"word": "übermorgen",
+"meaning": "ngày kia",
+"type": "adv",
+"topics": [
+"24"
+],
+"num": 100923
+},
+{
+"word": "letzte Woche",
+"meaning": "tuần trước",
+"type": "phrase",
+"topics": [
+"24"
+],
+"num": 100924
+},
+{
+"word": "nächste Woche",
+"meaning": "tuần sau",
+"type": "phrase",
+"topics": [
+"24"
+],
+"num": 100925
+}
+]

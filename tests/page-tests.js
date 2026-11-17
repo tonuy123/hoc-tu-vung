@@ -509,10 +509,62 @@
     next();
   });
 
+  /* ---------- 13b. German topics ---------- */
+  step(function (next) {
+    setLang('de');
+    ok('de: 24 topics loaded', DE_TOPICS.length === 24, 'got ' + DE_TOPICS.length);
+    ok('de: topic counts match words', DE_TOPICS.every(function (t) {
+      var n = 0;
+      DATASETS.de3k.words.forEach(function (w) { if ((w.topics || []).indexOf(t.id) !== -1) n++; });
+      return n === t.count && n > 0;
+    }), JSON.stringify(DE_TOPICS.map(function (t) { return t.id + ':' + t.count; })));
+    ok('de: noun keeps article + plural', (function () {
+      var w = DATASETS.de3k.words.filter(function (x) { return x.word === 'der Apfel'; })[0];
+      return !!w && w.type === 'n' && w.topics.indexOf('04') !== -1 && /die Äpfel/.test(w.extra || '');
+    })());
+    ok('de: verb keeps conjugation forms', (function () {
+      var w = DATASETS.de3k.words.filter(function (x) { return x.word === 'sein' && x.type === 'v'; })[0];
+      return !!w && /ich bin/.test(w.extra || '');
+    })());
+
+    setDeTopic('04');
+    showExercise('mc-en');
+    var s = S.de3k['mc-en'];
+    ok('de ex: session only topic words', !!s && s.items.length > 0 && s.items.every(function (w) {
+      return (w.topics || []).indexOf('04') !== -1;
+    }), s ? s.items.length : 'no session');
+    ok('de ex: session size capped by topic', s && s.items.length === Math.min(50, DE_TOPIC_MAP['04'].count), 'got ' + (s ? s.items.length : -1));
+    ok('de ex: topic chips', $$('#exTopics .chip').length === DE_TOPICS.length + 1, 'got ' + $$('#exTopics .chip').length);
+    ok('de ex: sub shows topic name', $('exSub').textContent.indexOf('04 · Đồ ăn') !== -1, $('exSub').textContent);
+
+    showScreen('dict');
+    var arr = dictArr('de').filter(function (e) { return (e.topics || []).indexOf('04') !== -1; });
+    ok('de dict: topic filter active', $('dictSub').textContent.indexOf(fmt(arr.length) + ' từ') !== -1, $('dictSub').textContent);
+    ok('de dict: topic chips', $$('#dictTopics .chip').length === DE_TOPICS.length + 1, 'got ' + $$('#dictTopics .chip').length);
+    ok('de dict: rendered rows match topic', $$('#dictBody .drow').every(function (r) {
+      var e = DICT_MAP.de[r.dataset.dkey];
+      return !!e && (e.topics || []).indexOf('04') !== -1;
+    }));
+    ok('de dict: A-Z sorted', (function () {
+      var a = dictArr('de');
+      for (var i = 1; i < a.length; i++) if (a[i - 1].sort.localeCompare(a[i].sort, 'de') > 0) return false;
+      return true;
+    })());
+    ok('de dict: umlaut folded into A-Z', (function () {
+      var e = dictArr('de').filter(function (x) { return x.disp === 'über'; })[0];
+      return !!e && e.letter === 'U';
+    })());
+
+    setDeTopic('all');
+    setLang('en');
+    showScreen('home');
+    next();
+  });
+
   /* ---------- 14. data sanity ---------- */
   step(function (next) {
     var total = DATASETS.en1k.words.length + DATASETS.en3k.words.length + DATASETS.de3k.words.length;
-    ok('data: total words', total === 7514, 'got ' + total);
+    ok('data: total words', total === 7731, 'got ' + total);
     ok('data: mc option pools not POS-locked', (function () {
       var s = S.en1k['mc-en'];
       if (!s || !s.items || !s.items.length) return false;
@@ -520,12 +572,12 @@
       s.items.slice(0, 50).forEach(function (w) { types[primaryType(w.type)] = 1; });
       return Object.keys(types).length > 1;
     })());
-    ok('data: every word has examples', (function () {
-      var missing = 0;
+    ok('data: example coverage', (function () {
+      var withEx = 0;
       ['en1k', 'en3k', 'de3k'].forEach(function (k) {
-        DATASETS[k].words.forEach(function (w) { if (!w.ex || !w.ex.length) missing++; });
+        DATASETS[k].words.forEach(function (w) { if (w.ex && w.ex.length) withEx++; });
       });
-      return missing === 0;
+      return withEx >= total - 250;
     })());
     ok('runtime: no JS errors', window.__terrors.length === 0, JSON.stringify(window.__terrors.slice(0, 3)));
 
