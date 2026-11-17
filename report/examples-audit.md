@@ -75,10 +75,24 @@
   - num 306 (tun): Er tut immer so, als wäre er müde.
   - num 308 (kommen): Meine Mutter kommt morgen zu Besuch.
 
+## de_a1
+
+- Từ: 925 · có 3+ ví dụ: 0 · 2: 217 · 1: 0 · 0: 708 · tổng câu: 434
+- **Cảnh báo heuristic từ gốc (8 — có thể báo nhầm với biến đổi/separable verb)**
+  - num 100507 (sein): Ich bin heute sehr müde, weil ich früh aufgestanden bin.
+  - num 100507 (sein): Wo bist du gestern Abend gewesen?
+  - num 100566 (aufwachen): Ich wache jeden Morgen um sechs Uhr auf.
+  - num 100566 (aufwachen): Das Kind ist von dem lauten Lärm aufgewacht.
+  - num 100569 (duschen): Er duscht morgens, bevor er zur Arbeit geht.
+  - num 100595 (mitbringen): Zu der Party bringt jeder Gast etwas zu essen mit.
+  - num 100610 (wehtun): Mein Kopf tut weh, ich brauche eine Tablette.
+  - num 100610 (wehtun): Hat es dir wehgetan, als du gefallen bist?
+
 ## Tổng
 
 - en1k: 1000 từ · 0 ví dụ: 0 · 1: 0 · 2: 940 · 3+: 60 · 2060 câu
 - en3k: 3479 từ · 0 ví dụ: 0 · 1: 0 · 2: 3479 · 3+: 0 · 6958 câu
 - de3k: 3035 từ · 0 ví dụ: 0 · 1: 0 · 2: 3035 · 3+: 0 · 6070 câu
+- de_a1: 925 từ · 0 ví dụ: 708 · 1: 0 · 2: 217 · 3+: 0 · 434 câu
 
-- Lỗi cứng: **0** · cảnh báo: **569**
+- Lỗi cứng: **0** · cảnh báo: **577**

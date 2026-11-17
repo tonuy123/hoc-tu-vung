@@ -527,6 +527,10 @@
       return !!w && /ich bin/.test(w.extra || '');
     })());
     ok('de: multi-form word accepts one form', grade('de', { word: 'erste / erster / erstes' }, 'erster') === true);
+    ok('de: new A1 word has generated examples', (function () {
+      var w = DATASETS.de3k.words.filter(function (x) { return x.word === 'der Familienname'; })[0];
+      return !!w && w.ex && w.ex.length === 2 && /Familienname/.test(w.ex[0].s);
+    })());
 
     setDeTopic('04');
     showExercise('mc-en');
@@ -584,12 +588,12 @@
       s.items.slice(0, 50).forEach(function (w) { types[primaryType(w.type)] = 1; });
       return Object.keys(types).length > 1;
     })());
-    ok('data: example coverage', (function () {
-      var withEx = 0;
+    ok('data: every word has examples', (function () {
+      var missing = 0;
       ['en1k', 'en3k', 'de3k'].forEach(function (k) {
-        DATASETS[k].words.forEach(function (w) { if (w.ex && w.ex.length) withEx++; });
+        DATASETS[k].words.forEach(function (w) { if (!w.ex || !w.ex.length) missing++; });
       });
-      return withEx >= total - 250;
+      return missing === 0;
     })());
     ok('runtime: no JS errors', window.__terrors.length === 0, JSON.stringify(window.__terrors.slice(0, 3)));
 

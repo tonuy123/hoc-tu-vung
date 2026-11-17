@@ -141,9 +141,10 @@ def merge_de(words, a1):
     a word with a different POS stays a separate entry, as in the English sets.
     """
     index = {}
+    used = set()
     for w in words:
         index.setdefault(norm_word(w['word']), []).append(w)
-    nxt = max(w['num'] for w in words) + 1
+        used.add(w['num'])
     for rec in a1:
         key = norm_word(rec['word'])
         target = None
@@ -162,9 +163,14 @@ def merge_de(words, a1):
                 target['meaning'] = re.sub(r'\s*\(Pl[^)]*\)', '', target['meaning']).strip()
             if not meanings_overlap(target['meaning'], rec['meaning']):
                 target['meaning'] = target['meaning'] + ' · ' + rec['meaning']
+            if rec.get('ex'):
+                ex = target.setdefault('ex', [])
+                for x in rec['ex']:
+                    if not any(y.get('s') == x.get('s') for y in ex):
+                        ex.append(x)
         else:
             new = {
-                'num': nxt,
+                'num': rec['num'],
                 'word': rec['word'],
                 'meaning': rec['meaning'],
                 'type': rec['type'],
@@ -173,7 +179,11 @@ def merge_de(words, a1):
             }
             if rec.get('extra'):
                 new['extra'] = rec['extra']
-            nxt += 1
+            if rec.get('ex'):
+                new['ex'] = list(rec['ex'])
+            if rec['num'] in used:
+                raise SystemExit('DE MERGE: num collision %s' % rec['num'])
+            used.add(rec['num'])
             words.append(new)
             index.setdefault(key, []).append(new)
     for w in words:
@@ -280,6 +290,11 @@ def main():
     ex_stats = []
     de_topics = load_de_topics()
     de_a1 = load_de_a1({t['id'] for t in de_topics})
+    de_a1_ex = load_examples('de_a1', de_a1)
+    for w in de_a1:
+        items = de_a1_ex.get(w['num'])
+        if items:
+            w['ex'] = items
     for name, lang in DATASETS:
         words = load(name)
         ex = load_examples(name, words)
@@ -287,13 +302,14 @@ def main():
             items = ex.get(w['num'])
             if items:
                 w['ex'] = items
-        n_ex = sum(len(v) for v in ex.values())
         if name == 'de3k':
             words = merge_de(words, de_a1)
         else:
             for w in words:
                 w.setdefault('topics', [])
-        ex_stats.append((name, len(ex), n_ex))
+        ex_stats.append((name,
+                         sum(1 for w in words if w.get('ex')),
+                         sum(len(w.get('ex') or []) for w in words)))
         data[name] = {'lang': lang, 'words': words}
         counts.append((name, len(words)))
 

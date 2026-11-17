@@ -12,7 +12,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'src', 'data')
 EXDIR = os.path.join(DATA, 'ex')
 BATCHDIR = os.path.join(ROOT, 'report', 'examples')
-FILES = ['en1k', 'en3k', 'de3k']
+FILES = ['en1k', 'en3k', 'de3k', 'de_a1']
 
 
 def read_json(fp):

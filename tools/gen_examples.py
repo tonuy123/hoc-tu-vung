@@ -22,11 +22,13 @@ EXDIR = os.path.join(DATA, 'ex')
 BATCHDIR = os.path.join(ROOT, 'report', 'examples')
 CFG = os.path.join(os.path.expanduser('~'), '.config', 'opencode', 'opencode.jsonc')
 LOG = os.path.join(ROOT, 'report', 'examples-gen.log')
+API = {'base': 'https://api.deepseek.com', 'model': 'deepseek-chat'}
 
 DATASETS = {
     'en1k': {'lang': 'English', 'count': 3},
     'en3k': {'lang': 'English', 'count': 2},
     'de3k': {'lang': 'German', 'count': 2},
+    'de_a1': {'lang': 'German', 'count': 2},
 }
 
 DE_MARKERS = set('der die das den dem des ein eine einen einem einer und ist sind war nicht mit auf für von zu im am ich du er sie es wir ihr sich mein dein sein ihre hat habe haben wird werden kann können muss sehr auch aber oder wenn dass wie was wo kein keine zum zur vom beim'.split())
@@ -76,9 +78,18 @@ def read_json(fp):
 def load_key():
     with io.open(CFG, encoding='utf-8-sig') as f:
         cfg = json.load(f)
-    key = cfg.get('provider', {}).get('deepseek', {}).get('options', {}).get('apiKey')
+    providers = cfg.get('provider') or cfg.get('providers') or {}
+    ds = providers.get('deepseek') or {}
+    opts = ds.get('options') or {}
+    settings = ds.get('settings') or {}
+    key = opts.get('apiKey') or settings.get('apiKey')
     if not key:
         raise SystemExit('No DeepSeek API key in opencode config')
+    base = opts.get('baseURL') or settings.get('baseURL') or 'https://api.deepseek.com'
+    API['base'] = base.rstrip('/')
+    models = ds.get('models') or {}
+    if isinstance(models, dict) and models:
+        API['model'] = 'deepseek-v4-flash' if 'deepseek-v4-flash' in models else next(iter(models))
     return key
 
 
@@ -136,7 +147,7 @@ def build_prompt(words, lang, count):
 
 def call_api(key, prompt, max_tokens, temp, lang):
     body = {
-        'model': 'deepseek-chat',
+        'model': API['model'],
         'messages': [
             {'role': 'system', 'content': 'You are a careful bilingual lexicographer. Output valid JSON only. Every example sentence must be written in ' + lang + ', never in another language.'},
             {'role': 'user', 'content': prompt},
@@ -146,7 +157,7 @@ def call_api(key, prompt, max_tokens, temp, lang):
         'response_format': {'type': 'json_object'},
     }
     req = urllib.request.Request(
-        'https://api.deepseek.com/chat/completions',
+        API['base'] + '/chat/completions',
         data=json.dumps(body).encode('utf-8'),
         headers={'Authorization': 'Bearer ' + key, 'Content-Type': 'application/json'},
         method='POST',

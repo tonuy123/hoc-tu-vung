@@ -11,8 +11,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'src', 'data')
 EXDIR = os.path.join(DATA, 'ex')
 OUT = os.path.join(ROOT, 'report', 'examples-audit.md')
-FILES = ['en1k', 'en3k', 'de3k']
-LANG = {'en1k': 'English', 'en3k': 'English', 'de3k': 'German'}
+FILES = ['en1k', 'en3k', 'de3k', 'de_a1']
+LANG = {'en1k': 'English', 'en3k': 'English', 'de3k': 'German', 'de_a1': 'German'}
 DE_MARKERS = set('der die das den dem des ein eine einen einem einer und ist sind war nicht mit auf für von zu im am ich du er sie es wir ihr sich mein dein sein ihre hat habe haben wird werden kann können muss sehr auch aber oder wenn dass wie was wo kein keine zum zur vom beim'.split())
 EN_MARKERS = set('the and is are was were a an to of in on at for with this that these those i you he she it we they my your his her its our their have has had do does did not but or if when where what who how can will would should could may might must'.split())
 
