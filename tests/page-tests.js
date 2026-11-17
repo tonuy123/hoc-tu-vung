@@ -526,6 +526,7 @@
       var w = DATASETS.de3k.words.filter(function (x) { return x.word === 'sein' && x.type === 'v'; })[0];
       return !!w && /ich bin/.test(w.extra || '');
     })());
+    ok('de: multi-form word accepts one form', grade('de', { word: 'erste / erster / erstes' }, 'erster') === true);
 
     setDeTopic('04');
     showExercise('mc-en');
@@ -554,6 +555,17 @@
       var e = dictArr('de').filter(function (x) { return x.disp === 'über'; })[0];
       return !!e && e.letter === 'U';
     })());
+    ok('de dict: Vietnamese query not matched against German keys', (function () {
+      var q = $('dictQ');
+      setDeTopic('13');
+      q.value = 'mẹ'; renderDict();
+      var noise = $$('#dictBody .drow').length;
+      setDeTopic('02');
+      q.value = 'mẹ'; renderDict();
+      var hit = $$('#dictBody .drow').length;
+      q.value = '';
+      return noise === 0 && hit > 0;
+    })(), 'noise/hit');
 
     setDeTopic('all');
     setLang('en');

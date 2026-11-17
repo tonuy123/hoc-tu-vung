@@ -1322,6 +1322,10 @@ function grade(dir, v, raw){
     });
   }
   const cands = [v.word];
+  String(v.word).split('/').forEach(function(part){
+    const p = part.trim();
+    if (p) cands.push(p);
+  });
   const noParen = String(v.word).replace(/\([^)]*\)/g, ' ').replace(/\s+/g, ' ').trim();
   if (noParen) cands.push(noParen);
   const noArt = stripArticle(noParen || v.word);
@@ -1916,21 +1920,26 @@ function renderDict(){
   $('dictBody').innerHTML = rows.map(dictRow).join('') || '<div class="lempty">Không có từ nào.</div>';
 }
 function renderDictSearch(lang, q, type, base){
-  const arr = (base || dictArr(lang)).filter(function(e){ return matchWordType(e, type); });
+  const source = base || dictArr(lang);
+  const arr = source.filter(function(e){ return matchWordType(e, type); });
+  const baseKeys = {};
+  source.forEach(function(e){ baseKeys[e.key] = 1; });
   const seg = segIndex(lang);
-  const tokens = fold(q).split(/\s+/).filter(Boolean);
+  const viQuery = /[\u0103\u0111\u01a1\u01b0\u00e2\u00ea\u00f4\u1ea0-\u1ef9]/.test(q);
+  const tokens = (viQuery ? norm(q) : fold(q)).split(/\s+/).filter(Boolean);
   $('dictAZ').hidden = true;
-  const wordHits = arr.filter(function(e){
+  const wordHits = viQuery ? [] : arr.filter(function(e){
     return tokens.every(function(t){ return e.key.indexOf(t) !== -1; });
   });
   const meanHits = arr.filter(function(e){
-    return tokens.every(function(t){ return fold(e.mean).indexOf(t) !== -1; });
+    const hay = viQuery ? meaningParts(e.mean).map(norm).join(' | ') : fold(e.mean);
+    return tokens.every(function(t){ return hay.indexOf(t) !== -1; });
   });
   const groups = [];
   const fullKey = fold(q).replace(/\s+/g, ' ').trim();
   const exact = seg[fullKey];
   if (exact){
-    const items = exact.items.filter(function(e){ return matchWordType(e, type); });
+    const items = exact.items.filter(function(e){ return baseKeys[e.key] && matchWordType(e, type); });
     if (items.length >= 2) groups.push({ label: exact.label, items: items });
   }
   let html = '';
