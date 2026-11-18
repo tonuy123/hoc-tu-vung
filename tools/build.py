@@ -18,6 +18,7 @@ DATASETS = [
     ('de3k', 'de'),
 ]
 GRAMMAR_PATH = os.path.join(SRC, 'data', 'grammar.json')
+DE_GRAMMAR_PATH = os.path.join(SRC, 'data', 'de_grammar.json')
 DE_A1_PATH = os.path.join(SRC, 'data', 'de_a1.json')
 DE_TOPICS_PATH = os.path.join(SRC, 'data', 'de_topics.json')
 
@@ -134,6 +135,27 @@ def meanings_overlap(a, b):
     return False
 
 
+PLURAL_RE = re.compile(r'\s*\(Pl\.?:?\s*([^)]*)\)')
+
+
+def split_de_plural(words):
+    """Move '(Pl: ...)' out of meaning into extra so quiz options stay clean."""
+    moved = 0
+    for w in words:
+        meaning = w.get('meaning') or ''
+        m = PLURAL_RE.search(meaning)
+        if not m:
+            continue
+        clean = PLURAL_RE.sub('', meaning).strip()
+        if not clean:
+            continue
+        if not w.get('extra'):
+            w['extra'] = 'Pl.: ' + m.group(1).strip()
+        w['meaning'] = clean
+        moved += 1
+    return moved
+
+
 def merge_de(words, a1):
     """Merge the A1 topic list into the German dataset.
 
@@ -196,7 +218,15 @@ def norm_word(s):
 
 
 def load_grammar():
-    with io.open(GRAMMAR_PATH, encoding='utf-8') as f:
+    return load_grammar_file(GRAMMAR_PATH)
+
+
+def load_de_grammar():
+    return load_grammar_file(DE_GRAMMAR_PATH)
+
+
+def load_grammar_file(path):
+    with io.open(path, encoding='utf-8') as f:
         g = json.load(f)
     topics = g.get('topics')
     if not isinstance(topics, list) or not topics:
@@ -232,13 +262,15 @@ def load_grammar():
             total *= len(vals)
             first = vals[0]
             if isinstance(first, dict):
-                if not first or not all(isinstance(k, str) and isinstance(v, str) and v.strip() for k, v in first.items()):
+                if not first or not all(isinstance(k, str) and isinstance(v, str) for k, v in first.items()):
                     raise SystemExit('GRAMMAR: bad object slot %r in %s' % (dim, bank_id))
                 for v in vals:
                     if not isinstance(v, dict) or set(v) != set(first):
                         raise SystemExit('GRAMMAR: inconsistent slot %r in %s' % (dim, bank_id))
-                    if not all(isinstance(x, str) and x.strip() for x in v.values()):
+                    if not all(isinstance(x, str) for x in v.values()):
                         raise SystemExit('GRAMMAR: bad value %r in %s' % (dim, bank_id))
+                    if not any(x.strip() for x in v.values()):
+                        raise SystemExit('GRAMMAR: empty object slot %r in %s' % (dim, bank_id))
                 fields.update(dim + '_' + k.upper() for k in first)
             elif isinstance(first, str):
                 if not first.strip() or not all(isinstance(v, str) and v.strip() for v in vals):
@@ -303,6 +335,7 @@ def main():
             if items:
                 w['ex'] = items
         if name == 'de3k':
+            split_de_plural(words)
             words = merge_de(words, de_a1)
         else:
             for w in words:
@@ -328,7 +361,9 @@ def main():
     if '</script' in blob.lower():
         raise SystemExit('UNSAFE: </script found in data blob')
     grammar = load_grammar()
-    gblob = json.dumps(grammar, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    grammar_de = load_de_grammar()
+    gblob = json.dumps({'en': grammar, 'de': grammar_de}, ensure_ascii=False,
+                       separators=(',', ':')).replace('</', '<\\/')
     if '</script' in gblob.lower():
         raise SystemExit('UNSAFE: </script found in grammar blob')
     with io.open(TEMPLATE, encoding='utf-8') as f:
@@ -350,6 +385,10 @@ def main():
         len(grammar['topics']),
         sum(1 for t in grammar['topics'] if t.get('gen')),
         sum(grammar_capacity(grammar, t) for t in grammar['topics'])))
+    print('grammar-de %d topics, %d with bank, %d sentences' % (
+        len(grammar_de['topics']),
+        sum(1 for t in grammar_de['topics'] if t.get('gen')),
+        sum(grammar_capacity(grammar_de, t) for t in grammar_de['topics'])))
     print('WROTE %s (%d bytes)' % (OUT, os.path.getsize(OUT)))
 
 

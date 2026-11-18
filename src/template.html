@@ -110,6 +110,7 @@
   .spk:hover{background:#31446d}
   .spk:active{background:#0e7490}
   .qword{font-size:clamp(1.2rem,4vw,1.45rem);font-weight:800;color:#fbd063;letter-spacing:-.01em;overflow-wrap:anywhere}
+.qpl{font-size:.62em;font-weight:600;color:#9db4d6;letter-spacing:0;white-space:nowrap}
   .qphon{font-family:Consolas,'Cascadia Mono',monospace;color:var(--muted);font-size:.85rem;margin:2px 0 10px}
   .qprompt{color:var(--muted);font-size:13px;margin-bottom:9px}
   .opts{display:flex;flex-direction:column;gap:8px}
@@ -737,6 +738,11 @@
         <button type="button" class="seg-btn" data-dict-lang="en">English</button>
         <button type="button" class="seg-btn" data-dict-lang="de">Deutsch</button>
       </div>
+      <div class="seg" id="grammarLangSeg" hidden>
+        <button type="button" class="seg-btn active" data-glang="en">English</button>
+        <button type="button" class="seg-btn" data-glang="de">Deutsch</button>
+      </div>
+      <div class="chips glevels" id="dictGLevels" hidden></div>
       <div class="chips topicrow" id="dictTopics" hidden></div>
       <div class="searchbar">
         <input type="search" id="dictQ" placeholder="Tìm từ hoặc nghĩa tiếng Việt…" autocomplete="off" autocapitalize="off" spellcheck="false">
@@ -889,7 +895,7 @@ const DE_TOPIC_MAP = {};
 DE_TOPICS.forEach(function(t){ DE_TOPIC_MAP[t.id] = t; });
 </script>
 <script>
-const GRAMMAR = __GRAMMAR_JSON__;
+const GRAMMARS = __GRAMMAR_JSON__;
 </script>
 <script>
 'use strict';
@@ -977,7 +983,7 @@ const WORD_CATS = [
 ];
 const WORD_CAT_LABEL = {};
 WORD_CATS.forEach(function(c){ WORD_CAT_LABEL[c.id] = c.label; });
-const DEF_SETTINGS = { lang: 'en', ds: 'en1k', size: 50, screen: 'home', ex: 'mc-en', dletter: 'A', chart: 'week', dictMode: 'words', gcat: 'all', wtype: 'all', dtopic: 'all' };
+const DEF_SETTINGS = { lang: 'en', ds: 'en1k', size: 50, screen: 'home', ex: 'mc-en', dletter: 'A', chart: 'week', dictMode: 'words', gcat: 'all', glang: 'en', glev: 'all', wtype: 'all', dtopic: 'all' };
 const STORED_SET = LS.get('v4t:set', {}) || {};
 let settings = Object.assign({}, DEF_SETTINGS, STORED_SET);
 (function migrateSettings(){
@@ -1344,6 +1350,10 @@ function grade(dir, v, raw){
 function phonLine(v){
   return v.phon ? '<div class="qphon">' + esc(v.phon) + '</div>' : '';
 }
+function pluralNote(v){
+  const e = (v && v.extra) ? String(v.extra) : '';
+  return /^Pl\.?:/.test(e) ? ' <span class="qpl">(' + esc(e) + ')</span>' : '';
+}
 function fbHtml(tab, v, a){
   const ans = (tab === 'mc-en' || tab === 'write-en') ? v.meaning : dispWord(v.word);
   const ex = (v.ex && v.ex.length) ? v.ex[0] : null;
@@ -1382,7 +1392,7 @@ function renderMc(tab, s){
       '<div class="qhead"><span class="qnum">Câu ' + (i + 1) + '<span class="n">/' + N + '</span></span>' +
       (tab === 'mc-en' ? '<button type="button" class="spk" data-spk="' + tab + ':' + i + '" title="Đọc từ">🔊</button>' : '') +
       '</div>' +
-      '<div class="qword">' + esc(q) + '</div>' +
+      '<div class="qword">' + esc(q) + (tab === 'mc-en' ? pluralNote(v) : '') + '</div>' +
       (tab === 'mc-en' ? phonLine(v) : '') +
       '<div class="qprompt">' + (tab === 'mc-en' ? 'Chọn nghĩa đúng' : 'Chọn từ ' + langName() + ' đúng') + '</div>' +
       '<div class="opts">' + optsHtml + '</div>' +
@@ -1405,7 +1415,7 @@ function renderWrite(tab, s){
       '<div class="qhead"><span class="qnum">Câu ' + (i + 1) + '<span class="n">/' + N + '</span></span>' +
       (dir === 'en' ? '<button type="button" class="spk" data-spk="' + tab + ':' + i + '" title="Đọc từ">🔊</button>' : '') +
       '</div>' +
-      '<div class="qword">' + esc(dispWord(v.word)) + '</div>' +
+      '<div class="qword">' + esc(dispWord(v.word)) + (dir === 'en' ? pluralNote(v) : '') + '</div>' +
       phonLine(v) +
       '<div class="qprompt">' + (dir === 'en' ? 'Viết nghĩa tiếng Việt' : 'Viết từ tiếng ' + langName() + (settings.lang === 'de' ? ' (không cần gõ der/die/das)' : '')) + '</div>' +
       '<input class="' + cls + '" id="' + inpId + '" data-winput="' + tab + ':' + i + '" value="' + esc(value) + '"' +
@@ -1454,14 +1464,27 @@ function renderDone(tab){
 }
 
 /* ================= grammar bank ================= */
-const GRAMMAR_TOPICS = GRAMMAR.topics || [];
-const GRAMMAR_MAP = {};
-const GRAMMAR_CATS = [];
-GRAMMAR_TOPICS.forEach(function(t){
-  GRAMMAR_MAP[t.id] = t;
-  if (GRAMMAR_CATS.indexOf(t.cat) === -1) GRAMMAR_CATS.push(t.cat);
-});
-const GRAMMAR_BANK = GRAMMAR.bankPerTopic || 200000;
+const GRAMMAR_LABEL = { en: 'English', de: 'Deutsch' };
+const GRAMMAR_LEVELS = ['A1', 'A2', 'B1', 'B2'];
+let GRAMMAR = GRAMMARS.en;
+let GRAMMAR_TOPICS = [];
+let GRAMMAR_MAP = {};
+let GRAMMAR_CATS = [];
+let GRAMMAR_BANK = 200000;
+let GRAMMAR_PATTERNS = {};
+function grammarUseLang(lang){
+  GRAMMAR = GRAMMARS[lang] || GRAMMARS.en;
+  GRAMMAR_TOPICS = GRAMMAR.topics || [];
+  GRAMMAR_MAP = {};
+  GRAMMAR_CATS = [];
+  GRAMMAR_TOPICS.forEach(function(t){
+    GRAMMAR_MAP[t.id] = t;
+    if (GRAMMAR_CATS.indexOf(t.cat) === -1) GRAMMAR_CATS.push(t.cat);
+  });
+  GRAMMAR_BANK = GRAMMAR.bankPerTopic || 200000;
+  GRAMMAR_PATTERNS = (GRAMMAR.lexicon && GRAMMAR.lexicon.patterns) || {};
+}
+grammarUseLang(settings.glang === 'de' ? 'de' : 'en');
 const GRAMMAR_TEMPLATES = [
   '{S} {AUX} {V} {O} {ADV} {T}',
   '{S} {NEG} {VQ} {O} {ADV} {T}',
@@ -1552,7 +1575,7 @@ const TENSE_PROFILE = {
     q2: function(){ return 'have been'; }
   }
 };
-const GRAMMAR_PATTERNS = (GRAMMAR.lexicon && GRAMMAR.lexicon.patterns) || {};
+const GRAMMAR_PATTERNS_OLD = null;
 function grammarPattern(bankId){
   const p = GRAMMAR_PATTERNS[bankId];
   if (!p || !Array.isArray(p.templates) || !p.templates.length || !Array.isArray(p.dims)) return null;
@@ -1578,10 +1601,12 @@ function grammarCapacity(topicId){
 }
 function grammarSentence(raw){
   let en = raw.replace(/\s+/g, ' ')
-    .replace(/\s+([?.])/g, '$1')
+    .replace(/\s+([?!.,])/g, '$1')
+    .replace(/,\s*,/g, ',')
     .replace(/\.\./g, '.')
     .replace(/\?\./g, '?')
     .replace(/!\./g, '!')
+    .replace(/\s+/g, ' ')
     .trim();
   return en.charAt(0).toUpperCase() + en.slice(1);
 }
@@ -1852,6 +1877,11 @@ function renderDict(){
   const mode = settings.dictMode === 'grammar' ? 'grammar' : 'words';
   $$('#dictModeSeg .seg-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.dictMode === mode); });
   $('dictLangSeg').hidden = mode === 'grammar';
+  const gseg = $('grammarLangSeg');
+  if (gseg){
+    gseg.hidden = mode !== 'grammar';
+    $$('#grammarLangSeg .seg-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.glang === settings.glang); });
+  }
   const q = $('dictQ').value.trim();
   if (mode === 'grammar'){
     $('dictQ').placeholder = 'Tìm ngữ pháp, công thức, ví dụ…';
@@ -1859,6 +1889,7 @@ function renderDict(){
     renderGrammar(q);
     return;
   }
+  if ($('dictGLevels')) $('dictGLevels').hidden = true;
   $('dictQ').placeholder = 'Tìm từ hoặc nghĩa tiếng Việt…';
   const lang = settings.lang;
   $$('#dictLangSeg .seg-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.dictLang === lang); });
@@ -1965,7 +1996,7 @@ function renderDictSearch(lang, q, type, base){
   $('dictBody').innerHTML = html;
 }
 function grammarHaystack(t){
-  const ex = (t.examples || []).map(function(x){ return (x.en || '') + ' ' + (x.vi || ''); }).join(' ');
+  const ex = (t.examples || []).map(function(x){ return (x.de || x.en || '') + ' ' + (x.vi || ''); }).join(' ');
   const mis = (t.mistakes || []).map(function(x){ return (x.wrong || '') + ' ' + (x.right || '') + ' ' + (x.why || ''); }).join(' ');
   return fold([t.title, t.vi, t.formula, t.use, t.level, t.cat, (t.signals || []).join(' '), ex, mis, t.exam].join(' '));
 }
@@ -1983,6 +2014,18 @@ function grammarRow(t){
 }
 function renderGrammar(q){
   if (GRAMMAR_CATS.indexOf(settings.gcat) === -1) settings.gcat = 'all';
+  const isDe = settings.glang === 'de';
+  const levBox = $('dictGLevels');
+  if (levBox){
+    levBox.hidden = !isDe;
+    if (isDe){
+      const levels = ['all'].concat(GRAMMAR_LEVELS);
+      levBox.innerHTML = levels.map(function(l){
+        return '<button type="button" class="chip' + (settings.glev === l ? ' active' : '') + '" data-glev="' + esc(l) + '">' +
+          esc(l === 'all' ? 'Tất cả' : l) + '</button>';
+      }).join('');
+    }
+  }
   const chips = ['all'].concat(GRAMMAR_CATS);
   $('dictCats').hidden = false;
   $('dictCats').innerHTML = chips.map(function(c){
@@ -1992,12 +2035,13 @@ function renderGrammar(q){
   $('dictAZ').hidden = true;
   const tokens = fold(q).split(/\s+/).filter(Boolean);
   const items = GRAMMAR_TOPICS.filter(function(t){
+    if (isDe && settings.glev !== 'all' && t.level !== settings.glev) return false;
     if (settings.gcat !== 'all' && t.cat !== settings.gcat) return false;
     if (!tokens.length) return true;
     const hay = grammarHaystack(t);
     return tokens.every(function(tok){ return hay.indexOf(tok) !== -1; });
   });
-  $('dictSub').textContent = 'English · ' + fmt(GRAMMAR_TOPICS.length) + ' chuyên đề · ' + fmt(grammarBankTotal()) + ' câu luyện tập';
+  $('dictSub').textContent = GRAMMAR_LABEL[settings.glang] + ' · ' + fmt(GRAMMAR_TOPICS.length) + ' chuyên đề · ' + fmt(grammarBankTotal()) + ' câu luyện tập';
   if (!items.length){
     $('dictMeta').textContent = 'Không tìm thấy';
     $('dictBody').innerHTML = '<div class="lempty">Không có chuyên đề nào khớp “<b>' + esc(q) + '</b>”.</div>';
@@ -2012,7 +2056,7 @@ function openGrammar(id){
   const cap = grammarCapacity(id);
   const examples = (t.examples || []).length
     ? '<ol class="exlist">' + t.examples.slice(0, 3).map(function(x){
-        return '<li><div class="ex-s">' + esc(x.en) + '</div><div class="ex-t">' + esc(x.vi) + '</div></li>';
+        return '<li><div class="ex-s">' + esc(x.de || x.en) + '</div><div class="ex-t">' + esc(x.vi) + '</div></li>';
       }).join('') + '</ol>'
     : '<div class="ex-none">Chưa có ví dụ.</div>';
   const signals = (t.signals || []).length
@@ -2510,6 +2554,22 @@ function setGrammarCat(cat){
   LS.set('v4t:set', settings);
   renderGrammar($('dictQ').value.trim());
 }
+function setGrammarLang(lang){
+  if (lang !== 'en' && lang !== 'de') return;
+  if (settings.glang === lang) return;
+  settings.glang = lang;
+  settings.gcat = 'all';
+  settings.glev = 'all';
+  grammarUseLang(lang);
+  LS.set('v4t:set', settings);
+  renderDict();
+}
+function setGrammarLevel(lev){
+  if (lev !== 'all' && GRAMMAR_LEVELS.indexOf(lev) === -1) return;
+  settings.glev = lev;
+  LS.set('v4t:set', settings);
+  renderGrammar($('dictQ').value.trim());
+}
 function setDictLetter(L){
   if (LETTERS.indexOf(L) === -1) return;
   settings.dletter = L;
@@ -2718,6 +2778,8 @@ document.addEventListener('click', function(e){
   if ((el = hit('[data-wrong-practice]'))){ practiceWrong(); return; }
   if ((el = hit('[data-dict-lang]'))){ setDictLang(el.dataset.dictLang); return; }
   if ((el = hit('[data-dict-mode]'))){ setDictMode(el.dataset.dictMode); return; }
+  if ((el = hit('[data-glev]'))){ setGrammarLevel(el.dataset.glev); return; }
+  if ((el = hit('[data-glang]'))){ setGrammarLang(el.dataset.glang); return; }
   if ((el = hit('[data-gcat]'))){ setGrammarCat(el.dataset.gcat); return; }
   if ((el = hit('[data-wcat]'))){ setWordCat(el.dataset.wcat); return; }
   if ((el = hit('[data-dtopic]'))){ setDeTopic(el.dataset.dtopic); return; }

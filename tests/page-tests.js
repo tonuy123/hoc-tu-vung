@@ -250,6 +250,7 @@
     if (settings.lang !== 'en') setLang('en');
     showScreen('dict');
     setDictMode('grammar');
+    if (settings.glang !== 'en') setGrammarLang('en');
     ok('grammar: mode grammar', settings.dictMode === 'grammar', settings.dictMode);
     ok('grammar: language segment hidden', $('dictLangSeg').hidden === true);
     ok('grammar: 98 topics rendered', $$('#dictBody .grow').length === 98, 'got ' + $$('#dictBody .grow').length);
@@ -368,6 +369,54 @@
     $('dictQ').value = '';
     setDictMode('words');
     ok('grammar: back to words mode', settings.dictMode === 'words' && $('dictLangSeg').hidden === false);
+    next();
+  });
+
+  /* ---------- 9c. German grammar: level filter ---------- */
+  step(function (next) {
+    setDictMode('grammar');
+    setGrammarLang('de');
+    ok('de: 52 topics', GRAMMAR_TOPICS.length === 52, 'got ' + GRAMMAR_TOPICS.length);
+    ok('de: label Deutsch', $('dictSub').textContent.indexOf('Deutsch') === 0, $('dictSub').textContent);
+    ok('de: grammar segment visible', $('grammarLangSeg').hidden === false && $('dictLangSeg').hidden === true);
+    ok('de: 5 level chips', $$('#dictGLevels .chip').length === 5, 'got ' + $$('#dictGLevels .chip').length);
+    ok('de: 52 rows', $$('#dictBody .grow').length === 52, 'got ' + $$('#dictBody .grow').length);
+    ok('de: all banks >= 200k', GRAMMAR_TOPICS.every(function (t) { return grammarCapacity(t.id) >= 200000; }));
+
+    ['A1', 'A2', 'B1', 'B2'].forEach(function (lev) {
+      setGrammarLevel(lev);
+      var rows = $$('#dictBody .grow');
+      var want = GRAMMAR_TOPICS.filter(function (t) { return t.level === lev; }).length;
+      ok('de: level ' + lev + ' rows', rows.length === want, 'got ' + rows.length + ' want ' + want);
+      ok('de: level ' + lev + ' no cross-level leak',
+        rows.every(function (r) {
+          return r.querySelector('.glvl').textContent === lev &&
+            r.dataset.gkey.indexOf('de-' + lev.toLowerCase() + '-') === 0;
+        }));
+    });
+    setGrammarLevel('all');
+    ok('de: all levels back to 52', $$('#dictBody .grow').length === 52);
+
+    var d1 = grammarItem('de-a1-praesens-reg', 0);
+    ok('de: deterministic item', !!d1 && d1.answer === grammarItem('de-a1-praesens-reg', 0).answer);
+    ok('de: sentence clean', !!d1 && /\{/.test(d1.answer) === false && d1.answer.indexOf('  ') === -1 && d1.answer.indexOf(' .') === -1, d1 && d1.answer);
+    ok('de: tokens keep all words', d1.tokens.slice().sort().join(' ') === d1.answer.split(' ').sort().join(' '), d1.answer);
+    ok('de: index clamped', grammarItem('de-a1-praesens-reg', 999999999).id === 'de-a1-praesens-reg:' + (grammarCapacity('de-a1-praesens-reg') - 1));
+
+    var deBad = 0, deBanks = 0;
+    GRAMMAR_TOPICS.forEach(function (t) {
+      deBanks++;
+      var cap = grammarCapacity(t.id);
+      [0, Math.floor(cap / 3), cap - 1].forEach(function (pi) {
+        var it = grammarItem(t.id, pi);
+        if (!it || /\{/.test(it.answer) || it.answer.indexOf('  ') !== -1 || it.answer.indexOf(' .') !== -1) deBad++;
+      });
+    });
+    ok('de: 52 banks render clean', deBanks === 52 && deBad === 0, 'banks=' + deBanks + ' bad=' + deBad);
+
+    setGrammarLang('en');
+    ok('de: back to English', GRAMMAR_TOPICS.length === 98 && $('dictGLevels').hidden === true);
+    setDictMode('words');
     next();
   });
 
