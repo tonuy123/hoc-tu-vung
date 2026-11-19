@@ -644,3 +644,37 @@ topic("de-b2-passiv-ersatz", "B2", "Passiv",
       [("Das Problem ist zu lösen werden.", "Das Problem ist zu lösen.", "Không thêm werden vào cấu trúc sein + zu."),
        ("Das Problem lässt sich lösen werden.", "Das Problem lässt sich lösen.", "sich lassen + nguyên thể, không thêm werden.")],
       "Goethe B2: đọc hiểu văn bản kỹ thuật, viết mô tả chức năng.")
+
+# ---------------------------------------------------------------------------
+# Bổ sung chiều sâu: cách dùng từng bước, lưu ý, thêm ví dụ và lỗi sai.
+# Nội dung nằm ở topics_extra.py để giữ file này gọn.
+from topics_extra import EXTRA as _EXTRA
+
+for _t in TOPICS:
+    _e = _EXTRA.get(_t["id"])
+    if not _e:
+        continue
+    if _e.get("howto"):
+        _t["howto"] = list(_e["howto"])
+    if _e.get("notes"):
+        _t["notes"] = list(_e["notes"])
+    for _de, _vi in _e.get("examples", []):
+        _t["examples"].append({"de": _de, "vi": _vi})
+    for _w, _r, _y in _e.get("mistakes", []):
+        _t["mistakes"].append({"wrong": _w, "right": _r, "why": _y})
+
+# ---------------------------------------------------------------------------
+# Bank cau sap xep (20 cau/chuyen de, de bai la cau tieng Viet).
+from drill_a1 import DRILL as _DRILL_A1
+from drill_a2 import DRILL as _DRILL_A2
+from drill_b1 import DRILL as _DRILL_B1
+from drill_b2 import DRILL as _DRILL_B2
+
+_DRILLS = {}
+for _d in (_DRILL_A1, _DRILL_A2, _DRILL_B1, _DRILL_B2):
+    _DRILLS.update(_d)
+
+for _t in TOPICS:
+    _rows = _DRILLS.get(_t["id"])
+    if _rows:
+        _t["drill"] = [{"de": a, "vi": b} for a, b in _rows]

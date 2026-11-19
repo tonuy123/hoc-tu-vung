@@ -117,6 +117,12 @@ def validate():
         for ex in t["examples"]:
             if not ex.get("de") or not ex.get("vi"):
                 errors.append("%s example incomplete" % t["id"])
+        drill = t.get("drill") or []
+        if len(drill) != 20:
+            errors.append("%s drill must have 20 sentences (got %d)" % (t["id"], len(drill)))
+        for row in drill:
+            if not row.get("de") or not row.get("vi"):
+                errors.append("%s drill row incomplete" % t["id"])
     for bank_id in BANKS:
         if bank_id not in ids:
             errors.append("bank without topic: " + bank_id)

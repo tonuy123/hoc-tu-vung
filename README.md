@@ -1,4 +1,4 @@
-# Học Từ Vựng Anh · Đức
+﻿# Học Từ Vựng Anh · Đức
 
 App học từ vựng **1 file HTML duy nhất** — chạy offline, không server, không dependency.
 
@@ -22,7 +22,10 @@ App học từ vựng **1 file HTML duy nhất** — chạy offline, không serv
 - Tiến độ + từ sai + cài đặt tự lưu localStorage, khôi phục sau khi đóng trang.
 - Phát âm Web Speech API bằng nút 🔊 thủ công (đã bỏ tự động đọc).
 - Toàn bộ data nhúng trong 1 file — copy đi đâu cũng chạy, mở `file://` trực tiếp trên desktop browser cũng chạy.
-- **Số nhiều trong bài tập**: danh từ Đức có số nhiều thì hiện `Pl.: die …` **ngay cạnh từ** ở đầu câu hỏi, không bao giờ nằm trong đáp án/nghĩa — đáp án chỉ chứa nghĩa, nên không lộ gợi ý.
+- **Tab "Sắp xếp câu" (tab thứ 5 trong Bài tập)**: chọn level `A1–B2` + chuyên đề, mỗi chuyên đề có **20 câu thật viết tay** bám đúng ngữ pháp của chuyên đề đó — **đề bài là câu tiếng Việt** (“Anh ấy làm việc ở văn phòng.”), dưới là các từ tiếng Đức xáo trộn để ghép. Kiểm tra ngay, xem đáp án, sang câu tiếp; có thể vào nhanh từ nút ▶ ở danh sách ngữ pháp hoặc từ sheet chi tiết.
+- **Chi tiết ngữ pháp**: sheet mở ra có công thức, cách dùng từng bước (3 bước), dấu hiệu nhận biết, 4 ví dụ có dịch, 3 lỗi **Sai / Đúng** kèm giải thích, mục **Lưu ý** và ghi chú thi cử.
+- **Từ điển và bài tập độc lập**: đổi ngôn ngữ/chủ đề trong Từ điển **không** làm reset phiên bài tập và ngược lại — hai màn giữ state riêng (`dictLang`/`dictTopic` vs `lang`/`dtopic`).
+- **Số nhiều trong bài tập**: danh từ Đức có số nhiều thì hiện `Pl.: die …` **ngay cạnh từ** ở phần từ điển/chi tiết; ở bài trắc nghiệm chỉ hiện đáp án sạch, không còn ghi chú trong ngoặc.
 
 ## Cấu trúc repo
 
@@ -80,7 +83,7 @@ Sửa UI/logic: sửa `src/template.html` → rebuild → test.
 
 ### Ngữ pháp Đức (A1→B2)
 
-- Nguồn nằm trong `tools/de_grammar/`: `lexicon.py` (động từ + bảng chia + pool danh từ/tính từ/giới từ + helper ghép câu), `banks_a1/a2/b1/b2.py` (52 bank), `topics.py` (metadata 52 chuyên đề: id/level/cat/title/vi/formula/use/signals/examples/mistakes/exam).
+- Nguồn nằm trong `tools/de_grammar/`: `lexicon.py` (động từ + bảng chia + pool danh từ/tính từ/giới từ + helper ghép câu), `banks_a1/a2/b1/b2.py` (52 bank), `topics.py` (metadata 52 chuyên đề: id/level/cat/title/vi/formula/use/signals/examples/mistakes/exam), `topics_extra.py` (bổ sung `howto` = cách dùng từng bước, `notes` = lưu ý, thêm ví dụ và lỗi sai cho cả 52 chuyên đề), `drill_a1/a2/b1/b2.py` (20 câu sắp xếp cho mỗi chuyên đề, kèm câu tiếng Việt làm đề bài).
 - Sinh lại: `python tools/gen_de_grammar.py` → ghi `src/data/de_grammar.json` (~1,6 MB). Xem thử câu mẫu: `python tools/gen_de_grammar.py --sample`.
 - **Hợp đồng với engine**: mỗi bank khai báo `dims` + `templates`, và **mọi template phải dùng đủ mọi dim** — nếu thiếu, hai index khác nhau sẽ render ra cùng một câu. `shapes_main`/`shapes_yfrage`/`shapes_sub`/`shapes_pair` trong `lexicon.py` sinh sẵn bộ template thoả điều kiện này và giữ trật tự từ hợp lệ.
 - **Quy tắc chất lượng câu** (generator không tự bắt được, phải giữ khi thêm bank):
@@ -106,7 +109,7 @@ Sửa UI/logic: sửa `src/template.html` → rebuild → test.
 
 ## Test suite
 
-`tests/page-tests.js` chạy trong trang (**237 assertions**): boot shell/nav/home, mở bài, 4 option unique, bỏ type chip, lưu từ sai + badge, thứ tự đáp án ổn định, giữ draft khi đổi tab, reveal tính sai + vào bank + ví dụ, màn Từ sai + practice + back, dictionary A-Z EN/DE, search không dấu, ẩn A-Z khi search, nhóm đồng nghĩa, **lọc loại từ EN/DE: động từ, cảm xúc, hành động, cụm từ + search giữ filter**, **tiếng Đức: 24 chủ đề, count khớp từ, phiên bài tập chỉ chứa từ trong chủ đề, chip chủ đề ở bài tập + từ điển, A-Z sorted theo locale de, umlaut gộp đúng, giữ mạo từ + số nhiều + dạng chia**, sheet chi tiết có 3 ví dụ, **grammar dictionary 98 chuyên đề + 7 nhóm + search + detail sheet + Enter**, **98 bank: capacity ≥ 200k, clamp, deterministic, token khớp câu, chia thì 3s/past đúng, there is/are hợp số, passive be + V3, used to + V, articles a/an, countable/uncountable, pronoun, comparative, verb patterns, sentence types, punctuation, TOEIC/IELTS frame**, **ngữ pháp Đức: 52 chuyên đề, công tắc English/Deutsch, label “Deutsch”, chip level 5 nút, chọn A1/A2/B1/B2 chỉ ra đúng số chuyên đề của level đó và không lẫn level (id + badge đều khớp), 52 bank ≥ 200k render sạch (không placeholder, không double space), tokens khớp câu, clamp index**, đổi ngôn ngữ, liquid glass nav (pill index, 5 slot đều, pill khớp slot, icon glow, badge pulse, aria, không external asset), profile/avatar (theme-aware theo thiết bị, stats, tags, set/clear ảnh + nav/home sync), fintech home (hero, 4 quick actions, chart tuần/tháng, peak bar, recent + sheet, dataset cycle, bell), error banner (ẩn mặc định, chỉ hiện khi debug, lọc noise Firefox/Ethereum), data sanity, no JS error. `tests/run-cdp.js` kiểm tra thêm mobile viewport 390×844 (home + dictionary không tràn ngang), screenshot `report/mobile-dict.png`, và noscript banner.
+`tests/page-tests.js` chạy trong trang (**257 assertions**): boot shell/nav/home, mở bài, 4 option unique, bỏ type chip, lưu từ sai + badge, thứ tự đáp án ổn định, giữ draft khi đổi tab, reveal tính sai + vào bank + ví dụ, màn Từ sai + practice + back, dictionary A-Z EN/DE, search không dấu, ẩn A-Z khi search, nhóm đồng nghĩa, **lọc loại từ EN/DE: động từ, cảm xúc, hành động, cụm từ + search giữ filter**, **tiếng Đức: 24 chủ đề, count khớp từ, phiên bài tập chỉ chứa từ trong chủ đề, chip chủ đề ở bài tập + từ điển, A-Z sorted theo locale de, umlaut gộp đúng, giữ mạo từ + số nhiều + dạng chia**, sheet chi tiết có 3 ví dụ, **grammar dictionary 98 chuyên đề + 7 nhóm + search + detail sheet + Enter**, **98 bank: capacity ≥ 200k, clamp, deterministic, token khớp câu, chia thì 3s/past đúng, there is/are hợp số, passive be + V3, used to + V, articles a/an, countable/uncountable, pronoun, comparative, verb patterns, sentence types, punctuation, TOEIC/IELTS frame**, **tách state từ điển/bài tập (đổi chủ đề từ điển không reset phiên), đáp án trắc nghiệm sạch không ngoặc, Viết từ hiện nghĩa ở trên và gõ từ ở dưới, màn Sắp xếp câu (mở được, token đủ, ghép đúng, sang câu tiếp), sheet ngữ pháp có Cách dùng + Lưu ý + 4 ví dụ + 3 lỗi Sai/Đúng, profile không còn khối Bộ từ**, **ngữ pháp Đức: 52 chuyên đề, công tắc English/Deutsch, label “Deutsch”, chip level 5 nút, chọn A1/A2/B1/B2 chỉ ra đúng số chuyên đề của level đó và không lẫn level (id + badge đều khớp), 52 bank ≥ 200k render sạch (không placeholder, không double space), tokens khớp câu, clamp index**, đổi ngôn ngữ, liquid glass nav (pill index, 5 slot đều, pill khớp slot, icon glow, badge pulse, aria, không external asset), profile/avatar (theme-aware theo thiết bị, stats, tags, set/clear ảnh + nav/home sync), fintech home (hero, 4 quick actions, chart tuần/tháng, peak bar, recent + sheet, dataset cycle, bell), error banner (ẩn mặc định, chỉ hiện khi debug, lọc noise Firefox/Ethereum), data sanity, no JS error. `tests/run-cdp.js` kiểm tra thêm mobile viewport 390×844 (home + dictionary không tràn ngang), screenshot `report/mobile-dict.png`, và noscript banner.
 
 ## Data / audit
 
@@ -115,7 +118,7 @@ Sửa UI/logic: sửa `src/template.html` → rebuild → test.
 - `report/data-cleanup.md` — các fix data đã áp (chuẩn hóa type, xóa 2 entry trùng `3055`/`3256`, sửa phon `1122`/`3047`).
 - `report/nghia-review.md` — changelog 600 fix nghĩa cũ (52 batch).
 - `report/fixes/*.json` — fix gốc từng batch nghĩa (giữ để audit).
-- `report/qa-home.png`, `qa-exercise.png`, `qa-dict-list.png`, `qa-dict-types.png`, `qa-dict-detail.png`, `qa-de-topics.png`, `qa-de-detail.png`, `qa-de-mobile-detail.png`, `qa-de-exercise.png`, `qa-de-mobile-dict.png`, `qa-de-mobile-exercise.png`, `qa-grammar-desktop.png`, `qa-grammar-mobile.png`, `qa-grammar-detail.png`, `qa-settings-dark.png`, `qa-settings-light.png`, `mobile-dict.png`, `grammar-de-a1.png` (ngữ pháp Đức lọc A1 trên mobile 390px), `quiz-plural.png` (số nhiều hiển thị cạnh từ, không nằm trong đáp án) — screenshot QA.
+- `report/qa-home.png`, `qa-exercise.png`, `qa-dict-list.png`, `qa-dict-types.png`, `qa-dict-detail.png`, `qa-de-topics.png`, `qa-de-detail.png`, `qa-de-mobile-detail.png`, `qa-de-exercise.png`, `qa-de-mobile-dict.png`, `qa-de-mobile-exercise.png`, `qa-grammar-desktop.png`, `qa-grammar-mobile.png`, `qa-grammar-detail.png`, `qa-settings-dark.png`, `qa-settings-light.png`, `mobile-dict.png`, `grammar-de-a1.png` (ngữ pháp Đức lọc A1 trên mobile 390px), `grammar-de-detail.png` (sheet chi tiết: cách dùng, ví dụ, lỗi sai, lưu ý), `grammar-de-drill.png` (màn sắp xếp câu), `order-tab.png` (tab thứ 5: đề bài câu Việt + từ Đức xáo trộn), `write-vn.png` (Viết từ: nghĩa ở trên, gõ từ ở dưới), `quiz-clean.png` (đáp án trắc nghiệm không còn ghi chú trong ngoặc), `profile.png` (đã bỏ khối Bộ từ), `quiz-plural.png` — screenshot QA.
 
 ## Ghi chú
 

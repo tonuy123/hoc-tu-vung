@@ -46,7 +46,7 @@
     ok('boot: 4 exercise cards', $$('.qa-row [data-goto-ex]').length === 4);
     ok('boot: no auto-speak checkbox', !document.querySelector('input[type=checkbox]'));
     ok('boot: removed old subtitle', !$('heroSub'));
-    ok('boot: 4 exercise panels', $$('.expanel').length === 4);
+    ok('boot: 5 exercise panels', $$('.expanel').length === 5);
     next();
   });
 
@@ -229,7 +229,7 @@
   /* ---------- 9. dictionary DE ---------- */
   step(function (next) {
     setDictLang('de');
-    ok('dict: DE selected', settings.lang === 'de');
+    ok('dict: DE selected', settings.dictLang === 'de' && settings.lang === 'en');
     $('dictQ').value = 'thema';
     renderDict();
     var hits = $$('#dictBody .drow');
@@ -420,6 +420,78 @@
     next();
   });
 
+  /* ---------- 9d. dict/exercise isolation + quiz text + write direction + drill ---------- */
+  step(function (next) {
+    setLang('de');
+    showScreen('dict');
+    setDictMode('words');
+    setDictLang('de');
+    setExTopic('all');
+    setDictTopic('04');
+    showExercise('mc-en');
+    var before = S.de3k['mc-en'].items.map(function (w) { return w.num; }).join(',');
+
+    showScreen('dict');
+    setDictTopic('02');
+    ok('isolation: dict topic does not touch exercise', S.de3k['mc-en'].items.map(function (w) { return w.num; }).join(',') === before);
+    ok('isolation: two topics kept apart', settings.dictTopic === '02' && settings.dtopic === 'all');
+
+    setDictLang('en');
+    ok('isolation: dict language does not change app language', settings.lang === 'de' && settings.dictLang === 'en');
+    setDictLang('de');
+    setDictTopic('all');
+
+    showExercise('mc-en');
+    var q = document.querySelector('#list-mc-en .q');
+    var optTexts = $$('.opt', q).map(function (o) { return o.querySelector('span:last-child').textContent; });
+    ok('quiz: options carry no parenthetical note', optTexts.length === 4 && optTexts.every(function (t) { return t.indexOf('(') === -1; }), optTexts.join(' | '));
+    ok('quiz: question shows no plural note', !q.querySelector('.qpl'));
+
+    showExercise('write-vn');
+    var wq = document.querySelector('#list-write-vn .q');
+    var ws = S.de3k['write-vn'];
+    ok('write-vn: top line is the meaning', wq.querySelector('.qword').textContent === cleanMeaning(ws.items[0].meaning), wq.querySelector('.qword').textContent);
+    ok('write-vn: prompt asks for the word', wq.querySelector('.qprompt').textContent.indexOf('Viết từ') === 0);
+
+    showScreen('dict');
+    setDictMode('grammar');
+    setGrammarLang('de');
+    openGrammar('de-a1-praesens-reg');
+    ok('grammar: sheet shows how-to + notes', !!document.querySelector('#sheetBody .gdlist') && !!document.querySelector('#sheetBody .gnotes'));
+    closeSheet();
+    openOrder('de-a1-praesens-reg');
+    ok('order: tab active', settings.ex === 'order' && document.querySelector('.screen.active').id === 'screen-exercise');
+    ok('order: 5 tabs', $$('#exTabs .seg-btn').length === 5, 'got ' + $$('#exTabs .seg-btn').length);
+    ok('order: level + topic chips', $$('#exGLevels .chip').length === 4 && $$('#exGTopics .chip').length === 14,
+      $$('#exGLevels .chip').length + '/' + $$('#exGTopics .chip').length);
+    ok('order: vocab chips hidden', $('exChips').hidden === true && $('exTopics').hidden === true);
+    ok('order: 20 sentences in session', GD.rows.length === 20 && $('stTotal').textContent === '20', $('stTotal').textContent);
+    ok('order: vietnamese prompt shown', !!document.querySelector('#gdAsk .gdvi') && !!document.querySelector('#gdAsk .gdvi').textContent);
+    ok('order: tokens rendered', $$('#gdTokens .gtok').length === GD.tokens.length && GD.tokens.length > 1, 'n=' + GD.tokens.length);
+    var answerToks = GD.answer.split(' ');
+    var used = {};
+    var seq = answerToks.map(function (t) {
+      for (var i = 0; i < GD.tokens.length; i++){ if (!used[i] && GD.tokens[i] === t){ used[i] = 1; return i; } }
+      return -1;
+    });
+    seq.forEach(function (i) { gdTap(i); });
+    gdCheck(false);
+    ok('order: correct order accepted', GD.ok === 1 && GD.done === 1, 'ok=' + GD.ok + ' done=' + GD.done);
+    ok('order: statline updated', $('stCorrect').textContent === '1');
+    var firstVi = GD.prompt;
+    gdNext();
+    ok('order: next sentence loaded', GD.pos === 1 && GD.chosen.length === 0 && GD.tokens.length > 1);
+    ok('order: next prompt is vietnamese', GD.prompt !== firstVi && !!GD.prompt, GD.prompt);
+    setOdLevel('B2');
+    ok('order: B2 topic chips', $$('#exGTopics .chip').length === 11 && GD.rows.length === 20,
+      $$('#exGTopics .chip').length + '/rows=' + GD.rows.length);
+    showScreen('dict');
+    setGrammarLang('en');
+    setDictMode('words');
+    setLang('en');
+    next();
+  });
+
   /* ---------- 10. settings + language ---------- */
   step(function (next) {
     if (settings.lang !== 'en') setLang('en');
@@ -451,7 +523,7 @@
     ok('profile: hero + avatar', !!$('profileHero') && !!$('profileAvatarImg'));
     ok('profile: stats rendered', $('setAnswered').textContent === fmt(stats.answered));
     ok('profile: language seg active', document.querySelector('[data-set-lang="en"]').classList.contains('active'));
-    ok('profile: tag active', document.querySelector('[data-tag-lang="en"]').classList.contains('active'));
+    ok('profile: no word-set tag block', !document.querySelector('[data-tag-lang]') && !document.querySelector('.profile-tags'));
     ok('profile: file input image', $('avatarFile').accept.indexOf('image/') !== -1);
     ok('profile: size select sync', $('setSizeSel').value === String(settings.size));
     ok('profile: settings rows', !!document.querySelector('[data-nav="wrong"]') && !!document.querySelector('[data-nav="dict"]'));
@@ -460,10 +532,10 @@
     ok('profile: follows device theme', pfInk === (darkScheme ? 'rgb(242, 246, 255)' : 'rgb(15, 23, 42)'), pfInk);
     ok('profile: color-scheme matches theme', getComputedStyle(document.body).colorScheme === (darkScheme ? 'dark' : 'light'), getComputedStyle(document.body).colorScheme);
 
-    document.querySelector('[data-tag-lang="de"]').click();
-    ok('profile: tag switches language', settings.lang === 'de');
-    ok('profile: DE tag active', document.querySelector('[data-tag-lang="de"]').classList.contains('active'));
-    document.querySelector('[data-tag-lang="en"]').click();
+    document.querySelector('[data-set-lang="de"]').click();
+    ok('profile: language row switches language', settings.lang === 'de');
+    ok('profile: DE seg active', document.querySelector('[data-set-lang="de"]').classList.contains('active'));
+    document.querySelector('[data-set-lang="en"]').click();
     ok('profile: back to English', settings.lang === 'en');
 
     var px = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Y9Zl1sAAAAASUVORK5CYII=';
@@ -581,7 +653,7 @@
       return !!w && w.ex && w.ex.length === 2 && /Familienname/.test(w.ex[0].s);
     })());
 
-    setDeTopic('04');
+    setExTopic('04');
     showExercise('mc-en');
     var s = S.de3k['mc-en'];
     ok('de ex: session only topic words', !!s && s.items.length > 0 && s.items.every(function (w) {
@@ -592,6 +664,7 @@
     ok('de ex: sub shows topic name', $('exSub').textContent.indexOf('04 · Đồ ăn') !== -1, $('exSub').textContent);
 
     showScreen('dict');
+    setDictTopic('04');
     var arr = dictArr('de').filter(function (e) { return (e.topics || []).indexOf('04') !== -1; });
     ok('de dict: topic filter active', $('dictSub').textContent.indexOf(fmt(arr.length) + ' từ') !== -1, $('dictSub').textContent);
     ok('de dict: topic chips', $$('#dictTopics .chip').length === DE_TOPICS.length + 1, 'got ' + $$('#dictTopics .chip').length);
@@ -610,17 +683,18 @@
     })());
     ok('de dict: Vietnamese query not matched against German keys', (function () {
       var q = $('dictQ');
-      setDeTopic('13');
+      setDictTopic('13');
       q.value = 'mẹ'; renderDict();
       var noise = $$('#dictBody .drow').length;
-      setDeTopic('02');
+      setDictTopic('02');
       q.value = 'mẹ'; renderDict();
       var hit = $$('#dictBody .drow').length;
       q.value = '';
       return noise === 0 && hit > 0;
     })(), 'noise/hit');
 
-    setDeTopic('all');
+    setDictTopic('all');
+    setExTopic('all');
     setLang('en');
     showScreen('home');
     next();
