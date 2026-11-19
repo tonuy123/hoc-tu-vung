@@ -283,7 +283,7 @@
   /* ---------- liquid glass bottom nav (Superdesign v6) ---------- */
   .bnav{position:fixed;left:50%;bottom:34px;transform:translateX(-50%);z-index:70;
     width:min(calc(100vw - 32px),380px);height:68px;display:flex;align-items:center;
-    padding:0 8px;border-radius:999px;overflow:hidden;
+    padding:0 8px;border-radius:999px;overflow:hidden;touch-action:pan-y;
     background:rgba(30,30,30,.45);
     backdrop-filter:blur(10px) saturate(180%);
     -webkit-backdrop-filter:blur(10px) saturate(180%);
@@ -300,6 +300,7 @@
     transition:transform .5s cubic-bezier(.34,1.56,.64,1);
     will-change:transform;pointer-events:none;z-index:2}
   .bnav:not(.is-ready) .bnav-pill{transition:none}
+  .bnav.dragging .bnav-pill{transition:none}
   .bnav-item{position:relative;z-index:3;flex:1 1 0;height:52px;
     display:flex;align-items:center;justify-content:center;
     border:0;background:transparent;border-radius:999px;cursor:pointer;
@@ -409,7 +410,7 @@
     transform:scale(1.02);
     transition:filter .35s ease,transform .35s ease;
   }
-  .profile-hero.has-photo .profile-hero-bg{filter:blur(14px) saturate(1.1);transform:scale(1.16)}
+  .profile-hero.has-cover .profile-hero-bg{transform:scale(1)}
   .profile-hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,42,.55) 0%,rgba(15,23,42,.06) 38%,rgba(15,23,42,.72) 100%)}
   .profile-hero-top{position:absolute;top:0;left:0;right:0;padding:20px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:2}
   .profile-brand{font-family:'Archivo','Segoe UI',system-ui,sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em;text-shadow:0 2px 14px rgba(0,0,0,.35)}
@@ -811,9 +812,9 @@
         <div class="profile-hero-shade"></div>
         <div class="profile-hero-top">
           <div class="profile-brand">Học Từ Vựng</div>
-          <button type="button" class="profile-edit glass-low" data-avatar-edit>
+          <button type="button" class="profile-edit glass-low" data-cover-edit>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="m4 20 4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20z"/><path d="m13.5 5.5 3 3"/></svg>
-            Sửa ảnh
+            Ảnh bìa
           </button>
         </div>
         <div class="profile-hero-bottom">
@@ -872,6 +873,12 @@
             <button type="button" class="profile-mini" data-avatar-edit>Đổi</button>
             <button type="button" class="profile-mini danger" data-avatar-clear id="avatarClear" hidden>Xóa</button>
           </div>
+          <div class="prow">
+            <span class="prow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m6 16 4-4 3 3 2-2 3 3"/><circle cx="9" cy="9.5" r="1.3"/></svg></span>
+            <span class="prow-label">Ảnh bìa</span>
+            <button type="button" class="profile-mini" data-cover-edit>Đổi</button>
+            <button type="button" class="profile-mini danger" data-cover-clear id="coverClear" hidden>Xóa</button>
+          </div>
           <button type="button" class="prow" data-nav="wrong">
             <span class="prow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7.6a4.5 4.5 0 0 1 7.5 2.9c0 5.4-7.5 10-7.5 10z"/></svg></span>
             <span class="prow-label">Từ sai <span class="prow-sub" id="setWrongRow">0 từ</span></span>
@@ -891,6 +898,7 @@
       </div>
       <div class="profile-note">1 file HTML · chạy offline · ảnh đại diện chỉ lưu trên máy bạn</div>
       <input type="file" id="avatarFile" accept="image/*" hidden>
+      <input type="file" id="coverFile" accept="image/*" hidden>
     </section>
   </main>
 
@@ -1227,6 +1235,9 @@ function navIndex(){
   if (settings.screen === 'exercise') return 1;
   return 0;
 }
+let navDragging = false;
+let navSuppressClick = false;
+const NAV_ORDER = ['home', 'exercise', 'wrong', 'dict', 'settings'];
 function updateNav(){
   const wn = wrong[settings.lang].length;
   const badge = $('navBadge');
@@ -1234,7 +1245,7 @@ function updateNav(){
 
   const idx = navIndex();
   const nav = $('bnav');
-  if (nav) nav.style.setProperty('--nav-i', String(idx));
+  if (nav && !navDragging) nav.style.setProperty('--nav-i', String(idx));
 
   const activeName = idx === 4 ? 'settings' : idx === 3 ? 'dict' : idx === 2 ? 'wrong' : idx === 1 ? 'exercise' : 'home';
   $$('.bnav .nav').forEach(function(b){
@@ -2546,10 +2557,6 @@ function applyAvatar(data){
   }
   const hFall = $('homeAvatarFallback');
   if (hFall) hFall.hidden = has;
-  const hero = $('profileHero');
-  if (hero) hero.classList.toggle('has-photo', has);
-  const heroBg = $('profileHeroBg');
-  if (heroBg) heroBg.style.backgroundImage = has ? 'url("' + data + '")' : '';
   const clearBtn = $('avatarClear');
   if (clearBtn) clearBtn.hidden = !has;
 }
@@ -2570,7 +2577,34 @@ function pickAvatar(){
   const f = $('avatarFile');
   if (f) f.click();
 }
-function handleAvatarFile(file){
+/* ---------- cover: separate image, never blurred ---------- */
+function applyCover(data){
+  const has = typeof data === 'string' && data.indexOf('data:image/') === 0;
+  const hero = $('profileHero');
+  if (hero) hero.classList.toggle('has-cover', has);
+  const bg = $('profileHeroBg');
+  if (bg) bg.style.backgroundImage = has ? 'url("' + data + '")' : '';
+  const clearBtn = $('coverClear');
+  if (clearBtn) clearBtn.hidden = !has;
+}
+function setCover(data){
+  try { localStorage.setItem('v4t:cover', JSON.stringify(data)); }
+  catch (e) { alert('Bộ nhớ trình duyệt đã đầy, không lưu được ảnh.'); }
+  applyCover(data);
+}
+function clearCover(){
+  try { localStorage.removeItem('v4t:cover'); } catch (e) {}
+  applyCover(null);
+}
+function loadCover(){
+  const d = LS.get('v4t:cover', null);
+  applyCover(typeof d === 'string' ? d : null);
+}
+function pickCover(){
+  const f = $('coverFile');
+  if (f) f.click();
+}
+function readImageFile(file, w, h, quality, apply){
   if (!file) return;
   if (!/^image\//.test(file.type)){ alert('Vui lòng chọn file ảnh.'); return; }
   if (file.size > 8 * 1024 * 1024){ alert('Ảnh tối đa 8MB.'); return; }
@@ -2578,14 +2612,13 @@ function handleAvatarFile(file){
   const img = new Image();
   img.onload = function(){
     try {
-      const S = 256;
       const c = document.createElement('canvas');
-      c.width = S; c.height = S;
+      c.width = w; c.height = h;
       const ctx = c.getContext('2d');
-      const scale = Math.max(S / img.width, S / img.height);
-      const w = img.width * scale, h = img.height * scale;
-      ctx.drawImage(img, (S - w) / 2, (S - h) / 2, w, h);
-      setAvatar(c.toDataURL('image/jpeg', 0.86));
+      const scale = Math.max(w / img.width, h / img.height);
+      const dw = img.width * scale, dh = img.height * scale;
+      ctx.drawImage(img, (w - dw) / 2, (h - dh) / 2, dw, dh);
+      apply(c.toDataURL('image/jpeg', quality));
     } catch (e) {
       alert('Không xử lý được ảnh này.');
     }
@@ -2597,6 +2630,8 @@ function handleAvatarFile(file){
   };
   img.src = url;
 }
+function handleAvatarFile(file){ readImageFile(file, 256, 256, 0.86, setAvatar); }
+function handleCoverFile(file){ readImageFile(file, 1080, 720, 0.82, setCover); }
 function renderExercise(){
   const ex = settings.ex;
   const isOrder = ex === 'order';
@@ -3041,6 +3076,10 @@ document.addEventListener('click', function(e){
   const hit = function(sel){ return e.target.closest(sel); };
   let el;
   if ((el = hit('[data-nav]'))){
+    if (navSuppressClick && el.closest && el.closest('.bnav')){
+      navSuppressClick = false;
+      return;
+    }
     const n = el.dataset.nav;
     if (n === 'exercise') showExercise(settings.ex);
     else showScreen(n);
@@ -3049,6 +3088,8 @@ document.addEventListener('click', function(e){
   if ((el = hit('[data-set-lang]'))){ setLang(el.dataset.setLang); return; }
   if ((el = hit('[data-avatar-edit]'))){ pickAvatar(); return; }
   if ((el = hit('[data-avatar-clear]'))){ clearAvatar(); return; }
+  if ((el = hit('[data-cover-edit]'))){ pickCover(); return; }
+  if ((el = hit('[data-cover-clear]'))){ clearCover(); return; }
   if ((el = hit('[data-chart]'))){
     settings.chart = el.dataset.chart === 'month' ? 'month' : 'week';
     LS.set('v4t:set', settings);
@@ -3184,7 +3225,69 @@ document.addEventListener('keydown', function(e){
       handleAvatarFile(f);
     });
   }
+  const coverInput = $('coverFile');
+  if (coverInput){
+    coverInput.addEventListener('change', function(e){
+      const f = e.target.files && e.target.files[0];
+      e.target.value = '';
+      handleCoverFile(f);
+    });
+  }
   loadAvatar();
+  loadCover();
+
+  /* draggable animated sliding active indicator */
+  const bnav = $('bnav');
+  if (bnav){
+    let drag = null;
+    const slotW = function(){
+      const p = bnav.querySelector('.bnav-pill');
+      const w = p ? p.getBoundingClientRect().width : 0;
+      return w || 1;
+    };
+    const goIdx = function (i){
+      const name = NAV_ORDER[i];
+      if (!name || i === navIndex()) return;
+      if (name === 'exercise') showExercise(settings.ex);
+      else showScreen(name);
+    };
+    bnav.addEventListener('pointerdown', function(e){
+      if (e.button != null && e.button !== 0) return;
+      const i = navIndex();
+      drag = { x: e.clientX, idx: i, w: slotW(), moved: 0 };
+      navSuppressClick = false;
+      navDragging = true;
+      bnav.classList.add('dragging');
+      try { bnav.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    bnav.addEventListener('pointermove', function(e){
+      if (!drag) return;
+      const dx = e.clientX - drag.x;
+      drag.moved = Math.max(drag.moved, Math.abs(dx));
+      const raw = drag.idx + dx / drag.w;
+      const v = Math.max(0, Math.min(NAV_ORDER.length - 1, raw));
+      bnav.style.setProperty('--nav-i', String(v));
+      goIdx(Math.round(v));
+    });
+    const endDrag = function(e){
+      if (!drag) return;
+      const dx = e.clientX - drag.x;
+      const raw = drag.idx + dx / drag.w;
+      const idx = Math.max(0, Math.min(NAV_ORDER.length - 1, Math.round(raw)));
+      const moved = drag.moved;
+      drag = null;
+      navDragging = false;
+      bnav.classList.remove('dragging');
+      bnav.style.setProperty('--nav-i', String(idx));
+      goIdx(idx);
+      if (moved > 6){
+        navSuppressClick = true;
+        setTimeout(function(){ navSuppressClick = false; }, 400);
+      }
+    };
+    bnav.addEventListener('pointerup', endDrag);
+    bnav.addEventListener('pointercancel', endDrag);
+  }
   const dq = $('dictQ');
   let dt = null;
   dq.addEventListener('input', function(){

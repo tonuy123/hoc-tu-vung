@@ -604,8 +604,8 @@
     ok('profile: home avatar photo', $('homeAvatarImg').getAttribute('src') === px);
     ok('profile: home avatar visible', $('homeAvatarImg').hidden === false);
     ok('profile: nav avatar has-photo', document.querySelector('.bnav .avatar-img').classList.contains('has-photo'));
-    ok('profile: hero has-photo', $('profileHero').classList.contains('has-photo'));
-    ok('profile: hero bg uses photo', $('profileHeroBg').style.backgroundImage.indexOf('data:image/png') !== -1);
+    clearCover();
+    ok('profile: avatar does not touch the cover', $('profileHeroBg').style.backgroundImage === '' && !$('profileHero').classList.contains('has-cover'));
     ok('profile: avatar persisted', LS.get('v4t:avatar', null) === px);
     ok('profile: clear button visible', $('avatarClear').hidden === false);
     clearAvatar();
@@ -613,6 +613,22 @@
     ok('profile: home avatar cleared', $('homeAvatarImg').hidden === true);
     ok('profile: avatar storage cleared', LS.get('v4t:avatar', null) === null);
     ok('profile: nav avatar has-photo off', !document.querySelector('.bnav .avatar-img').classList.contains('has-photo'));
+
+    /* cover: its own key, never blurred, independent from the avatar */
+    setCover(px);
+    ok('cover: stored under its own key', LS.get('v4t:cover', null) === px && LS.get('v4t:avatar', null) === null);
+    ok('cover: hero uses it', $('profileHeroBg').style.backgroundImage.indexOf('data:image/png') !== -1);
+    ok('cover: hero marked has-cover', $('profileHero').classList.contains('has-cover'));
+    ok('cover: no blur filter', getComputedStyle($('profileHeroBg')).filter === 'none', getComputedStyle($('profileHeroBg')).filter);
+    ok('cover: avatar untouched', $('profileAvatarImg').hidden === true && $('navAvatarImg').hidden === true);
+    ok('cover: clear button visible', $('coverClear').hidden === false);
+    setAvatar(px);
+    ok('cover: setting avatar keeps the cover', $('profileHeroBg').style.backgroundImage.indexOf('data:image/png') !== -1);
+    clearAvatar();
+    ok('cover: clearing avatar keeps the cover', $('profileHeroBg').style.backgroundImage.indexOf('data:image/png') !== -1);
+    clearCover();
+    ok('cover: cleared', LS.get('v4t:cover', null) === null && $('profileHeroBg').style.backgroundImage === '');
+    ok('cover: hero class removed', !$('profileHero').classList.contains('has-cover'));
 
     showScreen('home');
     ok('profile: profile mode off', !document.body.classList.contains('profile-mode'));
@@ -648,6 +664,43 @@
     ok('nav: pill on settings', nav.style.getPropertyValue('--nav-i') === '4', nav.style.getPropertyValue('--nav-i'));
     showScreen('home');
     ok('nav: pill back home', nav.style.getPropertyValue('--nav-i') === '0', nav.style.getPropertyValue('--nav-i'));
+    next();
+  });
+
+  /* ---------- 12a. draggable pill indicator ---------- */
+  step(function (next) {
+    var bnav = $('bnav');
+    var pill = document.querySelector('.bnav-pill');
+    var w = pill.getBoundingClientRect().width || 70;
+    function pe(type, x) {
+      bnav.dispatchEvent(new PointerEvent(type, {
+        bubbles: true, cancelable: true, clientX: x, clientY: 600,
+        pointerId: 1, pointerType: 'touch', button: 0, buttons: 1
+      }));
+    }
+    showScreen('home');
+    pe('pointerdown', 100);
+    pe('pointermove', 100 + w * 0.6);
+    ok('nav drag: switches while dragging', settings.screen === 'exercise', settings.screen);
+    pe('pointermove', 100 + w * 1.6);
+    ok('nav drag: keeps following the finger', settings.screen === 'wrong', settings.screen);
+    ok('nav drag: pill follows finger (fractional)', parseFloat(bnav.style.getPropertyValue('--nav-i')) > 1.2, bnav.style.getPropertyValue('--nav-i'));
+    pe('pointerup', 100 + w * 1.6);
+    ok('nav drag: snaps to nearest tab', settings.screen === 'wrong' && bnav.style.getPropertyValue('--nav-i') === '2', bnav.style.getPropertyValue('--nav-i'));
+
+    showScreen('home');
+    pe('pointerdown', 100);
+    pe('pointermove', 100 + w * 0.3);
+    pe('pointerup', 100 + w * 0.3);
+    ok('nav drag: small pull snaps back', settings.screen === 'home', settings.screen);
+
+    showScreen('home');
+    pe('pointerdown', 100);
+    pe('pointermove', 100 - w * 1.5);
+    pe('pointerup', 100 - w * 1.5);
+    ok('nav drag: clamped at the first tab', settings.screen === 'home', settings.screen);
+
+    showScreen('home');
     next();
   });
 
