@@ -487,6 +487,12 @@
   .profile-note{color:var(--pf-muted);font-size:12px;text-align:center;margin:18px 16px 0;line-height:1.5}
   .bnav .avatar-img .avatar-photo{width:100%;height:100%;object-fit:cover;display:block}
   .bnav .avatar-img.has-photo svg{display:none}
+  /* no iOS long-press image menu / drag preview on avatars */
+  #navAvatarImg,#profileAvatarImg,#homeAvatarImg{
+    -webkit-touch-callout:none;-webkit-user-select:none;user-select:none;
+    -webkit-user-drag:none;pointer-events:none;
+  }
+  .bnav-item,.home-avatar,.profile-avatar{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
   @media (max-width:560px){
     .profile-hero{height:380px}
     .profile-name{font-size:26px}
@@ -627,7 +633,7 @@
         <header class="home-top">
           <button type="button" class="home-avatar" data-nav="settings" aria-label="Hồ sơ">
             <span class="home-avatar-fallback" id="homeAvatarFallback" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.4"/><path d="M5.2 20c.8-3.2 3.4-5.2 6.8-5.2s6 2 6.8 5.2"/></svg></span>
-            <img id="homeAvatarImg" alt="" hidden>
+            <img id="homeAvatarImg" alt="" draggable="false" hidden>
           </button>
           <div class="home-greet">
             <div class="hi" id="homeGreet">Chào buổi sáng</div>
@@ -813,7 +819,7 @@
         <div class="profile-hero-bottom">
           <button type="button" class="profile-avatar" data-avatar-edit aria-label="Đổi ảnh đại diện">
             <span class="profile-avatar-fallback" id="profileAvatarFallback" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8.4" r="3.5"/><path d="M4.8 20c.8-3.4 3.5-5.4 7.2-5.4s6.4 2 7.2 5.4"/></svg></span>
-            <img id="profileAvatarImg" alt="Ảnh đại diện" hidden>
+            <img id="profileAvatarImg" alt="Ảnh đại diện" draggable="false" hidden>
             <span class="profile-verify" aria-hidden="true">✓</span>
           </button>
           <div class="profile-id">
@@ -908,7 +914,7 @@
     <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></span>
   </button>
   <button type="button" class="bnav-item nav" data-nav="settings" aria-label="Hồ sơ">
-    <span class="ico"><span class="avatar-img" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.2"/><path d="M5.6 20c.7-3.1 3.2-5 6.4-5s5.7 1.9 6.4 5"/></svg><img id="navAvatarImg" class="avatar-photo" alt="" hidden></span><span class="avatar-dot" aria-hidden="true"></span></span>
+    <span class="ico"><span class="avatar-img" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.2"/><path d="M5.6 20c.7-3.1 3.2-5 6.4-5s5.7 1.9 6.4 5"/></svg><img id="navAvatarImg" class="avatar-photo" alt="" draggable="false" hidden></span><span class="avatar-dot" aria-hidden="true"></span></span>
   </button>
 </nav>
 

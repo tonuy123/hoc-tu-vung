@@ -576,6 +576,14 @@
       return !!s && !!ins && s.contains(ins);
     })());
     ok('profile: file input image', $('avatarFile').accept.indexOf('image/') !== -1);
+    ok('profile: avatar images disable long-press/drag', ['navAvatarImg', 'profileAvatarImg', 'homeAvatarImg'].every(function (id) {
+      var el = $(id);
+      if (!el) return false;
+      var cs = getComputedStyle(el);
+      return el.getAttribute('draggable') === 'false' &&
+        cs.pointerEvents === 'none' &&
+        (cs.userSelect === 'none' || cs.webkitUserSelect === 'none');
+    }));
     ok('profile: size select sync', $('setSizeSel').value === String(settings.size));
     ok('profile: settings rows', !!document.querySelector('[data-nav="wrong"]') && !!document.querySelector('[data-nav="dict"]'));
     var darkScheme = matchMedia('(prefers-color-scheme: dark)').matches;
