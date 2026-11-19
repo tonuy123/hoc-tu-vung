@@ -818,7 +818,6 @@
           </button>
           <div class="profile-id">
             <div class="profile-name">Học viên</div>
-            <div class="profile-bio">Học từ vựng mỗi ngày · Anh &amp; Đức</div>
           </div>
         </div>
       </div>
@@ -891,7 +890,6 @@
 
   <footer class="foot" id="foot">
     <button type="button" class="btn ghost" data-reset>Xóa toàn bộ tiến độ &amp; từ sai</button>
-    <div>1 file HTML duy nhất · chạy offline · tiến độ lưu ngay trên máy bạn</div>
   </footer>
 </div>
 
@@ -1411,7 +1409,7 @@ function fbHtml(tab, v, a){
   const exHtml = ex ? ('<div class="exfb"><div class="ex-s">' + esc(ex.s) + '</div><div class="ex-t">' + esc(ex.t) + '</div></div>') : '';
   if (a.ok) return '<span class="ok">✓ Đúng! <b>' + esc(ans) + '</b></span>' + exHtml;
   return '<span class="bad">✗ Sai. Đáp án: <b>' + esc(ans) + '</b></span>' +
-    (CUR_DS === 'wrong' ? '' : '<div class="banknote">⚠️ Đã lưu vào mục "Từ sai" — ôn lại ở tab Từ sai</div>') + exHtml;
+    (CUR_DS === 'wrong' ? '' : '') + exHtml;
 }
 function optHtml(tab, i, j, key, label, isCorrect, answered, chosen){
   let cls = 'opt';
@@ -1456,7 +1454,6 @@ function renderMc(tab, s){
       '</div>' +
       '<div class="qword">' + esc(q) + '</div>' +
       (isMcEn ? phonLine(v) : '') +
-      '<div class="qprompt">' + (isMcEn ? 'Chọn nghĩa đúng' : 'Chọn từ ' + langName() + ' đúng') + '</div>' +
       '<div class="opts">' + optsHtml + '</div>' +
       '<div class="fb" id="fb-' + tab + '-' + i + '" aria-live="polite">' +
         (answered ? fbHtml(tab, v, answered) : '') + '</div>' +
@@ -1481,11 +1478,11 @@ function renderWrite(tab, s){
       '</div>' +
       '<div class="qword">' + esc(qWord) + '</div>' +
       (dir === 'en' ? phonLine(v) : '') +
-      '<div class="qprompt">' + (dir === 'en' ? 'Viết nghĩa tiếng Việt' : 'Viết từ tiếng ' + langName() + (settings.lang === 'de' ? ' (không cần gõ der/die/das)' : '')) + '</div>' +
       '<input class="' + cls + '" id="' + inpId + '" data-winput="' + tab + ':' + i + '" value="' + esc(value) + '"' +
       (answered ? ' readonly' : '') +
       ' autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="' +
-      (dir === 'en' ? 'Gõ nghĩa tiếng Việt…' : 'Gõ từ…') + '">' +
+      (dir === 'en' ? 'Gõ nghĩa tiếng Việt…'
+        : (settings.lang === 'de' ? 'Gõ từ tiếng Đức (không cần der/die/das)…' : 'Gõ từ tiếng Anh…')) + '">' +
       '<div class="btnrow">' +
       (answered ? '' :
         '<button type="button" class="btn primary" data-check="' + tab + ':' + i + '">Kiểm tra</button>' +
@@ -1498,8 +1495,7 @@ function renderWrite(tab, s){
   }).join('');
 }
 function renderEmpty(){
-  return '<div class="empty">Bộ <b>Từ sai</b> đang trống cho tiếng ' + langName() + '.<br>' +
-    'Các từ bạn làm sai sẽ tự động được lưu vào đây để ôn lại.<br><br>' +
+  return '<div class="empty">Bộ <b>Từ sai</b> đang trống.<br><br>' +
     '<button type="button" class="btn primary" data-nav="home">Về trang chủ</button></div>';
 }
 function renderDone(tab){
@@ -1518,9 +1514,6 @@ function renderDone(tab){
   el.innerHTML = '<div class="donecard">' +
     '<div class="done-top">' + face + ' Hoàn thành ' + n + ' câu!</div>' +
     '<div class="done-score">' + c + '/' + n + ' · ' + pct + '%</div>' +
-    '<div class="done-note">' + (n - c > 0
-      ? (n - c) + ' câu sai đã được lưu vào <b>Từ sai</b> để ôn lại.'
-      : 'Không có câu sai. Tuyệt vời!') + '</div>' +
     '<div class="done-actions">' +
       '<button type="button" class="btn primary" data-again="' + tab + '">↻ Làm bộ mới</button>' +
       (nw ? '<button type="button" class="btn warn" data-nav="wrong">Ôn ngay từ sai (' + fmt(nw) + ')</button>' : '') +
@@ -2154,9 +2147,8 @@ function openGrammar(id){  const t = GRAMMAR_MAP[id];
     ? '<div class="sheet-sec">Lưu ý</div><ul class="gnotes">' +
       t.notes.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'
     : '';
-  const bank = cap
-    ? '<div class="sheet-gbank">🎯 Ngân hàng ' + fmt(cap) + ' câu cho chuyên đề này — luyện sắp xếp câu ngay bên dưới.</div>' +
-      '<div class="sheet-actions"><button type="button" class="btn primary" data-gdrill="' + esc(t.id) + '">Sắp xếp câu (20 câu)</button></div>'
+  const bank = (cap && DE_GMAP[t.id])
+    ? '<div class="sheet-gbank"><button type="button" class="btn primary" data-gdrill="' + esc(t.id) + '">Sắp xếp câu (20 câu)</button></div>'
     : '';
   $('sheetBody').innerHTML =
     '<div class="sheet-head"><div class="sheet-word">' + esc(t.title) + '</div>' +
@@ -2224,7 +2216,7 @@ function gdLoad(){
   GD.tokens = toks;
   GD.chosen = [];
   GD.answered = false;
-  $('gdAsk').innerHTML = '<div class="gdvi">' + esc(row.vi) + '</div><div class="gdhintline">Ghép câu tiếng Đức</div>';
+  $('gdAsk').innerHTML = '<div class="gdvi">' + esc(row.vi) + '</div>';
   $('gdFb').innerHTML = '';
   gdPaint();
 }
@@ -2449,7 +2441,7 @@ function renderRecent(){
   const body = $('recentBody');
   if (!body) return;
   if (!recent.length){
-    body.innerHTML = '<div class="home-empty">Chưa có hoạt động nào.<br>Chọn một bài tập để bắt đầu nhé.' +
+    body.innerHTML = '<div class="home-empty">Chưa có hoạt động nào.' +
       '<br><button type="button" class="btn primary" data-goto-ex="mc-en">Bắt đầu ngay</button></div>';
     return;
   }
@@ -2475,7 +2467,7 @@ function renderWrong(){
   const lang = settings.lang;
   const arr = wrong[lang];
   $('wrongLang').textContent = lang === 'de' ? 'Deutsch' : 'English';
-  $('wrongSub').textContent = fmt(arr.length) + ' từ đã làm sai · làm đúng khi ôn sẽ tự xóa';
+  $('wrongSub').textContent = fmt(arr.length) + ' từ';
   const btn = $('wrongPractice');
   if (btn) btn.disabled = !arr.length;
   const q = fold($('wrongQ').value.trim());
@@ -2504,7 +2496,7 @@ function renderWrong(){
         '</div>';
     }).join('');
   }
-  $('wrongMeta').textContent = arr.length ? ('Hiển thị ' + fmt(list.length) + ' / ' + fmt(arr.length) + ' từ') : '';
+  $('wrongMeta').textContent = (q && arr.length) ? (fmt(list.length) + ' / ' + fmt(arr.length)) : '';
   $('wrongBody').innerHTML = html;
 }
 function renderSettings(){

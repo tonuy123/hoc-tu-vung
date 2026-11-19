@@ -400,7 +400,7 @@
     ok('grammar: detail opens', $('sheetWrap').hidden === false);
     ok('grammar: detail formula + use', !!document.querySelector('.sheet-gformula') && !!document.querySelector('.sheet-guse'));
     ok('grammar: detail signals + exam', !!document.querySelector('.sheet-gsig') && !!document.querySelector('.sheet-gexam'));
-    ok('grammar: detail bank note', !!document.querySelector('.sheet-gbank') && document.querySelector('.sheet-gbank').textContent.indexOf('200') !== -1);
+    ok('grammar: no drill button for English topics', !document.querySelector('.sheet-gbank'));
     closeSheet();
 
     var firstRow = $$('#dictBody .grow')[0];
@@ -496,7 +496,8 @@
     var wq = document.querySelector('#list-write-vn .q');
     var ws = S.de3k['write-vn'];
     ok('write-vn: top line is the meaning', wq.querySelector('.qword').textContent === cleanMeaning(ws.items[0].meaning), wq.querySelector('.qword').textContent);
-    ok('write-vn: prompt asks for the word', wq.querySelector('.qprompt').textContent.indexOf('Viết từ') === 0);
+    ok('write-vn: no redundant prompt', !wq.querySelector('.qprompt'));
+    ok('write-vn: input placeholder keeps the article hint', wq.querySelector('.winput').placeholder.indexOf('der/die/das') !== -1);
 
     showScreen('dict');
     setDictMode('grammar');
@@ -569,6 +570,11 @@
     ok('profile: stats rendered', $('setAnswered').textContent === fmt(stats.answered));
     ok('profile: language seg active', document.querySelector('[data-set-lang="en"]').classList.contains('active'));
     ok('profile: no word-set tag block', !document.querySelector('[data-tag-lang]') && !document.querySelector('.profile-tags'));
+    ok('profile: insights live inside the profile screen', (function () {
+      var s = $('screen-settings');
+      var ins = document.querySelector('.profile-insights');
+      return !!s && !!ins && s.contains(ins);
+    })());
     ok('profile: file input image', $('avatarFile').accept.indexOf('image/') !== -1);
     ok('profile: size select sync', $('setSizeSel').value === String(settings.size));
     ok('profile: settings rows', !!document.querySelector('[data-nav="wrong"]') && !!document.querySelector('[data-nav="dict"]'));
