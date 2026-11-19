@@ -154,6 +154,51 @@
     next();
   });
 
+  /* ---------- 7b. wrong review must not resample the session mid-flow ---------- */
+  step(function (next) {
+    var savedEn = wrong.en.slice();
+    var savedStats = JSON.parse(JSON.stringify(stats));
+    var savedDaily = JSON.parse(JSON.stringify(daily));
+    var savedRecent = recent.slice();
+    setLang('de');
+    var mk = function (n, w, m) { return { num: n, word: w, meaning: m, type: 'n', phon: '', extra: '', topics: [] }; };
+    wrong.de = [mk(1, 'die Dusche', 'vòi sen'), mk(2, 'der Herr', 'ông, ngài'), mk(3, 'der Urlaub', 'kỳ nghỉ'),
+                mk(4, 'die Hochzeit', 'đám cưới'), mk(5, 'der Fernseher', 'máy tivi · ti vi')];
+    LS.set('v4t:wrong', wrong);
+    bumpWrong();
+    showScreen('wrong');
+    practiceWrong();
+    var s0 = S.wrong['mc-en'];
+    ok('wrong review: session of 5', !!s0 && s0.items.length === 5, s0 ? s0.items.length : 'none');
+    var qs = $$('#list-mc-en .q');
+    var clickByKey = function (q, key) {
+      var hit = null;
+      $$('.opt', q).forEach(function (o) { if (o.dataset.key === key) hit = o; });
+      if (hit) hit.click();
+      return !!hit;
+    };
+    ok('wrong review: first correct option found', clickByKey(qs[0], s0.items[0].meaning));
+    ok('wrong review: session object kept after answer 1', S.wrong['mc-en'] === s0);
+    var second = s0.items[1];
+    ok('wrong review: second correct option found', clickByKey(qs[1], second.meaning));
+    ok('wrong review: session object kept after answer 2', S.wrong['mc-en'] === s0);
+    ok('wrong review: answer 2 graded correct', !!(s0.answers[1] && s0.answers[1].ok), qs[1].querySelector('.fb').textContent);
+    ok('wrong review: question still matches session item', qs[1].querySelector('.qword').textContent === dispWord(second.word),
+      qs[1].querySelector('.qword').textContent + ' vs ' + second.word);
+    /* restore for later steps */
+    wrong.en = savedEn;
+    wrong.de = [];
+    LS.set('v4t:wrong', wrong);
+    stats = savedStats; LS.set('v4t:stats', stats);
+    daily = savedDaily; LS.set('v4t:daily', daily);
+    recent = savedRecent; LS.set('v4t:recent', recent);
+    bumpWrong();
+    delete S.wrong;
+    setLang('en');
+    showScreen('home');
+    next();
+  });
+
   /* ---------- 8. dictionary A-Z + search + detail + synonyms ---------- */
   step(function (next) {
     showScreen('dict');

@@ -1119,7 +1119,11 @@ function getSession(ds, ex, force){
   if (!S[ds]) S[ds] = {};
   if (force) delete S[ds][ex];
   let s = S[ds][ex];
-  if (s && ds === 'wrong' && !force && s.stamp !== wrongStamp[settings.lang]){
+  /* Only drop a stale "wrong" session when nothing was answered yet.
+     Answering mutates the wrong bank, which bumps the stamp; refreshing here
+     mid-session would grade the visible questions against a different set. */
+  if (s && ds === 'wrong' && !force && s.stamp !== wrongStamp[settings.lang] &&
+      !Object.keys(s.answers || {}).length){
     delete S[ds][ex];
     s = null;
   }
@@ -2854,6 +2858,8 @@ function setDictLetter(L){
 function practiceWrong(){
   if (!wrong[settings.lang].length) return;
   Object.keys(DRAFT).forEach(function(k){ if (k.indexOf('wrong|') === 0) delete DRAFT[k]; });
+  /* starting a new review session: force a fresh sample of the wrong bank */
+  delete S.wrong;
   CUR_DS = 'wrong';
   settings.screen = 'exercise';
   LS.set('v4t:set', settings);
@@ -2941,9 +2947,10 @@ function recordAnswer(tab, v, ok){
   updateNav();
 }
 function clickOpt(tab, i, el){
-  const s = getSession(CUR_DS, tab, false);
+  const s = (S[CUR_DS] && S[CUR_DS][tab]) || getSession(CUR_DS, tab, false);
   if (!s || s.answers[i]) return;
   const v = s.items[i];
+  if (!v) return;
   const correctKey = tab === 'mc-en' ? v.meaning : v.word;
   const chosenKey = el.dataset.key;
   const ok = chosenKey === correctKey;
@@ -2964,9 +2971,10 @@ function clickOpt(tab, i, el){
   renderDone(tab);
 }
 function doCheck(tab, i, reveal){
-  const s = getSession(CUR_DS, tab, false);
+  const s = (S[CUR_DS] && S[CUR_DS][tab]) || getSession(CUR_DS, tab, false);
   if (!s || s.answers[i]) return;
   const v = s.items[i];
+  if (!v) return;
   const dir = tab === 'write-en' ? 'en' : 'vn';
   const input = $((dir === 'en' ? 'we-in' : 'wv-in') + i);
   const raw = input ? input.value.trim() : '';
