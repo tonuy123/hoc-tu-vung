@@ -1369,31 +1369,65 @@ function rngFor(s, i){
   if (!s.seeds[i]) s.seeds[i] = Math.floor(Math.random() * 2147483647) + 1;
   return mulberry32(s.seeds[i]);
 }
+function labelTokens(str){
+  return String(str || '').split(' ').filter(function(t){ return t.length > 1; });
+}
+function sameTopic(a, b){
+  const x = a || [], y = b || [];
+  for (let i = 0; i < x.length; i++){ if (y.indexOf(x[i]) !== -1) return true; }
+  return false;
+}
+/* Hard distractors: same word class, same topic, similar shape / shared
+   Vietnamese words, so options cannot be eliminated by type or length. */
 function distractors(correct, field, count, rng){
   count = count || 3;
   const pool = LANG_POOL[settings.lang] || [];
   const correctKey = wkey(correct);
   const cType = primaryType(correct.type);
-  const seen = [fold(field === 'meaning' ? cleanMeaning(correct[field]) : dispWord(correct[field]))];
-  const typeCount = {};
-  if (cType) typeCount[cType] = 1;
-  const picked = [];
-  const order = shuffleRng(pool, rng);
-  for (let i = 0; i < order.length && picked.length < count; i++){
-    const w = order[i];
+  const isMeaning = field === 'meaning';
+  const cLabel = fold(isMeaning ? cleanMeaning(correct.meaning) : dispWord(correct.word));
+  const cToks = isMeaning ? labelTokens(cLabel) : [];
+  const cGender = String(correct.word || '').split(' ')[0];
+  const cLen = cLabel.length;
+  const rows = [];
+  for (let i = 0; i < pool.length; i++){
+    const w = pool[i];
     if (wkey(w) === correctKey) continue;
-    const k = fold(field === 'meaning' ? cleanMeaning(w[field]) : dispWord(w[field]));
-    if (!k) continue;
-    let dup = false;
-    for (let j = 0; j < seen.length; j++){ if (overlaps(seen[j], k)){ dup = true; break; } }
-    if (dup) continue;
+    const label = fold(isMeaning ? cleanMeaning(w.meaning) : dispWord(w.word));
+    if (!label || overlaps(cLabel, label)) continue;
     const pt = primaryType(w.type);
-    if (pt && (typeCount[pt] || 0) >= 2) continue;
-    seen.push(k);
-    if (pt) typeCount[pt] = (typeCount[pt] || 0) + 1;
-    picked.push(w);
+    let score = 0;
+    if (pt && pt === cType) score += 34;
+    if (sameTopic(w.topics, correct.topics)) score += 26;
+    if (isMeaning){
+      const toks = labelTokens(label);
+      let shared = 0;
+      for (let t = 0; t < toks.length; t++){
+        if (toks[t].length > 2 && cToks.indexOf(toks[t]) !== -1) shared++;
+      }
+      score += shared * 22;
+    } else if (settings.lang === 'de' && correct.type === 'n' && w.type === 'n'){
+      if (String(w.word).split(' ')[0] === cGender) score += 14;
+    }
+    if (label.charAt(0) === cLabel.charAt(0)) score += 10;
+    const dLen = Math.abs(label.length - cLen);
+    if (dLen <= 2) score += 12;
+    else if (dLen <= 5) score += 6;
+    score += rng() * 14;
+    rows.push({ w: w, s: score, label: label });
   }
-  return picked;
+  rows.sort(function(a, b){ return b.s - a.s; });
+  const picked = [];
+  for (let i = 0; i < rows.length && picked.length < count; i++){
+    const r = rows[i];
+    let dup = false;
+    for (let j = 0; j < picked.length; j++){
+      if (overlaps(picked[j].label, r.label)){ dup = true; break; }
+    }
+    if (dup) continue;
+    picked.push(r);
+  }
+  return picked.map(function(r){ return r.w; });
 }
 
 /* ================= grading ================= */
@@ -1508,26 +1542,37 @@ function optHtml(tab, i, j, key, label, isCorrect, answered, chosen){
     (answered ? ' disabled' : '') + '>' +
     '<span class="key">' + 'ABCD'[j] + '</span><span>' + esc(label) + '</span></button>';
 }
+const OPTS_CACHE = new Map();
+function mcOptions(ds, tab, i, v, s, isMcEn){
+  const rng = rngFor(s, i);
+  const key = ds + '|' + tab + '|' + v.num + '|' + (s.seeds ? s.seeds[i] : 0);
+  const hit = OPTS_CACHE.get(key);
+  if (hit) return hit;
+  const lab = function(w){ return isMcEn ? cleanMeaning(w.meaning) : dispWord(w.word); };
+  const optKey = function(w){ return isMcEn ? w.meaning : w.word; };
+  /* more candidates than needed, because cleaning "(...)" can collapse two meanings into one label */
+  const cands = [v].concat(distractors(v, isMcEn ? 'meaning' : 'word', 10, rng));
+  const seen = {};
+  const opts = [];
+  for (let k = 0; k < cands.length && opts.length < 4; k++){
+    const w = cands[k];
+    const label = lab(w);
+    const f = fold(label);
+    if (!f || seen[f]) continue;
+    seen[f] = 1;
+    opts.push({ w: w, key: optKey(w), label: label });
+  }
+  OPTS_CACHE.set(key, opts);
+  if (OPTS_CACHE.size > 300) OPTS_CACHE.delete(OPTS_CACHE.keys().next().value);
+  return opts;
+}
 function renderMc(tab, s){
   const N = s.items.length;
   const isMcEn = tab === 'mc-en';
-  const lab = function(w){ return isMcEn ? cleanMeaning(w.meaning) : dispWord(w.word); };
-  const optKey = function(w){ return isMcEn ? w.meaning : w.word; };
   return s.items.map(function(v, i){
     const answered = s.answers[i] || null;
     const rng = rngFor(s, i);
-    /* more candidates than needed, because cleaning "(...)" can collapse two meanings into one label */
-    const cands = [v].concat(distractors(v, isMcEn ? 'meaning' : 'word', 10, rng));
-    const seen = {};
-    const opts = [];
-    for (let k = 0; k < cands.length && opts.length < 4; k++){
-      const w = cands[k];
-      const label = lab(w);
-      const f = fold(label);
-      if (!f || seen[f]) continue;
-      seen[f] = 1;
-      opts.push({ w: w, key: optKey(w), label: label });
-    }
+    const opts = mcOptions(CUR_DS, tab, i, v, s, isMcEn);
     const correctKey = isMcEn ? v.meaning : v.word;
     const shown = shuffleRng(opts, rng);
     let optsHtml = '';

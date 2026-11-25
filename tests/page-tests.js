@@ -101,6 +101,63 @@
     next();
   });
 
+  /* ---------- 4b. harder, less exploitable distractors ---------- */
+  step(function (next) {
+    setLang('de');
+    setExTopic('all');
+    showExercise('mc-en');
+    var s = S.de3k['mc-en'];
+    function opts(i) { return mcOptions('de3k', 'mc-en', i, s.items[i], s, true); }
+    var n = Math.min(20, s.items.length);
+    var sameType = 0, sharedWord = 0, uniqLong = 0, labelled = 0;
+    for (var i = 0; i < n; i++) {
+      var v = s.items[i];
+      var o = opts(i);
+      if (o.length !== 4) continue;
+      labelled++;
+      var ct = primaryType(v.type);
+      if (o.every(function (x) { return primaryType(x.w.type) === ct; })) sameType++;
+      var mine = cleanMeaning(v.meaning);
+      var toks = labelTokens(fold(mine));
+      if (o.some(function (x) {
+        if (x.w === v) return false;
+        return labelTokens(fold(cleanMeaning(x.w.meaning))).some(function (t) { return t.length > 2 && toks.indexOf(t) !== -1; });
+      })) sharedWord++;
+      var lens = o.filter(function (x) { return x.w !== v; }).map(function (x) { return cleanMeaning(x.w.meaning).length; });
+      if (mine.length > Math.max.apply(null, lens)) uniqLong++;
+    }
+    ok('quiz: every option shares the answer word class', sameType === labelled, sameType + '/' + labelled);
+    ok('quiz: distractors reuse a Vietnamese word', sharedWord >= labelled * 0.7, sharedWord + '/' + labelled);
+    ok('quiz: length alone doesn\'t give it away', uniqLong <= labelled * 0.6, uniqLong + '/' + labelled);
+    ok('quiz: no option label contains another', opts(0).every(function (a) {
+      return opts(0).every(function (b) {
+        return a === b || fold(a.label).indexOf(fold(b.label)) === -1;
+      });
+    }));
+
+    /* word -> German direction: same class, same article when possible */
+    showExercise('mc-vn');
+    var sv = S.de3k['mc-vn'];
+    var sameType2 = 0, cnt = 0;
+    for (var k = 0; k < Math.min(20, sv.items.length); k++) {
+      var w = sv.items[k];
+      var ov = mcOptions('de3k', 'mc-vn', k, w, sv, false);
+      if (ov.length !== 4) continue;
+      cnt++;
+      var ct2 = primaryType(w.type);
+      if (ov.every(function (x) { return primaryType(x.w.type) === ct2; })) sameType2++;
+    }
+    ok('quiz: German options keep the word class', sameType2 === cnt, sameType2 + '/' + cnt);
+
+    var keysA = opts(0).map(function (x) { return x.key; }).join('|');
+    showExercise('mc-en');
+    var keysB = mcOptions('de3k', 'mc-en', 0, s.items[0], s, true).map(function (x) { return x.key; }).join('|');
+    ok('quiz: options are cached and stable', keysA === keysB);
+    setLang('en');
+    showScreen('home');
+    next();
+  });
+
   /* ---------- 5. draft survives tab switch ---------- */
   step(function (next) {
     selectEx('write-vn');
