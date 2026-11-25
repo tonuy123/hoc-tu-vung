@@ -199,8 +199,31 @@
 
   /* ---------- grammar drill (sentence ordering) ---------- */
   .gdrill{padding:16px 16px 40px;max-width:760px;margin:0 auto}
-  #exTabs{display:flex;flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none}
-  #exTabs::-webkit-scrollbar{display:none}
+  /* ---------- flashcard ---------- */
+  .fcwrap{padding:10px 16px 40px;max-width:560px;margin:0 auto}
+  .fcbar{display:flex;gap:8px;justify-content:center;margin-bottom:14px}
+  .fcbar .chip.active{background:var(--panel2);border-color:var(--line2);color:var(--text)}
+  .fc-card{position:relative;width:100%;aspect-ratio:4/3;perspective:1200px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .fc-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.7,.3,1)}
+  .fc-card.flipped .fc-inner{transform:rotateY(180deg)}
+  .fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column}
+  .fc-back{transform:rotateY(180deg)}
+  .fc-img{flex:1;min-height:0;position:relative;background:#0c1526}
+  .fc-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .fc-face.fc-center{justify-content:center;align-items:center;text-align:center;padding:22px}
+  .fc-credit{position:absolute;right:8px;bottom:6px;font-size:10px;color:rgba(255,255,255,.8);background:rgba(0,0,0,.45);padding:2px 6px;border-radius:6px}
+  .fc-ph{height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#16324a,#0f766e)}
+  .fc-ph span{font-size:64px;font-weight:800;color:rgba(255,255,255,.85)}
+  .fc-body{padding:14px 16px}
+  .fc-word{font-size:clamp(1.3rem,5vw,1.7rem);font-weight:800;color:#fbd063;overflow-wrap:anywhere}
+  .fc-phon{color:var(--muted);font-size:14px;margin-top:2px}
+  .fc-mean{font-size:17px;color:var(--text);line-height:1.4}
+  .fc-ex{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5}
+  .fcacts{display:flex;gap:10px;margin-top:16px}
+  .fcacts .btn{flex:1;justify-content:center}
+  .fcdone{margin-top:18px;text-align:center;color:var(--muted)}
+  .fcdone .btn{margin-top:12px}
+  #exTabs{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;max-width:100%}
   #exTabs .seg-btn{flex:0 0 auto;white-space:nowrap}
   .gdask{color:var(--muted);font-size:13.5px;line-height:1.55;margin-bottom:12px}
   .gdask b{color:#fbd063}
@@ -721,6 +744,7 @@
           <button type="button" class="seg-btn" data-ex="write-vn">Viết từ</button>
           <button type="button" class="seg-btn" data-ex="mc-vn">Chọn từ</button>
           <button type="button" class="seg-btn" data-ex="order">Sắp xếp câu</button>
+          <button type="button" class="seg-btn" id="exTabFlash" data-ex="flash">Flashcard</button>
         </div>
         <div class="chips dchips" data-chips id="exChips"></div>
         <div class="chips topicrow" id="exTopics" hidden></div>
@@ -729,9 +753,9 @@
       </div>
 
       <div class="statline">
-        <span class="stat ok">✓ <b id="stCorrect">0</b></span>
-        <span class="stat bad">✗ <b id="stWrong">0</b></span>
-        <span>Câu <b id="stDone">0</b>/<b id="stTotal">0</b></span>
+        <span class="stat ok" id="stOkStat">✓ <b id="stCorrect">0</b></span>
+        <span class="stat bad" id="stBadStat">✗ <b id="stWrong">0</b></span>
+        <span><span id="stLabel">Câu</span> <b id="stDone">0</b>/<b id="stTotal">0</b></span>
         <div class="pbar" aria-hidden="true"><i id="stFill"></i></div>
       </div>
 
@@ -753,10 +777,27 @@
             <button type="button" class="btn primary" data-gdrill-next id="gdNext" hidden>Tiếp tục</button>
           </div>
         </section>
+        <section class="expanel" id="ex-flash">
+          <div class="fcwrap">
+            <div class="fcbar">
+              <button type="button" class="chip" data-fc-dir="img">Ảnh → Từ</button>
+              <button type="button" class="chip" data-fc-dir="word">Từ → Ảnh</button>
+            </div>
+            <div class="fc-card" id="fcCard" data-fc-flip role="button" tabindex="0" aria-label="Lật thẻ">
+              <div class="fc-inner">
+                <div class="fc-face fc-front" id="fcFront"></div>
+                <div class="fc-face fc-back" id="fcBack"></div>
+              </div>
+            </div>
+            <div class="fcacts">
+              <button type="button" class="btn ghost" data-fc-unknown>Chưa biết</button>
+              <button type="button" class="btn primary" data-fc-known>Biết</button>
+            </div>
+            <div class="fcdone" id="fcDone" hidden></div>
+          </div>
+        </section>
       </div>
     </section>
-
-    <!-- ================= WRONG ================= -->
     <section class="screen" id="screen-wrong" aria-label="Từ sai">
       <div class="sec-head">
         <div>
@@ -866,6 +907,14 @@
               <option value="50">50</option>
               <option value="100">100</option>
             </select>
+          </div>
+          <div class="prow">
+            <span class="prow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m6 16 4-4 3 3 2-2 3 3"/><circle cx="9" cy="9.5" r="1.3"/></svg></span>
+            <span class="prow-label">Ảnh flashcard</span>
+            <div class="seg profile-seg" id="setNetSeg">
+              <button type="button" class="seg-btn" data-net="1">Bật</button>
+              <button type="button" class="seg-btn" data-net="0">Tắt</button>
+            </div>
           </div>
           <div class="prow">
             <span class="prow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h3l1.2-2h7.6l1.2 2h3v11H4z"/><circle cx="12" cy="14" r="3.2"/></svg></span>
@@ -1002,8 +1051,8 @@ function shuffleRng(arr, rng){
   }
   return a;
 }
-const TABS = ['mc-en', 'write-en', 'write-vn', 'mc-vn', 'order'];
-const EX_LABEL = { 'mc-en': 'Chọn nghĩa', 'write-en': 'Viết nghĩa', 'write-vn': 'Viết từ', 'mc-vn': 'Chọn từ', 'order': 'Sắp xếp câu' };
+const TABS = ['mc-en', 'write-en', 'write-vn', 'mc-vn', 'order', 'flash'];
+const EX_LABEL = { 'mc-en': 'Chọn nghĩa', 'write-en': 'Viết nghĩa', 'write-vn': 'Viết từ', 'mc-vn': 'Chọn từ', 'order': 'Sắp xếp câu', 'flash': 'Flashcard' };
 const SCREENS = ['home', 'exercise', 'wrong', 'dict', 'settings'];
 const SIZES = [20, 50, 100];
 const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').concat(['#']);
@@ -1029,7 +1078,7 @@ const WORD_CATS = [
 ];
 const WORD_CAT_LABEL = {};
 WORD_CATS.forEach(function(c){ WORD_CAT_LABEL[c.id] = c.label; });
-const DEF_SETTINGS = { lang: 'en', ds: 'en1k', size: 50, screen: 'home', ex: 'mc-en', dletter: 'A', chart: 'week', dictMode: 'words', gcat: 'all', glang: 'en', glev: 'all', wtype: 'all', dtopic: 'all', dictLang: 'en', dictTopic: 'all', odTopic: 'de-a1-sein-haben', odLevel: 'A1' };
+const DEF_SETTINGS = { lang: 'en', ds: 'en1k', size: 50, screen: 'home', ex: 'mc-en', dletter: 'A', chart: 'week', dictMode: 'words', gcat: 'all', glang: 'en', glev: 'all', wtype: 'all', dtopic: 'all', dictLang: 'en', dictTopic: 'all', odTopic: 'de-a1-sein-haben', odLevel: 'A1', net: true, fcDir: 'img' };
 const STORED_SET = LS.get('v4t:set', {}) || {};
 let settings = Object.assign({}, DEF_SETTINGS, STORED_SET);
 (function migrateSettings(){
@@ -1058,6 +1107,9 @@ if (!('dictTopic' in STORED_SET)) settings.dictTopic = settings.dtopic;
 if (settings.dictLang !== 'de') settings.dictLang = 'en';
 if (settings.dictTopic !== 'all' && !DE_TOPIC_MAP[settings.dictTopic]) settings.dictTopic = 'all';
 if (TABS.indexOf(settings.ex) === -1) settings.ex = 'mc-en';
+if (settings.lang !== 'de' && settings.ex === 'flash') settings.ex = 'mc-en';
+if (settings.fcDir !== 'word') settings.fcDir = 'img';
+if (settings.net !== false) settings.net = true;
 delete settings.dlang;
 if (LETTERS.indexOf(settings.dletter) === -1) settings.dletter = 'A';
 let stats = Object.assign({ answered: 0, correct: 0 }, LS.get('v4t:stats', {}));
@@ -1516,7 +1568,7 @@ function renderEmpty(){
     '<button type="button" class="btn primary" data-nav="home">Về trang chủ</button></div>';
 }
 function renderDone(tab){
-  if (tab === 'order') return;
+  if (tab === 'order' || tab === 'flash') return;
   const el = $('done-' + tab);
   if (!el) return;
   const s = S[CUR_DS] && S[CUR_DS][tab];
@@ -2528,6 +2580,9 @@ function renderSettings(){
   $$('#setLangSeg .seg-btn').forEach(function(b){
     b.classList.toggle('active', b.dataset.setLang === settings.lang);
   });
+  $$('#setNetSeg .seg-btn').forEach(function(b){
+    b.classList.toggle('active', (b.dataset.net === '1') === (settings.net !== false));
+  });
   $$('.tag[data-tag-lang]').forEach(function(b){
     b.classList.toggle('active', b.dataset.tagLang === settings.lang);
   });
@@ -2632,9 +2687,172 @@ function readImageFile(file, w, h, quality, apply){
 }
 function handleAvatarFile(file){ readImageFile(file, 256, 256, 0.86, setAvatar); }
 function handleCoverFile(file){ readImageFile(file, 1080, 720, 0.82, setCover); }
+/* ================= flashcard: German A1 vocabulary ================= */
+const FC = { items: [], i: 0, flipped: false };
+const FC_IMG_KEY = 'v4t:imgs';
+let FC_IMGS = LS.get(FC_IMG_KEY, {}) || {};
+if (!FC_IMGS || typeof FC_IMGS !== 'object' || Array.isArray(FC_IMGS)) FC_IMGS = {};
+
+function fcCacheSet(k, v){
+  FC_IMGS[k] = v;
+  const keys = Object.keys(FC_IMGS);
+  if (keys.length > 400){
+    keys.slice(0, keys.length - 400).forEach(function(x){ delete FC_IMGS[x]; });
+  }
+  LS.set(FC_IMG_KEY, FC_IMGS);
+}
+function fcCacheGet(k){
+  return Object.prototype.hasOwnProperty.call(FC_IMGS, k) ? FC_IMGS[k] : undefined;
+}
+function fcPlaceholder(w){
+  const base = String(w.word || '?').replace(/^(der|die|das)\s+/i, '');
+  return '<div class="fc-ph"><span>' + esc(base.charAt(0).toUpperCase() || '?') + '</span></div>';
+}
+function fcBlocked(title){
+  return /(logo|coat of arms|wappen|flag of|map of|diagram|chart|signature|portrait of .*\(1[6-9])/i.test(title || '');
+}
+function fcLookup(term, cb){
+  if (settings.net === false) return cb(null);
+  if (!term) return cb(null);
+  try {
+    const url = 'https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*'
+      + '&generator=search&gsrnamespace=6&gsrlimit=8'
+      + '&gsrsearch=' + encodeURIComponent('filetype:bitmap ' + term)
+      + '&prop=imageinfo&iiprop=url&iiurlwidth=640';
+    const ctrl = window.AbortController ? new AbortController() : null;
+    const timer = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 6000);
+    fetch(url, ctrl ? { signal: ctrl.signal } : {})
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        clearTimeout(timer);
+        const pages = (j && j.query && j.query.pages) || {};
+        const rows = Object.keys(pages).map(function(k){ return pages[k]; })
+          .sort(function(a, b){ return (a.index || 0) - (b.index || 0); })
+          .filter(function(p){
+            const ii = p.imageinfo && p.imageinfo[0];
+            return ii && ii.thumburl && !fcBlocked(p.title);
+          });
+        if (!rows.length) return cb(null);
+        const needle = fold(term);
+        const exact = rows.filter(function(p){ return fold(p.title || '').indexOf(needle) !== -1; })[0];
+        cb(((exact || rows[0]).imageinfo[0]).thumburl);
+      })
+      .catch(function(){ clearTimeout(timer); cb(null); });
+  } catch (e) { cb(null); }
+}
+function flashImg(w, cb){
+  const key = w.word;
+  const cached = fcCacheGet(key);
+  if (cached !== undefined) return cb(cached || null);
+  const term = String(key).replace(/^(der|die|das)\s+/i, '');
+  fcLookup(term, function(u){
+    if (u){ fcCacheSet(key, u); return cb(u); }
+    /* failures stay in memory only: a later online session retries */
+    FC_IMGS[key] = '';
+    cb(null);
+  });
+}
+function flashPool(){
+  const all = (DATASETS.de3k && DATASETS.de3k.words) || [];
+  /* images come from the network: only concrete nouns get a card */
+  const nouns = all.filter(function(w){ return w.type === 'n' && (w.topics || []).length; });
+  if (settings.dtopic !== 'all'){
+    return nouns.filter(function(w){ return w.topics.indexOf(settings.dtopic) !== -1; });
+  }
+  return nouns;
+}
+function flashStart(){
+  const pool = flashPool();
+  FC.items = sample(pool, Math.min(20, pool.length));
+  FC.i = 0;
+  FC.flipped = false;
+  if ($('fcDone')) $('fcDone').hidden = true;
+}
+function flashRender(){
+  const card = $('fcCard');
+  if (!card) return;
+  if (!FC.items.length) flashStart();
+  const w = FC.items[FC.i];
+  if (!w){
+    card.style.visibility = 'hidden';
+    return;
+  }
+  card.style.visibility = '';
+  const dir = settings.fcDir === 'word' ? 'word' : 'img';
+  const imgBlock = function(){ return '<div class="fc-img" id="fcImgBox" data-word="' + esc(w.word) + '"></div>'; };
+  const wordBlock = function(){
+    return '<div class="fc-body"><div class="fc-word">' + esc(dispWord(w.word)) + '</div>' +
+      (w.phon ? '<div class="fc-phon">' + esc(w.phon) + '</div>' : '') + '</div>';
+  };
+  const meanBlock = function(){
+    return '<div class="fc-body"><div class="fc-mean">' + esc(cleanMeaning(w.meaning)) + '</div>' +
+      (w.ex && w.ex.length ? '<div class="fc-ex">' + esc(w.ex[0].s) + '<br>' + esc(w.ex[0].t) + '</div>' : '') + '</div>';
+  };
+  if (dir === 'img'){
+    $('fcFront').innerHTML = imgBlock();
+    $('fcBack').innerHTML = wordBlock() + meanBlock();
+  } else {
+    $('fcFront').innerHTML = wordBlock();
+    $('fcBack').innerHTML = imgBlock() + meanBlock();
+  }
+  $('fcFront').classList.toggle('fc-center', dir === 'word');
+  card.classList.toggle('flipped', FC.flipped);
+  const box = $('fcImgBox');
+  if (box){
+    box.innerHTML = fcPlaceholder(w);
+    flashImg(w, function(u){
+      if (!u) return;
+      const live = $('fcImgBox');
+      if (!live || live.dataset.word !== w.word) return;
+      live.innerHTML = '<img src="' + esc(u) + '" alt="" loading="lazy" referrerpolicy="no-referrer">' +
+        '<span class="fc-credit">Wikimedia</span>';
+    });
+  }
+  [FC.i + 1, FC.i + 2].forEach(function(k){
+    const nw = FC.items[k];
+    if (nw && fcCacheGet(nw.word) === undefined) flashImg(nw, function(){});
+  });
+  $$('#ex-flash .fcbar .chip').forEach(function(b){
+    b.classList.toggle('active', b.dataset.fcDir === dir);
+  });
+  updateStat('flash');
+}
+function flashFlip(){
+  if (!FC.items.length) return;
+  FC.flipped = !FC.flipped;
+  const card = $('fcCard');
+  if (card) card.classList.toggle('flipped', FC.flipped);
+}
+function flashNext(known){
+  const w = FC.items[FC.i];
+  if (!w) return;
+  if (!known) addWrong(w);
+  FC.i++;
+  FC.flipped = false;
+  if (FC.i >= FC.items.length){ flashFinish(); return; }
+  flashRender();
+}
+function flashFinish(){
+  const el = $('fcDone');
+  const card = $('fcCard');
+  if (card) card.style.visibility = 'hidden';
+  if (el){
+    el.hidden = false;
+    el.innerHTML = '🎉 Xong ' + FC.items.length + ' thẻ' +
+      '<br><button type="button" class="btn primary" data-fc-restart>Làm bộ mới</button>';
+  }
+  updateStat('flash');
+}
+
 function renderExercise(){
   const ex = settings.ex;
   const isOrder = ex === 'order';
+  const flashTab = $('exTabFlash');
+  if (flashTab) flashTab.hidden = settings.lang !== 'de';
+  const isFlash = ex === 'flash';
+  if ($('stOkStat')) $('stOkStat').hidden = isFlash;
+  if ($('stBadStat')) $('stBadStat').hidden = isFlash;
+  if ($('stLabel')) $('stLabel').textContent = isFlash ? 'Thẻ' : 'Câu';
   $$('#exTabs .seg-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.ex === ex); });
   $$('.expanel').forEach(function(p){ p.classList.toggle('active', p.id === 'ex-' + ex); });
   $('exTitle').textContent = EX_LABEL[ex];
@@ -2716,6 +2934,10 @@ function scrollChipRow(box){
   }
 }
 function renderTab(tab){
+  if (tab === 'flash'){
+    flashRender();
+    return;
+  }
   if (tab === 'order'){
     if (GD.topic !== settings.odTopic || !GD.rows.length){ gdInit(settings.odTopic); gdLoad(); }
     else if (!GD.answer){ gdLoad(); }
@@ -2736,6 +2958,16 @@ function renderTab(tab){
   renderDone(tab);
 }
 function updateStat(tab){
+  if (tab === 'flash'){
+    const total = FC.items.length;
+    const done = FC.i;
+    $('stCorrect').textContent = 0;
+    $('stWrong').textContent = 0;
+    $('stDone').textContent = done;
+    $('stTotal').textContent = total;
+    $('stFill').style.width = (total ? Math.round(done / total * 100) : 0) + '%';
+    return;
+  }
   if (tab === 'order'){
     const total = GD.rows.length;
     const done = GD.done;
@@ -2806,6 +3038,7 @@ function setLang(lang){
   if ((lang !== 'en' && lang !== 'de') || lang === settings.lang) return;
   settings.lang = lang;
   if (DATASETS[settings.ds] && DATASETS[settings.ds].lang !== lang) settings.ds = lang === 'de' ? 'de3k' : 'en1k';
+  if (lang !== 'de' && settings.ex === 'flash') settings.ex = 'mc-en';
   if (CUR_DS !== 'wrong') CUR_DS = settings.ds;
   delete S.wrong;
   LS.set('v4t:set', settings);
@@ -2926,6 +3159,11 @@ function setSize(n){
   rerender();
 }
 function rebuild(tab){
+  if (tab === 'flash'){
+    flashStart();
+    if (settings.screen === 'exercise') renderExercise();
+    return;
+  }
   if (tab === 'order'){
     GD.topic = null;
     gdInit(settings.odTopic);
@@ -3090,6 +3328,13 @@ document.addEventListener('click', function(e){
   if ((el = hit('[data-avatar-clear]'))){ clearAvatar(); return; }
   if ((el = hit('[data-cover-edit]'))){ pickCover(); return; }
   if ((el = hit('[data-cover-clear]'))){ clearCover(); return; }
+  if ((el = hit('[data-net]'))){
+    settings.net = el.dataset.net === '1';
+    LS.set('v4t:set', settings);
+    renderSettings();
+    if (settings.screen === 'exercise' && settings.ex === 'flash') flashRender();
+    return;
+  }
   if ((el = hit('[data-chart]'))){
     settings.chart = el.dataset.chart === 'month' ? 'month' : 'week';
     LS.set('v4t:set', settings);
@@ -3111,6 +3356,17 @@ document.addEventListener('click', function(e){
   if ((el = hit('[data-wcat]'))){ setWordCat(el.dataset.wcat); return; }
   if ((el = hit('[data-extopic]'))){ setExTopic(el.dataset.extopic); return; }
   if ((el = hit('[data-dtopic]'))){ setDictTopic(el.dataset.dtopic); return; }
+  if ((el = hit('[data-fc-flip]'))){ flashFlip(); return; }
+  if ((el = hit('[data-fc-known]'))){ flashNext(true); return; }
+  if ((el = hit('[data-fc-unknown]'))){ flashNext(false); return; }
+  if ((el = hit('[data-fc-dir]'))){
+    settings.fcDir = el.dataset.fcDir === 'word' ? 'word' : 'img';
+    FC.flipped = false;
+    LS.set('v4t:set', settings);
+    flashRender();
+    return;
+  }
+  if ((el = hit('[data-fc-restart]'))){ flashStart(); flashRender(); return; }
   if ((el = hit('[data-gdrill-check]'))){ gdCheck(false); return; }
   if ((el = hit('[data-gdrill-reveal]'))){ gdCheck(true); return; }
   if ((el = hit('[data-gdrill-next]'))){ gdNext(); return; }

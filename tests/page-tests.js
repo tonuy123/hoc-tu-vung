@@ -46,7 +46,7 @@
     ok('boot: 4 exercise cards', $$('.qa-row [data-goto-ex]').length === 4);
     ok('boot: no auto-speak checkbox', !document.querySelector('input[type=checkbox]'));
     ok('boot: removed old subtitle', !$('heroSub'));
-    ok('boot: 5 exercise panels', $$('.expanel').length === 5);
+    ok('boot: 6 exercise panels', $$('.expanel').length === 6, 'got ' + $$('.expanel').length);
     next();
   });
 
@@ -507,7 +507,7 @@
     closeSheet();
     openOrder('de-a1-praesens-reg');
     ok('order: tab active', settings.ex === 'order' && document.querySelector('.screen.active').id === 'screen-exercise');
-    ok('order: 5 tabs', $$('#exTabs .seg-btn').length === 5, 'got ' + $$('#exTabs .seg-btn').length);
+    ok('order: 6 tabs', $$('#exTabs .seg-btn').length === 6, 'got ' + $$('#exTabs .seg-btn').length);
     ok('order: level + topic chips', $$('#exGLevels .chip').length === 4 && $$('#exGTopics .chip').length === 14,
       $$('#exGLevels .chip').length + '/' + $$('#exGTopics .chip').length);
     ok('order: vocab chips hidden', $('exChips').hidden === true && $('exTopics').hidden === true);
@@ -810,6 +810,83 @@
     setLang('en');
     showScreen('home');
     next();
+  });
+
+  /* ---------- 13b. flashcard (German A1) ---------- */
+  step(function (next) {
+    var pool = DATASETS.de3k.words.filter(function (w) { return (w.topics || []).length; });
+    ok('flash: A1 topics available', pool.length > 500, 'got ' + pool.length);
+
+    setLang('de');
+    setExTopic('all');
+    showExercise('flash');
+    ok('flash: tab visible only on Deutsch', $('exTabFlash').hidden === false);
+    ok('flash: panel active', document.querySelector('.screen.active').id === 'screen-exercise' &&
+      document.querySelector('.expanel.active').id === 'ex-flash');
+    ok('flash: session 20 cards', FC.items.length === 20 && $('stTotal').textContent === '20', String(FC.items.length));
+    ok('flash: cards are concrete nouns', FC.items.every(function (w) { return w.type === 'n'; }));
+    ok('flash: card faces rendered', !!$('fcFront').innerHTML && !!$('fcBack').innerHTML);
+    ok('flash: front has image slot', !!document.getElementById('fcImgBox'));
+
+    var first = FC.items[0];
+    $('fcCard').click();
+    ok('flash: tap flips the card', FC.flipped === true && $('fcCard').classList.contains('flipped'));
+    $('fcCard').click();
+    ok('flash: tap flips back', FC.flipped === false && !$('fcCard').classList.contains('flipped'));
+
+    settings.fcDir = 'word';
+    flashRender();
+    ok('flash: word-first shows the word on the front', $('fcFront').innerHTML.indexOf('fc-word') !== -1);
+    ok('flash: word-first puts the image on the back', !!$('fcBack').innerHTML.match(/fcImgBox/));
+    settings.fcDir = 'img';
+    flashRender();
+    ok('flash: image-first puts the image on the front', !!$('fcFront').innerHTML.match(/fcImgBox/));
+
+    var before = wrong.de.length;
+    flashNext(false);
+    ok('flash: unknown card goes to Tu sai', wrong.de.length === before + 1, wrong.de.length + '/' + before);
+    ok('flash: index advanced', FC.i === 1 && $('stDone').textContent === '1', String(FC.i));
+
+    var wb = wrong.de.length;
+    flashNext(true);
+    ok('flash: known card is not added', wrong.de.length === wb);
+
+    /* offline switch: no network call, placeholder only */
+    settings.net = false;
+    var netCalled = 0;
+    var realFetch = window.fetch;
+    window.fetch = function () { netCalled++; return Promise.reject(new Error('offline')); };
+    flashRender();
+    ok('flash: net off skips the image request', netCalled === 0);
+    ok('flash: placeholder shown when no image', $('fcImgBox').innerHTML.indexOf('fc-ph') !== -1);
+    window.fetch = realFetch;
+    settings.net = true;
+
+    /* network failure must not break the card */
+    var realFetch2 = window.fetch;
+    window.fetch = function () { return Promise.reject(new Error('offline')); };
+    FC_IMGS = {};
+    var w2 = FC.items[1];
+    flashImg(w2, function (u) {
+      ok('flash: failed image lookup yields null', u === null);
+      ok('flash: failure cached as empty', FC_IMGS[w2.word] === '');
+      window.fetch = realFetch2;
+      ok('flash: card still renders after failure', $('fcImgBox').innerHTML.indexOf('fc-ph') !== -1);
+
+      flashStart();
+      flashRender();
+      FC.i = FC.items.length - 1;
+      flashNext(true);
+      ok('flash: finish state shows restart', $('fcDone').hidden === false && !!document.querySelector('[data-fc-restart]'));
+      flashStart();
+      flashRender();
+      ok('flash: restart resets progress', FC.i === 0 && $('stDone').textContent === '0');
+
+      setLang('en');
+      ok('flash: hidden on English', $('exTabFlash').hidden === true);
+      ok('flash: leaves flash tab on English', settings.ex !== 'flash', settings.ex);
+      next();
+    });
   });
 
   /* ---------- 14. data sanity ---------- */
