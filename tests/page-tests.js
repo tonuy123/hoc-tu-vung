@@ -812,9 +812,9 @@
     next();
   });
 
-  /* ---------- 13b. flashcard (German A1) ---------- */
+  /* ---------- 13b. flashcard (Deutsch <-> Viet) ---------- */
   step(function (next) {
-    var pool = DATASETS.de3k.words.filter(function (w) { return (w.topics || []).length; });
+    var pool = DATASETS.de3k.words.filter(function (w) { return (w.topics || []).length && w.meaning; });
     ok('flash: A1 topics available', pool.length > 500, 'got ' + pool.length);
 
     setLang('de');
@@ -824,23 +824,29 @@
     ok('flash: panel active', document.querySelector('.screen.active').id === 'screen-exercise' &&
       document.querySelector('.expanel.active').id === 'ex-flash');
     ok('flash: session 20 cards', FC.items.length === 20 && $('stTotal').textContent === '20', String(FC.items.length));
-    ok('flash: cards are concrete nouns', FC.items.every(function (w) { return w.type === 'n'; }));
-    ok('flash: card faces rendered', !!$('fcFront').innerHTML && !!$('fcBack').innerHTML);
-    ok('flash: front has image slot', !!document.getElementById('fcImgBox'));
+    ok('flash: every card has a meaning', FC.items.every(function (w) { return !!w.meaning; }));
+    ok('flash: no image markup any more', !document.getElementById('fcImgBox') && !document.querySelector('#ex-flash img'));
 
     var first = FC.items[0];
+    ok('flash: default direction is Duc -> Viet', settings.fcDir === 'de' && !!document.querySelector('[data-fc-dir="de"].active'));
+    ok('flash: front shows the German word', $('fcFront').innerHTML.indexOf('fc-word') !== -1 &&
+      $('fcFront').textContent.indexOf(dispWord(first.word)) !== -1, $('fcFront').textContent);
+    ok('flash: front hides the Vietnamese meaning', $('fcFront').textContent.indexOf(cleanMeaning(first.meaning)) === -1);
+    ok('flash: back shows the Vietnamese meaning', $('fcBack').textContent.indexOf(cleanMeaning(first.meaning)) !== -1);
+    ok('flash: back shows an example sentence', $('fcBack').innerHTML.indexOf('fc-ex') !== -1);
+
     $('fcCard').click();
     ok('flash: tap flips the card', FC.flipped === true && $('fcCard').classList.contains('flipped'));
     $('fcCard').click();
     ok('flash: tap flips back', FC.flipped === false && !$('fcCard').classList.contains('flipped'));
 
-    settings.fcDir = 'word';
-    flashRender();
-    ok('flash: word-first shows the word on the front', $('fcFront').innerHTML.indexOf('fc-word') !== -1);
-    ok('flash: word-first puts the image on the back', !!$('fcBack').innerHTML.match(/fcImgBox/));
-    settings.fcDir = 'img';
-    flashRender();
-    ok('flash: image-first puts the image on the front', !!$('fcFront').innerHTML.match(/fcImgBox/));
+    document.querySelector('[data-fc-dir="vi"]').click();
+    ok('flash: Viet -> Duc switched', settings.fcDir === 'vi' && !!document.querySelector('[data-fc-dir="vi"].active'));
+    ok('flash: Viet -> Duc front shows the meaning', $('fcFront').textContent.indexOf(cleanMeaning(first.meaning)) !== -1,
+      $('fcFront').textContent);
+    ok('flash: Viet -> Duc back shows the German word', $('fcBack').textContent.indexOf(dispWord(first.word)) !== -1);
+    document.querySelector('[data-fc-dir="de"]').click();
+    ok('flash: back to Duc -> Viet', settings.fcDir === 'de' && $('fcFront').innerHTML.indexOf('fc-word') !== -1);
 
     var before = wrong.de.length;
     flashNext(false);
@@ -851,42 +857,19 @@
     flashNext(true);
     ok('flash: known card is not added', wrong.de.length === wb);
 
-    /* offline switch: no network call, placeholder only */
-    settings.net = false;
-    var netCalled = 0;
-    var realFetch = window.fetch;
-    window.fetch = function () { netCalled++; return Promise.reject(new Error('offline')); };
+    flashStart();
     flashRender();
-    ok('flash: net off skips the image request', netCalled === 0);
-    ok('flash: placeholder shown when no image', $('fcImgBox').innerHTML.indexOf('fc-ph') !== -1);
-    window.fetch = realFetch;
-    settings.net = true;
+    FC.i = FC.items.length - 1;
+    flashNext(true);
+    ok('flash: finish state shows restart', $('fcDone').hidden === false && !!document.querySelector('[data-fc-restart]'));
+    flashStart();
+    flashRender();
+    ok('flash: restart resets progress', FC.i === 0 && $('stDone').textContent === '0');
 
-    /* network failure must not break the card */
-    var realFetch2 = window.fetch;
-    window.fetch = function () { return Promise.reject(new Error('offline')); };
-    FC_IMGS = {};
-    var w2 = FC.items[1];
-    flashImg(w2, function (u) {
-      ok('flash: failed image lookup yields null', u === null);
-      ok('flash: failure cached as empty', FC_IMGS[w2.word] === '');
-      window.fetch = realFetch2;
-      ok('flash: card still renders after failure', $('fcImgBox').innerHTML.indexOf('fc-ph') !== -1);
-
-      flashStart();
-      flashRender();
-      FC.i = FC.items.length - 1;
-      flashNext(true);
-      ok('flash: finish state shows restart', $('fcDone').hidden === false && !!document.querySelector('[data-fc-restart]'));
-      flashStart();
-      flashRender();
-      ok('flash: restart resets progress', FC.i === 0 && $('stDone').textContent === '0');
-
-      setLang('en');
-      ok('flash: hidden on English', $('exTabFlash').hidden === true);
-      ok('flash: leaves flash tab on English', settings.ex !== 'flash', settings.ex);
-      next();
-    });
+    setLang('en');
+    ok('flash: hidden on English', $('exTabFlash').hidden === true);
+    ok('flash: leaves flash tab on English', settings.ex !== 'flash', settings.ex);
+    next();
   });
 
   /* ---------- 14. data sanity ---------- */

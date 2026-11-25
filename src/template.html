@@ -206,19 +206,16 @@
   .fc-card{position:relative;width:100%;aspect-ratio:4/3;perspective:1200px;cursor:pointer;-webkit-tap-highlight-color:transparent}
   .fc-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.7,.3,1)}
   .fc-card.flipped .fc-inner{transform:rotateY(180deg)}
-  .fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column}
+  .fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;justify-content:center}
   .fc-back{transform:rotateY(180deg)}
-  .fc-img{flex:1;min-height:0;position:relative;background:#0c1526}
-  .fc-img img{width:100%;height:100%;object-fit:cover;display:block}
   .fc-face.fc-center{justify-content:center;align-items:center;text-align:center;padding:22px}
-  .fc-credit{position:absolute;right:8px;bottom:6px;font-size:10px;color:rgba(255,255,255,.8);background:rgba(0,0,0,.45);padding:2px 6px;border-radius:6px}
-  .fc-ph{height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#16324a,#0f766e)}
-  .fc-ph span{font-size:64px;font-weight:800;color:rgba(255,255,255,.85)}
-  .fc-body{padding:14px 16px}
-  .fc-word{font-size:clamp(1.3rem,5vw,1.7rem);font-weight:800;color:#fbd063;overflow-wrap:anywhere}
-  .fc-phon{color:var(--muted);font-size:14px;margin-top:2px}
-  .fc-mean{font-size:17px;color:var(--text);line-height:1.4}
+  .fc-body{padding:14px 18px}
+  .fc-body.fc-center{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;flex:1}
+  .fc-word{font-size:clamp(1.4rem,6vw,2rem);font-weight:800;color:#fbd063;overflow-wrap:anywhere}
+  .fc-phon{color:var(--muted);font-size:14px;margin-top:4px}
+  .fc-mean{font-size:clamp(1.05rem,4.4vw,1.35rem);font-weight:700;color:var(--text);line-height:1.45}
   .fc-ex{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5}
+  .fc-sep{height:1px;background:var(--line2);margin:2px 18px}
   .fcacts{display:flex;gap:10px;margin-top:16px}
   .fcacts .btn{flex:1;justify-content:center}
   .fcdone{margin-top:18px;text-align:center;color:var(--muted)}
@@ -780,8 +777,8 @@
         <section class="expanel" id="ex-flash">
           <div class="fcwrap">
             <div class="fcbar">
-              <button type="button" class="chip" data-fc-dir="img">Ảnh → Từ</button>
-              <button type="button" class="chip" data-fc-dir="word">Từ → Ảnh</button>
+              <button type="button" class="chip" data-fc-dir="de">Đức → Việt</button>
+              <button type="button" class="chip" data-fc-dir="vi">Việt → Đức</button>
             </div>
             <div class="fc-card" id="fcCard" data-fc-flip role="button" tabindex="0" aria-label="Lật thẻ">
               <div class="fc-inner">
@@ -907,14 +904,6 @@
               <option value="50">50</option>
               <option value="100">100</option>
             </select>
-          </div>
-          <div class="prow">
-            <span class="prow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m6 16 4-4 3 3 2-2 3 3"/><circle cx="9" cy="9.5" r="1.3"/></svg></span>
-            <span class="prow-label">Ảnh flashcard</span>
-            <div class="seg profile-seg" id="setNetSeg">
-              <button type="button" class="seg-btn" data-net="1">Bật</button>
-              <button type="button" class="seg-btn" data-net="0">Tắt</button>
-            </div>
           </div>
           <div class="prow">
             <span class="prow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h3l1.2-2h7.6l1.2 2h3v11H4z"/><circle cx="12" cy="14" r="3.2"/></svg></span>
@@ -1078,7 +1067,7 @@ const WORD_CATS = [
 ];
 const WORD_CAT_LABEL = {};
 WORD_CATS.forEach(function(c){ WORD_CAT_LABEL[c.id] = c.label; });
-const DEF_SETTINGS = { lang: 'en', ds: 'en1k', size: 50, screen: 'home', ex: 'mc-en', dletter: 'A', chart: 'week', dictMode: 'words', gcat: 'all', glang: 'en', glev: 'all', wtype: 'all', dtopic: 'all', dictLang: 'en', dictTopic: 'all', odTopic: 'de-a1-sein-haben', odLevel: 'A1', net: true, fcDir: 'img' };
+const DEF_SETTINGS = { lang: 'en', ds: 'en1k', size: 50, screen: 'home', ex: 'mc-en', dletter: 'A', chart: 'week', dictMode: 'words', gcat: 'all', glang: 'en', glev: 'all', wtype: 'all', dtopic: 'all', dictLang: 'en', dictTopic: 'all', odTopic: 'de-a1-sein-haben', odLevel: 'A1', fcDir: 'de' };
 const STORED_SET = LS.get('v4t:set', {}) || {};
 let settings = Object.assign({}, DEF_SETTINGS, STORED_SET);
 (function migrateSettings(){
@@ -1108,8 +1097,7 @@ if (settings.dictLang !== 'de') settings.dictLang = 'en';
 if (settings.dictTopic !== 'all' && !DE_TOPIC_MAP[settings.dictTopic]) settings.dictTopic = 'all';
 if (TABS.indexOf(settings.ex) === -1) settings.ex = 'mc-en';
 if (settings.lang !== 'de' && settings.ex === 'flash') settings.ex = 'mc-en';
-if (settings.fcDir !== 'word') settings.fcDir = 'img';
-if (settings.net !== false) settings.net = true;
+if (settings.fcDir !== 'vi') settings.fcDir = 'de';
 delete settings.dlang;
 if (LETTERS.indexOf(settings.dletter) === -1) settings.dletter = 'A';
 let stats = Object.assign({ answered: 0, correct: 0 }, LS.get('v4t:stats', {}));
@@ -2580,9 +2568,6 @@ function renderSettings(){
   $$('#setLangSeg .seg-btn').forEach(function(b){
     b.classList.toggle('active', b.dataset.setLang === settings.lang);
   });
-  $$('#setNetSeg .seg-btn').forEach(function(b){
-    b.classList.toggle('active', (b.dataset.net === '1') === (settings.net !== false));
-  });
   $$('.tag[data-tag-lang]').forEach(function(b){
     b.classList.toggle('active', b.dataset.tagLang === settings.lang);
   });
@@ -2687,79 +2672,16 @@ function readImageFile(file, w, h, quality, apply){
 }
 function handleAvatarFile(file){ readImageFile(file, 256, 256, 0.86, setAvatar); }
 function handleCoverFile(file){ readImageFile(file, 1080, 720, 0.82, setCover); }
-/* ================= flashcard: German A1 vocabulary ================= */
+/* ================= flashcard: Deutsch ↔ Tiếng Việt ================= */
 const FC = { items: [], i: 0, flipped: false };
-const FC_IMG_KEY = 'v4t:imgs';
-let FC_IMGS = LS.get(FC_IMG_KEY, {}) || {};
-if (!FC_IMGS || typeof FC_IMGS !== 'object' || Array.isArray(FC_IMGS)) FC_IMGS = {};
 
-function fcCacheSet(k, v){
-  FC_IMGS[k] = v;
-  const keys = Object.keys(FC_IMGS);
-  if (keys.length > 400){
-    keys.slice(0, keys.length - 400).forEach(function(x){ delete FC_IMGS[x]; });
-  }
-  LS.set(FC_IMG_KEY, FC_IMGS);
-}
-function fcCacheGet(k){
-  return Object.prototype.hasOwnProperty.call(FC_IMGS, k) ? FC_IMGS[k] : undefined;
-}
-function fcPlaceholder(w){
-  const base = String(w.word || '?').replace(/^(der|die|das)\s+/i, '');
-  return '<div class="fc-ph"><span>' + esc(base.charAt(0).toUpperCase() || '?') + '</span></div>';
-}
-function fcBlocked(title){
-  return /(logo|coat of arms|wappen|flag of|map of|diagram|chart|signature|portrait of .*\(1[6-9])/i.test(title || '');
-}
-function fcLookup(term, cb){
-  if (settings.net === false) return cb(null);
-  if (!term) return cb(null);
-  try {
-    const url = 'https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*'
-      + '&generator=search&gsrnamespace=6&gsrlimit=8'
-      + '&gsrsearch=' + encodeURIComponent('filetype:bitmap ' + term)
-      + '&prop=imageinfo&iiprop=url&iiurlwidth=640';
-    const ctrl = window.AbortController ? new AbortController() : null;
-    const timer = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 6000);
-    fetch(url, ctrl ? { signal: ctrl.signal } : {})
-      .then(function(r){ return r.json(); })
-      .then(function(j){
-        clearTimeout(timer);
-        const pages = (j && j.query && j.query.pages) || {};
-        const rows = Object.keys(pages).map(function(k){ return pages[k]; })
-          .sort(function(a, b){ return (a.index || 0) - (b.index || 0); })
-          .filter(function(p){
-            const ii = p.imageinfo && p.imageinfo[0];
-            return ii && ii.thumburl && !fcBlocked(p.title);
-          });
-        if (!rows.length) return cb(null);
-        const needle = fold(term);
-        const exact = rows.filter(function(p){ return fold(p.title || '').indexOf(needle) !== -1; })[0];
-        cb(((exact || rows[0]).imageinfo[0]).thumburl);
-      })
-      .catch(function(){ clearTimeout(timer); cb(null); });
-  } catch (e) { cb(null); }
-}
-function flashImg(w, cb){
-  const key = w.word;
-  const cached = fcCacheGet(key);
-  if (cached !== undefined) return cb(cached || null);
-  const term = String(key).replace(/^(der|die|das)\s+/i, '');
-  fcLookup(term, function(u){
-    if (u){ fcCacheSet(key, u); return cb(u); }
-    /* failures stay in memory only: a later online session retries */
-    FC_IMGS[key] = '';
-    cb(null);
-  });
-}
 function flashPool(){
   const all = (DATASETS.de3k && DATASETS.de3k.words) || [];
-  /* images come from the network: only concrete nouns get a card */
-  const nouns = all.filter(function(w){ return w.type === 'n' && (w.topics || []).length; });
+  const usable = all.filter(function(w){ return (w.topics || []).length && w.meaning; });
   if (settings.dtopic !== 'all'){
-    return nouns.filter(function(w){ return w.topics.indexOf(settings.dtopic) !== -1; });
+    return usable.filter(function(w){ return w.topics.indexOf(settings.dtopic) !== -1; });
   }
-  return nouns;
+  return usable;
 }
 function flashStart(){
   const pool = flashPool();
@@ -2778,40 +2700,21 @@ function flashRender(){
     return;
   }
   card.style.visibility = '';
-  const dir = settings.fcDir === 'word' ? 'word' : 'img';
-  const imgBlock = function(){ return '<div class="fc-img" id="fcImgBox" data-word="' + esc(w.word) + '"></div>'; };
-  const wordBlock = function(){
-    return '<div class="fc-body"><div class="fc-word">' + esc(dispWord(w.word)) + '</div>' +
-      (w.phon ? '<div class="fc-phon">' + esc(w.phon) + '</div>' : '') + '</div>';
-  };
-  const meanBlock = function(){
-    return '<div class="fc-body"><div class="fc-mean">' + esc(cleanMeaning(w.meaning)) + '</div>' +
-      (w.ex && w.ex.length ? '<div class="fc-ex">' + esc(w.ex[0].s) + '<br>' + esc(w.ex[0].t) + '</div>' : '') + '</div>';
-  };
-  if (dir === 'img'){
-    $('fcFront').innerHTML = imgBlock();
-    $('fcBack').innerHTML = wordBlock() + meanBlock();
+  const dir = settings.fcDir === 'vi' ? 'vi' : 'de';
+  const deBlock = '<div class="fc-word">' + esc(dispWord(w.word)) + '</div>' +
+    (w.phon ? '<div class="fc-phon">' + esc(w.phon) + '</div>' : '');
+  const viBlock = '<div class="fc-mean">' + esc(cleanMeaning(w.meaning)) + '</div>';
+  const exBlock = (w.ex && w.ex.length)
+    ? '<div class="fc-ex">' + esc(w.ex[0].s) + '<br>' + esc(w.ex[0].t) + '</div>'
+    : '';
+  if (dir === 'vi'){
+    $('fcFront').innerHTML = '<div class="fc-body fc-center">' + viBlock + '</div>';
+    $('fcBack').innerHTML = '<div class="fc-body fc-center">' + deBlock + exBlock + '</div>';
   } else {
-    $('fcFront').innerHTML = wordBlock();
-    $('fcBack').innerHTML = imgBlock() + meanBlock();
+    $('fcFront').innerHTML = '<div class="fc-body fc-center">' + deBlock + '</div>';
+    $('fcBack').innerHTML = '<div class="fc-body fc-center">' + viBlock + exBlock + '</div>';
   }
-  $('fcFront').classList.toggle('fc-center', dir === 'word');
   card.classList.toggle('flipped', FC.flipped);
-  const box = $('fcImgBox');
-  if (box){
-    box.innerHTML = fcPlaceholder(w);
-    flashImg(w, function(u){
-      if (!u) return;
-      const live = $('fcImgBox');
-      if (!live || live.dataset.word !== w.word) return;
-      live.innerHTML = '<img src="' + esc(u) + '" alt="" loading="lazy" referrerpolicy="no-referrer">' +
-        '<span class="fc-credit">Wikimedia</span>';
-    });
-  }
-  [FC.i + 1, FC.i + 2].forEach(function(k){
-    const nw = FC.items[k];
-    if (nw && fcCacheGet(nw.word) === undefined) flashImg(nw, function(){});
-  });
   $$('#ex-flash .fcbar .chip').forEach(function(b){
     b.classList.toggle('active', b.dataset.fcDir === dir);
   });
@@ -3328,13 +3231,6 @@ document.addEventListener('click', function(e){
   if ((el = hit('[data-avatar-clear]'))){ clearAvatar(); return; }
   if ((el = hit('[data-cover-edit]'))){ pickCover(); return; }
   if ((el = hit('[data-cover-clear]'))){ clearCover(); return; }
-  if ((el = hit('[data-net]'))){
-    settings.net = el.dataset.net === '1';
-    LS.set('v4t:set', settings);
-    renderSettings();
-    if (settings.screen === 'exercise' && settings.ex === 'flash') flashRender();
-    return;
-  }
   if ((el = hit('[data-chart]'))){
     settings.chart = el.dataset.chart === 'month' ? 'month' : 'week';
     LS.set('v4t:set', settings);
@@ -3360,7 +3256,7 @@ document.addEventListener('click', function(e){
   if ((el = hit('[data-fc-known]'))){ flashNext(true); return; }
   if ((el = hit('[data-fc-unknown]'))){ flashNext(false); return; }
   if ((el = hit('[data-fc-dir]'))){
-    settings.fcDir = el.dataset.fcDir === 'word' ? 'word' : 'img';
+    settings.fcDir = el.dataset.fcDir === 'vi' ? 'vi' : 'de';
     FC.flipped = false;
     LS.set('v4t:set', settings);
     flashRender();
