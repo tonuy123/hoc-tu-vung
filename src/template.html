@@ -2760,7 +2760,7 @@ function flashPool(){
 }
 function flashStart(){
   const pool = flashPool();
-  FC.items = sample(pool, Math.min(20, pool.length));
+  FC.items = sample(pool, settings.size);
   FC.i = 0;
   FC.flipped = false;
   if ($('fcDone')) $('fcDone').hidden = true;
@@ -3129,6 +3129,9 @@ function setSize(n){
   LS.set('v4t:set', settings);
   Object.keys(S).forEach(function(ds){ delete S[ds]; });
   Object.keys(DRAFT).forEach(function(k){ delete DRAFT[k]; });
+  FC.items = [];
+  FC.i = 0;
+  FC.flipped = false;
   try {
     Object.keys(localStorage).forEach(function(k){
       if (k.indexOf('v4t:s:') === 0) localStorage.removeItem(k);

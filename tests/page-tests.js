@@ -891,7 +891,17 @@
     ok('flash: tab visible only on Deutsch', $('exTabFlash').hidden === false);
     ok('flash: panel active', document.querySelector('.screen.active').id === 'screen-exercise' &&
       document.querySelector('.expanel.active').id === 'ex-flash');
-    ok('flash: session 20 cards', FC.items.length === 20 && $('stTotal').textContent === '20', String(FC.items.length));
+    ok('flash: session follows "Số câu/phiên"', FC.items.length === Math.min(settings.size, flashPool().length) &&
+      $('stTotal').textContent === String(FC.items.length), FC.items.length + '/' + settings.size);
+    var keepSize = settings.size;
+    settings.size = 30;
+    flashStart();
+    flashRender();
+    ok('flash: changing the session size rebuilds it', FC.items.length === 30 && $('stTotal').textContent === '30',
+      String(FC.items.length));
+    settings.size = keepSize;
+    flashStart();
+    flashRender();
     ok('flash: every card has a meaning', FC.items.every(function (w) { return !!w.meaning; }));
     ok('flash: no image markup any more', !document.getElementById('fcImgBox') && !document.querySelector('#ex-flash img'));
 
