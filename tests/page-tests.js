@@ -760,6 +760,17 @@
       return !!w && /ich bin/.test(w.extra || '');
     })());
     ok('de: multi-form word accepts one form', grade('de', { word: 'erste / erster / erstes' }, 'erster') === true);
+    ok('vi: classifier quả == trái', grade('en', { meaning: 'quả táo' }, 'trái táo') === true);
+    ok('vi: bare noun without classifier', grade('en', { meaning: 'quả lê' }, 'lê') === true);
+    ok('vi: extra classifier accepted', grade('en', { meaning: 'quả táo' }, 'cái quả táo') === true);
+    ok('vi: "mèo" for "con mèo"', grade('en', { meaning: 'con mèo' }, 'mèo') === true);
+    ok('vi: synonym list still accepted', grade('en', { meaning: 'bạn, mày' }, 'mày') === true);
+    ok('vi: wrong meaning still rejected', grade('en', { meaning: 'quả táo' }, 'quả chuối') === false);
+    ok('vi: "quà" accepted for "quà tặng"', grade('en', { meaning: 'quà tặng' }, 'quà') === true);
+    ok('vi: regional synonym dưa leo = dưa chuột', grade('en', { meaning: 'quả dưa chuột' }, 'dưa leo') === true);
+    ok('vi: regional synonym xe hơi = ô tô', grade('en', { meaning: 'xe ô tô' }, 'xe hơi') === true);
+    ok('vi: trailing dot ignored', grade('en', { meaning: 'quả táo' }, 'trái táo.') === true);
+    ok('de: plural accepted for nouns', grade('vn', { word: 'der Apfel', extra: 'Pl.: die Äpfel' }, 'Äpfel') === true);
     ok('de: new A1 word has generated examples', (function () {
       var w = DATASETS.de3k.words.filter(function (x) { return x.word === 'der Familienname'; })[0];
       return !!w && w.ex && w.ex.length === 2 && /Familienname/.test(w.ex[0].s);

@@ -1402,7 +1402,7 @@ function meaningParts(meaning){
     .replace(/\([^)]*\)/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()
-    .split(/[,;/\|]+/)
+    .split(/[,;/\|·•]+/)
     .map(function(s){ return s.trim(); })
     .filter(Boolean);
 }
@@ -1413,15 +1413,43 @@ function stripArticle(w){
     .replace(/\s+/g, ' ')
     .trim();
 }
+/* Vietnamese equivalents: "quả táo" = "trái táo" = "táo" */
+const VI_CLASSIFIER_RE = /^(qua|trai|cai|con|chiec|cuc|mieng|cuon|quyen|bo|doi|cap|hat|bong|cay|nguoi|vien|chai|ly|coc|chen|tach|goi|hop|thung|bao|nhom)\s+/;
+/* regional synonyms -> one canonical form (already folded, no accents) */
+const VI_SYNONYMS = [
+  [/\bxe hoi\b/g, 'o to'],
+  [/\bxe o to\b/g, 'o to'],
+  [/\bdua leo\b/g, 'dua chuot'],
+  [/\bhoa qua\b/g, 'trai cay']
+];
+function viKey(s, noStrip){
+  let t = String(s || '')
+    .replace(/[.,;:!?…"“”'’]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  VI_SYNONYMS.forEach(function(pair){ t = t.replace(pair[0], pair[1]); });
+  if (noStrip) return t;
+  let prev;
+  do {
+    prev = t;
+    t = t.replace(VI_CLASSIFIER_RE, '');
+  } while (t && t !== prev);
+  return t;
+}
 function grade(dir, v, raw){
   const user = fold(raw);
   if (!user) return false;
   if (dir === 'en'){
-    const parts = meaningParts(v.meaning).map(fold).filter(Boolean);
+    const uRaw = viKey(user, true);
+    const u = viKey(user);
+    const parts = meaningParts(v.meaning).map(function(p){
+      const f = fold(p);
+      return { raw: viKey(f, true), key: viKey(f) };
+    }).filter(function(p){ return p.key || p.raw; });
     return parts.some(function(p){
-      if (p === user) return true;
-      if (user.length >= 3 && p.indexOf(user) !== -1) return true;
-      if (user.length >= 4 && user.indexOf(p) !== -1) return true;
+      if (p.key === u) return true;
+      if (uRaw.length >= 3 && p.raw.indexOf(uRaw) !== -1) return true;
+      if (uRaw.length >= 4 && uRaw.indexOf(p.raw) !== -1) return true;
       return false;
     });
   }
@@ -1434,6 +1462,8 @@ function grade(dir, v, raw){
   if (noParen) cands.push(noParen);
   const noArt = stripArticle(noParen || v.word);
   if (noArt) cands.push(noArt);
+  const pl = String(v.extra || '').match(/^Pl\.?:?\s*(?:der|die|das)?\s*(.+)$/);
+  if (pl && pl[1]) cands.push(pl[1].replace(/\([^)]*\)/g, ' ').trim());
   return cands.some(function(c){
     const cf = fold(stripArticle(c));
     if (!cf) return false;
