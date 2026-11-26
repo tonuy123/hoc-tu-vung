@@ -2760,7 +2760,9 @@ function flashPool(){
 }
 function flashStart(){
   const pool = flashPool();
-  FC.items = sample(pool, settings.size);
+  /* a topic deck always covers every word of that topic; "Tất cả" follows Số câu/phiên */
+  const n = settings.dtopic === 'all' ? settings.size : pool.length;
+  FC.items = sample(pool, n);
   FC.i = 0;
   FC.flipped = false;
   if ($('fcDone')) $('fcDone').hidden = true;
@@ -3059,6 +3061,9 @@ function setExTopic(id){
   settings.dtopic = id;
   settings.dletter = 'A';
   resetDsCache('de3k');
+  FC.items = [];
+  FC.i = 0;
+  FC.flipped = false;
   LS.set('v4t:set', settings);
   rerender();
   window.scrollTo(0, 0);

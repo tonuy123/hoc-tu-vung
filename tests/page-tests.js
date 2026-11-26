@@ -897,9 +897,28 @@
     settings.size = 30;
     flashStart();
     flashRender();
-    ok('flash: changing the session size rebuilds it', FC.items.length === 30 && $('stTotal').textContent === '30',
+    ok('flash: "Tất cả chủ đề" follows Số câu/phiên', FC.items.length === 30 && $('stTotal').textContent === '30',
       String(FC.items.length));
     settings.size = keepSize;
+    flashStart();
+    flashRender();
+
+    /* switching topic must rebuild the deck immediately, no reload */
+    var topic16 = DE_TOPICS.filter(function (t) { return t.id === '16'; })[0];
+    var topic17 = DE_TOPICS.filter(function (t) { return t.id === '17'; })[0];
+    setExTopic('16');
+    var deck16 = FC.items.map(function (w) { return w.word; }).join('|');
+    ok('flash: topic 16 loads its own deck', FC.items.length > 0 && FC.items.length === flashPool().length &&
+      FC.items.every(function (w) { return (w.topics || []).indexOf('16') !== -1; }),
+      FC.items.length + '/' + (topic16 ? topic16.count : '?'));
+    setExTopic('17');
+    ok('flash: switching topic swaps the deck right away', FC.items.length > 0 &&
+      FC.items.every(function (w) { return (w.topics || []).indexOf('17') !== -1; }) &&
+      FC.items.map(function (w) { return w.word; }).join('|') !== deck16,
+      FC.items.length + '/' + (topic17 ? topic17.count : '?'));
+    ok('flash: deck covers every word of the topic', FC.items.length === flashPool().length,
+      FC.items.length + '/' + flashPool().length);
+    setExTopic('all');
     flashStart();
     flashRender();
     ok('flash: every card has a meaning', FC.items.every(function (w) { return !!w.meaning; }));
